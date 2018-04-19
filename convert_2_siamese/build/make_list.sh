@@ -1,0 +1,2 @@
+/home/liushuai/work/convert_2_siamese/build/convert_2_siamese  --listfle=/home/liushuai/work/similary/list_file.txt --output=/home/liushuai/work/train.leveldb --resize_width=224 --resize_height=224 --shuffle=false 
+#/home/liushuai/work/convert_2_siamese/build/convert_2_siamese  --listfle=/home/liushuai/work/test/all.txt --output=/home/liushuai/work/test.leveldb --resize_width=224 --resize_height=224 --shuffle=true --channel=3
