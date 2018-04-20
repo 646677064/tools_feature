@@ -23,6 +23,9 @@ from xml.etree.ElementTree import SubElement
 # import numpy as np
 #import scipy.io as sio
 import   cv2
+import skimage.io
+from scipy.ndimage import zoom
+from skimage.transform import resize
 
   
 def read_xml(in_path): 
@@ -117,9 +120,21 @@ def parse_xml(filename):
     objects = []
     for obj in tree.findall('object'):
         obj_struct = {}
-        obj_struct['score'] = obj.find('score').text
-        obj_struct['region'] = obj.find('region').text
-        obj_struct['imageptr'] = obj.find('imageptr').text
+        if obj.find('score') is  None:
+          obj_struct['score']=""
+        else:
+          obj_struct['score'] = obj.find('score').text
+        if obj.find('region') is  None:
+          obj_struct['region']=""
+        else:
+          obj_struct['region'] = obj.find('region').text
+        if obj.find('imageptr') is  None:
+          obj_struct['imageptr']=""
+        else:
+          obj_struct['imageptr'] = obj.find('imageptr').text
+        # obj_struct['score'] = obj.find('score').text
+        # obj_struct['region'] = obj.find('region').text
+        # obj_struct['imageptr'] = obj.find('imageptr').text
         if obj.find('label_des') is  None:
           obj_struct['label_des']=""
         else:
@@ -187,23 +202,68 @@ def load_txt(xfile):
     labels.append(int(float(line[1])))
   return img_files, labels
 
+# def comp_feature(feature_1,feature_2):
+#   feature_1=feature_1.reshape(-1)
+#   feature_2=feature_2.reshape(-1)
+#   feature_1_mult = feature_1*feature_1
+#   feature_2_mult = feature_2*feature_2
+#   sum1=np.sqrt(sum(feature_1_mult))
+#   feature_1=feature_1/sum1
+#   sum2=np.sqrt(sum(feature_2_mult))
+#   feature_2=feature_2/sum2
+#   mult=feature_1*feature_2
+#   feature_1_mult = feature_1*feature_1
+#   feature_2_mult = feature_2*feature_2
+#   # print feature_1.shape
+#   # print feature_1_mult
+#   # print sum1
+#   # print feature_1
+#   ret = sum(feature_1_mult)+sum(feature_2_mult)-2*sum(mult)
+#   return ret
+
 def comp_feature(feature_1,feature_2):
+  # feature_1=feature_1[0]
+  # feature_2=feature_2[0]
   feature_1=feature_1.reshape(-1)
   feature_2=feature_2.reshape(-1)
+  # print feature_1
+  # print "feature_2"
+  # print feature_2
   feature_1_mult = feature_1*feature_1
+  # # print feature_1
+  # # print feature_1_mult
   feature_2_mult = feature_2*feature_2
   sum1=np.sqrt(sum(feature_1_mult))
-  feature_1=feature_1/sum1
+  # #feature_1=feature_1/sum1
   sum2=np.sqrt(sum(feature_2_mult))
-  feature_2=feature_2/sum2
+  #feature_2=feature_2/sum2
   mult=feature_1*feature_2
-  feature_1_mult = feature_1*feature_1
-  feature_2_mult = feature_2*feature_2
+  #feature_1_mult = feature_1*feature_1
+  #feature_2_mult = feature_2*feature_2
   # print feature_1.shape
   # print feature_1_mult
   # print sum1
+  # print sum2
   # print feature_1
-  ret = sum(feature_1_mult)+sum(feature_2_mult)-2*sum(mult)
+  tmo=feature_1_mult+feature_2_mult-2*mult
+  ret = sum(tmo)
+  ret=ret/(sum1*sum2)
+
+  # mult=feature_1*feature_2
+  # all_sum=sum(mult)
+  # ret = all_sum/(sum1*sum2)
+
+  # dif=feature_1-feature_2
+  # dif=dif*dif
+  # feature_1_mult = feature_1*feature_1
+  # feature_2_mult = feature_2*feature_2
+  # sum1=np.sqrt(sum(feature_1_mult))
+  # sum2=np.sqrt(sum(feature_2_mult))
+  # ret= sum(dif)
+  # print ret
+  # print sum1
+  # print sum2
+  # ret=ret/(sum1*sum2)
   return ret
 
 def Popen_do(pp_string,b_pip_stdout=True):
@@ -384,15 +444,15 @@ def main(argv):
   parser = argparse.ArgumentParser()
   # Required arguments: input and output files.
   parser.add_argument(
-    "input_file",
+    "OK_dir",
     help="Input image, directory"
   )
   parser.add_argument(
-    "feature_file",
+    "NG_dir",
     help="Feature mat filename."
   )
   parser.add_argument(
-    "score_file",
+    "OUT_dir",
     help="Score Output mat filename."
   )
   # Optional arguments.
@@ -507,7 +567,9 @@ def main(argv):
   # #     print 'Demo for data/demo/{}'.format(im_name)
   # demo(net, im_name,num_class,save_ff)
   #======================================================================================================
-  #args.images_dim="224,224"
+  args.images_dim="224,224"
+  # args.channel_swap="0,1,2"
+  # args.raw_scale =1
   image_dims = [int(s) for s in args.images_dim.split(',')]
 
   channel_swap = None
@@ -528,31 +590,43 @@ def main(argv):
     print("CPU mode")
 
   # Make classifier
-  classifier = SClassifier(args.model_def, args.pretrained_model,
-        image_dims=image_dims, mean_value=mean_value,
-        input_scale=args.input_scale, raw_scale=args.raw_scale,
-        channel_swap=channel_swap)
-  # classifier = Classifier(args.model_def, args.pretrained_model,
-  #       image_dims=image_dims, mean=mean_value,
+  # classifier = SClassifier(args.model_def, args.pretrained_model,
+  #       image_dims=image_dims, mean_value=mean_value,
   #       input_scale=args.input_scale, raw_scale=args.raw_scale,
   #       channel_swap=channel_swap)
-  dir_1="/storage2/liushuai/gs6_env/market1501_extract_freature/test/OK/"
-  dir_2="/storage2/liushuai/gs6_env/market1501_extract_freature/test/NG/"
-  dir_out="/storage2/liushuai/gs6_env/market1501_extract_freature/test/out/"
+  classifier = Classifier(args.model_def, args.pretrained_model,
+        image_dims=image_dims, mean=mean_value,
+        input_scale=args.input_scale, raw_scale=args.raw_scale,
+        channel_swap=channel_swap)
+  dir_1="/storage2/liushuai/gs6_env/market1501_extract_freature/dalu2//OK/"
+  dir_2="/storage2/liushuai/gs6_env/market1501_extract_freature/dalu2//NG/"
+  dir_out="/storage2/liushuai/gs6_env/market1501_extract_freature/dalu2//out/"
+  # dir_1="/storage2/liushuai/gs6_env/market1501_extract_freature/test//OK/"
+  # dir_2="/storage2/liushuai/gs6_env/market1501_extract_freature/test//NG/"
+  # dir_out="/storage2/liushuai/gs6_env/market1501_extract_freature/test//out/"
   save_feature_all=None
   labels_all=[]
   list_1 = os.listdir(dir_1)
   for file_1 in list_1:
     if os.path.splitext(file_1)[1] !=".xml":
+      print file_1
       basename = os.path.splitext(file_1)[0]
       jpgname = dir_1+file_1
       xmlname= dir_1+basename+".xml"
       im = caffe.io.load_image(jpgname)#cv2.imread(jpgname)
+      # im = cv2.imread(jpgname)
+      # im= im*1.0
       baseInfo,objects = parse_xml(xmlname)
       save_feature=None
       #labels=None
       for idx_f,oject_1 in enumerate(objects):
-        cropImg = im[oject_1["bbox"][1]:oject_1["bbox"][3], oject_1["bbox"][0]:oject_1["bbox"][2],:]
+        #cropImg = im[oject_1["bbox"][0]:oject_1["bbox"][2],oject_1["bbox"][1]:oject_1["bbox"][3] ]
+        cropImg = im[oject_1["bbox"][1]:oject_1["bbox"][3], oject_1["bbox"][0]:oject_1["bbox"][2]]
+        #=============================================================test
+        # if oject_1['name']=="others" and idx_f==0:
+        #   #skimage.io.imsave("/storage2/liushuai/gs6_env/market1501_extract_freature/dalu2/OK_patch_dir/cat.jpg",255.0*cropImg)
+        #   cv2.imwrite("/storage2/liushuai/gs6_env/market1501_extract_freature/dalu2/OK_patch_dir/cat.jpg",255.0*cropImg[:,:,[2,1,0]])
+        #=============================================================test
         _ = classifier.predict([cropImg], not args.center_only)
         feature = classifier.get_blob_data(args.feature_name)
         assert (feature.shape[0] == 1 )
@@ -560,7 +634,9 @@ def main(argv):
         if save_feature is None:
             print('feature : {} : {}'.format(args.feature_name, feature_shape))
             save_feature = np.zeros((len(objects), feature.size),dtype=np.float32)
-        feature = feature.reshape(1, feature.size)
+        #feature = feature.reshape(1, feature.size)
+        feature = feature.reshape(-1)
+        print "feature.shape ",feature.shape
         save_feature[idx_f, :] = feature.copy()
         labels_all.append(oject_1['name'])
         #tmp_file_name=os.path.basename(file_list[idx_f])
@@ -569,17 +645,21 @@ def main(argv):
         save_feature_all=save_feature
       else:
         save_feature_all=np.concatenate((save_feature_all,save_feature),axis=0)
-  print len(labels_all),len(save_feature)
-  print labels_all
+  # print len(labels_all),len(save_feature)
+  # print labels_all
+  # print "save_feature_all.shape",save_feature_all.shape
+  print "get correct goods voer!"
 
   list_2 = os.listdir(dir_2)
   for file_2 in list_2:
     if os.path.splitext(file_2)[1] !=".xml":
+      print file_2
       basename_2 = os.path.splitext(file_2)[0]
       jpgname_2 = dir_2+file_2
       xmlname_2= dir_2+basename_2+".xml"
-      print xmlname_2
-      im = caffe.io.load_image(jpgname)#cv2.imread(jpgname_2)
+      im = caffe.io.load_image(jpgname_2)#cv2.imread(jpgname_2)
+      # im = cv2.imread(jpgname_2)
+      # im= im*1.0
       baseInfo_2,objects_2 = parse_xml(xmlname_2)
       save_feature=None
       labels=[]
@@ -590,7 +670,13 @@ def main(argv):
         if oject_2['name']=="miss":
           labels.append("miss")
           continue
-        cropImg = im[oject_2["bbox"][1]:oject_2["bbox"][3], oject_2["bbox"][0]:oject_2["bbox"][2],:]
+        cropImg = im[oject_2["bbox"][1]:oject_2["bbox"][3], oject_2["bbox"][0]:oject_2["bbox"][2]]
+        #=============================================================test
+        # if oject_2['name']=="weimeng1":#coco10
+        #   print oject_2["bbox"][0],oject_2["bbox"][1],oject_2["bbox"][2],oject_2["bbox"][3]
+        #   #skimage.io.imsave('/storage2/liushuai/gs6_env/market1501_extract_freature/dalu2/OK_patch_dir/coco10.jpg',255.0*cropImg)
+        #   cv2.imwrite("/storage2/liushuai/gs6_env/market1501_extract_freature/dalu2/OK_patch_dir/weimeng1.jpg",255.0*cropImg[:,:,[2,1,0]])
+        #=============================================================test
         _ = classifier.predict([cropImg], not args.center_only)
         feature = classifier.get_blob_data(args.feature_name)
         assert (feature.shape[0] == 1 )
@@ -598,24 +684,30 @@ def main(argv):
         # if save_feature is None:
         #     print('feature : {} : {}'.format(args.feature_name, feature_shape))
         #     save_feature = np.zeros((len(objects), feature.size),dtype=np.float32)
-        feature_here = feature.reshape(1, feature.size)
+        #feature_here = feature.reshape(1, feature.size)
+        feature_here = feature.reshape(-1)
+        #print "feature.shape ",feature_here.shape
        # save_feature[idx_f, :] = feature.copy()
         b_same_class=False
+        bmin=1000.0
         for bb_fea in range(0,len(save_feature_all)):
           #print aa_fea," ",bb_fea," ",same_file_list[bb_fea][0]
           ret = comp_feature(save_feature_all[bb_fea],feature_here)
           print labels_all[bb_fea],ret,oject_2['name']
-          if ret <0.2:
+          if ret <0.3:
             print "            ",labels_all[bb_fea],ret,oject_2['name'],"     ok"
             b_same_class=True
             #print type(bb_fea)
-            labels.append(labels_all[bb_fea])
-            oject_2['name']=labels_all[bb_fea]
-            break
-        if b_same_class==False:
-            print "                             ",oject_2['name'],"     background"
-            labels.append("background")
-            oject_2['name']="background"
+            if ret <bmin:
+              labels.append(labels_all[bb_fea])
+              oject_2['name']=labels_all[bb_fea]
+              bmin==ret
+            if ret<0.1:
+              break
+        # if b_same_class==False:
+        #     print "                             ",oject_2['name'],"     background"
+        #     labels.append("background")
+        #     oject_2['name']="background"
 
       four_root = ElementTree()
       A1 = create_node('annotation',{},"")
@@ -660,73 +752,6 @@ def main(argv):
         A1.append(BBobj)
       print dir_out+"/"+basename_2+".xml"
       four_root.write(dir_out+"/"+basename_2+".xml", encoding="utf-8",xml_declaration=False)
-
-  # args.input_file = os.path.expanduser(args.input_file)
-  # if os.path.isdir(args.input_file):
-  #   list_dir = os.listdir(args.input_file)
-  # for idx_dir in list_dir:
-  #   print idx_dir
-  #   start_time = time.time()
-  #   epoch_time = AverageMeter()
-  #   if  os.path.isdir(args.input_file +"/"+idx_dir):
-  #     #print idx_dir
-  #     file_list=glob.glob(args.input_file +"/"+idx_dir+ '/*.' + args.ext)
-  #     labels = [-1 for _ in xrange(len(file_list))]
-  #     if not os.path.exists(args.feature_file+"/"+idx_dir+'/'):
-  #       os.mkdir(args.feature_file+"/"+idx_dir+'/')
-  #     with open(args.feature_file+"/"+idx_dir+"/list_file.txt","w") as z_f:
-  #       tmp_file_list = [line+"\n" for line in file_list]
-  #       z_f.writelines(tmp_file_list)
-
-  #     save_feature = None
-  #     size = len(file_list)
-  #     for idx_f, _file_i in enumerate(file_list):
-  #       _input=caffe.io.load_image(_file_i)
-  #       _ = classifier.predict([_input], not args.center_only)
-  #       feature = classifier.get_blob_data(args.feature_name)
-  #       assert (feature.shape[0] == 1 )
-  #       #assert (feature.shape[0] == 1 and score.shape[0] == 1)
-  #       feature_shape = feature.shape
-  #       #score   = classifier.get_blob_data(args.score_name)
-  #      # score_shape = score.shape
-  #       if save_feature is None:
-  #           print('feature : {} : {}'.format(args.feature_name, feature_shape))
-  #           save_feature = np.zeros((len(file_list), feature.size),dtype=np.float32)
-  #       save_feature[idx_f, :] = feature.reshape(1, feature.size)
-  #       tmp_file_name=os.path.basename(file_list[idx_f])
-  #       #sio.savemat(args.feature_file+"/"+idx_dir+'/'+os.path.splitext(tmp_file_name)[0]+".feature", {'feature':feature})
-      
-  #     same_file_list=[]
-  #     if len(same_file_list) == 0:
-  #       tmp_list=[0]
-  #       same_file_list.append(tmp_list)
-  #     print size
-  #     for aa_fea in range(1,size):
-  #       #print len(same_file_list)
-  #       b_same_class=False
-  #       for bb_fea in range(0,len(same_file_list)):
-  #         #print aa_fea," ",bb_fea," ",same_file_list[bb_fea][0]
-  #         ret = comp_feature(save_feature[aa_fea],save_feature[same_file_list[bb_fea][0]])
-  #         if ret <0.2:
-  #           b_same_class=True
-  #           same_file_list[bb_fea].append(aa_fea)
-  #           break
-  #       if b_same_class==False:
-  #         tmp_list_in=[aa_fea]
-  #         same_file_list.append(tmp_list_in)
-  #     one_file_list=[ file_list[same_file_list[ss][0]] for ss in range(0,len(same_file_list))]
-  #     with open(args.feature_file+"/"+idx_dir+"/everyclass_one_list_file.txt","w") as one_f:
-  #       tmp_file_one = [line+"\n" for line in one_file_list]
-  #       one_f.writelines(tmp_file_one)
-  #     for cp_file in one_file_list:
-  #       ppsring= "cp "+cp_file+" "+args.feature_file+"/"+idx_dir+"/"
-  #       assert Popen_do(ppsring),ppsring+" error!"
-  #     print idx_dir," different pic :",len(one_file_list)
-  #     epoch_time.update(time.time() - start_time)
-  #     start_time = time.time()
-  #     need_hour, need_mins, need_secs = convert_secs2time(epoch_time.avg * (len(file_list)-1))
-  #     need_time = '{:02d}:{:02d}:{:02d}'.format(need_hour, need_mins, need_secs)
-  #     print need_time
 
 
 if __name__ == '__main__':
