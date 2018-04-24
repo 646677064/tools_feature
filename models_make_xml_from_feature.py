@@ -205,69 +205,69 @@ def load_txt(xfile):
     labels.append(int(float(line[1])))
   return img_files, labels
 
-def comp_feature(feature_1,feature_2):
-  feature_1=feature_1.reshape(-1)
-  feature_2=feature_2.reshape(-1)
-  feature_1_mult = feature_1*feature_1
-  feature_2_mult = feature_2*feature_2
-  sum1=np.sqrt(sum(feature_1_mult))
-  feature_1=feature_1/sum1
-  sum2=np.sqrt(sum(feature_2_mult))
-  feature_2=feature_2/sum2
-  mult=feature_1*feature_2
-  feature_1_mult = feature_1*feature_1
-  feature_2_mult = feature_2*feature_2
-  # print feature_1.shape
-  # print feature_1_mult
-  # print sum1
-  # print feature_1
-  ret = sum(feature_1_mult)+sum(feature_2_mult)-2*sum(mult)
-  return ret
-
 # def comp_feature(feature_1,feature_2):
-#   # feature_1=feature_1[0]
-#   # feature_2=feature_2[0]
 #   feature_1=feature_1.reshape(-1)
 #   feature_2=feature_2.reshape(-1)
-#   # print feature_1
-#   # print "feature_2"
-#   # print feature_2
 #   feature_1_mult = feature_1*feature_1
-#   # # print feature_1
-#   # # print feature_1_mult
 #   feature_2_mult = feature_2*feature_2
 #   sum1=np.sqrt(sum(feature_1_mult))
-#   # #feature_1=feature_1/sum1
+#   feature_1=feature_1/sum1
 #   sum2=np.sqrt(sum(feature_2_mult))
-#   #feature_2=feature_2/sum2
+#   feature_2=feature_2/sum2
 #   mult=feature_1*feature_2
-#   #feature_1_mult = feature_1*feature_1
-#   #feature_2_mult = feature_2*feature_2
+#   feature_1_mult = feature_1*feature_1
+#   feature_2_mult = feature_2*feature_2
 #   # print feature_1.shape
 #   # print feature_1_mult
 #   # print sum1
-#   # print sum2
 #   # print feature_1
-#   tmo=feature_1_mult+feature_2_mult-2*mult
-#   ret = sum(tmo)
-#   ret=ret/(sum1*sum2)
-
-#   # mult=feature_1*feature_2
-#   # all_sum=sum(mult)
-#   # ret = all_sum/(sum1*sum2)
-
-#   # dif=feature_1-feature_2
-#   # dif=dif*dif
-#   # feature_1_mult = feature_1*feature_1
-#   # feature_2_mult = feature_2*feature_2
-#   # sum1=np.sqrt(sum(feature_1_mult))
-#   # sum2=np.sqrt(sum(feature_2_mult))
-#   # ret= sum(dif)
-#   # print ret
-#   # print sum1
-#   # print sum2
-#   # ret=ret/(sum1*sum2)
+#   ret = sum(feature_1_mult)+sum(feature_2_mult)-2*sum(mult)
 #   return ret
+
+def comp_feature(feature_1,feature_2):
+  # feature_1=feature_1[0]
+  # feature_2=feature_2[0]
+  feature_1=feature_1.reshape(-1)
+  feature_2=feature_2.reshape(-1)
+  # print feature_1
+  # print "feature_2"
+  # print feature_2
+  feature_1_mult = feature_1*feature_1
+  # # print feature_1
+  # # print feature_1_mult
+  feature_2_mult = feature_2*feature_2
+  sum1=np.sqrt(sum(feature_1_mult))
+  # #feature_1=feature_1/sum1
+  sum2=np.sqrt(sum(feature_2_mult))
+  #feature_2=feature_2/sum2
+  mult=feature_1*feature_2
+  #feature_1_mult = feature_1*feature_1
+  #feature_2_mult = feature_2*feature_2
+  # print feature_1.shape
+  # print feature_1_mult
+  # print sum1
+  # print sum2
+  # print feature_1
+  tmo=feature_1_mult+feature_2_mult-2*mult
+  ret = sum(tmo)
+  ret=ret/(sum1*sum2)
+
+  # mult=feature_1*feature_2
+  # all_sum=sum(mult)
+  # ret = all_sum/(sum1*sum2)
+
+  # dif=feature_1-feature_2
+  # dif=dif*dif
+  # feature_1_mult = feature_1*feature_1
+  # feature_2_mult = feature_2*feature_2
+  # sum1=np.sqrt(sum(feature_1_mult))
+  # sum2=np.sqrt(sum(feature_2_mult))
+  # ret= sum(dif)
+  # print ret
+  # print sum1
+  # print sum2
+  # ret=ret/(sum1*sum2)
+  return ret
 
 def Popen_do(pp_string,b_pip_stdout=True):
   #print pp_string
@@ -626,10 +626,9 @@ def main(argv):
         if os.path.splitext(sku_file)[1]==".mat":
           mat_1 = sio.loadmat(os.path.join(tmp_path,sku_file))
           feature_1= mat_1["feature"].copy()
-          print "feature_1",feature_1.shape,len(feature_1)
+          #rint "feature_1",feature_1.shape,len(feature_1)
           feature_all.append(feature_1)
           label_all.append(patch_dir)
-      break
   # save_feature_all=None
   # labels_all=[]
   # list_1 = os.listdir(dir_1)
@@ -712,8 +711,8 @@ def main(argv):
         #     save_feature = np.zeros((len(objects), feature.size),dtype=np.float32)
         #feature_here = feature.reshape(1, feature.size)
         feature_here = feature.reshape(-1)
-        print "feature.shape ",feature_here.shape
-       # save_feature[idx_f, :] = feature.copy()
+        #rint "feature.shape ",feature_here.shape
+        #save_feature[idx_f, :] = feature.copy()
         b_same_class=False
         bmin=1000.0
         bb_index=0
@@ -721,7 +720,7 @@ def main(argv):
         for bb_fea in range(0,len(feature_all)):
           #print aa_fea," ",bb_fea," ",same_file_list[bb_fea][0]
           ret = comp_feature(feature_all[bb_fea],feature_here)
-          print label_all[bb_fea],ret,oject_2['name']
+          #rint label_all[bb_fea],ret,oject_2['name']
           if ret <0.3:
             print "            ",label_all[bb_fea],ret,oject_2['name'],"     ok"
             b_same_class=True
