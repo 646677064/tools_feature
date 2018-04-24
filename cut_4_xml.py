@@ -1280,8 +1280,10 @@ def made_rect_JPEGImages(SKUfile,JPEGImagesDir,AnnotationsDir,outDir_JPEGImages)
                 font = 4
             else:
                 font = 5
-            if obj.find('name').text == "miss" or obj.find('name').text=="origin" or obj.find('name').text=="others":
+            if obj.find('name').text == "miss" or obj.find('name').text=="origin" :#or obj.find('name').text=="others"
                 print_name=obj.find('name').text 
+            elif obj.find('name').text=="others":
+                print_name="ot"
             else:
                 print_name=str(labelmap[obj.find('name').text])
             #print_name=obj.find('name').text 
@@ -2050,13 +2052,15 @@ if __name__ == "__main__":
     # AnnotationsDir= "/mnt/storage/dataset/baipai/beer/xml/"
     # outDir_JPEGImages= "/mnt/storage/dataset/baipai/check/"
     # made_rect_JPEGImages(JPEGImagesDir,AnnotationsDir,outDir_JPEGImages)
-    base="/storage2/liushuai/gs6_env/market1501_extract_freature/test/"
+    base="/storage2/liushuai/gs6_env/market1501_extract_freature/dalu2/"
+    #base="/storage2/liushuai/gs6_env/market1501_extract_freature/test/"
     SKUfile = base+"skufile.txt"
     JPEGImagesDir= base+"/NG/"
     AnnotationsDir= base+"/out/"
     outDir_JPEGImages= base+"/out_rect/"
     made_rect_JPEGImages(SKUfile,JPEGImagesDir,AnnotationsDir,outDir_JPEGImages)
-    base="/storage2/liushuai/gs6_env/market1501_extract_freature/test/"
+    base="/storage2/liushuai/gs6_env/market1501_extract_freature/dalu2//"
+    #base="/storage2/liushuai/gs6_env/market1501_extract_freature/test/"
     SKUfile = base+"skufile.txt"
     JPEGImagesDir= base+"/OK/"
     AnnotationsDir= base+"/OK/"
