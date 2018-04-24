@@ -6,8 +6,8 @@ mean=110.676,115.771,123.191 #siamese
 model_file=/storage2/for_gs4/compare/classify_siamese.2.0.caffemodel
 prototxt_file=/storage2/for_gs4/compare/classify_siamese.2.0.prototxt
 feature_name=pool5
-gpu=6
-LOG="/storage2/liushuai/gs6_env/result//1.txt"
+gpu=3
+LOG="/storage2/liushuai/gs6_env/baiwei_patch_result//1.txt"
 exec &> >(tee -a "$LOG")
 python /storage2/liushuai/gs6_env/market1501_extract_freature/patch_feature_choose.py \
 	/storage2/tiannuodata/work/projdata/baiwei/testdata//patch/ \

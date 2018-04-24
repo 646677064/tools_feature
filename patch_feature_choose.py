@@ -81,8 +81,8 @@ class Classifier(caffe.Net):
                            self.image_dims[1],
                            inputs[0].shape[2]),
                           dtype=np.float32)
-        print inputs[0].shape
-        print input_.shape
+        # print inputs[0].shape
+        # print input_.shape
         for ix, in_ in enumerate(inputs):
             input_[ix] = caffe.io.resize_image(in_, self.image_dims)
 

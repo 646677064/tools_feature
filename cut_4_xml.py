@@ -1976,24 +1976,25 @@ if __name__ == "__main__":
     # SKUfile=basedir+"skufile.txt"
     # cachedir=basedir
     #tianruo_GoodEval(resultfile,Anotations_Dir,SKUfile,test_filelist,cachedir,'nestle4goodsproj2.pkl',threhold=231)#293
+    
     base_dir='/storage2/tiannuodata/work/projdata/aofei/aofeiproj1/'
-    basedir = "/storage2/tiannuodata/work/projdata/aofei/aofeiproj1//"
+    basedir = "/storage2/tiannuodata/work/projdata/baiwei/baiweiproj2//"
     skufile=basedir+"skufile.txt"
     testlistfile = basedir+'/ImageSets/Main/test.txt'
     Annotation_dir = basedir+'/Annotations/'
-    resultfile = basedir+'/_result.txt'
+    resultfile = basedir+'/101_result.txt'
     out_dir = basedir+'/analysis/'
     cachedir = out_dir
     cachefilename = "aofei_analysis.pkl"
-    #confusionMatrix(skufile,testlistfile,Annotation_dir,resultfile,out_dir,cachedir,cachefilename)
-    resultfile= basedir+"/_result.txt"
-    #test_beer_dir = "//storage/dataset/tiannuo_data/seconde_data/baiwei082224_2152/"
-    Anotations_Dir=basedir+"//Annotations/"#basedir+"m10/"#
-    test_filelist=basedir+"/ImageSets/Main/test.txt" #"m10/m10.txt"
-    SKUfile=basedir+"skufile.txt"
+    confusionMatrix(skufile,testlistfile,Annotation_dir,resultfile,out_dir,cachedir,cachefilename)
+    # resultfile= basedir+"/101_result.txt"
+    # #test_beer_dir = "//storage/dataset/tiannuo_data/seconde_data/baiwei082224_2152/"
+    # Anotations_Dir=basedir+"//Annotations/"#basedir+"m10/"#
+    # test_filelist=basedir+"/ImageSets/Main/test.txt" #"m10/m10.txt"
+    # SKUfile=basedir+"skufile.txt"
     cachedir=basedir+"/"
     #remove_Anotations(basedir+"/Annotations_package/",basedir+"/Annotations/")
-    #tianruo_GoodEval(resultfile,Anotations_Dir,SKUfile,test_filelist,cachedir,'aofei.pkl',threhold=1352)#293
+    tianruo_GoodEval(resultfile,Annotation_dir,skufile,testlistfile,cachedir,'baiwei.pkl',threhold=1400)#293
 
     proto_src_dir='/home/liushuai/tiannuocaffe/prototxtdir/'
     rfcn_dir_model='/home/liushuai/tiannuocaffe/py-rfcn-gpu/models/'
