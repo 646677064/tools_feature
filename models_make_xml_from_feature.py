@@ -716,7 +716,7 @@ def main(argv):
         b_same_class=False
         bmin=1000.0
         bb_index=0
-        print "len:",len(feature_all)
+        #rint "len:",len(feature_all)
         for bb_fea in range(0,len(feature_all)):
           #print aa_fea," ",bb_fea," ",same_file_list[bb_fea][0]
           ret = comp_feature(feature_all[bb_fea],feature_here)
