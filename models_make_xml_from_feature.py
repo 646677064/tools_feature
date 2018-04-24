@@ -603,10 +603,10 @@ def main(argv):
         input_scale=args.input_scale, raw_scale=args.raw_scale,
         channel_swap=channel_swap)
   #dir_1="/storage2/liushuai/gs6_env/market1501_extract_freature/dalu2//OK/"
-  patch_dir_root="/storage2/liushuai/gs6_env/baiwei_patch_result/"
-  jpg_dir="/storage2/tiannuodata/work/projdata/baiwei/baiweiproj2/JPEGImages/"
-  shape2_xml_dir="/storage2/liushuai/gs6_env/market1501_extract_freature/dalu2//NG/"
-  dir_out="/storage2/liushuai/gs6_env/market1501_extract_freature/dalu2//out/"
+  patch_dir_root=args.patch_dir_root#"/storage2/liushuai/gs6_env/baiwei_patch_result/"
+  jpg_dir=args.jpg_dir#"/storage2/tiannuodata/work/projdata/baiwei/baiweiproj2/JPEGImages/"
+  shape2_xml_dir=args.shape2_xml_dir#"/storage2/liushuai/gs6_env/market1501_extract_freature/dalu2//NG/"
+  dir_out=args.dir_out#"/storage2/liushuai/gs6_env/market1501_extract_freature/dalu2//out/"
   # dir_1="/storage2/liushuai/gs6_env/market1501_extract_freature/test//OK/"
   # dir_2="/storage2/liushuai/gs6_env/market1501_extract_freature/test//NG/"
   # dir_out="/storage2/liushuai/gs6_env/market1501_extract_freature/test//out/"
