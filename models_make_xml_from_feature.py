@@ -116,7 +116,10 @@ def parse_xml(filename):
     baseInfo['size/width'] = tree.find('size/width').text
     baseInfo['size/height'] = tree.find('size/height').text
     baseInfo['size/depth'] = tree.find('size/depth').text
-    baseInfo['segmented'] = tree.find('segmented').text
+    if tree.find('segmented') is  None:
+      baseInfo['segmented']=""
+    else:
+      baseInfo['segmented'] = tree.find('segmented').text
     objects = []
     for obj in tree.findall('object'):
         obj_struct = {}
@@ -202,69 +205,69 @@ def load_txt(xfile):
     labels.append(int(float(line[1])))
   return img_files, labels
 
-# def comp_feature(feature_1,feature_2):
-#   feature_1=feature_1.reshape(-1)
-#   feature_2=feature_2.reshape(-1)
-#   feature_1_mult = feature_1*feature_1
-#   feature_2_mult = feature_2*feature_2
-#   sum1=np.sqrt(sum(feature_1_mult))
-#   feature_1=feature_1/sum1
-#   sum2=np.sqrt(sum(feature_2_mult))
-#   feature_2=feature_2/sum2
-#   mult=feature_1*feature_2
-#   feature_1_mult = feature_1*feature_1
-#   feature_2_mult = feature_2*feature_2
-#   # print feature_1.shape
-#   # print feature_1_mult
-#   # print sum1
-#   # print feature_1
-#   ret = sum(feature_1_mult)+sum(feature_2_mult)-2*sum(mult)
-#   return ret
-
 def comp_feature(feature_1,feature_2):
-  # feature_1=feature_1[0]
-  # feature_2=feature_2[0]
   feature_1=feature_1.reshape(-1)
   feature_2=feature_2.reshape(-1)
-  # print feature_1
-  # print "feature_2"
-  # print feature_2
   feature_1_mult = feature_1*feature_1
-  # # print feature_1
-  # # print feature_1_mult
   feature_2_mult = feature_2*feature_2
   sum1=np.sqrt(sum(feature_1_mult))
-  # #feature_1=feature_1/sum1
+  feature_1=feature_1/sum1
   sum2=np.sqrt(sum(feature_2_mult))
-  #feature_2=feature_2/sum2
+  feature_2=feature_2/sum2
   mult=feature_1*feature_2
-  #feature_1_mult = feature_1*feature_1
-  #feature_2_mult = feature_2*feature_2
+  feature_1_mult = feature_1*feature_1
+  feature_2_mult = feature_2*feature_2
   # print feature_1.shape
   # print feature_1_mult
   # print sum1
-  # print sum2
   # print feature_1
-  tmo=feature_1_mult+feature_2_mult-2*mult
-  ret = sum(tmo)
-  ret=ret/(sum1*sum2)
-
-  # mult=feature_1*feature_2
-  # all_sum=sum(mult)
-  # ret = all_sum/(sum1*sum2)
-
-  # dif=feature_1-feature_2
-  # dif=dif*dif
-  # feature_1_mult = feature_1*feature_1
-  # feature_2_mult = feature_2*feature_2
-  # sum1=np.sqrt(sum(feature_1_mult))
-  # sum2=np.sqrt(sum(feature_2_mult))
-  # ret= sum(dif)
-  # print ret
-  # print sum1
-  # print sum2
-  # ret=ret/(sum1*sum2)
+  ret = sum(feature_1_mult)+sum(feature_2_mult)-2*sum(mult)
   return ret
+
+# def comp_feature(feature_1,feature_2):
+#   # feature_1=feature_1[0]
+#   # feature_2=feature_2[0]
+#   feature_1=feature_1.reshape(-1)
+#   feature_2=feature_2.reshape(-1)
+#   # print feature_1
+#   # print "feature_2"
+#   # print feature_2
+#   feature_1_mult = feature_1*feature_1
+#   # # print feature_1
+#   # # print feature_1_mult
+#   feature_2_mult = feature_2*feature_2
+#   sum1=np.sqrt(sum(feature_1_mult))
+#   # #feature_1=feature_1/sum1
+#   sum2=np.sqrt(sum(feature_2_mult))
+#   #feature_2=feature_2/sum2
+#   mult=feature_1*feature_2
+#   #feature_1_mult = feature_1*feature_1
+#   #feature_2_mult = feature_2*feature_2
+#   # print feature_1.shape
+#   # print feature_1_mult
+#   # print sum1
+#   # print sum2
+#   # print feature_1
+#   tmo=feature_1_mult+feature_2_mult-2*mult
+#   ret = sum(tmo)
+#   ret=ret/(sum1*sum2)
+
+#   # mult=feature_1*feature_2
+#   # all_sum=sum(mult)
+#   # ret = all_sum/(sum1*sum2)
+
+#   # dif=feature_1-feature_2
+#   # dif=dif*dif
+#   # feature_1_mult = feature_1*feature_1
+#   # feature_2_mult = feature_2*feature_2
+#   # sum1=np.sqrt(sum(feature_1_mult))
+#   # sum2=np.sqrt(sum(feature_2_mult))
+#   # ret= sum(dif)
+#   # print ret
+#   # print sum1
+#   # print sum2
+#   # ret=ret/(sum1*sum2)
+#   return ret
 
 def Popen_do(pp_string,b_pip_stdout=True):
   #print pp_string
@@ -391,8 +394,8 @@ class Classifier(caffe.Net):
                            self.image_dims[1],
                            inputs[0].shape[2]),
                           dtype=np.float32)
-        print inputs[0].shape
-        print input_.shape
+        # print inputs[0].shape
+        # print input_.shape
         for ix, in_ in enumerate(inputs):
             input_[ix] = caffe.io.resize_image(in_, self.image_dims)
 
@@ -614,15 +617,19 @@ def main(argv):
   feature_all=[]
   label_all=[]
   for patch_dir in patch_dir_list:
-    if os.path.isdir(patch_dir) == True:
-      tmp_path=os.path.join(patch_dir_root,patch_dir)
+    tmp_path=os.path.join(patch_dir_root,patch_dir)
+    if os.path.isdir(tmp_path) == True:
+      #rint tmp_path
       sku_file_list=os.listdir(tmp_path)
       for sku_file in sku_file_list:
+        #rint os.path.splitext(sku_file)[1]
         if os.path.splitext(sku_file)[1]==".mat":
           mat_1 = sio.loadmat(os.path.join(tmp_path,sku_file))
           feature_1= mat_1["feature"].copy()
+          print "feature_1",feature_1.shape,len(feature_1)
           feature_all.append(feature_1)
           label_all.append(patch_dir)
+      break
   # save_feature_all=None
   # labels_all=[]
   # list_1 = os.listdir(dir_1)
@@ -705,29 +712,38 @@ def main(argv):
         #     save_feature = np.zeros((len(objects), feature.size),dtype=np.float32)
         #feature_here = feature.reshape(1, feature.size)
         feature_here = feature.reshape(-1)
-        #print "feature.shape ",feature_here.shape
+        print "feature.shape ",feature_here.shape
        # save_feature[idx_f, :] = feature.copy()
         b_same_class=False
         bmin=1000.0
+        bb_index=0
+        print "len:",len(feature_all)
         for bb_fea in range(0,len(feature_all)):
           #print aa_fea," ",bb_fea," ",same_file_list[bb_fea][0]
           ret = comp_feature(feature_all[bb_fea],feature_here)
-          #print label_all[bb_fea],ret,oject_2['name']
+          print label_all[bb_fea],ret,oject_2['name']
           if ret <0.3:
             print "            ",label_all[bb_fea],ret,oject_2['name'],"     ok"
             b_same_class=True
             #print type(bb_fea)
             if ret <bmin:
-              labels.append(labels_all[bb_fea])
-              oject_2['name']=labels_all[bb_fea]
+              bb_index=bb_fea
               bmin==ret
             if ret<0.15:
               break
-        if b_same_class==False:
-            print "                             ",oject_2['name'],"     background"
+        if b_same_class==True:
+          labels.append(label_all[bb_index])
+          oject_2['name']=label_all[bb_index]
+        else:
+            #print "                             ",oject_2['name'],"     background"
             labels.append("background")
             oject_2['name']="background"
-
+      b_empty=True
+      for oject_2 in objects_2:
+        if oject_2['name'] !="background":
+          b_empty=False
+      if b_empty==True:
+        continue
       four_root = ElementTree()
       A1 = create_node('annotation',{},"")
       four_root._setroot(A1)

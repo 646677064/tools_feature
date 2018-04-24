@@ -266,11 +266,15 @@ def main(argv):
         image_dims=image_dims, mean=mean_value,
         input_scale=args.input_scale, raw_scale=args.raw_scale,
         channel_swap=channel_swap)
-
+  blast_stop=False
   args.input_file = os.path.expanduser(args.input_file)
   if os.path.isdir(args.input_file):
     list_dir = os.listdir(args.input_file)
   for idx_dir in list_dir:
+    # if idx_dir =="budweiser26":#continue to do the job
+    #   blast_stop=True
+    # if blast_stop==False:
+    #   continue
     print idx_dir
     start_time = time.time()
     epoch_time = AverageMeter()
@@ -328,7 +332,7 @@ def main(argv):
         ppsring= "cp "+cp_file+" "+args.feature_file+"/"+idx_dir+"/"
         assert Popen_do(ppsring),ppsring+" error!"
         tmp_file_name=os.path.basename(cp_file)
-        sio.savemat(args.feature_file+"/"+idx_dir+'/'+os.path.splitext(tmp_file_name)[0]+".feature", {'feature':save_feature[zindex][0]})
+        sio.savemat(args.feature_file+"/"+idx_dir+'/'+os.path.splitext(tmp_file_name)[0]+".feature", {'feature':save_feature[zindex]})
       print idx_dir," different pic :",len(one_file_list)
       epoch_time.update(time.time() - start_time)
       start_time = time.time()
