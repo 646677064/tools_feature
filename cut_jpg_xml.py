@@ -87,7 +87,10 @@ def parse_xml(filename):
     # tree.parse(filename)
 
     baseInfo={}
-    baseInfo['folder'] = tree.find('folder').text
+    if tree.find('folder') is None:
+        baseInfo['folder']=""
+    else:
+        baseInfo['folder'] = tree.find('folder').text
     baseInfo['filename'] = tree.find('filename').text
     baseInfo['path'] = tree.find('path').text
     baseInfo['source/database'] = tree.find('source/database').text
@@ -262,6 +265,68 @@ def cut_4_image(JPEGImagesDir,AnnotationsDir,outDir_JPEGImages,outDir_Annotation
             four_root.write(os.path.join(outDir_Annotations,filename_cut_xml), encoding="utf-8",xml_declaration=False)
 
     
+def cut_4_large_image(JPEGImagesDir,AnnotationsDir,outDir_JPEGImages,outDir_Annotations):
+    f_list = os.listdir(JPEGImagesDir)
+    i=0
+    for file_comp4 in f_list:
+        im = cv2.imread(os.path.join(JPEGImagesDir,file_comp4))
+        # if os.path.splitext(file_comp4)[1] == '.png':
+        #     file_comp4 = os.path.splitext(file_comp4)[0] + ".jpg"
+        basename= os.path.splitext(file_comp4)[0]
+        if  not im is None:
+            img_height=im.shape[0]
+            img_width = im.shape[1]
+
+            baseInfo,objects = parse_xml(os.path.join(AnnotationsDir,basename+".xml"))
+            #for z in list(['1','2','3','4']):
+
+
+            filename_cut=basename+"_08_1.jpg"
+            filename_cut_xml=basename+"_08_1.xml"
+            cropImg = im[0 : int(img_height*0.8) , 0 : int(img_width*0.8)]
+            cv2.imwrite(os.path.join(outDir_JPEGImages,filename_cut), cropImg)
+            crop_width=int(img_width*0.8)
+            crop_height=int(img_height*0.8)
+            x1txt=[0] 
+            y1txt=[0]
+            four_root=cut_4_xml(basename,crop_width,crop_height, objects ,x1txt, y1txt)
+            # basename crop_width crop_height objects x1txt y1txt
+            four_root.write(os.path.join(outDir_Annotations,filename_cut_xml), encoding="utf-8",xml_declaration=False)
+
+            filename_cut=basename+"_08_2.jpg"
+            filename_cut_xml=basename+"_08_2.xml"
+            cropImg = im[0 : int(img_height*0.8) , int(img_width*0.2) : img_width]
+            cv2.imwrite(os.path.join(outDir_JPEGImages,filename_cut), cropImg)
+            y1txt=[0] 
+            x1txt=[int(img_width*0.2)]
+            four_root=cut_4_xml(basename,crop_width,crop_height, objects ,x1txt, y1txt)
+            # basename crop_width crop_height objects x1txt y1txt
+            four_root.write(os.path.join(outDir_Annotations,filename_cut_xml), encoding="utf-8",xml_declaration=False)
+
+
+            filename_cut=basename+"_08_3.jpg"
+            filename_cut_xml=basename+"_08_3.xml"
+            cropImg = im[int(img_height*0.2) : img_height , 0 : int(img_width*0.8)]
+            cv2.imwrite(os.path.join(outDir_JPEGImages,filename_cut), cropImg)
+            y1txt=[int(img_height*0.2)] 
+            x1txt=[0]
+            four_root=cut_4_xml(basename,crop_width,crop_height, objects ,x1txt, y1txt)
+            # basename crop_width crop_height objects x1txt y1txt
+            four_root.write(os.path.join(outDir_Annotations,filename_cut_xml), encoding="utf-8",xml_declaration=False)
+
+
+            filename_cut=basename+"_08_4.jpg"
+            filename_cut_xml=basename+"_08_4.xml"
+            cropImg = im[int(img_height*0.2) : img_height , int(img_width*0.2) : img_width]
+            cv2.imwrite(os.path.join(outDir_JPEGImages,filename_cut), cropImg)
+            y1txt=[int(img_height*0.2)] 
+            x1txt=[int(img_width*0.2)]
+            four_root=cut_4_xml(basename,crop_width,crop_height, objects ,x1txt, y1txt)
+            # basename crop_width crop_height objects x1txt y1txt
+            four_root.write(os.path.join(outDir_Annotations,filename_cut_xml), encoding="utf-8",xml_declaration=False)
+
+    
+
 
 def cut_rect_image(JPEGImagesDir,AnnotationsDir,outDir_JPEGImages,outDir_Annotations):
     print "==========="
@@ -312,8 +377,12 @@ def cut_rect_image(JPEGImagesDir,AnnotationsDir,outDir_JPEGImages,outDir_Annotat
         print "w4_4_"+file_comp4
 
 if __name__ == "__main__":
-    JPEGImagesDir="C:\\Users\\ysc\\Documents\\WXWork\\1688853171285446\\Cache\\File\\2018-03\\jpegnest\\jpegnest\\"
-    AnnotationsDir="C:\\Users\\ysc\\Documents\\WXWork\\1688853171285446\\Cache\\File\\2018-03\\jpegnest\\xml\\"
-    outDir_JPEGImages="C:\\Users\\ysc\\Documents\\WXWork\\1688853171285446\\Cache\\File\\2018-03\\jpegnest\\out_jpg\\"
-    outDir_Annotations="C:\\Users\\ysc\\Documents\\WXWork\\1688853171285446\\Cache\\File\\2018-03\\jpegnest\\out_xml\\"
-    cut_4_image(JPEGImagesDir,AnnotationsDir,outDir_JPEGImages,outDir_Annotations)
+    # JPEGImagesDir="C:\\Users\\ysc\\Documents\\WXWork\\1688853171285446\\Cache\\File\\2018-03\\jpegnest\\jpegnest\\"
+    # AnnotationsDir="C:\\Users\\ysc\\Documents\\WXWork\\1688853171285446\\Cache\\File\\2018-03\\jpegnest\\xml\\"
+    # outDir_JPEGImages="C:\\Users\\ysc\\Documents\\WXWork\\1688853171285446\\Cache\\File\\2018-03\\jpegnest\\out_jpg\\"
+    # outDir_Annotations="C:\\Users\\ysc\\Documents\\WXWork\\1688853171285446\\Cache\\File\\2018-03\\jpegnest\\out_xml\\"
+    JPEGImagesDir="/storage2/tiannuodata/work/projdata/niersen_0425/niersen_0425proj1/JPEGImages_bak/JPEGImages_1/"
+    AnnotationsDir="/storage2/tiannuodata/work/projdata/niersen_0425/niersen_0425proj1/Annotations_bak/Annotations_1/"
+    outDir_JPEGImages="/storage2/tiannuodata/ftpUpload/niersen_0425/JPEGImages/"
+    outDir_Annotations="/storage2/tiannuodata/ftpUpload/niersen_0425/Annotations/"
+    cut_4_large_image(JPEGImagesDir,AnnotationsDir,outDir_JPEGImages,outDir_Annotations)
