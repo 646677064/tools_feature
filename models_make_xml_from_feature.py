@@ -636,8 +636,9 @@ def main(argv):
           mat_count=mat_count+1
   epoch_time.update(time.time() - start_time)
   start_time = time.time()
-  need_hour, need_mins, need_secs = convert_secs2time(epoch_time.avg * (mat_count-1))
+  need_hour, need_mins, need_secs = convert_secs2time(epoch_time.avg)
   need_time = '{:02d}:{:02d}:{:02d}'.format(need_hour, need_mins, need_secs)
+  print mat_count,"mat file.total need time :",need_time
   # save_feature_all=None
   # labels_all=[]
   # list_1 = os.listdir(dir_1)
@@ -682,7 +683,6 @@ def main(argv):
   # # print len(labels_all),len(save_feature)
   # # print labels_all
   # # print "save_feature_all.shape",save_feature_all.shape
-  print "get correct goods voer!",need_time
 
   list_2 = os.listdir(jpg_dir)
   random.shuffle(list_2)
@@ -752,12 +752,15 @@ def main(argv):
             labels.append("background")
             oject_2['name']="background"
 
-      epoch_time.update(time.time() - start_time)
-      start_time = time.time()
-      need_hour, need_mins, need_secs = convert_secs2time(epoch_time.avg * (len(objects_2)-1))
+        epoch_time.update(time.time() - start_time)
+        start_time = time.time()
+      need_hour, need_mins, need_secs = convert_secs2time(epoch_time.avg )
       need_time = '{:02d}:{:02d}:{:02d}'.format(need_hour, need_mins, need_secs)
-      print need_time
+      print len(objects_2),"every object need time : ",need_time
 
+      ppsring= "cp "+jpgname_2+" "+dir_out+"/"
+      assert Popen_do(ppsring),ppsring+" error!"
+      
       b_empty=True
       for oject_2 in objects_2:
         if oject_2['name'] !="background":
@@ -808,8 +811,6 @@ def main(argv):
       print dir_out+"/"+basename_2+".xml"
       four_root.write(dir_out+"/"+basename_2+".xml", encoding="utf-8",xml_declaration=False)
 
-      ppsring= "cp "+jpgname_2+" "+dir_out+"/"
-      assert Popen_do(ppsring),ppsring+" error!"
       icount=icount+1
       if icount==1000:
         break

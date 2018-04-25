@@ -13,7 +13,7 @@ jpg_dir=/storage2/tiannuodata/work/projdata/baiwei/baiweiproj2/JPEGImages/
 shape2_xml_dir=/storage2/liushuai/gs6_env/shape_baiwei_result_xml/
 dir_out=/storage2/liushuai/gs6_env/feature_baiwei_result_xml
 LOG="/storage2/liushuai/gs6_env//feature_baiwei_result_xml.txt"
-exec &> >(tee -a "$LOG")
+#exec &> >(tee -a "$LOG")
 python /storage2/liushuai/gs6_env/market1501_extract_freature/models_make_xml_from_feature.py \
 	$patch_dir_root \
 	$jpg_dir \
