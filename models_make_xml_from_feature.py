@@ -277,7 +277,7 @@ def Popen_do(pp_string,b_pip_stdout=True):
       p = Popen(pp_string, shell=True, stderr=PIPE)#,close_fds=True)
   out, err = p.communicate()
   #p.wait()
-  print pp_string
+  #rint pp_string
   if p.returncode != 0:
       print err
       #return 0
@@ -616,6 +616,10 @@ def main(argv):
   patch_dir_list=os.listdir(patch_dir_root)
   feature_all=[]
   label_all=[]
+
+  start_time = time.time()
+  epoch_time = AverageMeter()
+  mat_count=0
   for patch_dir in patch_dir_list:
     tmp_path=os.path.join(patch_dir_root,patch_dir)
     if os.path.isdir(tmp_path) == True:
@@ -629,6 +633,11 @@ def main(argv):
           #rint "feature_1",feature_1.shape,len(feature_1)
           feature_all.append(feature_1)
           label_all.append(patch_dir)
+          mat_count=mat_count+1
+  epoch_time.update(time.time() - start_time)
+  start_time = time.time()
+  need_hour, need_mins, need_secs = convert_secs2time(epoch_time.avg * (mat_count-1))
+  need_time = '{:02d}:{:02d}:{:02d}'.format(need_hour, need_mins, need_secs)
   # save_feature_all=None
   # labels_all=[]
   # list_1 = os.listdir(dir_1)
@@ -673,9 +682,11 @@ def main(argv):
   # # print len(labels_all),len(save_feature)
   # # print labels_all
   # # print "save_feature_all.shape",save_feature_all.shape
-  print "get correct goods voer!"
+  print "get correct goods voer!",need_time
 
   list_2 = os.listdir(jpg_dir)
+  random.shuffle(list_2)
+  icount=0
   for file_2 in list_2:
     if os.path.splitext(file_2)[1] !=".xml":
       print file_2
@@ -688,13 +699,16 @@ def main(argv):
       baseInfo_2,objects_2 = parse_xml(xmlname_2)
       save_feature=None
       labels=[]
+
+      start_time = time.time()
+      epoch_time = AverageMeter()
       for idx_f_2,oject_2 in enumerate(objects_2):
-        if oject_2['name']=="origin":
-          labels.append("origin")
-          continue
-        if oject_2['name']=="miss":
-          labels.append("miss")
-          continue
+        # if oject_2['name']=="origin":
+        #   labels.append("origin")
+        #   continue
+        # if oject_2['name']=="miss":
+        #   labels.append("miss")
+        #   continue
         cropImg = im[oject_2["bbox"][1]:oject_2["bbox"][3], oject_2["bbox"][0]:oject_2["bbox"][2]]
         #=============================================================test
         # if oject_2['name']=="weimeng1":#coco10
@@ -722,7 +736,7 @@ def main(argv):
           ret = comp_feature(feature_all[bb_fea],feature_here)
           #rint label_all[bb_fea],ret,oject_2['name']
           if ret <0.3:
-            print "            ",label_all[bb_fea],ret,oject_2['name'],"     ok"
+            #print "            ",label_all[bb_fea],ret,oject_2['name'],"     ok"
             b_same_class=True
             #print type(bb_fea)
             if ret <bmin:
@@ -737,6 +751,13 @@ def main(argv):
             #print "                             ",oject_2['name'],"     background"
             labels.append("background")
             oject_2['name']="background"
+
+      epoch_time.update(time.time() - start_time)
+      start_time = time.time()
+      need_hour, need_mins, need_secs = convert_secs2time(epoch_time.avg * (len(objects_2)-1))
+      need_time = '{:02d}:{:02d}:{:02d}'.format(need_hour, need_mins, need_secs)
+      print need_time
+
       b_empty=True
       for oject_2 in objects_2:
         if oject_2['name'] !="background":
@@ -786,6 +807,12 @@ def main(argv):
         A1.append(BBobj)
       print dir_out+"/"+basename_2+".xml"
       four_root.write(dir_out+"/"+basename_2+".xml", encoding="utf-8",xml_declaration=False)
+
+      ppsring= "cp "+jpgname_2+" "+dir_out+"/"
+      assert Popen_do(ppsring),ppsring+" error!"
+      icount=icount+1
+      if icount==1000:
+        break
 
 
 if __name__ == '__main__':
