@@ -211,8 +211,8 @@ def comp_feature(feature_1,feature_2):
   #feature_2_mult = feature_2*feature_2
   # print feature_1.shape
   # print feature_1_mult
-  print sum1
-  print sum2
+  # print sum1
+  # print sum2
   # print feature_1
   tmo=feature_1_mult+feature_2_mult-2*mult
   ret = sum(tmo)
@@ -549,14 +549,14 @@ def main(argv):
   args.model_def="/storage2/liushuai/gs6_env/market1501_extract_freature/model//dev.proto"
   args.pretrained_model="/storage2/for_gs4/compare/res101_no_dropout_calssfy.caffemodel"
   args.model_def="/storage2/for_gs4/compare/res101_no_dropout_calssfy.prototxt"
-  args.pretrained_model="/storage2/for_gs4/compare/res101_no_dropout_calssfy.caffemodel"
-  args.model_def="/storage2/for_gs4/compare/res101_no_dropout_calssfy.prototxt"
   args.pretrained_model="/storage2/for_gs4/compare/mnist_siamese_iter_200000.caffemodel"
   args.model_def="/storage2/for_gs4/compare/mnist_siamese_iter_200000.prototxt"
   args.pretrained_model="/storage2/for_gs4/compare/classify_siamese.1.0.caffemodel"
   args.model_def="/storage2/for_gs4/compare/classify_siamese.1.0.prototxt"
   args.pretrained_model="/storage2/for_gs4/compare/classify_siamese.2.0.caffemodel"
   args.model_def="/storage2/for_gs4/compare/classify_siamese.2.0.prototxt"
+  args.pretrained_model="/storage2/for_gs4/compare/res101_dropout_calssfy.caffemodel"
+  args.model_def="/storage2/for_gs4/compare/res101_dropout_calssfy.prototxt"
   args.feature_name="pool5"
   # args.pretrained_model="/storage2/for_gs4/compare/res101_dropout_calssfy.caffemodel"
   # args.model_def="/storage2/for_gs4/compare/res101_dropout_calssfy.prototxt"
@@ -598,23 +598,26 @@ def main(argv):
         input_scale=args.input_scale, raw_scale=args.raw_scale,
         channel_swap=channel_swap)
   #path_1="/storage2/liushuai/gs6_env/market1501_extract_freature/test/patch_dir_ok/suntoryv4/162d1ad029ammcfieldh4qp6_1.jpg"
-  path_1="/storage2/liushuai/gs6_env/market1501_extract_freature/dalu2/OK_patch_dir/others/162d1db26aa6z8ujl5koplvk_0.jpg"
-  path_1="/storage2/liushuai/gs6_env/market1501_extract_freature/dalu2/OK_patch_dir/others//162d1db26aa6z8ujl5koplvk_17.jpg"
+  #path_1="/storage2/liushuai/gs6_env/market1501_extract_freature/dalu2/OK_patch_dir/others/162d1db26aa6z8ujl5koplvk_0.jpg"
+  #path_1="/storage2/liushuai/gs6_env/market1501_extract_freature/dalu2/OK_patch_dir/others//162d1db26aa6z8ujl5koplvk_17.jpg"
+  path_1="/storage2/liushuai/gs6_env/market1501_extract_freature/test/patch_dir_ok/suntoryv4/162d1ad029ammcfieldh4qp6_1.jpg"
   im_1 = cv2.imread(path_1)
   im_1= im_1*1.0
   #im_1=cv2.resize(im_1, (224, 224), interpolation=cv2.INTER_CUBIC)
-  print "cv2 ",im_1.shape
+  #print "cv2 ",im_1.shape
   #im_1 = skloadimage(path_1)
-  print "skloadimage ",im_1.shape
+  #print "skloadimage ",im_1.shape
   _ = classifier.predict([im_1],   args.center_only)
   #print _
   feature_1 = classifier.get_blob_data(args.feature_name).copy()
   sio.savemat("/storage2/liushuai/gs6_env/market1501_extract_freature/test/feature_1.feature", {'feature':feature_1})
   np.savetxt("/storage2/liushuai/gs6_env/market1501_extract_freature/test/feature_1.txt",feature_1)
-  print feature_1.shape
+  #print feature_1.shape
 
   #path_2="/storage2/liushuai/gs6_env/market1501_extract_freature/dalu2/NG_patch_dir/coco10/162d1db0c83mnpzu6atv18dy_15.jpg"
-  path_2="/storage2/liushuai/gs6_env/market1501_extract_freature/dalu2/NG_patch_dir/weimeng1/162d1db0c83mnpzu6atv18dy_16.jpg"
+  #path_2="/storage2/liushuai/gs6_env/market1501_extract_freature/dalu2/NG_patch_dir/weimeng1/162d1db0c83mnpzu6atv18dy_16.jpg"
+  path_2="/storage2/liushuai/gs6_env/market1501_extract_freature/test/patch_dir_ok/suntoryv4/162d1ad029ammcfieldh4qp6_0.jpg"
+  path_2="/storage2/liushuai/gs6_env/market1501_extract_freature/test/patch_dir_NG/suntoryv4/162d1fde785mxrebcwl9g1ii_5.jpg"
   im_2 = cv2.imread(path_2)
   im_2= im_2*1.0
   #im_2 = skloadimage(path_2)
@@ -624,32 +627,46 @@ def main(argv):
   np.savetxt("/storage2/liushuai/gs6_env/market1501_extract_freature/test/feature_2.txt",feature_2)
   #print _
   ret_com1 = comp_feature(feature_1,feature_2)
-  print ret_com1
+  print "ret",ret_com1
 
-  # path_3="/storage2/liushuai/gs6_env/market1501_extract_freature/test/patch_dir_NG/qingdao1/162d1fdd1733k3mwmqpuzkdm_0.jpg"
-  # im_3 = cv2.imread(path_3)
-  # im_3= im_3*1.0
-  # #im_3=cv2.resize(im_3, (224, 224), interpolation=cv2.INTER_CUBIC)
-  # #im_3 = skloadimage(path_3)
-  # _ = classifier.predict([im_3],   args.center_only)
-  # feature_3 = classifier.get_blob_data(args.feature_name).copy()
-  # sio.savemat("/storage2/liushuai/gs6_env/market1501_extract_freature/test/feature_3.feature", {'feature':feature_3})
-  # np.savetxt("/storage2/liushuai/gs6_env/market1501_extract_freature/test/feature_3.txt",feature_3)
-  # #print _
-  # ret_com2 = comp_feature(feature_1,feature_3)
-  # print ret_com2
+  path_3="/storage2/liushuai/gs6_env/market1501_extract_freature/test/patch_dir_NG/qingdao1/162d1fdd1733k3mwmqpuzkdm_0.jpg"
+  im_3 = cv2.imread(path_3)
+  im_3= im_3*1.0
+  #im_3=cv2.resize(im_3, (224, 224), interpolation=cv2.INTER_CUBIC)
+  #im_3 = skloadimage(path_3)
+  _ = classifier.predict([im_3],   args.center_only)
+  feature_3 = classifier.get_blob_data(args.feature_name).copy()
+  sio.savemat("/storage2/liushuai/gs6_env/market1501_extract_freature/test/feature_3.feature", {'feature':feature_3})
+  np.savetxt("/storage2/liushuai/gs6_env/market1501_extract_freature/test/feature_3.txt",feature_3)
+  #print _
+  ret_com2 = comp_feature(feature_1,feature_3)
+  print "ret",ret_com2
 
-  # path_3="/storage2/liushuai/gs6_env/market1501_extract_freature/test/patch_dir_NG/qingdao1/162d1ae209944sq82xik8p8i_1.jpg"
-  # im_3 = cv2.imread(path_3)
-  # im_3= im_3*1.0
-  # #im_3 = skloadimage(path_3)
-  # _ = classifier.predict([im_3],   args.center_only)
-  # feature_3 = classifier.get_blob_data(args.feature_name).copy()
-  # sio.savemat("/storage2/liushuai/gs6_env/market1501_extract_freature/test/feature_4.feature", {'feature':feature_3})
-  # np.savetxt("/storage2/liushuai/gs6_env/market1501_extract_freature/test/feature_4.txt",feature_3)
-  # #print _
-  # ret_com2 = comp_feature(feature_1,feature_3)
-  # print ret_com2
+  path_3="/storage2/liushuai/gs6_env/market1501_extract_freature/test/patch_dir_NG/qingdao1/162d1ae209944sq82xik8p8i_1.jpg"
+  im_3 = cv2.imread(path_3)
+  im_3= im_3*1.0
+  #im_3 = skloadimage(path_3)
+  _ = classifier.predict([im_3],   args.center_only)
+  feature_3 = classifier.get_blob_data(args.feature_name).copy()
+  sio.savemat("/storage2/liushuai/gs6_env/market1501_extract_freature/test/feature_4.feature", {'feature':feature_3})
+  np.savetxt("/storage2/liushuai/gs6_env/market1501_extract_freature/test/feature_4.txt",feature_3)
+  #print _
+  ret_com2 = comp_feature(feature_1,feature_3)
+  print "ret",ret_com2
+
+  dirsd="/storage2/liushuai/gs6_env/market1501_extract_freature/test/patch_dir_NG/suntoryv4/"
+  dirsd="/storage2/liushuai/gs6_env/market1501_extract_freature/test/patch_dir_NG/suntoryv5/"
+  file_lsit=os.listdir(dirsd)
+  for file in file_lsit:
+    filepath=dirsd+file
+    im_tmp = cv2.imread(filepath)
+    im_tmp= im_tmp*1.0
+    _ = classifier.predict([im_tmp],   args.center_only)
+    feature_tmp = classifier.get_blob_data(args.feature_name).copy()
+    ret_com1 = comp_feature(feature_1,feature_tmp)
+    print "1 ",file," cam ret",ret_com1
+    ret_com2 = comp_feature(feature_2,feature_tmp)
+    print "2 ",file," cam ret",ret_com2
 
   # dir_1="/storage2/liushuai/gs6_env/market1501_extract_freature/test/OK/"
   # dir_2="/storage2/liushuai/gs6_env/market1501_extract_freature/test/NG/"

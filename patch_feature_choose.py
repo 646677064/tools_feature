@@ -317,7 +317,7 @@ def main(argv):
         for bb_fea in range(0,len(same_file_list)):
           #print aa_fea," ",bb_fea," ",same_file_list[bb_fea][0]
           ret = comp_feature(save_feature[aa_fea],save_feature[same_file_list[bb_fea][0]])
-          if ret <0.2:
+          if ret <0.5:
             b_same_class=True
             same_file_list[bb_fea].append(aa_fea)
             break
