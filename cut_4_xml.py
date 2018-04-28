@@ -19,6 +19,22 @@ import random
 import math
 import csv
  
+from subprocess import Popen,PIPE
+ 
+  
+def Popen_do(pp_string,b_pip_stdout=True):
+    #print pp_string
+    if b_pip_stdout==True:
+        p = Popen(pp_string, shell=True, stdout=PIPE, stderr=PIPE)#,close_fds=True)
+    else:
+        p = Popen(pp_string, shell=True, stderr=PIPE)#,close_fds=True)
+    out, err = p.communicate()
+    #p.wait()
+    print pp_string
+    if p.returncode != 0:
+        print err
+        #return 0
+    return 1
   
 def read_xml(in_path): 
     tree = ElementTree()
@@ -1884,6 +1900,39 @@ def confusionMatrix(skufile,testlistfile,Annotation_dir,resultfile,out_dir,cache
     txt_f.close()
           
 
+def cpfile_from_list_2_dir(dir_1,test_filepath,outdir):
+    if False==os.path.exists(outdir):
+        os.mkdir(outdir)
+    with open(test_filepath,"r") as f:
+        test_filelist_lines = f.readlines();
+    test_list=[]
+    for i_file,test_file in enumerate(test_filelist_lines):
+        #for i_file,test_file in enumerate(test_filelist_lines):
+        print test_file
+        temp_file = test_file.strip().strip('\n').strip('\r')
+        test_list.append(temp_file)  
+
+    if os.path.exists(outdir+"/Annotations/")==False:
+        os.mkdir(outdir+"/Annotations/")
+    if os.path.exists(outdir+"/JPEGImages/")==False:
+        os.mkdir(outdir+"/JPEGImages/")
+
+    f_list = os.listdir(dir_1+"/Annotations/")
+    for fname in f_list:
+        basename=os.path.splitext(fname)[0]
+        if basename not in test_list:
+            continue
+        #print fname
+        orig_xml=dir_1+"/Annotations/"+basename+".xml"
+        orig_pic=dir_1+"/JPEGImages/"+basename+".jpg"
+        ppsring= "cp "+orig_xml+" "+outdir+"/Annotations/"
+        if os.path.exists(orig_xml):
+            assert Popen_do(ppsring),ppsring+" error!"
+        ppsring= "cp "+orig_pic+" "+outdir+"/JPEGImages/"
+        if os.path.exists(orig_pic):
+            assert Popen_do(ppsring),ppsring+" error!"
+        
+
 if __name__ == "__main__":
     # parser = argparse.ArgumentParser(
     #         description = "Plot the detection results output by ssd_detect.")
@@ -1996,6 +2045,13 @@ if __name__ == "__main__":
     #remove_Anotations(basedir+"/Annotations_package/",basedir+"/Annotations/")
     tianruo_GoodEval(resultfile,Annotation_dir,skufile,testlistfile,cachedir,'baiwei.pkl',threhold=1400)#293
 
+    dir_1= basedir
+    cachedir=basedir+"/analysis/"
+    test_filepath=basedir+"/analysis//badpic_namelist.txt"
+    outdir=cachedir+"/badpic_namelist/"
+    cpfile_from_list_2_dir(dir_1,test_filepath,outdir)
+
+    
     proto_src_dir='/home/liushuai/tiannuocaffe/prototxtdir/'
     rfcn_dir_model='/home/liushuai/tiannuocaffe/py-rfcn-gpu/models/'
     tmp_work='nestle4goods'
@@ -2059,18 +2115,18 @@ if __name__ == "__main__":
     JPEGImagesDir= base+"/NG/"
     AnnotationsDir= base+"/out/"
     outDir_JPEGImages= base+"/out_rect/"
-    made_rect_JPEGImages(SKUfile,JPEGImagesDir,AnnotationsDir,outDir_JPEGImages)
+    #made_rect_JPEGImages(SKUfile,JPEGImagesDir,AnnotationsDir,outDir_JPEGImages)
     base="/storage2/liushuai/gs6_env/market1501_extract_freature/dalu2//"
     #base="/storage2/liushuai/gs6_env/market1501_extract_freature/test/"
     SKUfile = base+"skufile.txt"
     JPEGImagesDir= base+"/OK/"
     AnnotationsDir= base+"/OK/"
     outDir_JPEGImages= base+"/OK_rect/"
-    made_rect_JPEGImages(SKUfile,JPEGImagesDir,AnnotationsDir,outDir_JPEGImages)
+    #made_rect_JPEGImages(SKUfile,JPEGImagesDir,AnnotationsDir,outDir_JPEGImages)
     JPEGImagesDir= base+"/NG/"
     AnnotationsDir= base+"/NG/"
     outDir_JPEGImages= base+"/NG_rect/"
-    made_rect_JPEGImages(SKUfile,JPEGImagesDir,AnnotationsDir,outDir_JPEGImages)
+    #made_rect_JPEGImages(SKUfile,JPEGImagesDir,AnnotationsDir,outDir_JPEGImages)
 
     #@made_rect_JPEGImages_from_SKUfile(SKUfile,nas_dir+"60_pic_testset/m10.txt",nas_dir+"60_pic_testset",nas_dir+"60_pic_testset",nas_dir+"/60_gt_box")
     colgatecutdir = "/mnt/storage/liushuai/data/colgatecut/colgatecutproj1/"
