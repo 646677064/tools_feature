@@ -940,6 +940,7 @@ def precision_xml_cmp(JPEG_dir,Anotations_Dir,right_Anotations_Dir,SKUfile,cache
         for j,objcts in enumerate(objcts_sturct):
             tmp_name=objcts['name']
             tmp_name=tmp_name.lower()
+            #print tmp_name
             if tmp_name.find('other')>=0:
                 #print Nametxt[i_pNametxt],"===== ",tmp_name
                 continue
@@ -969,10 +970,12 @@ def precision_xml_cmp(JPEG_dir,Anotations_Dir,right_Anotations_Dir,SKUfile,cache
                             p = p+1
                             label_precision_count[labelmap[objcts['name']]-1] +=1
 
+        if tianluo_dic.has_key(i_pNametxt) ==False:
+            continue
         tmp_rec = float(tianluo_dic[i_pNametxt]-tianluo_psum+every_pic_tianluo)/float(tianluo_dic[i_pNametxt+'_sum_']) if tianluo_dic[i_pNametxt+'_sum_']!=0 else 0
-        print name_w,"    tianruo_prec= ",tmp_rec," ({}-{}+{}/{})".format(tianluo_dic[i_pNametxt],tianluo_psum,every_pic_tianluo,tianluo_dic[i_pNametxt+'_sum_'])
+        print i_pNametxt,"    tianruo_prec= ",tmp_rec," ({}-{}+{}/{})".format(tianluo_dic[i_pNametxt],tianluo_psum,every_pic_tianluo,tianluo_dic[i_pNametxt+'_sum_'])
         if tmp_rec<0.75:##2018_1_11
-            f_badpic.writelines(name_w+'\n')
+            f_badpic.writelines(i_pNametxt+'\n')
 
     P = float(p)/float(psum)
     R = float(r)/float(rsum)
@@ -2177,7 +2180,7 @@ if __name__ == "__main__":
     #tianruo_GoodEval(resultfile,Anotations_Dir,SKUfile,test_filelist,cachedir,'nestle4goodsproj2.pkl',threhold=231)#293
     
     base_dir='/storage2/tiannuodata/work/projdata/aofei/aofeiproj1/'
-    basedir = "/storage2/tiannuodata/work/projdata/baiwei/baiweiproj2//"
+    basedir = "/storage2/tiannuodata/work/projdata/baiwei/baiweiproj329//"
     skufile=basedir+"skufile.txt"
     testlistfile = basedir+'/ImageSets/Main/test.txt'
     Annotation_dir = basedir+'/Annotations/'
@@ -2195,10 +2198,14 @@ if __name__ == "__main__":
     #remove_Anotations(basedir+"/Annotations_package/",basedir+"/Annotations/")
     #tianruo_GoodEval(resultfile,Annotation_dir,skufile,testlistfile,cachedir,'baiwei.pkl',threhold=1400)#293
     Anotations_Dir="/storage2/liushuai/gs6_env/feature_baiwei_result_xml/"
+    Anotations_Dir="/storage2/liushuai/gs6_env/101_baiwei329/101feature_baiwei329_result_xm_noearlystop/"
+    Anotations_Dir="/storage2/liushuai/gs6_env/101_baiwei329/101feature_baiwei329_result_xml_earlystop/"
+    #Anotations_Dir="/storage2/liushuai/gs6_env//siamese_baiwei329//siamese_feature_baiwei329_result_xml_noearlystop/"
     JPEG_dir=Anotations_Dir
     right_Anotations_Dir=basedir+"/Annotations/"
     SKUfile=skufile
-    cachedir="/storage2/liushuai/gs6_env/tmp/"
+    #cachedir="/storage2/liushuai/gs6_env/tmp329_siamese/"
+    cachedir="/storage2/liushuai/gs6_env/tmp329_101_earlystop/"
     precision_xml_cmp(JPEG_dir,Anotations_Dir,right_Anotations_Dir,SKUfile,cachedir,2000)
 
     proto_src_dir='/home/liushuai/tiannuocaffe/prototxtdir/'
