@@ -177,14 +177,10 @@ def parse_xml1(filename):
 
     return baseInfo,objects
 
-if __name__=="__main__":
-    JPG_dir=""
-    Anotation_dir="/"
-    patchdir="/storage2/tiannuodata/work/projdata/baiwei/baiweiproj329/analysis/patch/"
+def jiucuo_modify_xml_3(Anotation_dir,JPG_dir,patchdir,out_xmlDir,out_jpgdir):
     result_patchlist=patchdir+"/result_patchlist/"
-    out_xmlDir="/outdir/"
-    # if not os.path.exists(patchdir+"/result_patchlist/"):
-    #     os.mkdir(patchdir+"/result_patchlist/")
+    if not os.path.exists(out_xmlDir):
+        os.mkdir(out_xmlDir)
     subpatchs = os.listdir(result_patchlist)
     for subpatch in subpatchs:
         with open(result_patchlist+subpatch+".txt","r") as f_r:
@@ -245,16 +241,11 @@ if __name__=="__main__":
                 #     return
                 
                 #bfind_one_space = False;
-                for obj in treeA.findall('object'):
+                rootA=treeA.getroot()
+                children = rootA.findall('object')
+                for obj in children:
                     xmlname = obj.find('name').text
                     xmlname = xmlname.strip()
-                    # for ifind,tmp_name in enumerate(src_list):
-                    #     if xmlname==tmp_name:
-                    #         i=i+1
-                    #         print file_comp4
-                    #         bfind_one_space = True
-                    #         obj.find('name').text=des_list[ifind]
-                    #         break
                     xmin = int(obj.find('bndbox').find('xmin').text)
                     ymin = int(obj.find('bndbox').find('ymin').text)
                     xmax = int(obj.find('bndbox').find('xmax').text)
@@ -262,6 +253,42 @@ if __name__=="__main__":
                     if xmin_target==xmin and ymin_target == ymin and xmax_target==xmax and ymax_target==ymax:
                         obj.find('name').text=subpatch
                         bfind_one_space==True
+                        if subpatch=="others":
+                            if os.path.exists(JPG_dir+name+".jpg"):
+                                im = cv2.imread(JPG_dir+name+".jpg")
+                                im[ymin:ymax, xmin:xmax]=np.zeros((ymax-ymin)*(xmax-xmin)*3).reshape(ymax-ymin,xmax-xmin,3)
+                                cv2.imwrite(out_jpgdir+name+".jpg", im)
+                            else:
+                                print name,".jpg not exists!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+                            name_s = obj.findall('name')
+                            pose_s = obj.findall('pose')
+                            truncated_s = obj.findall('truncated')
+                            difficult_s = obj.findall('difficult')
+                            bndbox_s = obj.findall('bndbox')
+                            for oobj in name_s:
+                                obj.remove(oobj)
+                            for oobj in pose_s:
+                                obj.remove(oobj)
+                            for oobj in truncated_s:
+                                obj.remove(oobj)
+                            for oobj in difficult_s:
+                                obj.remove(oobj)
+                            for oobj in bndbox_s:
+                                # xmin_s = oobj.findall('xmin')
+                                # ymin_s = oobj.findall('ymin')
+                                # xmax_s = oobj.findall('xmax')
+                                # ymax_s = oobj.findall('ymax')
+                                # for ooobj in xmin_s:
+                                #   oobj.remove(ooobj)
+                                # for ooobj in ymin_s:
+                                #   oobj.remove(ooobj)
+                                # for ooobj in xmax_s:
+                                #   oobj.remove(ooobj)
+                                # for ooobj in ymax_s:
+                                #   oobj.remove(ooobj)
+                                obj.remove(oobj)
+                            rootA.remove(obj)
+                        break
                     # if xmin>=xmax or ymin>= ymax or xmin<=0 or ymin <=0 or xmax>=width or ymax>height:
                     #     print file_comp4
                     # if xmin<=0 :
@@ -282,3 +309,165 @@ if __name__=="__main__":
                 if bfind_one_space==True:
                     print name
                     treeA.write(out_xmlDir+name+".xml", encoding="utf-8",xml_declaration=False)  
+
+def only_getpatchlist(patchdir):
+    listdir=patchdir+"/patchlist/"
+    if not os.path.exists(listdir):
+        os.mkdir(listdir)
+    subpatchs = os.listdir(patchdir)
+    for subpatch in subpatchs:
+        listfile = listdir+ subpatch+".txt"
+        listw = open(listfile, 'w')
+        subpaths = patchdir+subpatch
+        print listfile,subpaths
+        files = os.listdir(subpaths)
+        for file in files:
+            listw.write(file + '\n')
+        listw.close()
+
+def jiucuo_modify_xml_3_diff_file(Anotation_dir,JPG_dir,patchdir,out_xmlDir,out_jpgdir):
+    if not os.path.exists(out_xmlDir):
+        os.mkdir(out_xmlDir)
+    subpatchs = os.listdir(patchdir+"/result_patchlist/")
+    for subpatch in subpatchs:
+        # if subpatch=="patchlist":
+        #     continue
+        # if subpatch=="result_patchlist":
+        #     continue
+        with open(patchdir+"/result_patchlist/"+subpatch+".txt","r") as f_result:
+            lines_result = f_result.readlines()
+        list_results=[labelname_result.strip().strip('\n').strip('\r') for labelname_result in lines_result]
+        list_orignal=[]
+        if os.path.exists(patchdir+"/patchlist/"+subpatch+".txt"):
+            with open(patchdir+"/patchlist/"+subpatch+".txt","w") as f_orignal:
+                lines_orignal = f_orignal.readlines()
+                list_orignal = [labelname.strip().strip('\n').strip('\r') for labelname in lines_orignal]
+        for file in list_results:
+            if file not in list_orignal:
+                file=os.path.splitext(file)[0]
+                splitthins=file.split("_")
+                name=splitthins[0]
+                if len(splitthins)>5:
+                    for ia in range(1,len(splitthins)-4):
+                        name=name+"_"+splitthins[ia]
+                ymax_target=splitthins[-1]
+                xmax_target=splitthins[-2]
+                ymin_target=splitthins[-3]
+                xmin_target=splitthins[-4]
+                file_tmp = Anotation_dir+name+".xml"
+                # if file in last_lines:
+                #     continue
+                # f_w.write(file+"\n")
+                treeA=ElementTree()
+                treeA.parse(file_tmp)
+                width = int(treeA.find('size/width').text)
+                height = int(treeA.find('size/height').text)
+                depth = int(treeA.find('size/depth').text)
+                bfind_one_space = False;
+
+                # JPEG_resetdir =JPG_dir#work_dir +name +"/JPEGImages_reset/"
+                # print os.path.join(JPEG_resetdir, name+".jpg")
+                # if os.path.exists(os.path.join(JPEG_resetdir, os.path.splitext(file_comp4)[0]+".jpg")):#(JPEG_resetdir+"/"+os.path.splitext(file_comp4)[0]+".jpg"):
+                #     im = cv2.imread(os.path.join(JPEG_resetdir, os.path.splitext(file_comp4)[0]+".jpg"))
+                #     #sp = im.shape
+                #     imheight = im.shape[0]
+                #     imwidth = im.shape[1]
+                #     imdepth = im.shape[2]
+                #     if width!=imwidth:
+                #         bfind_one_space = True
+                #         treeA.find('size/width').text=str(imwidth)
+                #         width=imwidth
+                #         print file_comp4,"error size/width"
+                #     if height!=imheight:
+                #         bfind_one_space = True
+                #         treeA.find('size/height').text=str(imheight)
+                #         height=imheight
+                #         print file_comp4,"error size/height"
+                #     if depth!=imdepth:
+                #         bfind_one_space = True
+                #         treeA.find('size/depth').text=str(imdepth)
+                #         depth=imdepth
+                #         print file_comp4,"error size/depth"
+                # else:
+                #     print file_comp4,'not exist'
+                # if width==0 or height==0 or depth==0:
+                #     print file_comp4,"width==0 or height==0 or depth==0,wrong and please check it!"
+                #     return
+                
+                #bfind_one_space = False;
+                rootA=treeA.getroot()
+                children = rootA.findall('object')
+                for obj in children:
+                    xmlname = obj.find('name').text
+                    xmlname = xmlname.strip()
+                    xmin = int(obj.find('bndbox').find('xmin').text)
+                    ymin = int(obj.find('bndbox').find('ymin').text)
+                    xmax = int(obj.find('bndbox').find('xmax').text)
+                    ymax = int(obj.find('bndbox').find('ymax').text)
+                    if xmin_target==xmin and ymin_target == ymin and xmax_target==xmax and ymax_target==ymax:
+                        obj.find('name').text=subpatch
+                        bfind_one_space==True
+                        if subpatch=="others":
+                            if os.path.exists(JPG_dir+name+".jpg"):
+                                im = cv2.imread(JPG_dir+name+".jpg")
+                                im[ymin:ymax, xmin:xmax]=np.zeros((ymax-ymin)*(xmax-xmin)*3).reshape(ymax-ymin,xmax-xmin,3)
+                                cv2.imwrite(out_jpgdir+name+".jpg", im)
+                            else:
+                                print name,".jpg not exists!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+                            name_s = obj.findall('name')
+                            pose_s = obj.findall('pose')
+                            truncated_s = obj.findall('truncated')
+                            difficult_s = obj.findall('difficult')
+                            bndbox_s = obj.findall('bndbox')
+                            for oobj in name_s:
+                                obj.remove(oobj)
+                            for oobj in pose_s:
+                                obj.remove(oobj)
+                            for oobj in truncated_s:
+                                obj.remove(oobj)
+                            for oobj in difficult_s:
+                                obj.remove(oobj)
+                            for oobj in bndbox_s:
+                                # xmin_s = oobj.findall('xmin')
+                                # ymin_s = oobj.findall('ymin')
+                                # xmax_s = oobj.findall('xmax')
+                                # ymax_s = oobj.findall('ymax')
+                                # for ooobj in xmin_s:
+                                #   oobj.remove(ooobj)
+                                # for ooobj in ymin_s:
+                                #   oobj.remove(ooobj)
+                                # for ooobj in xmax_s:
+                                #   oobj.remove(ooobj)
+                                # for ooobj in ymax_s:
+                                #   oobj.remove(ooobj)
+                                obj.remove(oobj)
+                            rootA.remove(obj)
+                        break
+                    # if xmin>=xmax or ymin>= ymax or xmin<=0 or ymin <=0 or xmax>=width or ymax>height:
+                    #     print file_comp4
+                    # if xmin<=0 :
+                    #     bfind_one_space = True
+                    #     obj.find('bndbox').find('xmin').text = str(1)
+                    # if ymin<=0 :
+                    #     bfind_one_space = True
+                    #     obj.find('bndbox').find('ymin').text = str(1)
+                    # if   xmax>= width :
+                    #     bfind_one_space = True
+                    #     obj.find('bndbox').find('xmax').text = str(width-1)
+                    # if   ymax>= height :
+                    #     bfind_one_space = True
+                    #     obj.find('bndbox').find('ymax').text = str(height-1)
+                    # if xmin>=xmax or ymin>= ymax:
+                    #     print file_comp4
+
+                if bfind_one_space==True:
+                    print name
+                    treeA.write(out_xmlDir+name+".xml", encoding="utf-8",xml_declaration=False)
+
+if __name__=="__main__":
+    patchdir="/storage2/tiannuodata/work/projdata/baiwei/baiweiproj329/analysis/patch/"
+    Anotation_dir="/"
+    out_xmlDir="/outdir/"
+    #jiucuo_modify_xml_3(patchdir,Anotation_dir,out_xmlDir)
+    #only_getpatchlist(patchdir)
+    jiucuo_modify_xml_3_diff_file(patchdir,Anotation_dir,out_xmlDir)

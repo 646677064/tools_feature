@@ -3,6 +3,133 @@ from PIL import Image
 import os
 
 
+def only_getpatchlist(patchdir):
+    listdir=patchdir+"/patchlist/"
+    if not os.path.exists(listdir):
+        os.mkdir(listdir)
+    subpatchs = os.listdir(patchdir)
+    for subpatch in subpatchs:
+        listfile = listdir+ subpatch+".txt"
+        listw = open(listfile, 'w')
+        subpaths = patchdir+subpatch
+        print listfile,subpaths
+        files = os.listdir(subpaths)
+        for file in files:
+            listw.write(file + '\n')
+        listw.close()
+
+def crops_all_and_getpatchlist(jpgdir,xmldir,patchdir):
+    listdir=patchdir+"/patchlist/"
+    files = os.listdir(xmldir)
+    i = 1
+    for filename in files:
+        print str(i) + "\t" + filename + "\n"
+        i = i + 1
+        if filename[-3:]!='xml' :
+            continue
+        xmldata = ElementTree()
+        xmldata.parse(xmldir+filename)
+        if os.path.exists(jpgdir + filename[0:-4] + ".jpg"):
+            img = Image.open(jpgdir + filename[0:-4] + ".jpg")
+        elif os.path.exists(jpgdir + filename[0:-4] + ".jpeg"):
+            img = Image.open(jpgdir + filename[0:-4] + ".jpeg")
+        else:
+            print jpgdir + filename[0:-4] + ".jpg:"+"  No that image!\n"
+        nodelist = xmldata.findall("object")
+        for n in range(len(nodelist)):
+            nodename = nodelist[n].find("name").text
+            nodename = nodename.replace("*","-")
+            dirname = patchdir + nodename + "/"
+            if os.path.isdir(dirname):
+                nodexy = nodelist[n].findall("bndbox")
+                xmin = int(nodexy[0].find("xmin").text)
+                ymin = int(nodexy[0].find("ymin").text)
+                xmax = int(nodexy[0].find("xmax").text)
+                ymax = int(nodexy[0].find("ymax").text)
+                #print xmin, ymin, xmax, ymax
+                if xmin>=xmax or ymin>=ymax:
+                    print  xmin, ymin, xmax, ymax,filename
+                    break
+                img_crop = img.crop((xmin, ymin, xmax, ymax))
+                img_crop.save(dirname + filename[0:-4] + "_" + str(xmin)+"_" + str(ymin)+"_" + str(xmax)+"_" + str(ymax)+ ".jpg")
+            else:
+                os.makedirs(dirname)
+                nodexy = nodelist[n].findall("bndbox")
+                xmin = int(nodexy[0].find("xmin").text)
+                ymin = int(nodexy[0].find("ymin").text)
+                xmax = int(nodexy[0].find("xmax").text)
+                ymax = int(nodexy[0].find("ymax").text)
+                if xmin>=xmax or ymin>=ymax:
+                    print  xmin, ymin, xmax, ymax,filename
+                    break
+                #print xmin, ymin, xmax, ymax
+                img_crop = img.crop((xmin, ymin, xmax, ymax))
+                img_crop.save(dirname + filename[0:-4] + "_" + str(xmin)+"_" + str(ymin)+"_" + str(xmax)+"_" + str(ymax) + ".jpg")
+    only_getpatchlist(patchdir)
+
+def crops_and_getpatchlist(jpgdir,xmldir,patchdir,only_cutlist=[]):
+    listdir=patchdir+"/patchlist/"
+    files = os.listdir(xmldir)
+    i = 1
+    for filename in files:
+        print str(i) + "\t" + filename + "\n"
+        i = i + 1
+        if filename[-3:]!='xml' :
+            continue
+        xmldata = ElementTree()
+        xmldata.parse(xmldir+filename)
+        if os.path.exists(jpgdir + filename[0:-4] + ".jpg"):
+            img = Image.open(jpgdir + filename[0:-4] + ".jpg")
+        elif os.path.exists(jpgdir + filename[0:-4] + ".jpeg"):
+            img = Image.open(jpgdir + filename[0:-4] + ".jpeg")
+        else:
+            print jpgdir + filename[0:-4] + ".jpg:"+"  No that image!\n"
+        nodelist = xmldata.findall("object")
+        for n in range(len(nodelist)):
+            nodename = nodelist[n].find("name").text
+            nodename = nodename.replace("*","-")
+            dirname = patchdir + nodename + "/"
+            if nodename not in only_cutlist:
+                continue
+            if os.path.isdir(dirname):
+                nodexy = nodelist[n].findall("bndbox")
+                xmin = int(nodexy[0].find("xmin").text)
+                ymin = int(nodexy[0].find("ymin").text)
+                xmax = int(nodexy[0].find("xmax").text)
+                ymax = int(nodexy[0].find("ymax").text)
+                #print xmin, ymin, xmax, ymax
+                if xmin>=xmax or ymin>=ymax:
+                    print  xmin, ymin, xmax, ymax,filename
+                    break
+                img_crop = img.crop((xmin, ymin, xmax, ymax))
+                img_crop.save(dirname + filename[0:-4] + "_" + str(xmin)+"_" + str(ymin)+"_" + str(xmax)+"_" + str(ymax)+ ".jpg")
+            else:
+                os.makedirs(dirname)
+                nodexy = nodelist[n].findall("bndbox")
+                xmin = int(nodexy[0].find("xmin").text)
+                ymin = int(nodexy[0].find("ymin").text)
+                xmax = int(nodexy[0].find("xmax").text)
+                ymax = int(nodexy[0].find("ymax").text)
+                if xmin>=xmax or ymin>=ymax:
+                    print  xmin, ymin, xmax, ymax,filename
+                    break
+                #print xmin, ymin, xmax, ymax
+                img_crop = img.crop((xmin, ymin, xmax, ymax))
+                img_crop.save(dirname + filename[0:-4] + "_" + str(xmin)+"_" + str(ymin)+"_" + str(xmax)+"_" + str(ymax) + ".jpg")
+    only_getpatchlist(patchdir)           
+    # if not os.path.exists(listdir):
+    #     os.mkdir(listdir)
+    # subpatchs = os.listdir(patchdir)
+    # for subpatch in subpatchs:
+    #     listfile = listdir+ subpatch+".txt"
+    #     listw = open(listfile, 'w')
+    #     subpaths = patchdir+subpatch
+    #     print listfile,subpaths
+    #     files = os.listdir(subpaths)
+    #     for file in files:
+    #         listw.write(file + '\n')
+    #     listw.close()
+
 if __name__=="__main__":
 
     # xmldir = "/storage2/tiannuodata/work/projdata/baiwei/baiweiproj2/Annotations/"
@@ -11,7 +138,6 @@ if __name__=="__main__":
     xmldir = "/storage2/tiannuodata/work/projdata/baiwei/baiweiproj329/Annotations/"
     jpgdir = "/storage2/tiannuodata/work/projdata/baiwei/baiweiproj329/JPEGImages/"
     patchdir = "/storage2/tiannuodata/work/projdata/baiwei/baiweiproj329/analysis/patch/"
-    listdir=patchdir+"/patchlist/"
     only_cutlist=[]
     # only_cutlist.append("yanjing1")
     # only_cutlist.append("harbin31")
@@ -41,99 +167,104 @@ if __name__=="__main__":
     only_cutlist.append("snow13")
     only_cutlist.append("tsingtao4")
     only_cutlist.append("yanjing13")
+    #crops_and_getpatchlist(jpgdir,xmldir,patchdir,only_cutlist)
+    #crops_all_and_getpatchlist(patchdir)
+    patchdir="/data/liushuai/baiweiproj66/66_patches/"
+    only_getpatchlist(patchdir)
+    #=============================================
+    # listdir=patchdir+"/patchlist/"
+    # files = os.listdir(xmldir)
+    # i = 1
+    # for filename in files:
+    #     print str(i) + "\t" + filename + "\n"
+    #     i = i + 1
+    #     if filename[-3:]!='xml' :
+    #         continue
+    #     xmldata = ElementTree()
+    #     xmldata.parse(xmldir+filename)
+    #     if os.path.exists(jpgdir + filename[0:-4] + ".jpg"):
+    #         img = Image.open(jpgdir + filename[0:-4] + ".jpg")
+    #     elif os.path.exists(jpgdir + filename[0:-4] + ".jpeg"):
+    #         img = Image.open(jpgdir + filename[0:-4] + ".jpeg")
+    #     else:
+    #         print jpgdir + filename[0:-4] + ".jpg:"+"  No that image!\n"
+    #     nodelist = xmldata.findall("object")
+    #     for n in range(len(nodelist)):
+    #         nodename = nodelist[n].find("name").text
+    #         nodename = nodename.replace("*","-")
+    #         dirname = patchdir + nodename + "/"
+    #         if nodename not in only_cutlist:
+    #             continue
+    #         # if os.path.isdir(dirname):
+    #         #     nodexy = nodelist[n].findall("bndbox")
+    #         #     xmin = int(nodexy[0].find("xmin").text)
+    #         #     ymin = int(nodexy[0].find("ymin").text)
+    #         #     xmax = int(nodexy[0].find("xmax").text)
+    #         #     ymax = int(nodexy[0].find("ymax").text)
+    #         #     #print xmin, ymin, xmax, ymax
+    #         #     if xmin>=xmax or ymin>=ymax:
+    #         #         print xmin, ymin, xmax, ymax,filename
+    #         #         break
+    #         #     img_crop = img.crop((xmin, ymin, xmax, ymax))
+    #         #     if img_crop is None:
+    #         #         print "is None",filename
+    #         #         break
+    #         #     img_crop.save(dirname + filename[0:-4] + "_" + str(n) + ".jpg")
+    #         # else:
+    #         #     os.makedirs(dirname)
+    #         #     nodexy = nodelist[n].findall("bndbox")
+    #         #     xmin = int(nodexy[0].find("xmin").text)
+    #         #     ymin = int(nodexy[0].find("ymin").text)
+    #         #     xmax = int(nodexy[0].find("xmax").text)
+    #         #     ymax = int(nodexy[0].find("ymax").text)
+    #         #     #print xmin, ymin, xmax, ymax
+    #         #     img_crop = img.crop((xmin, ymin, xmax, ymax))
+    #         #     if xmin>=xmax or ymin>=ymax:
+    #         #         print  xmin, ymin, xmax, ymax,filename
+    #         #         break
+    #         #     if img_crop is None:
+    #         #         print "is None",filename
+    #         #         break
+    #         #     img_crop.save(dirname + filename[0:-4] + "_" + str(n) + ".jpg")
 
-    files = os.listdir(xmldir)
-    i = 1
-    for filename in files:
-        print str(i) + "\t" + filename + "\n"
-        i = i + 1
-        if filename[-3:]!='xml' :
-            continue
-        xmldata = ElementTree()
-        xmldata.parse(xmldir+filename)
-        if os.path.exists(jpgdir + filename[0:-4] + ".jpg"):
-            img = Image.open(jpgdir + filename[0:-4] + ".jpg")
-        elif os.path.exists(jpgdir + filename[0:-4] + ".jpeg"):
-            img = Image.open(jpgdir + filename[0:-4] + ".jpeg")
-        else:
-            print jpgdir + filename[0:-4] + ".jpg:"+"  No that image!\n"
-        nodelist = xmldata.findall("object")
-        for n in range(len(nodelist)):
-            nodename = nodelist[n].find("name").text
-            nodename = nodename.replace("*","-")
-            dirname = patchdir + nodename + "/"
-            if nodename not in only_cutlist:
-                continue
-            # if os.path.isdir(dirname):
-            #     nodexy = nodelist[n].findall("bndbox")
-            #     xmin = int(nodexy[0].find("xmin").text)
-            #     ymin = int(nodexy[0].find("ymin").text)
-            #     xmax = int(nodexy[0].find("xmax").text)
-            #     ymax = int(nodexy[0].find("ymax").text)
-            #     #print xmin, ymin, xmax, ymax
-            #     if xmin>=xmax or ymin>=ymax:
-            #         print xmin, ymin, xmax, ymax,filename
-            #         break
-            #     img_crop = img.crop((xmin, ymin, xmax, ymax))
-            #     if img_crop is None:
-            #         print "is None",filename
-            #         break
-            #     img_crop.save(dirname + filename[0:-4] + "_" + str(n) + ".jpg")
-            # else:
-            #     os.makedirs(dirname)
-            #     nodexy = nodelist[n].findall("bndbox")
-            #     xmin = int(nodexy[0].find("xmin").text)
-            #     ymin = int(nodexy[0].find("ymin").text)
-            #     xmax = int(nodexy[0].find("xmax").text)
-            #     ymax = int(nodexy[0].find("ymax").text)
-            #     #print xmin, ymin, xmax, ymax
-            #     img_crop = img.crop((xmin, ymin, xmax, ymax))
-            #     if xmin>=xmax or ymin>=ymax:
-            #         print  xmin, ymin, xmax, ymax,filename
-            #         break
-            #     if img_crop is None:
-            #         print "is None",filename
-            #         break
-            #     img_crop.save(dirname + filename[0:-4] + "_" + str(n) + ".jpg")
-
-            if os.path.isdir(dirname):
-                nodexy = nodelist[n].findall("bndbox")
-                xmin = int(nodexy[0].find("xmin").text)
-                ymin = int(nodexy[0].find("ymin").text)
-                xmax = int(nodexy[0].find("xmax").text)
-                ymax = int(nodexy[0].find("ymax").text)
-                #print xmin, ymin, xmax, ymax
-                if xmin>=xmax or ymin>=ymax:
-                    print  xmin, ymin, xmax, ymax,filename
-                    break
-                img_crop = img.crop((xmin, ymin, xmax, ymax))
-                img_crop.save(dirname + filename[0:-4] + "_" + str(xmin)+"_" + str(ymin)+"_" + str(xmax)+"_" + str(ymax)+ ".jpg")
-            else:
-                os.makedirs(dirname)
-                nodexy = nodelist[n].findall("bndbox")
-                xmin = int(nodexy[0].find("xmin").text)
-                ymin = int(nodexy[0].find("ymin").text)
-                xmax = int(nodexy[0].find("xmax").text)
-                ymax = int(nodexy[0].find("ymax").text)
-                if xmin>=xmax or ymin>=ymax:
-                    print  xmin, ymin, xmax, ymax,filename
-                    break
-                #print xmin, ymin, xmax, ymax
-                img_crop = img.crop((xmin, ymin, xmax, ymax))
-                img_crop.save(dirname + filename[0:-4] + "_" + str(xmin)+"_" + str(ymin)+"_" + str(xmax)+"_" + str(ymax) + ".jpg")
+    #         if os.path.isdir(dirname):
+    #             nodexy = nodelist[n].findall("bndbox")
+    #             xmin = int(nodexy[0].find("xmin").text)
+    #             ymin = int(nodexy[0].find("ymin").text)
+    #             xmax = int(nodexy[0].find("xmax").text)
+    #             ymax = int(nodexy[0].find("ymax").text)
+    #             #print xmin, ymin, xmax, ymax
+    #             if xmin>=xmax or ymin>=ymax:
+    #                 print  xmin, ymin, xmax, ymax,filename
+    #                 break
+    #             img_crop = img.crop((xmin, ymin, xmax, ymax))
+    #             img_crop.save(dirname + filename[0:-4] + "_" + str(xmin)+"_" + str(ymin)+"_" + str(xmax)+"_" + str(ymax)+ ".jpg")
+    #         else:
+    #             os.makedirs(dirname)
+    #             nodexy = nodelist[n].findall("bndbox")
+    #             xmin = int(nodexy[0].find("xmin").text)
+    #             ymin = int(nodexy[0].find("ymin").text)
+    #             xmax = int(nodexy[0].find("xmax").text)
+    #             ymax = int(nodexy[0].find("ymax").text)
+    #             if xmin>=xmax or ymin>=ymax:
+    #                 print  xmin, ymin, xmax, ymax,filename
+    #                 break
+    #             #print xmin, ymin, xmax, ymax
+    #             img_crop = img.crop((xmin, ymin, xmax, ymax))
+    #             img_crop.save(dirname + filename[0:-4] + "_" + str(xmin)+"_" + str(ymin)+"_" + str(xmax)+"_" + str(ymax) + ".jpg")
                
-    if not os.path.exists(listdir):
-        os.mkdir(listdir)
-    subpatchs = os.listdir(patchdir)
-    for subpatch in subpatchs:
-        listfile = listdir+ subpatch+".txt"
-        listw = open(listfile, 'w')
-        subpaths = patchdir+subpatch
-        print listfile,subpaths
-        files = os.listdir(subpaths)
-        for file in files:
-            listw.write(file + '\n')
-        listw.close()
+    # if not os.path.exists(listdir):
+    #     os.mkdir(listdir)
+    # subpatchs = os.listdir(patchdir)
+    # for subpatch in subpatchs:
+    #     listfile = listdir+ subpatch+".txt"
+    #     listw = open(listfile, 'w')
+    #     subpaths = patchdir+subpatch
+    #     print listfile,subpaths
+    #     files = os.listdir(subpaths)
+    #     for file in files:
+    #         listw.write(file + '\n')
+    #     listw.close()
     
         
 
