@@ -26,6 +26,20 @@ from xml.etree.ElementTree import SubElement
 # from skimage.transform import resize
 
   
+  
+def Popen_do(pp_string,b_pip_stdout=True):
+    #print pp_string
+    if b_pip_stdout==True:
+        p = Popen(pp_string, shell=True, stdout=PIPE, stderr=PIPE)#,close_fds=True)
+    else:
+        p = Popen(pp_string, shell=True, stderr=PIPE)#,close_fds=True)
+    out, err = p.communicate()
+    #p.wait()
+    print pp_string
+    if p.returncode != 0:
+        print err
+        #return 0
+    return 1
 def read_xml(in_path): 
     tree = ElementTree()
     tree.parse(in_path)
@@ -254,12 +268,13 @@ def jiucuo_modify_xml_3(Anotation_dir,JPG_dir,patchdir,out_xmlDir,out_jpgdir):
                         obj.find('name').text=subpatch
                         bfind_one_space==True
                         if subpatch=="others":
-                            if os.path.exists(JPG_dir+name+".jpg"):
-                                im = cv2.imread(JPG_dir+name+".jpg")
+                            jpg_file=out_jpgdir+name+".jpg"
+                            if False==os.path.exists(jpg_file):
+                                jpg_file=JPG_dir+name+".jpg"
+                            if os.path.exists(jpg_file):
+                                im = cv2.imread(jpg_file)
                                 im[ymin:ymax, xmin:xmax]=np.zeros((ymax-ymin)*(xmax-xmin)*3).reshape(ymax-ymin,xmax-xmin,3)
-                                cv2.imwrite(out_jpgdir+name+".jpg", im)
-                            else:
-                                print name,".jpg not exists!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+                                cv2.imwrite(out_jpgdir+name+".jpg", im)#test ,need to rewrite the orignal path jpg
                             name_s = obj.findall('name')
                             pose_s = obj.findall('pose')
                             truncated_s = obj.findall('truncated')
@@ -309,6 +324,11 @@ def jiucuo_modify_xml_3(Anotation_dir,JPG_dir,patchdir,out_xmlDir,out_jpgdir):
                 if bfind_one_space==True:
                     print name
                     treeA.write(out_xmlDir+name+".xml", encoding="utf-8",xml_declaration=False)  
+                    jpg_file=out_jpgdir+name+".jpg"
+                    if False==os.path.exists(jpg_file):
+                        ppsring= "cp "+JPG_dir+name+".jpg "+out_jpgdir+name+".jpg"
+                        if os.path.exists(JPG_dir+name+".jpg"):
+                            assert Popen_do(ppsring),ppsring+" error!"
 
 def only_getpatchlist(patchdir):
     listdir=patchdir+"/patchlist/"
@@ -408,10 +428,13 @@ def jiucuo_modify_xml_3_diff_file(Anotation_dir,JPG_dir,patchdir,out_xmlDir,out_
                         obj.find('name').text=subpatch
                         bfind_one_space==True
                         if subpatch=="others":
-                            if os.path.exists(JPG_dir+name+".jpg"):
-                                im = cv2.imread(JPG_dir+name+".jpg")
+                            jpg_file=out_jpgdir+name+".jpg"
+                            if False==os.path.exists(jpg_file):
+                                jpg_file=JPG_dir+name+".jpg"
+                            if os.path.exists(jpg_file):
+                                im = cv2.imread(jpg_file)
                                 im[ymin:ymax, xmin:xmax]=np.zeros((ymax-ymin)*(xmax-xmin)*3).reshape(ymax-ymin,xmax-xmin,3)
-                                cv2.imwrite(out_jpgdir+name+".jpg", im)
+                                cv2.imwrite(out_jpgdir+name+".jpg", im)#test ,need to rewrite the orignal path jpg
                             else:
                                 print name,".jpg not exists!!!!!!!!!!!!!!!!!!!!!!!!!!!"
                             name_s = obj.findall('name')
@@ -463,11 +486,18 @@ def jiucuo_modify_xml_3_diff_file(Anotation_dir,JPG_dir,patchdir,out_xmlDir,out_
                 if bfind_one_space==True:
                     print name
                     treeA.write(out_xmlDir+name+".xml", encoding="utf-8",xml_declaration=False)
+                    jpg_file=out_jpgdir+name+".jpg"
+                    if False==os.path.exists(jpg_file):
+                        ppsring= "cp "+JPG_dir+name+".jpg "+out_jpgdir+name+".jpg"
+                        if os.path.exists(JPG_dir+name+".jpg"):
+                            assert Popen_do(ppsring),ppsring+" error!"
 
 if __name__=="__main__":
-    patchdir="/storage2/tiannuodata/work/projdata/baiwei/baiweiproj329/analysis/patch/"
-    Anotation_dir="/"
+    JPG_dir="/data/liushuai/baiweiproj66/JPEGImages/"
+    Anotation_dir="/data/liushuai/baiweiproj66/Annotations/"
+    patchdir="/data/liushuai/baiweiproj66//66_patches/"
+    out_jpgdir="/data/liushuai/baiweiproj66/output/"
     out_xmlDir="/outdir/"
-    #jiucuo_modify_xml_3(patchdir,Anotation_dir,out_xmlDir)
+    #jiucuo_modify_xml_3(Anotation_dir,JPG_dir,patchdir,out_xmlDir,out_jpgdir)
     #only_getpatchlist(patchdir)
-    jiucuo_modify_xml_3_diff_file(patchdir,Anotation_dir,out_xmlDir)
+    jiucuo_modify_xml_3_diff_file(Anotation_dir,JPG_dir,patchdir,out_xmlDir,out_jpgdir)
