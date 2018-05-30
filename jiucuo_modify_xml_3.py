@@ -193,10 +193,16 @@ def parse_xml1(filename):
 
 def jiucuo_modify_xml_3(Anotation_dir,JPG_dir,patchdir,out_xmlDir,out_jpgdir):
     result_patchlist=patchdir+"/result_patchlist/"
+    if not os.path.exists(out_jpgdir):
+        os.mkdir(out_jpgdir)
     if not os.path.exists(out_xmlDir):
         os.mkdir(out_xmlDir)
     subpatchs = os.listdir(result_patchlist)
     for subpatch in subpatchs:
+        if subpatch=="patchlist":
+            continue
+        if subpatch=="result_patchlist":
+            continue
         with open(result_patchlist+subpatch+".txt","r") as f_r:
             lines = f_r.readlines()
             last_lines = [labelname.strip().strip('\n').strip('\r') for labelname in lines]
@@ -336,6 +342,10 @@ def only_getpatchlist(patchdir):
         os.mkdir(listdir)
     subpatchs = os.listdir(patchdir)
     for subpatch in subpatchs:
+        if subpatch=="patchlist":
+            continue
+        if subpatch=="result_patchlist":
+            continue
         listfile = listdir+ subpatch+".txt"
         listw = open(listfile, 'w')
         subpaths = patchdir+subpatch
@@ -346,10 +356,16 @@ def only_getpatchlist(patchdir):
         listw.close()
 
 def jiucuo_modify_xml_3_diff_file(Anotation_dir,JPG_dir,patchdir,out_xmlDir,out_jpgdir):
+    if not os.path.exists(out_jpgdir):
+        os.mkdir(out_jpgdir)
     if not os.path.exists(out_xmlDir):
         os.mkdir(out_xmlDir)
     subpatchs = os.listdir(patchdir+"/result_patchlist/")
     for subpatch in subpatchs:
+        if subpatch=="patchlist":
+            continue
+        if subpatch=="result_patchlist":
+            continue
         # if subpatch=="patchlist":
         #     continue
         # if subpatch=="result_patchlist":
@@ -496,8 +512,8 @@ if __name__=="__main__":
     JPG_dir="/data/liushuai/baiweiproj66/JPEGImages/"
     Anotation_dir="/data/liushuai/baiweiproj66/Annotations/"
     patchdir="/data/liushuai/baiweiproj66//66_patches/"
-    out_jpgdir="/data/liushuai/baiweiproj66/output/"
-    out_xmlDir="/outdir/"
+    out_jpgdir="/data/liushuai/baiweiproj66/output/jpg/"
+    out_xmlDir="/data/liushuai/baiweiproj66/output/xml"
     #jiucuo_modify_xml_3(Anotation_dir,JPG_dir,patchdir,out_xmlDir,out_jpgdir)
     #only_getpatchlist(patchdir)
     jiucuo_modify_xml_3_diff_file(Anotation_dir,JPG_dir,patchdir,out_xmlDir,out_jpgdir)

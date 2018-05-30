@@ -9,6 +9,10 @@ def only_getpatchlist(patchdir):
         os.mkdir(listdir)
     subpatchs = os.listdir(patchdir)
     for subpatch in subpatchs:
+        if subpatch=="patchlist":
+            continue
+        if subpatch=="result_patchlist":
+            continue
         listfile = listdir+ subpatch+".txt"
         listw = open(listfile, 'w')
         subpaths = patchdir+subpatch
