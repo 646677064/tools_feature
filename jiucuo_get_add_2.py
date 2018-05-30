@@ -28,23 +28,23 @@ import math
   
 
 def get_result_patchlist_windows(patchdir):
-    if not os.path.exists(patchdir+"\\result_patchlist\\"):
-        os.mkdir(patchdir+"\\result_patchlist\\")
+    result_listdir=patchdir+"\\result_patchlist\\"
+    if not os.path.exists(result_listdir):
+        os.mkdir(result_listdir)
     subpatchs = os.listdir(patchdir)
     for subpatch in subpatchs:
         if subpatch=="patchlist":
             continue
         if subpatch=="result_patchlist":
             continue
-        with open(patchdir+"\\patchlist\\"+subpatch+".txt","r") as f_r:
-            lines = f_r.readlines()
-        with open(patchdir+"\\result_patchlist\\"+subpatch+".txt","w") as f_w:
-            last_lines = [labelname.strip().strip('\n').strip('\r') for labelname in lines]
-            file_lists=os.listdir(patchdir+subpatchs)
-            for file in file_lists:
-                if file in last_lines:
-                    continue
-                f_w.write(file+"\n")
+        listfile = result_listdir+ subpatch+".txt"
+        listw = open(listfile, 'w')
+        subpaths = patchdir+subpatch
+        print listfile,subpaths
+        files = os.listdir(subpaths)
+        for file in files:
+            listw.write(file + '\n')
+        listw.close()
 
 def get_increase_result_patchlist(patchdir):
     if not os.path.exists(patchdir+"/result_patchlist/"):
@@ -66,12 +66,16 @@ def get_increase_result_patchlist(patchdir):
                 f_w.write(file+"\n")
 
 
-def only_getpatchlist(patchdir):
-    result_listdir=patchdir+"/result_patchlist/"
+def only_getpatchlist_windows(patchdir):
+    result_listdir=patchdir+"\\result_patchlist\\"
     if not os.path.exists(result_listdir):
         os.mkdir(result_listdir)
     subpatchs = os.listdir(patchdir)
     for subpatch in subpatchs:
+        if subpatch=="patchlist":
+            continue
+        if subpatch=="result_patchlist":
+            continue
         listfile = result_listdir+ subpatch+".txt"
         listw = open(listfile, 'w')
         subpaths = patchdir+subpatch
@@ -83,6 +87,6 @@ def only_getpatchlist(patchdir):
 
 
 if __name__=="__main__":
-    patchdir="/storage2/tiannuodata/work/projdata/baiwei/baiweiproj329/analysis/patch/"
-    #get_result_patchlist(patchdir)
+    #patchdir="/storage2/tiannuodata/work/projdata/baiwei/baiweiproj329/analysis/patch/"
+    patchdir="F:\\wrong\\result_xml\\"
     get_result_patchlist_windows(patchdir)
