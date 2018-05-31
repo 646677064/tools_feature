@@ -20,7 +20,7 @@ from xml.etree.ElementTree import SubElement
 # import matplotlib.pyplot as plt
 # import numpy as np
 #import scipy.io as sio
-# import   cv2
+import   cv2
 # import skimage.io
 # from scipy.ndimage import zoom
 # from skimage.transform import resize
@@ -272,8 +272,8 @@ def jiucuo_modify_xml_3(Anotation_dir,JPG_dir,patchdir,out_xmlDir,out_jpgdir):
                     ymax = int(obj.find('bndbox').find('ymax').text)
                     if xmin_target==xmin and ymin_target == ymin and xmax_target==xmax and ymax_target==ymax:
                         obj.find('name').text=subpatch
-                        bfind_one_space==True
-                        if subpatch=="others":
+                        bfind_one_space=True
+                        if subpatch=="others"  or  subpatch=="Others" :
                             jpg_file=out_jpgdir+name+".jpg"
                             if False==os.path.exists(jpg_file):
                                 jpg_file=JPG_dir+name+".jpg"
@@ -342,6 +342,7 @@ def only_getpatchlist(patchdir):
         os.mkdir(listdir)
     subpatchs = os.listdir(patchdir)
     for subpatch in subpatchs:
+        subpatch=os.path.splitext(subpatch)[0]
         if subpatch=="patchlist":
             continue
         if subpatch=="result_patchlist":
@@ -362,6 +363,10 @@ def jiucuo_modify_xml_3_diff_file(Anotation_dir,JPG_dir,patchdir,out_xmlDir,out_
         os.mkdir(out_xmlDir)
     subpatchs = os.listdir(patchdir+"/result_patchlist/")
     for subpatch in subpatchs:
+        subpatch=os.path.splitext(subpatch)[0]
+        print subpatch
+        if subpatch!="Others":
+            break
         if subpatch=="patchlist":
             continue
         if subpatch=="result_patchlist":
@@ -370,12 +375,13 @@ def jiucuo_modify_xml_3_diff_file(Anotation_dir,JPG_dir,patchdir,out_xmlDir,out_
         #     continue
         # if subpatch=="result_patchlist":
         #     continue
+        list_results=[]
         with open(patchdir+"/result_patchlist/"+subpatch+".txt","r") as f_result:
             lines_result = f_result.readlines()
         list_results=[labelname_result.strip().strip('\n').strip('\r') for labelname_result in lines_result]
         list_orignal=[]
         if os.path.exists(patchdir+"/patchlist/"+subpatch+".txt"):
-            with open(patchdir+"/patchlist/"+subpatch+".txt","w") as f_orignal:
+            with open(patchdir+"/patchlist/"+subpatch+".txt","r") as f_orignal:
                 lines_orignal = f_orignal.readlines()
                 list_orignal = [labelname.strip().strip('\n').strip('\r') for labelname in lines_orignal]
         for file in list_results:
@@ -386,11 +392,14 @@ def jiucuo_modify_xml_3_diff_file(Anotation_dir,JPG_dir,patchdir,out_xmlDir,out_
                 if len(splitthins)>5:
                     for ia in range(1,len(splitthins)-4):
                         name=name+"_"+splitthins[ia]
-                ymax_target=splitthins[-1]
-                xmax_target=splitthins[-2]
-                ymin_target=splitthins[-3]
-                xmin_target=splitthins[-4]
+                ymax_target=int(splitthins[-1])
+                xmax_target=int(splitthins[-2])
+                ymin_target=int(splitthins[-3])
+                xmin_target=int(splitthins[-4])
                 file_tmp = Anotation_dir+name+".xml"
+                if True==os.path.exists(out_xmlDir+name+".xml"):
+                    file_tmp=out_xmlDir+name+".xml"
+                print file_tmp
                 # if file in last_lines:
                 #     continue
                 # f_w.write(file+"\n")
@@ -440,13 +449,17 @@ def jiucuo_modify_xml_3_diff_file(Anotation_dir,JPG_dir,patchdir,out_xmlDir,out_
                     ymin = int(obj.find('bndbox').find('ymin').text)
                     xmax = int(obj.find('bndbox').find('xmax').text)
                     ymax = int(obj.find('bndbox').find('ymax').text)
+                    #print xmin_target,xmin,ymin_target,ymin,xmax_target,xmax,ymax_target,ymax
                     if xmin_target==xmin and ymin_target == ymin and xmax_target==xmax and ymax_target==ymax:
+                        #print xmin_target,xmin,ymin_target,ymin,xmax_target,xmax,ymax_target,ymax
                         obj.find('name').text=subpatch
-                        bfind_one_space==True
-                        if subpatch=="others":
+                        bfind_one_space=True
+                        #print name
+                        if subpatch=="others" or  subpatch=="Others" :
                             jpg_file=out_jpgdir+name+".jpg"
                             if False==os.path.exists(jpg_file):
                                 jpg_file=JPG_dir+name+".jpg"
+                            #print jpg_file
                             if os.path.exists(jpg_file):
                                 im = cv2.imread(jpg_file)
                                 im[ymin:ymax, xmin:xmax]=np.zeros((ymax-ymin)*(xmax-xmin)*3).reshape(ymax-ymin,xmax-xmin,3)
@@ -510,10 +523,10 @@ def jiucuo_modify_xml_3_diff_file(Anotation_dir,JPG_dir,patchdir,out_xmlDir,out_
 
 if __name__=="__main__":
     JPG_dir="/data/liushuai/baiweiproj66/JPEGImages/"
-    Anotation_dir="/data/liushuai/baiweiproj66/Annotations/"
+    Anotation_dir="/data/liushuai/baiweiproj66/Annotations_correct_before/"
     patchdir="/data/liushuai/baiweiproj66//66_patches/"
     out_jpgdir="/data/liushuai/baiweiproj66/output/jpg/"
-    out_xmlDir="/data/liushuai/baiweiproj66/output/xml"
+    out_xmlDir="/data/liushuai/baiweiproj66/output/xml/"
     #jiucuo_modify_xml_3(Anotation_dir,JPG_dir,patchdir,out_xmlDir,out_jpgdir)
     #only_getpatchlist(patchdir)
     jiucuo_modify_xml_3_diff_file(Anotation_dir,JPG_dir,patchdir,out_xmlDir,out_jpgdir)
