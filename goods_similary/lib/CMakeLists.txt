@@ -24,12 +24,15 @@ SET (SRC_LIST caffe_detect.cpp)
 #     /usr/include/python2.7
 #     /usr/lib/python2.7/dist-packages/numpy/core/include 
 #     /usr/local/cuda/include )
+message("4Found OpenCV-=-=-=lib: " ${OpenCV_INCLUDE_DIRS})
 include_directories ( "${RFCN_DIR}/caffe/include"
-    "${RFCN_DIR}/caffe/.build_release/src/"
+    "${RFCN_DIR}/caffe/build/include/"
     "${RFCN_DIR}/caffe/python"
     "${RFCN_DIR}/py-R-FCN-master/lib" 
     "${RFCN_DIR}/lib/nms" 
     "${PROJECT_SOURCE_DIR}/lib"
+    ${Caffe_INCLUDE_DIR}
+    ${PROJECT_BINARY_DIR}
     /usr/include
     /usr/local/include 
     /usr/local/cuda-8.0/include
@@ -37,7 +40,8 @@ include_directories ( "${RFCN_DIR}/caffe/include"
     /usr/lib
     /usr/include/python2.7
     /usr/lib/python2.7/dist-packages/numpy/core/include 
-    /usr/local/cuda/include )
+    /usr/local/cuda/include 
+    ${OpenCV_INCLUDE_DIRS})
 
 
 add_library(caffe_detect SHARED ${SRC_LIST})
@@ -49,13 +53,17 @@ IF (caffe_LIBRARY)
 ENDIF(caffe_LIBRARY)
 
 #message(${OpenCV_LIBS})
+# target_link_libraries(caffe_detect "${PROJECT_SOURCE_DIR}/lib/libgpu_nms.so"
+#     ${OpenCV_LIBS}
+#     libglog.so
+#     libboost_system.so
+#     libboost_python.so
+#     libglog.so
+#     libpython2.7.so
+#     )
 target_link_libraries(caffe_detect "${PROJECT_SOURCE_DIR}/lib/libgpu_nms.so"
-    ${OpenCV_LIBS}
-    libglog.so
-    libboost_system.so
-    libboost_python.so
-    libglog.so
-    libpython2.7.so
+     libpython2.7.so
+    ${Caffe_LINKER_LIBS}
     )
 
 #ADD_LIBRARY(hello_static STATIC ${DIR_HELLO_SRCS})  

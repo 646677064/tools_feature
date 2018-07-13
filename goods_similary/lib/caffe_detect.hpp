@@ -88,7 +88,12 @@ const bool  bagnostic = true;
 class Detector {
 public:
 	Detector(const string& model_file, const string& weights_file, int classnum,const int GPUID);
+	void WrapBatchInputLayer(std::vector<std::vector<cv::Mat> > *input_batch);
+void PreprocessBatch(const vector<cv::Mat> imgs,
+                                      std::vector< std::vector<cv::Mat> >* input_batch);
+void get_feature(vector< cv::Mat >& vec_imgs, vector<vector<float> > & vec_feature ,int ibatch,const string layername="pool5");
 	void get_feature(cv::Mat & cv_img, vector<float> & vec_feature ,const string layername="pool5");
+	void get_feature_blob(cv::Mat & cv_img, caffe::Blob<float> & out_blob ,const string layername="pool5");
 	void Detect(cv::Mat & cv_image, vector<cv::Rect> & detection_result_rect );
 	void Detect(cv::Mat & cv_img, vector<Result_detect> & detection_result_class );
 	void Cut9ImageDetect(cv::Mat& img, vector<Result_detect> & detection_result_class);
@@ -101,6 +106,9 @@ public:
           int boxes_dim, float nms_overlap_thresh, float confidence_threshold,vector<Result_detect> & detection_result_class ,int iclass);
 
 private:
+	cv::Size input_geometry_;
+	int batch_size_;
+	int num_channels_;
 	int m_gpuid;
 	shared_ptr<Net<float> > net_;
 	int m_iclass_num;
