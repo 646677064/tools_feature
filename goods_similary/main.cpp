@@ -829,31 +829,90 @@ float compare_feature_two_pic_blob(const char* p1,const char* p2)
     return ret;
 }
 #include<algorithm>
-void adjust(float arr[], int len, int index)
+// struct Thing_sort
+// {
+//     float value;
+//     int index;
+// };
+
+// void adjust(float arr[], int len, int index)
+// {
+//     int left = 2*index + 1;
+//     int right = 2*index + 2;
+//     int maxIdx = index;
+//     if(left<len && arr[left] < arr[maxIdx]) maxIdx = left;
+//     if(right<len && arr[right] < arr[maxIdx]) maxIdx = right;  // maxIdx是3个数中最大数的下标
+//     if(maxIdx != index)                 // 如果maxIdx的值有更新
+//     {
+//         swap(arr[maxIdx], arr[index]);
+//         adjust(arr, len, maxIdx);       // 递归调整其他不满足堆性质的部分
+//     }
+
+// }
+// void heapSort(float arr[], int size,int min=32)
+// {
+//     for(int i=size/2 - 1; i >= 0; i--)  // 对每一个非叶结点进行堆调整(从最后一个非叶结点开始)
+//     {
+//         adjust(arr, size, i);
+//     }
+//     for(int i = size - 1; i >= 1; i--)
+//     {
+//         swap(arr[0], arr[i]);           // 将当前最大的放置到数组末尾
+//         adjust(arr, i, 0);            // 将未完成排序的部分继续进行堆排序
+//         if (size-i==min)
+//         {
+//             return;
+//         }
+//     }
+// }
+void adjust(float arr[], int ret_ind[],int len, int index)
 {
     int left = 2*index + 1;
     int right = 2*index + 2;
     int maxIdx = index;
+    if (left<len)
+    {
+        if (ret_ind[left]==0)
+        {
+            ret_ind[left]=left+1;
+        }
+    }
+    if (right<len)
+    {
+        if (ret_ind[right]==0)
+        {
+            ret_ind[right]=right+1;
+        }
+    }
+    if (index<len)
+    {
+        if (ret_ind[index]==0)
+        {
+            ret_ind[index]=index+1;
+        }
+    }
     if(left<len && arr[left] < arr[maxIdx]) maxIdx = left;
     if(right<len && arr[right] < arr[maxIdx]) maxIdx = right;  // maxIdx是3个数中最大数的下标
     if(maxIdx != index)                 // 如果maxIdx的值有更新
     {
         swap(arr[maxIdx], arr[index]);
-        adjust(arr, len, maxIdx);       // 递归调整其他不满足堆性质的部分
+        swap(ret_ind[maxIdx], ret_ind[index]);
+        adjust(arr,ret_ind, len, maxIdx);       // 递归调整其他不满足堆性质的部分
     }
 
 }
-void heapSort(float arr[], int size,int min=32)
+void heapSort(float arr[], int ret_ind[],int size,int min=32)
 {
     for(int i=size/2 - 1; i >= 0; i--)  // 对每一个非叶结点进行堆调整(从最后一个非叶结点开始)
     {
-        adjust(arr, size, i);
+        adjust(arr,ret_ind, size, i);
     }
     for(int i = size - 1; i >= 1; i--)
     {
         swap(arr[0], arr[i]);           // 将当前最大的放置到数组末尾
-        adjust(arr, i, 0);            // 将未完成排序的部分继续进行堆排序
-        if (size-i==32)
+        swap(ret_ind[0], ret_ind[i]); 
+        adjust(arr,ret_ind, i, 0);            // 将未完成排序的部分继续进行堆排序
+        if (size-i==min)
         {
             return;
         }
@@ -873,7 +932,7 @@ float compare_feature_two_pic(const char* p1,const char* p2)
     // std::string weights_file = "/home/liushuai/RFCN/py-R-FCN-master/caffe/models/resnet101_nodropout/res101_classfy_train_iter_90000.caffemodel";
     // std::string model_file = "/home/liushuai/RFCN/py-R-FCN-master/caffe/models/50_siamese/deploy.prototxt";;
     // std::string weights_file = "/home/liushuai/RFCN/py-R-FCN-master/caffe/models/50_siamese/mnist_siamese_iter_95000.caffemodel";
-    int GPUID=5;
+    int GPUID=3;
     int max_ret_num=30;
     int classnum = 2348;//134;//17; 21 120 38
 
@@ -889,7 +948,7 @@ float compare_feature_two_pic(const char* p1,const char* p2)
             memcpy(M_feature.data,vec_feature1.data(),vec_feature1.size()*sizeof(float));
             stringstream ss;
             ss<<1;
-            string save_dir="/home/liushuai/work/goods_similary/build/test//";
+            string save_dir="/home/liushuai/work/goods_similary/test//";
             string tmp_string;
             ss>>tmp_string;
             string tmp_file=save_dir+tmp_string+"_feature_1.c++";
@@ -929,7 +988,7 @@ float compare_feature_two_pic(const char* p1,const char* p2)
          ret= compute_similary(vec_feature1,vec_feature2);
     }
     gettimeofday(&end,NULL);
-    std::cout << "compute_similaryTotal Time: "<< end.tv_sec-start.tv_sec << " s " << end.tv_usec-start.tv_usec << " us " <<" imageCount "<<countteme<< endl;
+    std::cout << "compute_similary +for Time: "<< end.tv_sec-start.tv_sec << " s " << end.tv_usec-start.tv_usec << " us " <<" imageCount "<<countteme<< endl;
     
     gettimeofday(&start,NULL);
     float ret_MP=1000;//reduction(+:ret_1)
@@ -960,7 +1019,7 @@ float compare_feature_two_pic(const char* p1,const char* p2)
     }
 #endif
     gettimeofday(&end,NULL);
-    std::cout << "compute_similary_blasTotal+MP Time: "<< end.tv_sec-start.tv_sec << " s " << end.tv_usec-start.tv_usec << " us " <<" imageCount "<<countteme<< endl;
+    std::cout << "compute_similary+blas+MP Time: "<< end.tv_sec-start.tv_sec << " s " << end.tv_usec-start.tv_usec << " us " <<" imageCount "<<countteme<< endl;
     
     gettimeofday(&start,NULL);
     float ret_1=1000;//reduction(+:ret_1)
@@ -969,7 +1028,7 @@ float compare_feature_two_pic(const char* p1,const char* p2)
         ret_1 = compute_similary_blas(vec_feature1,vec_feature2);
     }
     gettimeofday(&end,NULL);
-    std::cout << "compute_similary_blasTotal Time: "<< end.tv_sec-start.tv_sec << " s " << end.tv_usec-start.tv_usec << " us " <<" imageCount "<<countteme<< endl;
+    std::cout << "compute_similary+blas+for Time: "<< end.tv_sec-start.tv_sec << " s " << end.tv_usec-start.tv_usec << " us " <<" imageCount "<<countteme<< endl;
     
 
     gettimeofday(&start,NULL);
@@ -990,7 +1049,7 @@ float compare_feature_two_pic(const char* p1,const char* p2)
     //     ret_1s = compute_similary_sub_blas(vec_feature1,vec_feature2);
     // }
     gettimeofday(&end,NULL);
-    std::cout << "compute_similary_cos_blas+MP Time: "<< end.tv_sec-start.tv_sec << " s " << end.tv_usec-start.tv_usec << " us " <<" imageCount "<<countteme<< endl;
+    std::cout << "compute_similary+cos+blas+MP Time: "<< end.tv_sec-start.tv_sec << " s " << end.tv_usec-start.tv_usec << " us " <<" imageCount "<<countteme<< endl;
     
     gettimeofday(&start,NULL);
     //float ret_1s=-1.0;
@@ -1010,7 +1069,7 @@ float compare_feature_two_pic(const char* p1,const char* p2)
     //     ret_1s = compute_similary_sub_blas(vec_feature1,vec_feature2);
     // }
     gettimeofday(&end,NULL);
-    std::cout << "compute_similary_cos+MP Time: "<< end.tv_sec-start.tv_sec << " s " << end.tv_usec-start.tv_usec << " us " <<" imageCount "<<countteme<< endl;
+    std::cout << "compute_similary+cos+MP Time: "<< end.tv_sec-start.tv_sec << " s " << end.tv_usec-start.tv_usec << " us " <<" imageCount "<<countteme<< endl;
     
 
     gettimeofday(&start,NULL);
@@ -1031,7 +1090,7 @@ float compare_feature_two_pic(const char* p1,const char* p2)
     //     ret_1s = compute_similary_sub_blas(vec_feature1,vec_feature2);
     // }
     gettimeofday(&end,NULL);
-    std::cout << "compute_similary_sub_blas+MP Time: "<< end.tv_sec-start.tv_sec << " s " << end.tv_usec-start.tv_usec << " us " <<" imageCount "<<countteme<< endl;
+    std::cout << "compute_similary+sub+blas+MP Time: "<< end.tv_sec-start.tv_sec << " s " << end.tv_usec-start.tv_usec << " us " <<" imageCount "<<countteme<< endl;
     
     gettimeofday(&start,NULL);
     //float ret_1s=-1.0;
@@ -1059,46 +1118,47 @@ float compare_feature_two_pic(const char* p1,const char* p2)
     //     ret_1s = compute_similary_sub_blas(vec_feature1,vec_feature2);
     // }
     gettimeofday(&end,NULL);
-    std::cout << "compute_similary_sub_blas+MP for array Time: "<< end.tv_sec-start.tv_sec << " s " << end.tv_usec-start.tv_usec << " us " <<" imageCount "<<countteme<< endl;
-     std::cout << "compute_similary_sub_blas+MP for array Time: "<<ret_1s_MParray<<endl;
+    std::cout << "compute_similary+sub+blas+MP for min Time: "<< end.tv_sec-start.tv_sec << " s " << end.tv_usec-start.tv_usec << " us " <<" imageCount "<<countteme<< endl;
+     std::cout << "compute_similary+sub+blas+MP for min ret: "<<ret_1s_MParray<<endl;
 
     gettimeofday(&start,NULL);
     //float ret_1s=-1.0;
     float ret_1s_MParray_16=1000;
     float ff_array_16[countteme];
+    int ret_ind[countteme]={0};
 #ifdef _OPENMP
     #pragma omp parallel
     {
         #pragma omp for 
         for(icc=0;icc<countteme;icc++)
         {
-            ff_array_16[icc]=compute_similary_sub_blas(vec_feature1,vec_feature2);
+            ff_array_16[icc]=countteme-icc;compute_similary_sub_blas(vec_feature1,vec_feature2);
         }
     }
 #endif
-    heapSort(ff_array_16,countteme,16);
+    heapSort(ff_array_16,ret_ind,countteme,16);
     // for(icc=0;icc<countteme;icc++)
     // {
     //     ret_1s = compute_similary_sub_blas(vec_feature1,vec_feature2);
     // }
     gettimeofday(&end,NULL);
-    std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<< end.tv_sec-start.tv_sec << " s " << end.tv_usec-start.tv_usec << " us " <<" imageCount "<<countteme<< endl;
-     std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<<ff_array_16[0]<<endl;
-      std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<<ff_array_16[1]<<endl;
-      std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<<ff_array_16[2]<<endl;
-      std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<<ff_array_16[3]<<endl;
-      std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<<ff_array_16[4]<<endl;
-      std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<<ff_array_16[5]<<endl;
-      std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<<ff_array_16[6]<<endl;
-      std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<<ff_array_16[7]<<endl;
-      std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<<ff_array_16[8]<<endl;
-      std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<<ff_array_16[9]<<endl;
-      std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<<ff_array_16[10]<<endl;
-      std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<<ff_array_16[11]<<endl;
-      std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<<ff_array_16[12]<<endl;
-      std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<<ff_array_16[13]<<endl;
-      std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<<ff_array_16[14]<<endl;
-      std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<<ff_array_16[15]<<endl;
+    std::cout << "compute_similary+sub+blas+MP_16 for heapsort Time: "<< end.tv_sec-start.tv_sec << " s " << end.tv_usec-start.tv_usec << " us " <<" imageCount "<<countteme<< endl;
+     std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<<ff_array_16[countteme-1]<<" "<<ret_ind[countteme-1]<<endl;
+      std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<<ff_array_16[countteme-2]<<" "<<ret_ind[countteme-2]<<endl;
+      std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<<ff_array_16[countteme-3]<<" "<<ret_ind[countteme-3]<<endl;
+      std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<<ff_array_16[countteme-4]<<" "<<ret_ind[countteme-4]<<endl;
+      std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<<ff_array_16[countteme-5]<<" "<<ret_ind[countteme-5]<<endl;
+      std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<<ff_array_16[countteme-6]<<" "<<ret_ind[countteme-6]<<endl;
+      std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<<ff_array_16[countteme-7]<<" "<<ret_ind[countteme-7]<<endl;
+      std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<<ff_array_16[countteme-8]<<" "<<ret_ind[countteme-8]<<endl;
+      std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<<ff_array_16[countteme-9]<<" "<<ret_ind[countteme-9]<<endl;
+      std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<<ff_array_16[countteme-10]<<" "<<ret_ind[countteme-10]<<endl;
+      std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<<ff_array_16[countteme-11]<<" "<<ret_ind[countteme-11]<<endl;
+      std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<<ff_array_16[countteme-12]<<" "<<ret_ind[countteme-12]<<endl;
+      std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<<ff_array_16[countteme-13]<<" "<<ret_ind[countteme-13]<<endl;
+      std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<<ff_array_16[countteme-14]<<" "<<ret_ind[countteme-14]<<endl;
+      std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<<ff_array_16[countteme-15]<<" "<<ret_ind[countteme-15]<<endl;
+      std::cout << "compute_similary_sub_blas+MP_16 for array Time: "<<ff_array_16[countteme-16]<<" "<<ret_ind[countteme-16]<<endl;
 
     gettimeofday(&start,NULL);
     //float ret_1s=-1.0;
@@ -1126,8 +1186,8 @@ float compare_feature_two_pic(const char* p1,const char* p2)
     //     ret_1s = compute_similary_sub_blas(vec_feature1,vec_feature2);
     // }
     gettimeofday(&end,NULL);
-    std::cout << "compute_similary_sub_blas+MP private+critical Time: "<< end.tv_sec-start.tv_sec << " s " << end.tv_usec-start.tv_usec << " us " <<" imageCount "<<countteme<< endl;
-    std::cout << "compute_similary_sub_blas+MP private+critical Time: "<<minii_shared<<endl;
+    std::cout << "compute_similary+sub+blas+MP private+critical Time: "<< end.tv_sec-start.tv_sec << " s " << end.tv_usec-start.tv_usec << " us " <<" imageCount "<<countteme<< endl;
+    std::cout << "compute_similary+sub+blas+MP private+critical Time: "<<minii_shared<<endl;
 
     gettimeofday(&start,NULL);
     float ret_1s=1000;
@@ -1141,7 +1201,7 @@ float compare_feature_two_pic(const char* p1,const char* p2)
         }
     }
     gettimeofday(&end,NULL);
-    std::cout << "compute_similary_sub_blas Time: "<< end.tv_sec-start.tv_sec << " s " << end.tv_usec-start.tv_usec << " us " <<" imageCount "<<countteme<< endl;
+    std::cout << "compute_similary+sub+blas+for Time: "<< end.tv_sec-start.tv_sec << " s " << end.tv_usec-start.tv_usec << " us " <<" imageCount "<<countteme<< endl;
     
 
     // gettimeofday(&start,NULL);
@@ -1344,7 +1404,7 @@ int main(int argc, char** argv)
             // }
             // vec_imgs.clear();
     }
-    //float ret2=compare_feature_two_pic(p1,p2);
+    float ret2=compare_feature_two_pic(p1,p2);
     //  float ret3=compare_feature_two_pic_blob(p1,p2);
     // cout<<"12 :"<<ret2<<endl;
     // cout<<"13 :"<<ret2<<endl;
