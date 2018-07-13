@@ -5,9 +5,12 @@ import os
 
 if __name__=="__main__":
 
-    xmldir = "/storage2/tiannuodata/work/projdata/baiwei/baiweiproj2/Annotations/"
-    jpgdir = "/storage2/tiannuodata/work/projdata/baiwei/baiweiproj2/JPEGImages/"
-    patchdir = "/storage2/tiannuodata/work/projdata/baiwei/testdata/patch/"
+    # xmldir = "/storage2/tiannuodata/work/projdata/baiwei/baiweiproj2/Annotations/"
+    # jpgdir = "/storage2/tiannuodata/work/projdata/baiwei/baiweiproj2/JPEGImages/"
+    # patchdir = "/storage2/tiannuodata/work/projdata/baiwei/testdata/patch/"
+    xmldir = "/storage2/tiannuodata/work/projdata/baiwei/baiweiproj329/Annotations/"
+    jpgdir = "/storage2/tiannuodata/work/projdata/baiwei/baiweiproj329/JPEGImages/"
+    patchdir = "/storage2/tiannuodata/work/projdata/baiwei/testdata/patch329/"
     only_cutlist=[]
     # only_cutlist.append("yanjing1")
     # only_cutlist.append("harbin31")

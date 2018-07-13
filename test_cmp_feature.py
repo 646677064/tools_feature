@@ -608,7 +608,8 @@ def main(argv):
   #im_1 = skloadimage(path_1)
   #print "skloadimage ",im_1.shape
   _ = classifier.predict([im_1],   args.center_only)
-  #print _
+  print _.shape
+  return 
   feature_1 = classifier.get_blob_data(args.feature_name).copy()
   sio.savemat("/storage2/liushuai/gs6_env/market1501_extract_freature/test/feature_1.feature", {'feature':feature_1})
   np.savetxt("/storage2/liushuai/gs6_env/market1501_extract_freature/test/feature_1.txt",feature_1)

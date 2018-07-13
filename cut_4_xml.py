@@ -2049,7 +2049,7 @@ if __name__ == "__main__":
     cachedir=basedir+"/analysis/"
     test_filepath=basedir+"/analysis//badpic_namelist.txt"
     outdir=cachedir+"/badpic_namelist/"
-    cpfile_from_list_2_dir(dir_1,test_filepath,outdir)
+    #cpfile_from_list_2_dir(dir_1,test_filepath,outdir)
 
     
     proto_src_dir='/home/liushuai/tiannuocaffe/prototxtdir/'

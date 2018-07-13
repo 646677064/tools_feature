@@ -365,8 +365,8 @@ def jiucuo_modify_xml_3_diff_file(Anotation_dir,JPG_dir,patchdir,out_xmlDir,out_
     for subpatch in subpatchs:
         subpatch=os.path.splitext(subpatch)[0]
         print subpatch
-        if subpatch!="Others":
-            break
+        # if subpatch!="Others":
+        #     break
         if subpatch=="patchlist":
             continue
         if subpatch=="result_patchlist":

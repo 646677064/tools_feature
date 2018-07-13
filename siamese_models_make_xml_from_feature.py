@@ -735,14 +735,14 @@ def main(argv):
           #print aa_fea," ",bb_fea," ",same_file_list[bb_fea][0]
           ret = comp_feature(feature_all[bb_fea],feature_here)
           #rint label_all[bb_fea],ret,oject_2['name']
-          if ret <0.45:#0.3
+          if ret <0.2:#0.3
             #print "            ",label_all[bb_fea],ret,oject_2['name'],"     ok"
             b_same_class=True
             #print type(bb_fea)
             if ret <bmin:
               bb_index=bb_fea
               bmin==ret
-            # if ret<0.3:#0.15
+            # if ret<0.1:#0.15
             #   break
         if b_same_class==True:
           labels.append(label_all[bb_index])
