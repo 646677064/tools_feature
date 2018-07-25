@@ -13,6 +13,7 @@
 #include <opencv2/imgproc/imgproc.hpp>
 using namespace caffe;
 using namespace std;
+//using namespace cv;
 
 #define max(a, b) (((a)>(b)) ? (a) :(b))
 #define min(a, b) (((a)<(b)) ? (a) :(b))
@@ -38,18 +39,54 @@ typedef struct
 	EV2641Rect mROI;					//感兴趣区域
 }EV2641Image;
 
+typedef struct _GoodsRect
+{ 
+    //Point corners[4];                                   //!< 商品4个角点
+    int label;                                          //!< 商品标记号码
+    cv::Rect rt;                                            //!< 商品标记框
+    int oriArea;                                        //!< 商品面积
+    int rows;                                           //!< 商品所在行
+    int cols;                                           //!< 商品所在列
+    int imageptr;                                       //!< 商品所在图片(0表示任务的第一张)
+    float score;                                        //!< 商品置信得分
+    int region;                                         //!< 商品在正常货架区域(1)还是挂架区域(2)
+    
+	bool bcalibrate;//add by lius
+	int calibrate_preclass;//add by lius
+    _GoodsRect()
+    {
+        score = 0;
+        region = 1;
+        imageptr = 0;
+		bcalibrate=false;//add by lius
+		calibrate_preclass=-1;//add by lius
+    }
+
+}GoodsRect;
+
+// typedef struct Result_detect{
+// 	float x1;
+// 	float y1;
+// 	float x2;
+// 	float y2;
+// 	float score;
+// 	int iclass;
+// 	bool bcalibrate;
+// 	int calibrate_preclass;
+// 	Result_detect(){bcalibrate=false;calibrate_preclass=-1;};
+// }Result_detect;
+
 typedef struct Result_detect{
-	float x1;
-	float y1;
-	float x2;
-	float y2;
+	int x1;
+	int y1;
+	int x2;
+	int y2;
 	float score;
 	int iclass;
 	bool bcalibrate;
 	int calibrate_preclass;
 	Result_detect(){bcalibrate=false;calibrate_preclass=-1;};
 }Result_detect;
-
 
 class Detector;
 

@@ -284,35 +284,30 @@ bool check_label_exist_cfg(IN int iclass,IN const std::vector<int>& labels_size_
       return bfind;
 }
 
-void determine_from_size_1(/*list_file,*/vector<Result_detect> & detection_result_class,bool bcheckconfuse=false)
+
+void determine_from_size_rect(IN const int confuse_label[],IN const int size_confuse,
+                              IN const std::vector<int>& labels_size_vec,
+                              IN const std::vector<float>& lenght_size_vec,
+                              IN const std::vector<float>& height_size_vec,
+                              IN  OUT std::vector<GoodsRect> &gRect ,bool bcheckconfuse=false,const float range_thredhold=4.5)
 {
-
-    int confuse_label[]={2,3,4,
-                 -1,5,6,
-                 -1,8,9,
-                 12,13,14,
-                 -1,36,37,
-                 39,40,41,
-                 -1,43,44};
-    char * list_file="/home/liushuai/tiannuocaffe/1detect_bak/size.txt";
-    std::vector<int> labels_size_vec;
-    std::vector<float> lenght_size_vec;
-    std::vector<float> height_size_vec;
-    read_cfg(list_file,labels_size_vec,lenght_size_vec,height_size_vec);
-
-      int size_confuse=sizeof(confuse_label)/sizeof(confuse_label[0]);
-    for (int i = 0; i < detection_result_class.size(); ++i)
+    //int size_confuse=sizeof(confuse_label)/sizeof(confuse_label[0]);
+    std::cout<<"determine_from_size_rect "<<size_confuse<<std::endl;
+    for (int i = 0; i < gRect.size(); ++i)
     {
+        if (gRect[i].bcalibrate)
+        {
+            continue;
+        }
         for (int k = 0; k < size_confuse; ++k)
         {
-            if (confuse_label[k] == detection_result_class[i].iclass)//如果目标是属于大小标签中的
+            if (confuse_label[k] == gRect[i].label)//如果目标是属于大小标签中的
             {
-                std::cout<<"confuse_label orignal class:"<<detection_result_class[i].iclass<<std::endl;
-                float i_det_lenght=max(detection_result_class[i].x2-detection_result_class[i].x1,
-                  detection_result_class[i].y2-detection_result_class[i].y1);
+                float i_det_lenght=max(gRect[i].rt.width,
+                                    gRect[i].rt.height);
                 float i_lenght=-1.0;
                 float i_height=-1.0;
-                bool bfind = check_label_exist_cfg(detection_result_class[i].iclass,labels_size_vec,lenght_size_vec,height_size_vec,i_lenght,i_height);
+                bool bfind = check_label_exist_cfg(gRect[i].label,labels_size_vec,lenght_size_vec,height_size_vec,i_lenght,i_height);
                 if (bfind)
                 {
                     if (-1.0==i_lenght)
@@ -322,30 +317,38 @@ void determine_from_size_1(/*list_file,*/vector<Result_detect> & detection_resul
                 }
                 else
                 {
-                      std::cout<<"the lenght of confuse label "<<detection_result_class[i].iclass<<" not in size.txt"<<std::endl; 
+                      std::cout<<"the lenght of confuse label "<<gRect[i].label<<" not in size.txt"<<std::endl; 
                 }
                 int i_start = 3*(k/3);
+                float x_ilenght=2.0;
                 std::vector<Min_distace_index_> distance_vector;
-                for (int j = 0; j < detection_result_class.size(); ++j)//从附近的检测到的物体中的尺寸关系
+                bool bcheck_gate=bcheckconfuse;
+Rect_distance_vector_size:
+                for (int j = 0; j < gRect.size(); ++j)//从附近的检测到的物体中的尺寸关系
                 {
-                  if (j==i)
-                  {
-                    continue;
-                  }
-                    //因为易混淆的类别的分类可能是错误的，极大的影响准确性，所以需要把易混淆的类别排除在外
-                  bool bj_confuse=false;
-                  int j_confuse_index=-1;
+                    if (j==i)
+                    {
+                      continue;
+                    }
+                      //因为易混淆的类别的分类可能是错误的，极大的影响准确性，所以需要把易混淆的类别排除在外
+                    bool bj_confuse=false;
+                    int j_confuse_index=-1;
                     bool bexcpt=false;
                     for (int m = 0; m < size_confuse; ++m)
                     {
-                        if (detection_result_class[j].iclass==confuse_label[m])
+                        if (gRect[j].label==confuse_label[m])
                         {
                           bj_confuse=true;
                           j_confuse_index=m;
                         }
-                        if (bcheckconfuse)
+                        if (bcheck_gate)
                         {
-                          if (i_start==3*(m/3))
+                          // if (detection_result_class[j].iclass==confuse_label[m] && i_start==3*(m/3))
+                          // {
+                          //     bexcpt=true;
+                          //     break;
+                          // }
+                          if (gRect[j].label==confuse_label[m] && gRect[j].bcalibrate==false)//是否让纠正后的obj可以去纠正其他obj
                           {
                               bexcpt=true;
                               break;
@@ -353,7 +356,7 @@ void determine_from_size_1(/*list_file,*/vector<Result_detect> & detection_resul
                         }
                         else
                         {
-                          if (detection_result_class[j].iclass==confuse_label[m] && detection_result_class[j].bcalibrate==false)//是否让纠正后的obj可以去纠正其他obj
+                          if (gRect[j].label==confuse_label[m] /*&& detection_result_class[j].bcalibrate==false*/)//是否让纠正后的obj可以去纠正其他obj
                           {
                               bexcpt=true;
                               break;
@@ -367,7 +370,7 @@ void determine_from_size_1(/*list_file,*/vector<Result_detect> & detection_resul
                     {//do
                         float j_lenght=-1.0;
                         float j_height=-1.0;
-                        bool bfind_j = check_label_exist_cfg(detection_result_class[j].iclass,labels_size_vec,lenght_size_vec,height_size_vec,j_lenght,j_height);
+                        bool bfind_j = check_label_exist_cfg(gRect[j].label,labels_size_vec,lenght_size_vec,height_size_vec,j_lenght,j_height);
                         if (bfind_j)
                         {
                             if (-1.0==j_lenght)
@@ -378,12 +381,13 @@ void determine_from_size_1(/*list_file,*/vector<Result_detect> & detection_resul
                             {
                               continue;
                             }
-                            float j_det_lenght=max(detection_result_class[j].x2-detection_result_class[j].x1,
-                                                detection_result_class[j].y2-detection_result_class[j].y1);
-                            float j_det_height=min(detection_result_class[j].x2-detection_result_class[j].x1,
-                                                detection_result_class[j].y2-detection_result_class[j].y1);
+                            float j_det_lenght=max(gRect[j].rt.width,
+                                                gRect[j].rt.height);
+                            float j_det_height=min(gRect[j].rt.width,
+                                                gRect[j].rt.height);
                             float right_ratio=j_lenght*j_det_height/j_height/j_det_lenght;
 
+                            std::cout<<"right_ratio "<<right_ratio<<std::endl;
                             if (0.8<right_ratio && right_ratio<1.2)//仅根据摆放的和原比例差不多的进行校正
                             {
                                 //calibrate
@@ -393,27 +397,23 @@ void determine_from_size_1(/*list_file,*/vector<Result_detect> & detection_resul
                                 min_distace_index.index=j;//detection_result_class[j].iclass;
                                 min_distace_index.bconfuse=bj_confuse;
                                 min_distace_index.confuse_index=j_confuse_index;
-                                min_distace_index.distace=sqrt(pow(detection_result_class[j].x1+detection_result_class[j].x2-detection_result_class[i].x1-detection_result_class[i].x2 , 2)
-                                              +pow(detection_result_class[j].y1+detection_result_class[j].y2-detection_result_class[i].y1-detection_result_class[i].y2,2))/4;
+                                min_distace_index.distace=sqrt(pow(2*gRect[j].rt.x+gRect[j].rt.width-2*gRect[i].rt.x-gRect[i].rt.width,2)
+                                              +pow(2*gRect[j].rt.y+gRect[j].rt.height-2*gRect[i].rt.y-gRect[i].rt.height,2))/2;
+                                // min_distace_index.distace=sqrt(pow(detection_result_class[j].x1+detection_result_class[j].x2-detection_result_class[i].x1-detection_result_class[i].x2 , 2)
+                                //               +pow(detection_result_class[j].y1+detection_result_class[j].y2-detection_result_class[i].y1-detection_result_class[i].y2,2))/2;
 
-                            //std::cout<<"right_ratio "<<right_ratio<<" distace "<<min_distace_index.distace<<std::endl;
+                            std::cout<<"right_ratio "<<right_ratio<<" distace "<<min_distace_index.distace<<std::endl;
                                 //std::cout<<"min_distace_index.distace "<<min_distace_index.distace<<std::endl;//4*6.25*i_det_lenght*i_det_lenght
-                                // if (2.5*i_det_lenght>min_distace_index.distace)//当距离大于2.5倍长度的物体 不具有对比意义
-                                // {
-                                //     distance_vector.push_back(min_distace_index);
-                                // }
-                                // if ((abs(detection_result_class[j].x1-detection_result_class[i].x1)<2.5*i_det_lenght 
-                                //   ||abs(detection_result_class[j].x2-detection_result_class[i].x2)<2.5*i_det_lenght)
-                                //   && (abs(detection_result_class[j].y1-detection_result_class[i].y1)<2.5*i_det_lenght
-                                //     ||abs(detection_result_class[j].y2-detection_result_class[i].y2)<2.5*i_det_lenght))
+                                
                                   //if(min_distace_index.distace<2.0*i_det_lenght)
-                                if ((min_distace_index.distace<2.0*i_det_lenght 
-                                    && ((abs(detection_result_class[j].x1+detection_result_class[j].x2-detection_result_class[i].x2-detection_result_class[i].x1)<2.0*i_det_lenght))
-                                    || (abs(detection_result_class[j].y1+detection_result_class[j].y2-detection_result_class[i].y2-detection_result_class[i].y1)<1.6*i_det_lenght)))
-                                // if ((min_distace_index.distace<2.0*i_det_lenght 
-                                //     && (abs(detection_result_class[j].x1+detection_result_class[j].x2-detection_result_class[i].x2-detection_result_class[i].x1)<3.0*i_det_lenght))
-                                //     && (abs(detection_result_class[j].y1+detection_result_class[j].y2-detection_result_class[i].y2-detection_result_class[i].y1)<3.0*i_det_lenght))
+                                // if ((min_distace_index.distace<x_ilenght*i_det_lenght )
+                                //     && ((abs(detection_result_class[j].x1+detection_result_class[j].x2-detection_result_class[i].x2-detection_result_class[i].x1)<2.0*i_det_lenght)
+                                //     || (abs(detection_result_class[j].y1+detection_result_class[j].y2-detection_result_class[i].y2-detection_result_class[i].y1)<2.0*i_det_lenght)))
+                                if ((min_distace_index.distace<x_ilenght*i_det_lenght )
+                                    && ((abs(2*gRect[j].rt.x+gRect[j].rt.width-2*gRect[i].rt.x-gRect[i].rt.width)<2.0*i_det_lenght)
+                                    || (abs(2*gRect[j].rt.y+gRect[j].rt.height-2*gRect[i].rt.y-gRect[i].rt.height)<2.0*i_det_lenght)))
                                 {
+                                  std::cout<<" dis "<<min_distace_index.distace<<std::endl;
                                   distance_vector.push_back(min_distace_index);
                                   //std::cout<<" x dis "<<abs(detection_result_class[j].x1+detection_result_class[j].x2-detection_result_class[i].x2-detection_result_class[i].x1) <<" y dis "<<abs(detection_result_class[j].y1+detection_result_class[j].y2-detection_result_class[i].y2-detection_result_class[i].y1)<<std::endl;
                                 }
@@ -421,14 +421,21 @@ void determine_from_size_1(/*list_file,*/vector<Result_detect> & detection_resul
                         }
                     }
                 }
+                if (distance_vector.size()==0 && x_ilenght<range_thredhold)//range_thredhold=3.5
+                {
+                  x_ilenght=x_ilenght+0.5;
+                  bcheck_gate=bcheckconfuse;
+                  goto Rect_distance_vector_size;
+                }
+                std::cout<<"confuse_label orignal class:"<<gRect[i].label<<std::endl;
                     std::cout<<"i_det_lenght "<<i_det_lenght<<" distance_vector size "<<distance_vector.size()<<std::endl;
-                if (distance_vector.size()>1)
+                if (distance_vector.size()>0)
                 {
                     std::sort(distance_vector.begin(), distance_vector.end(), comparedistance);//根据距离大小 从小到大排序
                     for (int j = distance_vector.size()-1; j>=0;j--)
                     {
-                        float j_det_lenght=max(detection_result_class[distance_vector[j].index].x2-detection_result_class[distance_vector[j].index].x1,
-                          detection_result_class[distance_vector[j].index].y2-detection_result_class[distance_vector[j].index].y1);
+                        float j_det_lenght=max(gRect[distance_vector[j].index].rt.width,
+                                              gRect[distance_vector[j].index].rt.height);
                         float f_min=1000;
                         int min_index=-1;
                         float ratio_three[3]={1.0,1.0,1.0};
@@ -438,7 +445,7 @@ void determine_from_size_1(/*list_file,*/vector<Result_detect> & detection_resul
                         {
                             float choose_lenght=-1.0;
                             float choose_height=-1.0;
-                            if (confuse_label[i_start+ichoose]==detection_result_class[i].iclass)
+                            if (confuse_label[i_start+ichoose]==gRect[i].label)
                             {
                                 ratio_index=ichoose;
                             }
@@ -463,7 +470,7 @@ void determine_from_size_1(/*list_file,*/vector<Result_detect> & detection_resul
                                 
                                   break;
                                 }
-                                std::cout<<"judge "<<tmp_ratio<<" j_det_lenght "<<j_det_lenght<<std::endl;
+                                std::cout<<"judge "<<tmp_ratio<<" j_det_lenght "<<" distace "<<distance_vector[j].distace<<j_det_lenght<<std::endl;
                                 // if (tmp_ratio<0.11)
                                 // {
                                 //   std::cout<<"change label  "<<detection_result_class[i].iclass<<" to "<<confuse_label[i_start+ichoose]<<std::endl;
@@ -489,13 +496,13 @@ void determine_from_size_1(/*list_file,*/vector<Result_detect> & detection_resul
                             }
                             if (!bfalsemin && f_min<0.1)//差距较大，就进行更正label
                             {
-                                std::cout<<"compare info "<<detection_result_class[distance_vector[j].index].iclass<<" j_det_lenght "<<j_det_lenght<<" distance "<<distance_vector[j].distace<<std::endl;
+                                std::cout<<"compare info "<<gRect[distance_vector[j].index].label<<" j_det_lenght "<<j_det_lenght<<" distance "<<distance_vector[j].distace<<std::endl;
                                 
-                                  std::cout<<" x dis "<<abs(detection_result_class[distance_vector[j].index].x1+detection_result_class[distance_vector[j].index].x2-detection_result_class[i].x2-detection_result_class[i].x1)/2 \
-                                  <<" y dis "<<abs(detection_result_class[distance_vector[j].index].y1+detection_result_class[distance_vector[j].index].y2-detection_result_class[i].y2-detection_result_class[i].y1)/1.6<<std::endl;
-                                std::cout<<"size change label "<<detection_result_class[i].iclass<<" to "<<confuse_label[i_start+min_index]<<" "<<f_min<<"compare from:"<<distance_vector[j].index<<std::endl;
-                                detection_result_class[i].iclass=confuse_label[i_start+min_index];
-                                detection_result_class[i].bcalibrate=true;//是否让纠正后的obj可以去纠正其他obj
+                                  std::cout<<" x dis "<<abs(2*gRect[j].rt.x+gRect[j].rt.width-2*gRect[i].rt.x-gRect[i].rt.width)/2 \
+                                  <<" y dis "<<abs(2*gRect[j].rt.y+gRect[j].rt.height-2*gRect[i].rt.y-gRect[i].rt.height)/2<<std::endl;
+                                std::cout<<"size change label "<<gRect[i].label<<" to "<<confuse_label[i_start+min_index]<<" "<<f_min<<"compare from:"<<distance_vector[j].index<<std::endl;
+                                gRect[i].label=confuse_label[i_start+min_index];
+                                gRect[i].bcalibrate=true;//是否让纠正后的obj可以去纠正其他obj
                                 if (bfind_very_close)
                                 {
                                     // if (distance_vector[j].bconfuse)
@@ -506,15 +513,15 @@ void determine_from_size_1(/*list_file,*/vector<Result_detect> & detection_resul
                                     {
                                       if (distance_vector[j].lenght==16.5)
                                       {
-                                        detection_result_class[i].iclass=confuse_label[i_start+0];
+                                        gRect[i].label=confuse_label[i_start+0];
                                       }
                                       else if (distance_vector[j].lenght==18)
                                       {
-                                        detection_result_class[i].iclass=confuse_label[i_start+1];
+                                        gRect[i].label=confuse_label[i_start+1];
                                       }
                                       else if (distance_vector[j].lenght==22)
                                       {
-                                        detection_result_class[i].iclass=confuse_label[i_start+2];
+                                        gRect[i].label=confuse_label[i_start+2];
                                       }
                                     }
                                     std::cout<<"find close  "<<std::endl;
@@ -530,35 +537,43 @@ void determine_from_size_1(/*list_file,*/vector<Result_detect> & detection_resul
     }
 }
 
-void determine_from_size_0(/*list_file,*/vector<Result_detect> & detection_result_class,bool bcheckconfuse=false)
+void confuse_vote_from_size_rect(IN const int confuse_label[],IN const int size_confuse,
+                              IN const std::vector<int>& labels_size_vec,
+                              IN const std::vector<float>& lenght_size_vec,
+                              IN const std::vector<float>& height_size_vec,
+                              IN  OUT std::vector<GoodsRect> &gRect )
 {
 
-    int confuse_label[]={2,3,4,
-                 -1,5,6,
-                 -1,8,9,
-                 12,13,14,
-                 -1,36,37,
-                 39,40,41,
-                 -1,43,44};
-    char * list_file="/home/liushuai/tiannuocaffe/1detect_bak/size.txt";
-    std::vector<int> labels_size_vec;
-    std::vector<float> lenght_size_vec;
-    std::vector<float> height_size_vec;
-    read_cfg(list_file,labels_size_vec,lenght_size_vec,height_size_vec);
+    // int confuse_label[]={2,3,4,
+    //              -1,5,6,
+    //              -1,8,9,
+    //              12,13,14,
+    //              -1,36,37,
+    //              39,40,41,
+    //              -1,43,44};
+    // char * list_file="/home/liushuai/tiannuocaffe/1detect_bak/size.txt";
+    // std::vector<int> labels_size_vec;
+    // std::vector<float> lenght_size_vec;
+    // std::vector<float> height_size_vec;
+    // read_cfg(list_file,labels_size_vec,lenght_size_vec,height_size_vec);
 
-      int size_confuse=sizeof(confuse_label)/sizeof(confuse_label[0]);
-    for (int i = 0; i < detection_result_class.size(); ++i)
+    for (int i = 0; i < gRect.size(); ++i)
     {
+        // if (detection_result_class[i].bcalibrate==true)//现在校正的是没有经过校正的，比如附近没有可以进行比较的，我们采用投票
+        // {
+        //     continue;
+        // }
+      //int size_confuse=sizeof(confuse_label)/sizeof(confuse_label[0]);
         for (int k = 0; k < size_confuse; ++k)
         {
-            if (confuse_label[k] == detection_result_class[i].iclass)//如果目标是属于大小标签中的
+            if (confuse_label[k] == gRect[i].label)//如果目标是属于大小标签中的
             {
-                std::cout<<"confuse_label orignal class:"<<detection_result_class[i].iclass<<std::endl;
-                float i_det_lenght=max(detection_result_class[i].x2-detection_result_class[i].x1,
-                  detection_result_class[i].y2-detection_result_class[i].y1);
+                std::cout<<"confuse_vote_label orignal class:"<<gRect[i].label<<std::endl;
+                float i_det_lenght=max(gRect[i].rt.width,
+                                        gRect[i].rt.height);
                 float i_lenght=-1.0;
                 float i_height=-1.0;
-                bool bfind = check_label_exist_cfg(detection_result_class[i].iclass,labels_size_vec,lenght_size_vec,height_size_vec,i_lenght,i_height);
+                bool bfind = check_label_exist_cfg(gRect[i].label,labels_size_vec,lenght_size_vec,height_size_vec,i_lenght,i_height);
                 if (bfind)
                 {
                     if (-1.0==i_lenght)
@@ -568,41 +583,40 @@ void determine_from_size_0(/*list_file,*/vector<Result_detect> & detection_resul
                 }
                 else
                 {
-                      std::cout<<"the lenght of confuse label "<<detection_result_class[i].iclass<<" not in size.txt"<<std::endl; 
+                      std::cout<<"the lenght of confuse label "<<gRect[i].label<<" not in size.txt"<<std::endl; 
                 }
                 int i_start = 3*(k/3);
+                std::cout<<" k "<<k<<" istart "<<i_start<<std::endl;
                 std::vector<Min_distace_index_> distance_vector;
-                for (int j = 0; j < detection_result_class.size(); ++j)//从附近的检测到的物体中的尺寸关系
+                for (int j = 0; j < gRect.size(); ++j)//从附近的检测到的物体中的尺寸关系
                 {
                     //因为易混淆的类别的分类可能是错误的，极大的影响准确性，所以需要把易混淆的类别排除在外
-                    bool bexcpt=false;
+                    bool bconfuse_vote=false;
+                    bool bj_confuse=false;
+                    int j_confuse_index=-1;
                     for (int m = 0; m < size_confuse; ++m)
                     {
-                        if (bcheckconfuse)
+                        // if (gRect[j].label==confuse_label[m])
+                        // {
+                        //   bj_confuse=true;
+                        //   j_confuse_index=m;
+                        //   break;
+                        // }
+                        if (gRect[j].label==confuse_label[m] && i_start==3*(m/3))//是否让纠正后的obj可以去纠正其他obj
                         {
-                          if (i_start==3*(m/3))
-                          {
-                              bexcpt=true;
-                              break;
-                          }
-                        }
-                        else
-                        {
-                          if (detection_result_class[j].iclass==confuse_label[m] && detection_result_class[j].bcalibrate==false)//是否让纠正后的obj可以去纠正其他obj
-                          {
-                              bexcpt=true;
-                              break;
-                          }
+                            bconfuse_vote=true;
+                            break;
                         }
                     }
-                    // if (confuse_label[i_start]!=detection_result_class[j].iclass
-                    //   &&confuse_label[i_start+1]!=detection_result_class[j].iclass
-                    //   &&confuse_label[i_start+2]!=detection_result_class[j].iclass)//排除在同一个混淆类别下的物体 中去比较
-                    if(!bexcpt)
+                    bconfuse_vote=true;
+                    // if (confuse_label[i_start]!=gRect[j].iclass
+                    //   &&confuse_label[i_start+1]!=gRect[j].iclass
+                    //   &&confuse_label[i_start+2]!=gRect[j].iclass)//排除在同一个混淆类别下的物体 中去比较
+                    if(bconfuse_vote)
                     {//do
                         float j_lenght=-1.0;
                         float j_height=-1.0;
-                        bool bfind_j = check_label_exist_cfg(detection_result_class[j].iclass,labels_size_vec,lenght_size_vec,height_size_vec,j_lenght,j_height);
+                        bool bfind_j = check_label_exist_cfg(gRect[j].label,labels_size_vec,lenght_size_vec,height_size_vec,j_lenght,j_height);
                         if (bfind_j)
                         {
                             if (-1.0==j_lenght)
@@ -613,105 +627,112 @@ void determine_from_size_0(/*list_file,*/vector<Result_detect> & detection_resul
                             {
                               continue;
                             }
-                            float j_det_lenght=max(detection_result_class[j].x2-detection_result_class[j].x1,
-                                                detection_result_class[j].y2-detection_result_class[j].y1);
-                            float j_det_height=min(detection_result_class[j].x2-detection_result_class[j].x1,
-                                                detection_result_class[j].y2-detection_result_class[j].y1);
-                            float right_ratio=j_lenght*j_det_height/j_height/j_det_lenght;
-                            if (0.8<right_ratio && right_ratio<1.2)//仅根据摆放的和原比例差不多的进行校正
+                            float j_det_lenght=max(gRect[j].rt.width,
+                                                gRect[j].rt.height);
+                            float j_det_height=min(gRect[j].rt.width,
+                                                gRect[j].rt.height);
+                            float right_ratio=j_det_lenght/i_det_lenght;
+                            //j_det_lenght*choose_lenght/distance_vector[j].lenght/i_det_lenght
+                            if (0.93<right_ratio && right_ratio<1.08)//仅根据大小特别接近的进行校正
                             {
                                 //calibrate
                                 Min_distace_index_ min_distace_index;
                                 min_distace_index.lenght = j_lenght;
                                 min_distace_index.height = j_height;
                                 min_distace_index.index=j;//detection_result_class[j].iclass;
-                                min_distace_index.distace=sqrt(pow(detection_result_class[j].x1+detection_result_class[j].x2-detection_result_class[i].x1-detection_result_class[i].x2 , 2)
-                                              +pow(detection_result_class[j].y1+detection_result_class[j].y2-detection_result_class[i].y1-detection_result_class[i].y2,2))/4;
-
+                                min_distace_index.bconfuse=bj_confuse;
+                                min_distace_index.confuse_index=j_confuse_index;
+                                min_distace_index.distace=sqrt(pow(2*gRect[j].rt.x+gRect[j].rt.width-2*gRect[i].rt.x-gRect[i].rt.width,2)
+                                              +pow(2*gRect[j].rt.y+gRect[j].rt.height-2*gRect[i].rt.y-gRect[i].rt.height,2))/2;
                                 //std::cout<<"min_distace_index.distace "<<min_distace_index.distace<<std::endl;//4*6.25*i_det_lenght*i_det_lenght
                                 // if (2.5*i_det_lenght>min_distace_index.distace)//当距离大于2.5倍长度的物体 不具有对比意义
                                 // {
                                 //     distance_vector.push_back(min_distace_index);
                                 // }
-                                if ((abs(detection_result_class[j].x1-detection_result_class[i].x1)<2.5*i_det_lenght 
-                                  ||abs(detection_result_class[j].x2-detection_result_class[i].x2)<2.5*i_det_lenght)
-                                  && (abs(detection_result_class[j].y1-detection_result_class[i].y1)<2.5*i_det_lenght
-                                    ||abs(detection_result_class[j].y2-detection_result_class[i].y2)<2.5*i_det_lenght))
+                               // if ((abs(detection_result_class[j].x1-detection_result_class[i].x1)<1.5*i_det_lenght 
+                               //    ||abs(detection_result_class[j].x2-detection_result_class[i].x2)<1.5*i_det_lenght)
+                               //    && (abs(detection_result_class[j].y1-detection_result_class[i].y1)<1.5*i_det_lenght
+                               //      ||abs(detection_result_class[j].y2-detection_result_class[i].y2)<1.5*i_det_lenght))
+                                if(min_distace_index.distace<1.5*i_det_lenght)
                                 {
                                   distance_vector.push_back(min_distace_index);
-                                }
+                                } 
+                                // if ( (abs(detection_result_class[j].y1-detection_result_class[i].y1)<1.5*i_det_lenght
+                                //     ||abs(detection_result_class[j].y2-detection_result_class[i].y2)<1.5*i_det_lenght))//竖直方向
+                                // {
+                                //   distance_vector.push_back(min_distace_index);
+                                // }
                             }
                         }
                     }
                 }
-                    std::cout<<"i_det_lenght "<<i_det_lenght<<" distance_vector size "<<distance_vector.size()<<std::endl;
-                if (distance_vector.size()>1)
+                    std::cout<<"vetical i_det_lenght "<<i_det_lenght<<" distance_vector size "<<distance_vector.size()<<std::endl;
+                if (distance_vector.size()>2)
                 {
-                    std::sort(distance_vector.begin(), distance_vector.end(), comparedistance);//根据距离大小 从小到大排序
-                    for (int j = distance_vector.size(); j < distance_vector.size();j--)
+                    std::map<int,int> map_histogram;
+                    //std::sort(distance_vector.begin(), distance_vector.end(), comparedistance);//根据距离大小 从小到大排序
+                    for (int j = 0; j < distance_vector.size(); ++j)
                     {
-                        float j_det_lenght=max(detection_result_class[distance_vector[j].index].x2-detection_result_class[distance_vector[j].index].x1,
-                          detection_result_class[distance_vector[j].index].y2-detection_result_class[distance_vector[j].index].y1);
-                        float f_min=1000;
-                        int min_index=-1;
-                        float ratio_three[3]={1.0,1.0,1.0};
-                        int ratio_index=-1;
-                        for (int ichoose = 0; ichoose < 3; ++ichoose)
+                        // if (map_histogram.find(detection_result_class[distance_vector[j].index].iclass)==map_histogram.end())
+                        // {
+                        //     map_histogram[detection_result_class[distance_vector[j].index].iclass]=0;
+                        // }
+                        // else
+                        // {
+                        //     map_histogram[detection_result_class[distance_vector[j].index].iclass]++;
+                        // }
+                      int key=-1;
+                        if (distance_vector[j].lenght==16.5)
                         {
-                            float choose_lenght=-1.0;
-                            float choose_height=-1.0;
-                            if (confuse_label[i_start+ichoose]==detection_result_class[i].iclass)
-                            {
-                                ratio_index=ichoose;
-                            }
-                            bool bfind_choose = check_label_exist_cfg(confuse_label[i_start+ichoose],labels_size_vec,lenght_size_vec,height_size_vec,choose_lenght,choose_height);
-                            if (bfind_choose)
-                            {   
-                                float tmp_ratio=j_det_lenght*choose_lenght/distance_vector[j].lenght/i_det_lenght;
-                                tmp_ratio = abs(1.0-tmp_ratio);
-                                ratio_three[ichoose]=tmp_ratio;
-                                if (f_min > tmp_ratio)
-                                {
-                                  f_min = tmp_ratio;
-                                  min_index=ichoose;
-                                }
-                                std::cout<<"judge "<<tmp_ratio<<std::endl;
-                                // if (tmp_ratio<0.11)
-                                // {
-                                //   std::cout<<"change label  "<<detection_result_class[i].iclass<<" to "<<confuse_label[i_start+ichoose]<<std::endl;
-                                //   detection_result_class[i].iclass=confuse_label[i_start+ichoose];
-                                // }
-                            }
+                          key=0;
                         }
-                        if (min_index!=-1)
+                        else if (distance_vector[j].lenght==18)
                         {
-                            bool bfalsemin=false;
-                            if (-1!=ratio_index)
-                            {
-                                float substract=abs(ratio_three[ratio_index]-f_min);
-                                if (substract<0.1)
-                                {//自己与最小相减为0，或者与最小的差距不明显
-                                    bfalsemin=true;
-                                }
-                            }
-                            if (!bfalsemin && f_min<0.1)//差距较大，就进行更正label
-                            {
-                                std::cout<<"change label "<<detection_result_class[i].iclass<<" to "<<confuse_label[i_start+min_index]<<" "<<f_min<<"compare from:"<<distance_vector[j].index<<std::endl;
-                                detection_result_class[i].iclass=confuse_label[i_start+min_index];
-                                detection_result_class[i].bcalibrate=true;//是否让纠正后的obj可以去纠正其他obj
-                            }
+                          key=1;
                         }
-                        std::cout<<" "<<std::endl;
-                        if (abs(j_det_lenght-i_det_lenght)/i_det_lenght<0.05)
+                        else if (distance_vector[j].lenght==22)
                         {
-                            break;//如果有最接近的，就取最接近的进行处理了
+                          key=2;
                         }
+
+                        if (key!=-1)
+                        {
+                          if (map_histogram.find(key)==map_histogram.end())
+                          {
+                              map_histogram[key]=0;
+                              //map_histogram.insert(std::pair<int,int>(key,0));
+                          }
+                          else
+                          {
+                              map_histogram[key]++;
+                          }
+                        }
+                    }
+                    std::map<int,int>::iterator iter;
+                    int max_his_class=k%3;//detection_result_class[i].iclass;
+                    int max_his_count=0;
+                    for (iter=map_histogram.begin(); iter!=map_histogram.end(); iter++)
+                    {
+                      if (iter->second>max_his_count)
+                      {
+                        max_his_count=iter->second;
+                        max_his_class=iter->first;
+                      }
+                    }
+                    if (max_his_count>=2 && max_his_class!=k%3)
+                    {
+                        std::cout<<"confuse_vote change label "<<gRect[i].label<<" to "<<confuse_label[i_start+max_his_class]<<" max_his_count:"<<max_his_count<<std::endl;
+                        std::cout<<"confuse_vote change label i_start"<<i_start<<" max_his_class "<<max_his_class<<std::endl;
+                        gRect[i].bcalibrate=true;//是否让纠正后的obj可以去纠正其他obj
+                        gRect[i].label=confuse_label[i_start+max_his_class];//是否让纠正后的obj可以去纠正其他obj
                     }
                 }
             }
         }
     }
 }
+
+
 
 void determine_from_size(/*list_file,*/vector<Result_detect> & detection_result_class ,bool bcheckconfuse=false,const float range_thredhold=4.5)
 {
@@ -824,6 +845,7 @@ distance_vector_size:
                                                 detection_result_class[j].y2-detection_result_class[j].y1);
                             float right_ratio=j_lenght*j_det_height/j_height/j_det_lenght;
 
+                            std::cout<<"right_ratio "<<right_ratio<<std::endl;
                             if (0.8<right_ratio && right_ratio<1.2)//仅根据摆放的和原比例差不多的进行校正
                             {
                                 //calibrate
@@ -1170,163 +1192,7 @@ void confuse_vote_from_size(/*list_file,*/vector<Result_detect> & detection_resu
     }
 }
 
-void confuse_vote_from_size_0(/*list_file,*/vector<Result_detect> & detection_result_class)
-{
 
-    int confuse_label[]={2,3,4,
-                 -1,5,6,
-                 -1,8,9,
-                 12,13,14,
-                 -1,36,37,
-                 39,40,41,
-                 -1,43,44};
-    char * list_file="/home/liushuai/tiannuocaffe/1detect_bak/size.txt";
-    std::vector<int> labels_size_vec;
-    std::vector<float> lenght_size_vec;
-    std::vector<float> height_size_vec;
-    read_cfg(list_file,labels_size_vec,lenght_size_vec,height_size_vec);
-
-      int size_confuse=sizeof(confuse_label)/sizeof(confuse_label[0]);
-    for (int i = 0; i < detection_result_class.size(); ++i)
-    {
-        // if (detection_result_class[i].bcalibrate==true)//现在校正的是没有经过校正的，比如附近没有可以进行比较的，我们采用投票
-        // {
-        //     continue;
-        // }
-        for (int k = 0; k < size_confuse; ++k)
-        {
-            if (confuse_label[k] == detection_result_class[i].iclass)//如果目标是属于大小标签中的
-            {
-                std::cout<<"confuse_vote_label orignal class:"<<detection_result_class[i].iclass<<std::endl;
-                float i_det_lenght=max(detection_result_class[i].x2-detection_result_class[i].x1,
-                  detection_result_class[i].y2-detection_result_class[i].y1);
-                float i_lenght=-1.0;
-                float i_height=-1.0;
-                bool bfind = check_label_exist_cfg(detection_result_class[i].iclass,labels_size_vec,lenght_size_vec,height_size_vec,i_lenght,i_height);
-                if (bfind)
-                {
-                    if (-1.0==i_lenght)
-                    {
-                      continue;
-                    }
-                }
-                else
-                {
-                      std::cout<<"the lenght of confuse label "<<detection_result_class[i].iclass<<" not in size.txt"<<std::endl; 
-                }
-                int i_start = 3*(k/3);
-                std::vector<Min_distace_index_> distance_vector;
-                for (int j = 0; j < detection_result_class.size(); ++j)//从附近的检测到的物体中的尺寸关系
-                {
-                    //因为易混淆的类别的分类可能是错误的，极大的影响准确性，所以需要把易混淆的类别排除在外
-                    bool bconfuse_vote=false;
-                    bool bj_confuse=false;
-                    int j_confuse_index=-1;
-                    for (int m = 0; m < size_confuse; ++m)
-                    {
-                        if (detection_result_class[j].iclass==confuse_label[m] && i_start==3*(m/3))//是否让纠正后的obj可以去纠正其他obj
-                        {
-                            bconfuse_vote=true;
-                            break;
-                        }
-                    }
-                    // if (confuse_label[i_start]!=detection_result_class[j].iclass
-                    //   &&confuse_label[i_start+1]!=detection_result_class[j].iclass
-                    //   &&confuse_label[i_start+2]!=detection_result_class[j].iclass)//排除在同一个混淆类别下的物体 中去比较
-                    if(bconfuse_vote)
-                    {//do
-                        float j_lenght=-1.0;
-                        float j_height=-1.0;
-                        bool bfind_j = check_label_exist_cfg(detection_result_class[j].iclass,labels_size_vec,lenght_size_vec,height_size_vec,j_lenght,j_height);
-                        if (bfind_j)
-                        {
-                            if (-1.0==j_lenght)
-                            {
-                              continue;
-                            }
-                            if (-1.0==j_height)
-                            {
-                              continue;
-                            }
-                            float j_det_lenght=max(detection_result_class[j].x2-detection_result_class[j].x1,
-                                                detection_result_class[j].y2-detection_result_class[j].y1);
-                            float j_det_height=min(detection_result_class[j].x2-detection_result_class[j].x1,
-                                                detection_result_class[j].y2-detection_result_class[j].y1);
-                            float right_ratio=j_det_lenght/i_det_lenght;
-                            //j_det_lenght*choose_lenght/distance_vector[j].lenght/i_det_lenght
-                            if (0.93<right_ratio && right_ratio<1.07)//仅根据大小特别接近的进行校正
-                            {
-                                //calibrate
-                                Min_distace_index_ min_distace_index;
-                                min_distace_index.lenght = j_lenght;
-                                min_distace_index.height = j_height;
-                                min_distace_index.index=j;//detection_result_class[j].iclass;
-                                min_distace_index.bconfuse=bj_confuse;
-                                min_distace_index.confuse_index=j_confuse_index;
-                                min_distace_index.distace=sqrt(pow(detection_result_class[j].x1+detection_result_class[j].x2-detection_result_class[i].x1-detection_result_class[i].x2 , 2)
-                                              +pow(detection_result_class[j].y1+detection_result_class[j].y2-detection_result_class[i].y1-detection_result_class[i].y2,2))/4;
-
-                                //std::cout<<"min_distace_index.distace "<<min_distace_index.distace<<std::endl;//4*6.25*i_det_lenght*i_det_lenght
-                                // if (2.5*i_det_lenght>min_distace_index.distace)//当距离大于2.5倍长度的物体 不具有对比意义
-                                // {
-                                //     distance_vector.push_back(min_distace_index);
-                                // }
-                               // if ((abs(detection_result_class[j].x1-detection_result_class[i].x1)<1.5*i_det_lenght 
-                               //    ||abs(detection_result_class[j].x2-detection_result_class[i].x2)<1.5*i_det_lenght)
-                               //    && (abs(detection_result_class[j].y1-detection_result_class[i].y1)<1.5*i_det_lenght
-                               //      ||abs(detection_result_class[j].y2-detection_result_class[i].y2)<1.5*i_det_lenght))
-                                if(min_distace_index.distace<1.0*i_det_lenght)
-                                {
-                                  distance_vector.push_back(min_distace_index);
-                                } 
-                                // if ( (abs(detection_result_class[j].y1-detection_result_class[i].y1)<1.5*i_det_lenght
-                                //     ||abs(detection_result_class[j].y2-detection_result_class[i].y2)<1.5*i_det_lenght))//竖直方向
-                                // {
-                                //   distance_vector.push_back(min_distace_index);
-                                // }
-                            }
-                        }
-                    }
-                }
-                    std::cout<<"vetical i_det_lenght "<<i_det_lenght<<" distance_vector size "<<distance_vector.size()<<std::endl;
-                if (distance_vector.size()>2)
-                {
-                    std::map<int,int> map_histogram;
-                    //std::sort(distance_vector.begin(), distance_vector.end(), comparedistance);//根据距离大小 从小到大排序
-                    for (int j = 0; j < distance_vector.size(); ++j)
-                    {
-                        if (map_histogram.find(detection_result_class[distance_vector[j].index].iclass)==map_histogram.end())
-                        {
-                            map_histogram[detection_result_class[distance_vector[j].index].iclass]=0;
-                        }
-                        else
-                        {
-                            map_histogram[detection_result_class[distance_vector[j].index].iclass]++;
-                        }
-                        
-                    }
-                    std::map<int,int>::iterator iter;
-                    int max_his_class=detection_result_class[i].iclass;
-                    int max_his_count=0;
-                    for (iter=map_histogram.begin(); iter!=map_histogram.end(); iter++)
-                    {
-                      if (iter->second>max_his_count)
-                      {
-                        max_his_count=iter->second;
-                        max_his_class=iter->first;
-                      }
-                    }
-                    if (max_his_count>=2 && max_his_class!=detection_result_class[i].iclass)
-                    {
-                        std::cout<<"confuse_vote change label  "<<detection_result_class[i].iclass<<" to "<<max_his_class<<" max_his_count:"<<max_his_count<<std::endl;
-                        detection_result_class[i].bcalibrate=true;//是否让纠正后的obj可以去纠正其他obj
-                        detection_result_class[i].iclass=max_his_class;//是否让纠正后的obj可以去纠正其他obj
-                    }
-                }
-            }
-        }
-    }
-}
 
 // void confuse_compare_from_size(/*list_file,*/vector<Result_detect> & detection_result_class)
 // {
@@ -1548,6 +1414,69 @@ void confuse_vote_from_size_0(/*list_file,*/vector<Result_detect> & detection_re
 //     }
 // }
 
+void AfterProcessinggsk(std::vector<GoodsRect> &gRect)
+{
+    int confuse_label[]={2,3,4,
+                 -1,5,6,
+                 -1,8,9,
+                 12,13,14,
+                 -1,36,37,
+                 39,40,41,
+                 -1,43,44};
+    char * list_file="/home/liushuai/tiannuocaffe/1detect_bak/size.txt";
+    std::vector<int> labels_size_vec;
+    std::vector<float> lenght_size_vec;
+    std::vector<float> height_size_vec;
+    read_cfg(list_file,labels_size_vec,lenght_size_vec,height_size_vec);
+    int conf_label_size=sizeof(confuse_label)/sizeof(confuse_label[0]);
+  determine_from_size_rect(confuse_label,conf_label_size,labels_size_vec,lenght_size_vec,height_size_vec,gRect,false,2.5);//通过周围的非混淆物品进行校验，同时通过校验后的进行校验
+  determine_from_size_rect(confuse_label,conf_label_size,labels_size_vec,lenght_size_vec,height_size_vec,gRect,true,2.0);//因为顺序的原因，可能校验过后没有成为可校验的对象。再次根据校验后的进行校验
+  determine_from_size_rect(confuse_label,conf_label_size,labels_size_vec,lenght_size_vec,height_size_vec,gRect,true,4.5);//扩大范围进行校验
+  confuse_vote_from_size_rect(confuse_label,conf_label_size,labels_size_vec,lenght_size_vec,height_size_vec,gRect);//小范围投票
+
+}
+void do_struct_AfterProcessinggsk(IN vector<Result_detect> & detection_result_class,OUT std::vector<GoodsRect> &gRect)
+{
+  //std::vector<GoodsRect> gRect;
+  int size=detection_result_class.size();
+  for (int i = 0; i < size; ++i)
+  {
+      GoodsRect goodrec;
+      goodrec.score=detection_result_class[i].score;
+      goodrec.label=detection_result_class[i].iclass;
+      goodrec.calibrate_preclass=detection_result_class[i].iclass;
+      goodrec.rt=cv::Rect(detection_result_class[i].x1,
+                      detection_result_class[i].y1,
+                      abs(detection_result_class[i].x2-detection_result_class[i].x1),
+                      abs(detection_result_class[i].y2-detection_result_class[i].y1));
+      gRect.push_back(goodrec);
+  }
+
+  //int size=detection_result_class.size();
+  bool bsame=true;
+  for (int ic = 0; ic < size; ++ic)
+  {
+    if (gRect[ic].label!=detection_result_class[ic].iclass
+      ||gRect[ic].calibrate_preclass!=detection_result_class[ic].calibrate_preclass
+      ||gRect[ic].bcalibrate!=detection_result_class[ic].bcalibrate
+      ||gRect[ic].calibrate_preclass!=detection_result_class[ic].calibrate_preclass
+      ||gRect[ic].rt.x!=detection_result_class[ic].x1
+      ||gRect[ic].rt.y!=detection_result_class[ic].y1
+      ||(gRect[ic].rt.x+gRect[ic].rt.width)!=detection_result_class[ic].x2
+      ||(gRect[ic].rt.y+gRect[ic].rt.height)!=detection_result_class[ic].y2)
+    {
+      std::cout<<"before not equal "<<ic<<std::endl;
+      bsame=false;
+    }
+      
+  }
+  if (bsame)
+  {
+      std::cout<<"before same "<<std::endl;
+  }
+  AfterProcessinggsk(gRect);
+}
+
 void Detector::Cut4ImageDetect(cv::Mat& img, vector<Result_detect> & detection_result_class,float nms_threhold,float conf_threhold)
 {
 	vector<Result_detect >  tmp_detections;//detections,
@@ -1579,12 +1508,45 @@ void Detector::Cut4ImageDetect(cv::Mat& img, vector<Result_detect> & detection_r
       std::cout<<detection_result_class[i].iclass<<"->"<<detection_result_class[i].score<<" ";
     }
     std::cout<<std::endl;
+    std::vector<GoodsRect> gRect;
+  do_struct_AfterProcessinggsk(detection_result_class,gRect);
+  {
+
   determine_from_size(detection_result_class,false,2.5);//通过周围的非混淆物品进行校验，同时通过校验后的进行校验
   determine_from_size(detection_result_class,true,2.0);//因为顺序的原因，可能校验过后没有成为可校验的对象。再次根据校验后的进行校验
   determine_from_size(detection_result_class,true,4.5);//因为顺序的原因，可能校验过后没有成为可校验的对象。再次根据校验后的进行校验
   confuse_vote_from_size(detection_result_class);//对于周围既没有非混淆物品，也没有校验成功的物品；则进行投票周边同混淆的商品进行校验
+  }
   //confuse_compare_from_size(detection_result_class);//对于在同一个混淆类别里头，根据大小尺寸聚类再处理一次
-  //determine_from_size(detection_result_class,true);//因为顺序的原因，可能校验过后没有成为可校验的对象。再次根据校验后的进行校验
+
+  int size=detection_result_class.size();
+  bool bsame=true;
+  for (int ic = 0; ic < size; ++ic)
+  {
+    if (gRect[ic].label!=detection_result_class[ic].iclass
+      ||gRect[ic].calibrate_preclass!=detection_result_class[ic].calibrate_preclass
+      ||gRect[ic].bcalibrate!=detection_result_class[ic].bcalibrate
+      ||gRect[ic].rt.x!=detection_result_class[ic].x1
+      ||gRect[ic].rt.y!=detection_result_class[ic].y1
+      ||(gRect[ic].rt.x+gRect[ic].rt.width)!=detection_result_class[ic].x2
+      ||(gRect[ic].rt.y+gRect[ic].rt.height)!=detection_result_class[ic].y2)
+    {
+      std::cout<<" not equal "<<ic<<std::endl;
+      std::cout<<"           "<<gRect[ic].label<<"->"<<detection_result_class[ic].iclass<<std::endl;
+      std::cout<<"           "<<gRect[ic].calibrate_preclass<<"->"<<detection_result_class[ic].calibrate_preclass<<std::endl;
+      std::cout<<"           "<<gRect[ic].bcalibrate<<"->"<<detection_result_class[ic].bcalibrate<<std::endl;
+      std::cout<<"           "<<gRect[ic].rt.x<<"->"<<detection_result_class[ic].x1<<std::endl;
+      std::cout<<"           "<<gRect[ic].rt.y<<"->"<<detection_result_class[ic].y1<<std::endl;
+      std::cout<<"           "<<(gRect[ic].rt.x+gRect[ic].rt.width)<<"->"<<detection_result_class[ic].x2<<std::endl;
+      std::cout<<"           "<<(gRect[ic].rt.y+gRect[ic].rt.height)<<"->"<<detection_result_class[ic].y2<<std::endl;
+      bsame=false;
+    }
+      
+  }
+  if (bsame)
+  {
+      std::cout<<" same "<<std::endl;
+  }
 }
 
 void Do_overlap_confuseclass(vector<Result_detect> &detections,float confidence_threshold)
