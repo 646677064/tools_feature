@@ -1,0 +1,420 @@
+gpu mode 4
+---import sys---
+libpath sys.path.append('/home/liushuai/tiannuocaffe/py-rfcn-gpu//lib//fast_rcnn/')----------------------
+testcfg_defaut_nms_GPUID= 4
+----------------------
+----------------------
+ enter Detect NMS: 0.3 CONF_THRESH: 0.3
+ copy data  
+ ForwardFrom  
+1022
+ ForwardFrom over 
+ over  
+ enter Detect NMS: 0.3 CONF_THRESH: 0.3
+ copy data  
+ ForwardFrom  
+997
+ ForwardFrom over 
+ over  
+ enter Detect NMS: 0.3 CONF_THRESH: 0.3
+ copy data  
+ ForwardFrom  
+863
+ ForwardFrom over 
+ over  
+ enter Detect NMS: 0.3 CONF_THRESH: 0.3
+ copy data  
+ ForwardFrom  
+794
+ ForwardFrom over 
+ over  
+
+14->0.999981 41->0.663088 41->1 44->0.999999 41->0.999996 41->0.999996 44->0.999993 44->0.999992 41->0.999988 41->0.999969 
+41->0.999969 44->0.999968 44->0.999961 44->0.999859 41->0.999996 41->0.999992 44->0.999979 44->0.999964 41->0.999958 41->0.999957 
+41->0.999942 14->0.999895 14->0.999892 41->0.999795 14->0.999256 14->0.999171 41->0.998872 14->0.998825 14->0.99805 14->0.997604 
+14->0.995988 41->0.989273 
+2 16.5 4.5 sssssss2 16.5 4.5 over 
+3 18 4.5 sssssss3 18 4.5 over 
+4 22.5 4.5 sssssss4 22.5 4.5 over 
+5 18 4.5 sssssss5 18 4.5 over 
+6 22.5 4.5 sssssss6 22.5 4.5 over 
+8 18 4.5 sssssss8 18 4.5 over 
+9 22.5 4.5 sssssss9 22.5 4.5 over 
+12 16.5 4.5 sssssss12 16.5 4.5 over 
+13 18 4.5 sssssss13 18 4.5 over 
+14 22.5 4.5 sssssss14 22.5 4.5 over 
+36 18 4.5 sssssss36 18 4.5 over 
+37 22.5 4.5 sssssss37 22.5 4.5 over 
+39 16.5 4.5 sssssss39 16.5 4.5 over 
+40 18 4.5 sssssss40 18 4.5 over 
+41 22.5 4.5 sssssss41 22.5 4.5 over 
+43 18 4.5 sssssss43 18 4.5 over 
+44 22.5 4.5 sssssss44 22.5 4.5 over 
+15 18 4.5 sssssss15 18 4.5 over 
+16 18 4.5 sssssss16 18 4.5 over 
+17 18 4.5 sssssss17 18 4.5 over 
+18 18 4.5 sssssss18 18 4.5 over 
+7 18 4.5 sssssss7 18 4.5 over 
+11 18 4.5 sssssss11 18 4.5 over 
+ sssssssover 
+confuse_label orignal class:14
+i_det_lenght 103.255 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 59.2138 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 125.607 distance_vector size 0
+confuse_label orignal class:44
+i_det_lenght 109.557 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 123.94 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 123.244 distance_vector size 0
+confuse_label orignal class:44
+i_det_lenght 101.857 distance_vector size 0
+confuse_label orignal class:44
+i_det_lenght 113.481 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 118.164 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 122.01 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 118.793 distance_vector size 0
+confuse_label orignal class:44
+i_det_lenght 113.442 distance_vector size 0
+confuse_label orignal class:44
+i_det_lenght 113.36 distance_vector size 0
+confuse_label orignal class:44
+i_det_lenght 116.803 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 118.506 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 119.269 distance_vector size 0
+confuse_label orignal class:44
+i_det_lenght 103.528 distance_vector size 0
+confuse_label orignal class:44
+i_det_lenght 103.949 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 115.828 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 107.954 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 116.046 distance_vector size 0
+confuse_label orignal class:14
+i_det_lenght 93.2164 distance_vector size 0
+confuse_label orignal class:14
+i_det_lenght 93.7387 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 101.82 distance_vector size 0
+confuse_label orignal class:14
+i_det_lenght 95.2644 distance_vector size 0
+confuse_label orignal class:14
+i_det_lenght 96.055 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 112.484 distance_vector size 0
+confuse_label orignal class:14
+i_det_lenght 95.5536 distance_vector size 0
+confuse_label orignal class:14
+i_det_lenght 96.675 distance_vector size 0
+confuse_label orignal class:14
+i_det_lenght 98.631 distance_vector size 0
+confuse_label orignal class:14
+i_det_lenght 103.524 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 104.905 distance_vector size 0
+2 16.5 4.5 sssssss2 16.5 4.5 over 
+3 18 4.5 sssssss3 18 4.5 over 
+4 22.5 4.5 sssssss4 22.5 4.5 over 
+5 18 4.5 sssssss5 18 4.5 over 
+6 22.5 4.5 sssssss6 22.5 4.5 over 
+8 18 4.5 sssssss8 18 4.5 over 
+9 22.5 4.5 sssssss9 22.5 4.5 over 
+12 16.5 4.5 sssssss12 16.5 4.5 over 
+13 18 4.5 sssssss13 18 4.5 over 
+14 22.5 4.5 sssssss14 22.5 4.5 over 
+36 18 4.5 sssssss36 18 4.5 over 
+37 22.5 4.5 sssssss37 22.5 4.5 over 
+39 16.5 4.5 sssssss39 16.5 4.5 over 
+40 18 4.5 sssssss40 18 4.5 over 
+41 22.5 4.5 sssssss41 22.5 4.5 over 
+43 18 4.5 sssssss43 18 4.5 over 
+44 22.5 4.5 sssssss44 22.5 4.5 over 
+15 18 4.5 sssssss15 18 4.5 over 
+16 18 4.5 sssssss16 18 4.5 over 
+17 18 4.5 sssssss17 18 4.5 over 
+18 18 4.5 sssssss18 18 4.5 over 
+7 18 4.5 sssssss7 18 4.5 over 
+11 18 4.5 sssssss11 18 4.5 over 
+ sssssssover 
+confuse_label orignal class:14
+i_det_lenght 103.255 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 59.2138 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 125.607 distance_vector size 0
+confuse_label orignal class:44
+i_det_lenght 109.557 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 123.94 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 123.244 distance_vector size 0
+confuse_label orignal class:44
+i_det_lenght 101.857 distance_vector size 0
+confuse_label orignal class:44
+i_det_lenght 113.481 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 118.164 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 122.01 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 118.793 distance_vector size 0
+confuse_label orignal class:44
+i_det_lenght 113.442 distance_vector size 0
+confuse_label orignal class:44
+i_det_lenght 113.36 distance_vector size 0
+confuse_label orignal class:44
+i_det_lenght 116.803 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 118.506 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 119.269 distance_vector size 0
+confuse_label orignal class:44
+i_det_lenght 103.528 distance_vector size 0
+confuse_label orignal class:44
+i_det_lenght 103.949 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 115.828 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 107.954 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 116.046 distance_vector size 0
+confuse_label orignal class:14
+i_det_lenght 93.2164 distance_vector size 0
+confuse_label orignal class:14
+i_det_lenght 93.7387 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 101.82 distance_vector size 0
+confuse_label orignal class:14
+i_det_lenght 95.2644 distance_vector size 0
+confuse_label orignal class:14
+i_det_lenght 96.055 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 112.484 distance_vector size 0
+confuse_label orignal class:14
+i_det_lenght 95.5536 distance_vector size 0
+confuse_label orignal class:14
+i_det_lenght 96.675 distance_vector size 0
+confuse_label orignal class:14
+i_det_lenght 98.631 distance_vector size 0
+confuse_label orignal class:14
+i_det_lenght 103.524 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 104.905 distance_vector size 0
+2 16.5 4.5 sssssss2 16.5 4.5 over 
+3 18 4.5 sssssss3 18 4.5 over 
+4 22.5 4.5 sssssss4 22.5 4.5 over 
+5 18 4.5 sssssss5 18 4.5 over 
+6 22.5 4.5 sssssss6 22.5 4.5 over 
+8 18 4.5 sssssss8 18 4.5 over 
+9 22.5 4.5 sssssss9 22.5 4.5 over 
+12 16.5 4.5 sssssss12 16.5 4.5 over 
+13 18 4.5 sssssss13 18 4.5 over 
+14 22.5 4.5 sssssss14 22.5 4.5 over 
+36 18 4.5 sssssss36 18 4.5 over 
+37 22.5 4.5 sssssss37 22.5 4.5 over 
+39 16.5 4.5 sssssss39 16.5 4.5 over 
+40 18 4.5 sssssss40 18 4.5 over 
+41 22.5 4.5 sssssss41 22.5 4.5 over 
+43 18 4.5 sssssss43 18 4.5 over 
+44 22.5 4.5 sssssss44 22.5 4.5 over 
+15 18 4.5 sssssss15 18 4.5 over 
+16 18 4.5 sssssss16 18 4.5 over 
+17 18 4.5 sssssss17 18 4.5 over 
+18 18 4.5 sssssss18 18 4.5 over 
+7 18 4.5 sssssss7 18 4.5 over 
+11 18 4.5 sssssss11 18 4.5 over 
+ sssssssover 
+confuse_label orignal class:14
+i_det_lenght 103.255 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 59.2138 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 125.607 distance_vector size 0
+confuse_label orignal class:44
+i_det_lenght 109.557 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 123.94 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 123.244 distance_vector size 0
+confuse_label orignal class:44
+i_det_lenght 101.857 distance_vector size 0
+confuse_label orignal class:44
+i_det_lenght 113.481 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 118.164 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 122.01 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 118.793 distance_vector size 0
+confuse_label orignal class:44
+i_det_lenght 113.442 distance_vector size 0
+confuse_label orignal class:44
+i_det_lenght 113.36 distance_vector size 0
+confuse_label orignal class:44
+i_det_lenght 116.803 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 118.506 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 119.269 distance_vector size 0
+confuse_label orignal class:44
+i_det_lenght 103.528 distance_vector size 0
+confuse_label orignal class:44
+i_det_lenght 103.949 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 115.828 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 107.954 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 116.046 distance_vector size 0
+confuse_label orignal class:14
+i_det_lenght 93.2164 distance_vector size 0
+confuse_label orignal class:14
+i_det_lenght 93.7387 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 101.82 distance_vector size 0
+confuse_label orignal class:14
+i_det_lenght 95.2644 distance_vector size 0
+confuse_label orignal class:14
+i_det_lenght 96.055 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 112.484 distance_vector size 0
+confuse_label orignal class:14
+i_det_lenght 95.5536 distance_vector size 0
+confuse_label orignal class:14
+i_det_lenght 96.675 distance_vector size 0
+confuse_label orignal class:14
+i_det_lenght 98.631 distance_vector size 0
+confuse_label orignal class:14
+i_det_lenght 103.524 distance_vector size 0
+confuse_label orignal class:41
+i_det_lenght 104.905 distance_vector size 0
+2 16.5 4.5 sssssss2 16.5 4.5 over 
+3 18 4.5 sssssss3 18 4.5 over 
+4 22.5 4.5 sssssss4 22.5 4.5 over 
+5 18 4.5 sssssss5 18 4.5 over 
+6 22.5 4.5 sssssss6 22.5 4.5 over 
+8 18 4.5 sssssss8 18 4.5 over 
+9 22.5 4.5 sssssss9 22.5 4.5 over 
+12 16.5 4.5 sssssss12 16.5 4.5 over 
+13 18 4.5 sssssss13 18 4.5 over 
+14 22.5 4.5 sssssss14 22.5 4.5 over 
+36 18 4.5 sssssss36 18 4.5 over 
+37 22.5 4.5 sssssss37 22.5 4.5 over 
+39 16.5 4.5 sssssss39 16.5 4.5 over 
+40 18 4.5 sssssss40 18 4.5 over 
+41 22.5 4.5 sssssss41 22.5 4.5 over 
+43 18 4.5 sssssss43 18 4.5 over 
+44 22.5 4.5 sssssss44 22.5 4.5 over 
+15 18 4.5 sssssss15 18 4.5 over 
+16 18 4.5 sssssss16 18 4.5 over 
+17 18 4.5 sssssss17 18 4.5 over 
+18 18 4.5 sssssss18 18 4.5 over 
+7 18 4.5 sssssss7 18 4.5 over 
+11 18 4.5 sssssss11 18 4.5 over 
+ sssssssover 
+confuse_vote_label orignal class:14
+ k 11 istart 9
+vetical i_det_lenght 103.255 distance_vector size 7
+confuse_vote_label orignal class:41
+ k 17 istart 15
+vetical i_det_lenght 59.2138 distance_vector size 1
+confuse_vote_label orignal class:41
+ k 17 istart 15
+vetical i_det_lenght 125.607 distance_vector size 5
+confuse_vote_label orignal class:44
+ k 20 istart 18
+vetical i_det_lenght 109.557 distance_vector size 7
+confuse_vote_label orignal class:41
+ k 17 istart 15
+vetical i_det_lenght 123.94 distance_vector size 6
+confuse_vote_label orignal class:41
+ k 17 istart 15
+vetical i_det_lenght 123.244 distance_vector size 8
+confuse_vote_label orignal class:44
+ k 20 istart 18
+vetical i_det_lenght 101.857 distance_vector size 7
+confuse_vote_label orignal class:44
+ k 20 istart 18
+vetical i_det_lenght 113.481 distance_vector size 5
+confuse_vote_label orignal class:41
+ k 17 istart 15
+vetical i_det_lenght 118.164 distance_vector size 7
+confuse_vote_label orignal class:41
+ k 17 istart 15
+vetical i_det_lenght 122.01 distance_vector size 8
+confuse_vote_label orignal class:41
+ k 17 istart 15
+vetical i_det_lenght 118.793 distance_vector size 7
+confuse_vote_label orignal class:44
+ k 20 istart 18
+vetical i_det_lenght 113.442 distance_vector size 6
+confuse_vote_label orignal class:44
+ k 20 istart 18
+vetical i_det_lenght 113.36 distance_vector size 6
+confuse_vote_label orignal class:44
+ k 20 istart 18
+vetical i_det_lenght 116.803 distance_vector size 11
+confuse_vote_label orignal class:41
+ k 17 istart 15
+vetical i_det_lenght 118.506 distance_vector size 10
+confuse_vote_label orignal class:41
+ k 17 istart 15
+vetical i_det_lenght 119.269 distance_vector size 9
+confuse_vote_label orignal class:44
+ k 20 istart 18
+vetical i_det_lenght 103.528 distance_vector size 5
+confuse_vote_label orignal class:44
+ k 20 istart 18
+vetical i_det_lenght 103.949 distance_vector size 6
+confuse_vote_label orignal class:41
+ k 17 istart 15
+vetical i_det_lenght 115.828 distance_vector size 5
+confuse_vote_label orignal class:41
+ k 17 istart 15
+vetical i_det_lenght 107.954 distance_vector size 5
+confuse_vote_label orignal class:41
+ k 17 istart 15
+vetical i_det_lenght 116.046 distance_vector size 6
+confuse_vote_label orignal class:14
+ k 11 istart 9
+vetical i_det_lenght 93.2164 distance_vector size 4
+confuse_vote_label orignal class:14
+ k 11 istart 9
+vetical i_det_lenght 93.7387 distance_vector size 4
+confuse_vote_label orignal class:41
+ k 17 istart 15
+vetical i_det_lenght 101.82 distance_vector size 6
+confuse_vote_label orignal class:14
+ k 11 istart 9
+vetical i_det_lenght 95.2644 distance_vector size 5
+confuse_vote_label orignal class:14
+ k 11 istart 9
+vetical i_det_lenght 96.055 distance_vector size 6
+confuse_vote_label orignal class:41
+ k 17 istart 15
+vetical i_det_lenght 112.484 distance_vector size 5
+confuse_vote_label orignal class:14
+ k 11 istart 9
+vetical i_det_lenght 95.5536 distance_vector size 6
+confuse_vote_label orignal class:14
+ k 11 istart 9
+vetical i_det_lenght 96.675 distance_vector size 6
+confuse_vote_label orignal class:14
+ k 11 istart 9
+vetical i_det_lenght 98.631 distance_vector size 6
+confuse_vote_label orignal class:14
+ k 11 istart 9
+vetical i_det_lenght 103.524 distance_vector size 6
+confuse_vote_label orignal class:41
+ k 17 istart 15
+vetical i_det_lenght 104.905 distance_vector size 4
+Total Time: 7 s -65981 us  imageCount 1

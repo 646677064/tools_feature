@@ -1,0 +1,3961 @@
+gpu mode 4
+---import sys---
+libpath sys.path.append('/home/liushuai/tiannuocaffe/py-rfcn-gpu//lib//fast_rcnn/')----------------------
+testcfg_defaut_nms_GPUID= 4
+----------------------
+----------------------
+ enter Detect NMS: 0.3 CONF_THRESH: 0.3
+ copy data  
+ ForwardFrom  
+577
+ ForwardFrom over 
+ over  
+ enter Detect NMS: 0.3 CONF_THRESH: 0.3
+ copy data  
+ ForwardFrom  
+265
+ ForwardFrom over 
+ over  
+ enter Detect NMS: 0.3 CONF_THRESH: 0.3
+ copy data  
+ ForwardFrom  
+698
+ ForwardFrom over 
+ over  
+ enter Detect NMS: 0.3 CONF_THRESH: 0.3
+ copy data  
+ ForwardFrom  
+604
+ ForwardFrom over 
+ over  
+
+17->0.999999 15->0.999998 7->0.999997 7->0.999995 7->0.999991 16->0.999986 17->0.999986 7->0.999975 19->0.999893 16->0.99985 
+15->0.999826 7->0.999788 7->0.999543 19->0.996301 3->0.995943 43->0.999999 7->0.999999 43->0.999996 12->0.999995 36->0.999994 
+43->0.999993 43->0.999992 12->0.999992 36->0.999991 62->0.999981 36->0.999976 61->0.999976 36->0.999974 20->0.999963 12->0.999955 
+43->0.999948 20->0.999927 62->0.999917 43->0.999912 36->0.999856 8->0.999824 36->0.999796 8->0.999738 63->0.999723 43->0.999625 
+36->0.999619 12->0.999137 8->0.998701 8->0.847891 43->0.647988 11->1 11->1 11->0.999999 11->0.999998 11->0.999998 
+11->0.999997 18->0.999994 11->0.999994 11->0.999989 11->0.999987 18->0.999976 39->0.999967 39->0.999966 39->0.999962 39->0.999934 
+12->0.999234 4->0.997422 12->0.993149 43->1 12->1 43->0.999999 12->0.999997 36->0.999984 43->0.999983 43->0.99997 
+12->0.999517 4->0.99873 4->0.997489 8->0.99538 4->0.99341 36->0.974342 8->0.969951 
+2 16.5 4.5 sssssss2 16.5 4.5 over 
+3 18 4.5 sssssss3 18 4.5 over 
+4 22.5 4.5 sssssss4 22.5 4.5 over 
+5 18 4.5 sssssss5 18 4.5 over 
+6 22.5 4.5 sssssss6 22.5 4.5 over 
+8 18 4.5 sssssss8 18 4.5 over 
+9 22.5 4.5 sssssss9 22.5 4.5 over 
+12 16.5 4.5 sssssss12 16.5 4.5 over 
+13 18 4.5 sssssss13 18 4.5 over 
+14 22.5 4.5 sssssss14 22.5 4.5 over 
+36 18 4.5 sssssss36 18 4.5 over 
+37 22.5 4.5 sssssss37 22.5 4.5 over 
+39 16.5 4.5 sssssss39 16.5 4.5 over 
+40 18 4.5 sssssss40 18 4.5 over 
+41 22.5 4.5 sssssss41 22.5 4.5 over 
+43 18 4.5 sssssss43 18 4.5 over 
+44 22.5 4.5 sssssss44 22.5 4.5 over 
+15 18 4.5 sssssss15 18 4.5 over 
+16 18 4.5 sssssss16 18 4.5 over 
+17 18 4.5 sssssss17 18 4.5 over 
+18 18 4.5 sssssss18 18 4.5 over 
+7 18 4.5 sssssss7 18 4.5 over 
+11 18 4.5 sssssss11 18 4.5 over 
+ sssssssover 
+right_ratio 1.1104 distace 599.149
+right_ratio 1.14141 distace 234.97
+ dis 234.97
+right_ratio 1.04366 distace 522.658
+right_ratio 1.14042 distace 287.674
+ dis 287.674
+right_ratio 1.08447 distace 454.763
+right_ratio 1.08813 distace 291.92
+right_ratio 1.18101 distace 261.354
+right_ratio 1.00368 distace 186.664
+ dis 186.664
+right_ratio 1.08795 distace 594.744
+right_ratio 1.18855 distace 742.505
+right_ratio 1.09587 distace 709.996
+confuse_label orignal class:3
+i_det_lenght 170.913 distance_vector size 3
+judge 0.0248269 j_det_lenght  distace 287.674181.821
+judge 0.0638251 j_det_lenght  distace 287.674181.821
+judge 0.329781 j_det_lenght  distace 287.674181.821
+ 
+judge 0.0299171 j_det_lenght  distace 234.97180.872
+judge 0.0582722 j_det_lenght  distace 234.97180.872
+judge 0.32284 j_det_lenght  distace 234.97180.872
+ 
+judge 0.00803447 j_det_lenght  distace 186.664187.948
+judge 0.099674 j_det_lenght  distace 186.664187.948
+judge 0.374592 j_det_lenght  distace 186.664187.948
+ 
+right_ratio 1.1104 distace 1039.4
+right_ratio 1.14141 distace 740.334
+right_ratio 1.04366 distace 1007.81
+right_ratio 1.14042 distace 792.95
+right_ratio 1.08447 distace 960.514
+right_ratio 1.08813 distace 748.258
+right_ratio 1.18101 distace 701.427
+right_ratio 1.00368 distace 692.184
+right_ratio 1.08795 distace 892.119
+right_ratio 1.18855 distace 985.55
+right_ratio 1.09587 distace 1096.93
+right_ratio 1.1104 distace 1039.4
+right_ratio 1.14141 distace 740.334
+right_ratio 1.04366 distace 1007.81
+right_ratio 1.14042 distace 792.95
+right_ratio 1.08447 distace 960.514
+right_ratio 1.08813 distace 748.258
+right_ratio 1.18101 distace 701.427
+right_ratio 1.00368 distace 692.184
+right_ratio 1.08795 distace 892.119
+right_ratio 1.18855 distace 985.55
+right_ratio 1.09587 distace 1096.93
+confuse_label orignal class:43
+i_det_lenght 170.489 distance_vector size 0
+right_ratio 1.1104 distace 947.428
+right_ratio 1.14141 distace 790.031
+right_ratio 1.04366 distace 977.527
+right_ratio 1.14042 distace 836.396
+right_ratio 1.08447 distace 994.673
+right_ratio 1.08813 distace 718.431
+right_ratio 1.18101 distace 667.972
+right_ratio 1.00368 distace 748.76
+right_ratio 1.08795 distace 706.069
+right_ratio 1.18855 distace 751.703
+right_ratio 1.09587 distace 949.087
+right_ratio 1.1104 distace 947.428
+right_ratio 1.14141 distace 790.031
+right_ratio 1.04366 distace 977.527
+right_ratio 1.14042 distace 836.396
+right_ratio 1.08447 distace 994.673
+right_ratio 1.08813 distace 718.431
+right_ratio 1.18101 distace 667.972
+right_ratio 1.00368 distace 748.76
+right_ratio 1.08795 distace 706.069
+right_ratio 1.18855 distace 751.703
+right_ratio 1.09587 distace 949.087
+confuse_label orignal class:43
+i_det_lenght 167.249 distance_vector size 0
+right_ratio 1.1104 distace 845.551
+right_ratio 1.14141 distace 512.695
+right_ratio 1.04366 distace 793.048
+right_ratio 1.14042 distace 565.392
+right_ratio 1.08447 distace 732.133
+right_ratio 1.08813 distace 542.588
+right_ratio 1.18101 distace 500.085
+right_ratio 1.00368 distace 464.382
+right_ratio 1.08795 distace 754.605
+right_ratio 1.18855 distace 874.863
+right_ratio 1.09587 distace 927.059
+right_ratio 1.1104 distace 845.551
+right_ratio 1.14141 distace 512.695
+right_ratio 1.04366 distace 793.048
+right_ratio 1.14042 distace 565.392
+right_ratio 1.08447 distace 732.133
+right_ratio 1.08813 distace 542.588
+right_ratio 1.18101 distace 500.085
+right_ratio 1.00368 distace 464.382
+right_ratio 1.08795 distace 754.605
+right_ratio 1.18855 distace 874.863
+right_ratio 1.09587 distace 927.059
+confuse_label orignal class:12
+i_det_lenght 168.682 distance_vector size 0
+right_ratio 1.1104 distace 1245.89
+right_ratio 1.14141 distace 947.047
+right_ratio 1.04366 distace 1216.98
+right_ratio 1.14042 distace 999.739
+right_ratio 1.08447 distace 1166.93
+right_ratio 1.08813 distace 957.109
+right_ratio 1.18101 distace 909.955
+right_ratio 1.00368 distace 898.777
+right_ratio 1.08795 distace 1081.69
+right_ratio 1.18855 distace 1161.87
+right_ratio 1.09587 distace 1296.5
+right_ratio 1.1104 distace 1245.89
+right_ratio 1.14141 distace 947.047
+right_ratio 1.04366 distace 1216.98
+right_ratio 1.14042 distace 999.739
+right_ratio 1.08447 distace 1166.93
+right_ratio 1.08813 distace 957.109
+right_ratio 1.18101 distace 909.955
+right_ratio 1.00368 distace 898.777
+right_ratio 1.08795 distace 1081.69
+right_ratio 1.18855 distace 1161.87
+right_ratio 1.09587 distace 1296.5
+confuse_label orignal class:36
+i_det_lenght 169.955 distance_vector size 0
+right_ratio 1.1104 distace 991.815
+right_ratio 1.14141 distace 691.522
+right_ratio 1.04366 distace 958.83
+right_ratio 1.14042 distace 744.115
+right_ratio 1.08447 distace 911.728
+right_ratio 1.08813 distace 699.601
+right_ratio 1.18101 distace 652.975
+right_ratio 1.00368 distace 643.405
+right_ratio 1.08795 distace 850.691
+right_ratio 1.18855 distace 948.229
+right_ratio 1.09587 distace 1051.87
+right_ratio 1.1104 distace 991.815
+right_ratio 1.14141 distace 691.522
+right_ratio 1.04366 distace 958.83
+right_ratio 1.14042 distace 744.115
+right_ratio 1.08447 distace 911.728
+right_ratio 1.08813 distace 699.601
+right_ratio 1.18101 distace 652.975
+right_ratio 1.00368 distace 643.405
+right_ratio 1.08795 distace 850.691
+right_ratio 1.18855 distace 948.229
+right_ratio 1.09587 distace 1051.87
+confuse_label orignal class:43
+i_det_lenght 163.39 distance_vector size 0
+right_ratio 1.1104 distace 988.467
+right_ratio 1.14141 distace 909.474
+right_ratio 1.04366 distace 1050.71
+right_ratio 1.14042 distace 950.765
+right_ratio 1.08447 distace 1097.86
+right_ratio 1.08813 distace 807.421
+right_ratio 1.18101 distace 759.422
+right_ratio 1.00368 distace 873.333
+right_ratio 1.08795 distace 701.811
+right_ratio 1.18855 distace 705.344
+right_ratio 1.09587 distace 955.357
+right_ratio 1.1104 distace 988.467
+right_ratio 1.14141 distace 909.474
+right_ratio 1.04366 distace 1050.71
+right_ratio 1.14042 distace 950.765
+right_ratio 1.08447 distace 1097.86
+right_ratio 1.08813 distace 807.421
+right_ratio 1.18101 distace 759.422
+right_ratio 1.00368 distace 873.333
+right_ratio 1.08795 distace 701.811
+right_ratio 1.18855 distace 705.344
+right_ratio 1.09587 distace 955.357
+confuse_label orignal class:43
+i_det_lenght 201.294 distance_vector size 0
+right_ratio 1.1104 distace 781.073
+right_ratio 1.14141 distace 746.564
+right_ratio 1.04366 distace 853.899
+right_ratio 1.14042 distace 782.297
+right_ratio 1.08447 distace 917.906
+right_ratio 1.08813 distace 623.543
+right_ratio 1.18101 distace 578.641
+right_ratio 1.00368 distace 716.395
+right_ratio 1.08795 distace 490.926
+right_ratio 1.18855 distace 504.353
+right_ratio 1.09587 distace 744.342
+right_ratio 1.1104 distace 781.073
+right_ratio 1.14141 distace 746.564
+right_ratio 1.04366 distace 853.899
+right_ratio 1.14042 distace 782.297
+right_ratio 1.08447 distace 917.906
+right_ratio 1.08813 distace 623.543
+right_ratio 1.18101 distace 578.641
+right_ratio 1.00368 distace 716.395
+right_ratio 1.08795 distace 490.926
+ dis 490.926
+right_ratio 1.18855 distace 504.353
+right_ratio 1.09587 distace 744.342
+confuse_label orignal class:12
+i_det_lenght 197.501 distance_vector size 1
+judge 0.278387 j_det_lenght  distace 490.926155.475
+judge 0.212786 j_det_lenght  distace 490.926155.475
+judge 0.0159819 j_det_lenght  distace 490.926155.475
+compare info 11 j_det_lenght 155.475 distance 490.926
+ x dis 24.5538 y dis 490.312
+size change label 12 to 14 0.0159819compare from:46
+ 
+right_ratio 1.1104 distace 781.073
+right_ratio 1.14141 distace 746.564
+right_ratio 1.04366 distace 853.899
+right_ratio 1.14042 distace 782.297
+right_ratio 1.08447 distace 917.906
+right_ratio 1.08813 distace 623.543
+right_ratio 1.18101 distace 578.641
+right_ratio 1.00368 distace 716.395
+right_ratio 1.08795 distace 490.926
+right_ratio 1.18855 distace 504.353
+right_ratio 1.09587 distace 744.342
+right_ratio 1.1104 distace 781.073
+right_ratio 1.14141 distace 746.564
+right_ratio 1.04366 distace 853.899
+right_ratio 1.14042 distace 782.297
+right_ratio 1.08447 distace 917.906
+right_ratio 1.08813 distace 623.543
+right_ratio 1.18101 distace 578.641
+right_ratio 1.00368 distace 716.395
+right_ratio 1.08795 distace 490.926
+ dis 490.926
+right_ratio 1.18855 distace 504.353
+right_ratio 1.09587 distace 744.342
+confuse_label orignal class:14
+i_det_lenght 197.501 distance_vector size 1
+judge 0.278387 j_det_lenght  distace 490.926155.475
+judge 0.212786 j_det_lenght  distace 490.926155.475
+judge 0.0159819 j_det_lenght  distace 490.926155.475
+ 
+right_ratio 1.1104 distace 1231.35
+right_ratio 1.14141 distace 1106.01
+right_ratio 1.04366 distace 1280.08
+right_ratio 1.14042 distace 1151.81
+right_ratio 1.08447 distace 1308.22
+right_ratio 1.08813 distace 1026.49
+right_ratio 1.18101 distace 976.633
+right_ratio 1.00368 distace 1065.08
+right_ratio 1.08795 distace 953.507
+right_ratio 1.18855 distace 957.359
+right_ratio 1.09587 distace 1206.46
+right_ratio 1.1104 distace 1231.35
+right_ratio 1.14141 distace 1106.01
+right_ratio 1.04366 distace 1280.08
+right_ratio 1.14042 distace 1151.81
+right_ratio 1.08447 distace 1308.22
+right_ratio 1.08813 distace 1026.49
+right_ratio 1.18101 distace 976.633
+right_ratio 1.00368 distace 1065.08
+right_ratio 1.08795 distace 953.507
+right_ratio 1.18855 distace 957.359
+right_ratio 1.09587 distace 1206.46
+confuse_label orignal class:36
+i_det_lenght 201.453 distance_vector size 0
+right_ratio 1.1104 distace 1296.71
+right_ratio 1.14141 distace 998.817
+right_ratio 1.04366 distace 1268.78
+right_ratio 1.14042 distace 1051.51
+right_ratio 1.08447 distace 1218.65
+right_ratio 1.08813 distace 1008.71
+right_ratio 1.18101 distace 961.436
+right_ratio 1.00368 distace 950.539
+right_ratio 1.08795 distace 1128.52
+right_ratio 1.18855 distace 1205.62
+right_ratio 1.09587 distace 1345.52
+right_ratio 1.1104 distace 1296.71
+right_ratio 1.14141 distace 998.817
+right_ratio 1.04366 distace 1268.78
+right_ratio 1.14042 distace 1051.51
+right_ratio 1.08447 distace 1218.65
+right_ratio 1.08813 distace 1008.71
+right_ratio 1.18101 distace 961.436
+right_ratio 1.00368 distace 950.539
+right_ratio 1.08795 distace 1128.52
+right_ratio 1.18855 distace 1205.62
+right_ratio 1.09587 distace 1345.52
+confuse_label orignal class:36
+i_det_lenght 166.143 distance_vector size 0
+right_ratio 1.1104 distace 1212.63
+right_ratio 1.14141 distace 1024.62
+right_ratio 1.04366 distace 1235.12
+right_ratio 1.14042 distace 1073.91
+right_ratio 1.08447 distace 1237.43
+right_ratio 1.08813 distace 972.595
+right_ratio 1.18101 distace 921.895
+right_ratio 1.00368 distace 980.115
+right_ratio 1.08795 distace 969.596
+right_ratio 1.18855 distace 1003.73
+right_ratio 1.09587 distace 1214.76
+right_ratio 1.1104 distace 1212.63
+right_ratio 1.14141 distace 1024.62
+right_ratio 1.04366 distace 1235.12
+right_ratio 1.14042 distace 1073.91
+right_ratio 1.08447 distace 1237.43
+right_ratio 1.08813 distace 972.595
+right_ratio 1.18101 distace 921.895
+right_ratio 1.00368 distace 980.115
+right_ratio 1.08795 distace 969.596
+right_ratio 1.18855 distace 1003.73
+right_ratio 1.09587 distace 1214.76
+confuse_label orignal class:36
+i_det_lenght 158.368 distance_vector size 0
+right_ratio 1.1104 distace 793.252
+right_ratio 1.14141 distace 459.46
+right_ratio 1.04366 distace 739.049
+right_ratio 1.14042 distace 512.164
+right_ratio 1.08447 distace 679.185
+right_ratio 1.08813 distace 489.38
+right_ratio 1.18101 distace 447.5
+right_ratio 1.00368 distace 411.159
+right_ratio 1.08795 distace 712.2
+right_ratio 1.18855 distace 837.189
+right_ratio 1.09587 distace 878.056
+right_ratio 1.1104 distace 793.252
+right_ratio 1.14141 distace 459.46
+right_ratio 1.04366 distace 739.049
+right_ratio 1.14042 distace 512.164
+right_ratio 1.08447 distace 679.185
+right_ratio 1.08813 distace 489.38
+right_ratio 1.18101 distace 447.5
+right_ratio 1.00368 distace 411.159
+ dis 411.159
+right_ratio 1.08795 distace 712.2
+right_ratio 1.18855 distace 837.189
+right_ratio 1.09587 distace 878.056
+confuse_label orignal class:12
+i_det_lenght 164.928 distance_vector size 1
+judge 0.0446112 j_det_lenght  distace 411.159187.948
+judge 0.139576 j_det_lenght  distace 411.159187.948
+judge 0.42447 j_det_lenght  distace 411.159187.948
+ 
+right_ratio 1.1104 distace 956.949
+right_ratio 1.14141 distace 726.013
+right_ratio 1.04366 distace 955.869
+right_ratio 1.14042 distace 776.411
+right_ratio 1.08447 distace 942.038
+right_ratio 1.08813 distace 691.098
+right_ratio 1.18101 distace 640.933
+right_ratio 1.00368 distace 680.434
+right_ratio 1.08795 distace 763.966
+right_ratio 1.18855 distace 838.814
+right_ratio 1.09587 distace 988.722
+right_ratio 1.1104 distace 956.949
+right_ratio 1.14141 distace 726.013
+right_ratio 1.04366 distace 955.869
+right_ratio 1.14042 distace 776.411
+right_ratio 1.08447 distace 942.038
+right_ratio 1.08813 distace 691.098
+right_ratio 1.18101 distace 640.933
+right_ratio 1.00368 distace 680.434
+right_ratio 1.08795 distace 763.966
+right_ratio 1.18855 distace 838.814
+right_ratio 1.09587 distace 988.722
+confuse_label orignal class:43
+i_det_lenght 165.889 distance_vector size 0
+right_ratio 1.1104 distace 998.13
+right_ratio 1.14141 distace 835.705
+right_ratio 1.04366 distace 1027.41
+right_ratio 1.14042 distace 882.695
+right_ratio 1.08447 distace 1042.09
+right_ratio 1.08813 distace 767.662
+right_ratio 1.18101 distace 717.126
+right_ratio 1.00368 distace 793.73
+right_ratio 1.08795 distace 754.975
+right_ratio 1.18855 distace 796.842
+right_ratio 1.09587 distace 998.958
+right_ratio 1.1104 distace 998.13
+right_ratio 1.14141 distace 835.705
+right_ratio 1.04366 distace 1027.41
+right_ratio 1.14042 distace 882.695
+right_ratio 1.08447 distace 1042.09
+right_ratio 1.08813 distace 767.662
+right_ratio 1.18101 distace 717.126
+right_ratio 1.00368 distace 793.73
+right_ratio 1.08795 distace 754.975
+right_ratio 1.18855 distace 796.842
+right_ratio 1.09587 distace 998.958
+confuse_label orignal class:43
+i_det_lenght 166.833 distance_vector size 0
+right_ratio 1.1104 distace 1263.46
+right_ratio 1.14141 distace 1070.81
+right_ratio 1.04366 distace 1284.66
+right_ratio 1.14042 distace 1120.46
+right_ratio 1.08447 distace 1284.6
+right_ratio 1.08813 distace 1021.74
+right_ratio 1.18101 distace 971.049
+right_ratio 1.00368 distace 1025.9
+right_ratio 1.08795 distace 1020.47
+right_ratio 1.18855 distace 1053.23
+right_ratio 1.09587 distace 1265.84
+right_ratio 1.1104 distace 1263.46
+right_ratio 1.14141 distace 1070.81
+right_ratio 1.04366 distace 1284.66
+right_ratio 1.14042 distace 1120.46
+right_ratio 1.08447 distace 1284.6
+right_ratio 1.08813 distace 1021.74
+right_ratio 1.18101 distace 971.049
+right_ratio 1.00368 distace 1025.9
+right_ratio 1.08795 distace 1020.47
+right_ratio 1.18855 distace 1053.23
+right_ratio 1.09587 distace 1265.84
+confuse_label orignal class:36
+i_det_lenght 165.069 distance_vector size 0
+right_ratio 1.1104 distace 1337.95
+right_ratio 1.14141 distace 1041.8
+right_ratio 1.04366 distace 1311.28
+right_ratio 1.14042 distace 1094.49
+right_ratio 1.08447 distace 1261.64
+right_ratio 1.08813 distace 1050.9
+right_ratio 1.18101 distace 1003.48
+right_ratio 1.00368 distace 993.52
+right_ratio 1.08795 distace 1165.89
+right_ratio 1.18855 distace 1240.18
+right_ratio 1.09587 distace 1384.89
+right_ratio 1.1104 distace 1337.95
+right_ratio 1.14141 distace 1041.8
+right_ratio 1.04366 distace 1311.28
+right_ratio 1.14042 distace 1094.49
+right_ratio 1.08447 distace 1261.64
+right_ratio 1.08813 distace 1050.9
+right_ratio 1.18101 distace 1003.48
+right_ratio 1.00368 distace 993.52
+right_ratio 1.08795 distace 1165.89
+right_ratio 1.18855 distace 1240.18
+right_ratio 1.09587 distace 1384.89
+confuse_label orignal class:8
+i_det_lenght 170.965 distance_vector size 0
+right_ratio 1.1104 distace 1326.33
+right_ratio 1.14141 distace 1188.6
+right_ratio 1.04366 distace 1371.37
+right_ratio 1.14042 distace 1235.49
+right_ratio 1.08447 distace 1394.07
+right_ratio 1.08813 distace 1115.57
+right_ratio 1.18101 distace 1065.4
+right_ratio 1.00368 distace 1146.53
+right_ratio 1.08795 distace 1050.66
+right_ratio 1.18855 distace 1054.21
+right_ratio 1.09587 distace 1303.46
+right_ratio 1.1104 distace 1326.33
+right_ratio 1.14141 distace 1188.6
+right_ratio 1.04366 distace 1371.37
+right_ratio 1.14042 distace 1235.49
+right_ratio 1.08447 distace 1394.07
+right_ratio 1.08813 distace 1115.57
+right_ratio 1.18101 distace 1065.4
+right_ratio 1.00368 distace 1146.53
+right_ratio 1.08795 distace 1050.66
+right_ratio 1.18855 distace 1054.21
+right_ratio 1.09587 distace 1303.46
+confuse_label orignal class:36
+i_det_lenght 206.246 distance_vector size 0
+right_ratio 1.1104 distace 1310.21
+right_ratio 1.14141 distace 1114.56
+right_ratio 1.04366 distace 1330.71
+right_ratio 1.14042 distace 1164.46
+right_ratio 1.08447 distace 1329.03
+right_ratio 1.08813 distace 1067.56
+right_ratio 1.18101 distace 1016.88
+right_ratio 1.00368 distace 1069.37
+right_ratio 1.08795 distace 1066.71
+right_ratio 1.18855 distace 1097.91
+right_ratio 1.09587 distace 1312.41
+right_ratio 1.1104 distace 1310.21
+right_ratio 1.14141 distace 1114.56
+right_ratio 1.04366 distace 1330.71
+right_ratio 1.14042 distace 1164.46
+right_ratio 1.08447 distace 1329.03
+right_ratio 1.08813 distace 1067.56
+right_ratio 1.18101 distace 1016.88
+right_ratio 1.00368 distace 1069.37
+right_ratio 1.08795 distace 1066.71
+right_ratio 1.18855 distace 1097.91
+right_ratio 1.09587 distace 1312.41
+confuse_label orignal class:8
+i_det_lenght 170.5 distance_vector size 0
+right_ratio 1.1104 distace 1041.15
+right_ratio 1.14141 distace 876.194
+right_ratio 1.04366 distace 1070.34
+right_ratio 1.14042 distace 923.567
+right_ratio 1.08447 distace 1083.63
+right_ratio 1.08813 distace 810.287
+right_ratio 1.18101 distace 759.716
+right_ratio 1.00368 distace 833.783
+right_ratio 1.08795 distace 795.874
+right_ratio 1.18855 distace 834.291
+right_ratio 1.09587 distace 1040.8
+right_ratio 1.1104 distace 1041.15
+right_ratio 1.14141 distace 876.194
+right_ratio 1.04366 distace 1070.34
+right_ratio 1.14042 distace 923.567
+right_ratio 1.08447 distace 1083.63
+right_ratio 1.08813 distace 810.287
+right_ratio 1.18101 distace 759.716
+right_ratio 1.00368 distace 833.783
+right_ratio 1.08795 distace 795.874
+right_ratio 1.18855 distace 834.291
+right_ratio 1.09587 distace 1040.8
+confuse_label orignal class:43
+i_det_lenght 167.821 distance_vector size 0
+right_ratio 1.1104 distace 1317.23
+right_ratio 1.14141 distace 1069.11
+right_ratio 1.04366 distace 1314.06
+right_ratio 1.14042 distace 1120.99
+right_ratio 1.08447 distace 1288.48
+right_ratio 1.08813 distace 1049.44
+right_ratio 1.18101 distace 999.679
+right_ratio 1.00368 distace 1021.81
+right_ratio 1.08795 distace 1108.21
+right_ratio 1.18855 distace 1162.45
+right_ratio 1.09587 distace 1342.36
+right_ratio 1.1104 distace 1317.23
+right_ratio 1.14141 distace 1069.11
+right_ratio 1.04366 distace 1314.06
+right_ratio 1.14042 distace 1120.99
+right_ratio 1.08447 distace 1288.48
+right_ratio 1.08813 distace 1049.44
+right_ratio 1.18101 distace 999.679
+right_ratio 1.00368 distace 1021.81
+right_ratio 1.08795 distace 1108.21
+right_ratio 1.18855 distace 1162.45
+right_ratio 1.09587 distace 1342.36
+confuse_label orignal class:36
+i_det_lenght 168.458 distance_vector size 0
+right_ratio 1.1104 distace 727.111
+right_ratio 1.14141 distace 712.28
+right_ratio 1.04366 distace 805.108
+right_ratio 1.14042 distace 745.608
+right_ratio 1.08447 distace 876.059
+right_ratio 1.08813 distace 581.454
+right_ratio 1.18101 distace 538.279
+right_ratio 1.00368 distace 684.653
+right_ratio 1.08795 distace 433.743
+right_ratio 1.18855 distace 448.87
+right_ratio 1.09587 distace 687.318
+right_ratio 1.1104 distace 727.111
+right_ratio 1.14141 distace 712.28
+right_ratio 1.04366 distace 805.108
+right_ratio 1.14042 distace 745.608
+right_ratio 1.08447 distace 876.059
+right_ratio 1.08813 distace 581.454
+right_ratio 1.18101 distace 538.279
+right_ratio 1.00368 distace 684.653
+right_ratio 1.08795 distace 433.743
+ dis 433.743
+right_ratio 1.18855 distace 448.87
+ dis 448.87
+right_ratio 1.09587 distace 687.318
+confuse_label orignal class:12
+i_det_lenght 206.152 distance_vector size 2
+judge 0.275683 j_det_lenght  distace 448.87162.894
+judge 0.209836 j_det_lenght  distace 448.87162.894
+judge 0.012295 j_det_lenght  distace 448.87162.894
+compare info 11 j_det_lenght 162.894 distance 448.87
+ x dis 134.201 y dis 428.339
+size change label 12 to 14 0.012295compare from:49
+ 
+judge 0.308669 j_det_lenght  distace 433.743155.475
+judge 0.245821 j_det_lenght  distace 433.743155.475
+judge 0.0572761 j_det_lenght  distace 433.743155.475
+ 
+right_ratio 1.1104 distace 727.111
+right_ratio 1.14141 distace 712.28
+right_ratio 1.04366 distace 805.108
+right_ratio 1.14042 distace 745.608
+right_ratio 1.08447 distace 876.059
+right_ratio 1.08813 distace 581.454
+right_ratio 1.18101 distace 538.279
+right_ratio 1.00368 distace 684.653
+right_ratio 1.08795 distace 433.743
+right_ratio 1.18855 distace 448.87
+right_ratio 1.09587 distace 687.318
+right_ratio 1.1104 distace 727.111
+right_ratio 1.14141 distace 712.28
+right_ratio 1.04366 distace 805.108
+right_ratio 1.14042 distace 745.608
+right_ratio 1.08447 distace 876.059
+right_ratio 1.08813 distace 581.454
+right_ratio 1.18101 distace 538.279
+right_ratio 1.00368 distace 684.653
+right_ratio 1.08795 distace 433.743
+ dis 433.743
+right_ratio 1.18855 distace 448.87
+ dis 448.87
+right_ratio 1.09587 distace 687.318
+confuse_label orignal class:14
+i_det_lenght 206.152 distance_vector size 2
+judge 0.275683 j_det_lenght  distace 448.87162.894
+judge 0.209836 j_det_lenght  distace 448.87162.894
+judge 0.012295 j_det_lenght  distace 448.87162.894
+ 
+judge 0.308669 j_det_lenght  distace 433.743155.475
+judge 0.245821 j_det_lenght  distace 433.743155.475
+judge 0.0572761 j_det_lenght  distace 433.743155.475
+ 
+right_ratio 1.1104 distace 1270.03
+right_ratio 1.14141 distace 1022.6
+right_ratio 1.04366 distace 1266.65
+right_ratio 1.14042 distace 1074.4
+right_ratio 1.08447 distace 1241.81
+right_ratio 1.08813 distace 1002.02
+right_ratio 1.18101 distace 952.248
+right_ratio 1.00368 distace 975.396
+right_ratio 1.08795 distace 1063.15
+right_ratio 1.18855 distace 1119.81
+right_ratio 1.09587 distace 1296.22
+right_ratio 1.1104 distace 1270.03
+right_ratio 1.14141 distace 1022.6
+right_ratio 1.04366 distace 1266.65
+right_ratio 1.14042 distace 1074.4
+right_ratio 1.08447 distace 1241.81
+right_ratio 1.08813 distace 1002.02
+right_ratio 1.18101 distace 952.248
+right_ratio 1.00368 distace 975.396
+right_ratio 1.08795 distace 1063.15
+right_ratio 1.18855 distace 1119.81
+right_ratio 1.09587 distace 1296.22
+confuse_label orignal class:8
+i_det_lenght 171.092 distance_vector size 0
+right_ratio 1.1104 distace 1216.42
+right_ratio 1.14141 distace 970.674
+right_ratio 1.04366 distace 1213.16
+right_ratio 1.14042 distace 1022.34
+right_ratio 1.08447 distace 1189.62
+right_ratio 1.08813 distace 948.5
+right_ratio 1.18101 distace 898.681
+right_ratio 1.00368 distace 923.622
+right_ratio 1.08795 distace 1011.61
+right_ratio 1.18855 distace 1070.89
+right_ratio 1.09587 distace 1243.55
+right_ratio 1.1104 distace 1216.42
+right_ratio 1.14141 distace 970.674
+right_ratio 1.04366 distace 1213.16
+right_ratio 1.14042 distace 1022.34
+right_ratio 1.08447 distace 1189.62
+right_ratio 1.08813 distace 948.5
+right_ratio 1.18101 distace 898.681
+right_ratio 1.00368 distace 923.622
+right_ratio 1.08795 distace 1011.61
+right_ratio 1.18855 distace 1070.89
+right_ratio 1.09587 distace 1243.55
+confuse_label orignal class:8
+i_det_lenght 170.004 distance_vector size 0
+right_ratio 1.1104 distace 1002.83
+right_ratio 1.14141 distace 768.427
+right_ratio 1.04366 distace 1001.22
+right_ratio 1.14042 distace 819.154
+right_ratio 1.08447 distace 985.245
+right_ratio 1.08813 distace 736.446
+right_ratio 1.18101 distace 686.357
+right_ratio 1.00368 distace 722.463
+right_ratio 1.08795 distace 807.325
+right_ratio 1.18855 distace 878.904
+right_ratio 1.09587 distace 1033.68
+right_ratio 1.1104 distace 1002.83
+right_ratio 1.14141 distace 768.427
+right_ratio 1.04366 distace 1001.22
+right_ratio 1.14042 distace 819.154
+right_ratio 1.08447 distace 985.245
+right_ratio 1.08813 distace 736.446
+right_ratio 1.18101 distace 686.357
+right_ratio 1.00368 distace 722.463
+right_ratio 1.08795 distace 807.325
+right_ratio 1.18855 distace 878.904
+right_ratio 1.09587 distace 1033.68
+confuse_label orignal class:43
+i_det_lenght 165.096 distance_vector size 0
+right_ratio 1.1104 distace 522.802
+right_ratio 1.14141 distace 877.673
+right_ratio 1.04366 distace 701.936
+right_ratio 1.14042 distace 868.194
+right_ratio 1.08447 distace 877.556
+right_ratio 1.08813 distace 707.612
+right_ratio 1.18101 distace 712.526
+right_ratio 1.00368 distace 889.928
+right_ratio 1.08795 distace 362.717
+right_ratio 1.18855 distace 244.958
+ dis 244.958
+right_ratio 1.09587 distace 348.205
+confuse_label orignal class:39
+i_det_lenght 162.753 distance_vector size 1
+judge 0.0825382 j_det_lenght  distace 244.958162.894
+bfind_very_close distace 244.958
+compare info 11 j_det_lenght 162.894 distance 244.958
+ x dis 148.315 y dis 194.955
+size change label 39 to 40 0.01compare from:49
+find close  
+right_ratio 1.1104 distace 522.802
+right_ratio 1.14141 distace 877.673
+right_ratio 1.04366 distace 701.936
+right_ratio 1.14042 distace 868.194
+right_ratio 1.08447 distace 877.556
+right_ratio 1.08813 distace 707.612
+right_ratio 1.18101 distace 712.526
+right_ratio 1.00368 distace 889.928
+right_ratio 1.08795 distace 362.717
+right_ratio 1.18855 distace 244.958
+ dis 244.958
+right_ratio 1.09587 distace 348.205
+confuse_label orignal class:40
+i_det_lenght 162.753 distance_vector size 1
+judge 0.0825382 j_det_lenght  distace 244.958162.894
+bfind_very_close distace 244.958
+compare info 11 j_det_lenght 162.894 distance 244.958
+ x dis 148.315 y dis 194.955
+size change label 40 to 40 0.01compare from:49
+find close  
+right_ratio 1.1104 distace 510.146
+right_ratio 1.14141 distace 884.582
+right_ratio 1.04366 distace 690.168
+right_ratio 1.14042 distace 871.608
+right_ratio 1.08447 distace 869.502
+right_ratio 1.08813 distace 718.217
+right_ratio 1.18101 distace 727.217
+right_ratio 1.00368 distace 899.916
+right_ratio 1.08795 distace 390.136
+right_ratio 1.18855 distace 289.803
+ dis 289.803
+right_ratio 1.09587 distace 334.052
+confuse_label orignal class:39
+i_det_lenght 162.815 distance_vector size 1
+judge 0.0828932 j_det_lenght  distace 289.803162.894
+bfind_very_close distace 289.803
+compare info 11 j_det_lenght 162.894 distance 289.803
+ x dis 139.606 y dis 253.961
+size change label 39 to 40 0.01compare from:49
+find close  
+right_ratio 1.1104 distace 510.146
+right_ratio 1.14141 distace 884.582
+right_ratio 1.04366 distace 690.168
+right_ratio 1.14042 distace 871.608
+right_ratio 1.08447 distace 869.502
+right_ratio 1.08813 distace 718.217
+right_ratio 1.18101 distace 727.217
+right_ratio 1.00368 distace 899.916
+right_ratio 1.08795 distace 390.136
+right_ratio 1.18855 distace 289.803
+ dis 289.803
+right_ratio 1.09587 distace 334.052
+confuse_label orignal class:40
+i_det_lenght 162.815 distance_vector size 1
+judge 0.0828932 j_det_lenght  distace 289.803162.894
+bfind_very_close distace 289.803
+compare info 11 j_det_lenght 162.894 distance 289.803
+ x dis 139.606 y dis 253.961
+size change label 40 to 40 0.01compare from:49
+find close  
+right_ratio 1.1104 distace 667.35
+right_ratio 1.14141 distace 1029.43
+right_ratio 1.04366 distace 847.276
+right_ratio 1.14042 distace 1019.73
+right_ratio 1.08447 distace 1025.27
+right_ratio 1.08813 distace 859.169
+right_ratio 1.18101 distace 863.266
+right_ratio 1.00368 distace 1041.49
+right_ratio 1.08795 distace 508.844
+right_ratio 1.18855 distace 374.484
+right_ratio 1.09587 distace 491.346
+right_ratio 1.1104 distace 667.35
+right_ratio 1.14141 distace 1029.43
+right_ratio 1.04366 distace 847.276
+right_ratio 1.14042 distace 1019.73
+right_ratio 1.08447 distace 1025.27
+right_ratio 1.08813 distace 859.169
+right_ratio 1.18101 distace 863.266
+right_ratio 1.00368 distace 1041.49
+right_ratio 1.08795 distace 508.844
+right_ratio 1.18855 distace 374.484
+right_ratio 1.09587 distace 491.346
+confuse_label orignal class:39
+i_det_lenght 144.209 distance_vector size 0
+right_ratio 1.1104 distace 615.74
+right_ratio 1.14141 distace 978.804
+right_ratio 1.04366 distace 795.635
+right_ratio 1.14042 distace 968.62
+right_ratio 1.08447 distace 973.529
+right_ratio 1.08813 distace 809.114
+right_ratio 1.18101 distace 814.094
+right_ratio 1.00368 distace 991.418
+right_ratio 1.08795 distace 462.355
+right_ratio 1.18855 distace 334.179
+right_ratio 1.09587 distace 439.785
+right_ratio 1.1104 distace 615.74
+right_ratio 1.14141 distace 978.804
+right_ratio 1.04366 distace 795.635
+right_ratio 1.14042 distace 968.62
+right_ratio 1.08447 distace 973.529
+right_ratio 1.08813 distace 809.114
+right_ratio 1.18101 distace 814.094
+right_ratio 1.00368 distace 991.418
+right_ratio 1.08795 distace 462.355
+right_ratio 1.18855 distace 334.179
+right_ratio 1.09587 distace 439.785
+confuse_label orignal class:39
+i_det_lenght 144.887 distance_vector size 0
+right_ratio 1.1104 distace 346.752
+right_ratio 1.14141 distace 726.894
+right_ratio 1.04366 distace 526.721
+right_ratio 1.14042 distace 711.41
+right_ratio 1.08447 distace 705.693
+right_ratio 1.08813 distace 564.951
+right_ratio 1.18101 distace 578.842
+right_ratio 1.00368 distace 744.956
+right_ratio 1.08795 distace 277.33
+ dis 277.33
+right_ratio 1.18855 distace 247.229
+ dis 247.229
+right_ratio 1.09587 distace 170.734
+ dis 170.734
+confuse_label orignal class:12
+i_det_lenght 163.864 distance_vector size 3
+judge 0.130262 j_det_lenght  distace 277.33155.475
+judge 0.051195 j_det_lenght  distace 277.33155.475
+judge 0.186006 j_det_lenght  distace 277.33155.475
+ 
+judge 0.0887635 j_det_lenght  distace 247.229162.894
+bfind_very_close distace 247.229
+compare info 11 j_det_lenght 162.894 distance 247.229
+ x dis 24.013 y dis 246.06
+size change label 12 to 13 0.01compare from:49
+find close  
+right_ratio 1.1104 distace 346.752
+right_ratio 1.14141 distace 726.894
+right_ratio 1.04366 distace 526.721
+right_ratio 1.14042 distace 711.41
+right_ratio 1.08447 distace 705.693
+right_ratio 1.08813 distace 564.951
+right_ratio 1.18101 distace 578.842
+right_ratio 1.00368 distace 744.956
+right_ratio 1.08795 distace 277.33
+ dis 277.33
+right_ratio 1.18855 distace 247.229
+ dis 247.229
+right_ratio 1.09587 distace 170.734
+ dis 170.734
+confuse_label orignal class:13
+i_det_lenght 163.864 distance_vector size 3
+judge 0.130262 j_det_lenght  distace 277.33155.475
+judge 0.051195 j_det_lenght  distace 277.33155.475
+judge 0.186006 j_det_lenght  distace 277.33155.475
+ 
+judge 0.0887635 j_det_lenght  distace 247.229162.894
+bfind_very_close distace 247.229
+compare info 11 j_det_lenght 162.894 distance 247.229
+ x dis 24.013 y dis 246.06
+size change label 13 to 13 0.01compare from:49
+find close  
+right_ratio 1.1104 distace 612.483
+right_ratio 1.14141 distace 664.882
+right_ratio 1.04366 distace 709.681
+right_ratio 1.14042 distace 690.335
+right_ratio 1.08447 distace 802.855
+right_ratio 1.08813 distace 513.224
+right_ratio 1.18101 distace 477.225
+right_ratio 1.00368 distace 645.327
+right_ratio 1.08795 distace 303.282
+ dis 303.282
+right_ratio 1.18855 distace 313.355
+ dis 313.355
+right_ratio 1.09587 distace 557.185
+confuse_label orignal class:4
+i_det_lenght 211.775 distance_vector size 2
+judge 0.294915 j_det_lenght  distace 313.355162.894
+judge 0.230816 j_det_lenght  distace 313.355162.894
+judge 0.03852 j_det_lenght  distace 313.355162.894
+ 
+judge 0.327025 j_det_lenght  distace 303.282155.475
+judge 0.265845 j_det_lenght  distace 303.282155.475
+judge 0.0823067 j_det_lenght  distace 303.282155.475
+ 
+right_ratio 1.1104 distace 351.737
+right_ratio 1.14141 distace 707.616
+right_ratio 1.04366 distace 529.561
+right_ratio 1.14042 distace 696.01
+right_ratio 1.08447 distace 703.665
+right_ratio 1.08813 distace 540.605
+right_ratio 1.18101 distace 550.061
+right_ratio 1.00368 distace 722.369
+right_ratio 1.08795 distace 228.535
+ dis 228.535
+right_ratio 1.18855 distace 191.033
+ dis 191.033
+right_ratio 1.09587 distace 181.466
+ dis 181.466
+confuse_label orignal class:12
+i_det_lenght 164.513 distance_vector size 3
+judge 0.133693 j_det_lenght  distace 228.535155.475
+judge 0.054938 j_det_lenght  distace 228.535155.475
+judge 0.181328 j_det_lenght  distace 228.535155.475
+ 
+judge 0.0923582 j_det_lenght  distace 191.033162.894
+bfind_very_close distace 191.033
+compare info 11 j_det_lenght 162.894 distance 191.033
+ x dis 25.815 y dis 189.281
+size change label 12 to 13 0.01compare from:49
+find close  
+right_ratio 1.1104 distace 351.737
+right_ratio 1.14141 distace 707.616
+right_ratio 1.04366 distace 529.561
+right_ratio 1.14042 distace 696.01
+right_ratio 1.08447 distace 703.665
+right_ratio 1.08813 distace 540.605
+right_ratio 1.18101 distace 550.061
+right_ratio 1.00368 distace 722.369
+right_ratio 1.08795 distace 228.535
+ dis 228.535
+right_ratio 1.18855 distace 191.033
+ dis 191.033
+right_ratio 1.09587 distace 181.466
+ dis 181.466
+confuse_label orignal class:13
+i_det_lenght 164.513 distance_vector size 3
+judge 0.133693 j_det_lenght  distace 228.535155.475
+judge 0.054938 j_det_lenght  distace 228.535155.475
+judge 0.181328 j_det_lenght  distace 228.535155.475
+ 
+judge 0.0923582 j_det_lenght  distace 191.033162.894
+bfind_very_close distace 191.033
+compare info 11 j_det_lenght 162.894 distance 191.033
+ x dis 25.815 y dis 189.281
+size change label 13 to 13 0.01compare from:49
+find close  
+right_ratio 1.1104 distace 944.921
+right_ratio 1.14141 distace 878.741
+right_ratio 1.04366 distace 1010.97
+right_ratio 1.14042 distace 918.724
+right_ratio 1.08447 distace 1063.03
+right_ratio 1.08813 distace 771.075
+right_ratio 1.18101 distace 723.776
+right_ratio 1.00368 distace 843.977
+right_ratio 1.08795 distace 655.375
+right_ratio 1.18855 distace 657.873
+right_ratio 1.09587 distace 909.099
+right_ratio 1.1104 distace 944.921
+right_ratio 1.14141 distace 878.741
+right_ratio 1.04366 distace 1010.97
+right_ratio 1.14042 distace 918.724
+right_ratio 1.08447 distace 1063.03
+right_ratio 1.08813 distace 771.075
+right_ratio 1.18101 distace 723.776
+right_ratio 1.00368 distace 843.977
+right_ratio 1.08795 distace 655.375
+right_ratio 1.18855 distace 657.873
+right_ratio 1.09587 distace 909.099
+confuse_label orignal class:43
+i_det_lenght 204.969 distance_vector size 0
+right_ratio 1.1104 distace 909.121
+right_ratio 1.14141 distace 943.746
+right_ratio 1.04366 distace 1010.8
+right_ratio 1.14042 distace 975.034
+right_ratio 1.08447 distace 1098.24
+right_ratio 1.08813 distace 805.048
+right_ratio 1.18101 distace 764.666
+right_ratio 1.00368 distace 917.587
+right_ratio 1.08795 distace 587.045
+right_ratio 1.18855 distace 538.34
+right_ratio 1.09587 distace 834.178
+right_ratio 1.1104 distace 909.121
+right_ratio 1.14141 distace 943.746
+right_ratio 1.04366 distace 1010.8
+right_ratio 1.14042 distace 975.034
+right_ratio 1.08447 distace 1098.24
+right_ratio 1.08813 distace 805.048
+right_ratio 1.18101 distace 764.666
+right_ratio 1.00368 distace 917.587
+right_ratio 1.08795 distace 587.045
+right_ratio 1.18855 distace 538.34
+right_ratio 1.09587 distace 834.178
+confuse_label orignal class:12
+i_det_lenght 197.046 distance_vector size 0
+right_ratio 1.1104 distace 1031.96
+right_ratio 1.14141 distace 944.941
+right_ratio 1.04366 distace 1092.11
+right_ratio 1.14042 distace 987.123
+right_ratio 1.08447 distace 1136.05
+right_ratio 1.08813 distace 846.815
+right_ratio 1.18101 distace 798.403
+right_ratio 1.00368 distace 907.847
+right_ratio 1.08795 distace 746.295
+right_ratio 1.18855 distace 748.925
+right_ratio 1.09587 distace 999.817
+right_ratio 1.1104 distace 1031.96
+right_ratio 1.14141 distace 944.941
+right_ratio 1.04366 distace 1092.11
+right_ratio 1.14042 distace 987.123
+right_ratio 1.08447 distace 1136.05
+right_ratio 1.08813 distace 846.815
+right_ratio 1.18101 distace 798.403
+right_ratio 1.00368 distace 907.847
+right_ratio 1.08795 distace 746.295
+right_ratio 1.18855 distace 748.925
+right_ratio 1.09587 distace 999.817
+confuse_label orignal class:43
+i_det_lenght 206.694 distance_vector size 0
+right_ratio 1.1104 distace 867.773
+right_ratio 1.14141 distace 918.047
+right_ratio 1.04366 distace 973.784
+right_ratio 1.14042 distace 947.513
+right_ratio 1.08447 distace 1066.41
+right_ratio 1.08813 distace 774.605
+right_ratio 1.18101 distace 735.777
+right_ratio 1.00368 distace 893.736
+right_ratio 1.08795 distace 543.554
+right_ratio 1.18855 distace 490.86
+right_ratio 1.09587 distace 788.996
+right_ratio 1.1104 distace 867.773
+right_ratio 1.14141 distace 918.047
+right_ratio 1.04366 distace 973.784
+right_ratio 1.14042 distace 947.513
+right_ratio 1.08447 distace 1066.41
+right_ratio 1.08813 distace 774.605
+right_ratio 1.18101 distace 735.777
+right_ratio 1.00368 distace 893.736
+right_ratio 1.08795 distace 543.554
+right_ratio 1.18855 distace 490.86
+ dis 490.86
+right_ratio 1.09587 distace 788.996
+confuse_label orignal class:12
+i_det_lenght 200.181 distance_vector size 1
+judge 0.25408 j_det_lenght  distace 490.86162.894
+judge 0.186269 j_det_lenght  distace 490.86162.894
+judge 0.0171633 j_det_lenght  distace 490.86162.894
+compare info 11 j_det_lenght 162.894 distance 490.86
+ x dis 75.6415 y dis 484.996
+size change label 12 to 14 0.0171633compare from:49
+ 
+right_ratio 1.1104 distace 867.773
+right_ratio 1.14141 distace 918.047
+right_ratio 1.04366 distace 973.784
+right_ratio 1.14042 distace 947.513
+right_ratio 1.08447 distace 1066.41
+right_ratio 1.08813 distace 774.605
+right_ratio 1.18101 distace 735.777
+right_ratio 1.00368 distace 893.736
+right_ratio 1.08795 distace 543.554
+right_ratio 1.18855 distace 490.86
+right_ratio 1.09587 distace 788.996
+right_ratio 1.1104 distace 867.773
+right_ratio 1.14141 distace 918.047
+right_ratio 1.04366 distace 973.784
+right_ratio 1.14042 distace 947.513
+right_ratio 1.08447 distace 1066.41
+right_ratio 1.08813 distace 774.605
+right_ratio 1.18101 distace 735.777
+right_ratio 1.00368 distace 893.736
+right_ratio 1.08795 distace 543.554
+right_ratio 1.18855 distace 490.86
+ dis 490.86
+right_ratio 1.09587 distace 788.996
+confuse_label orignal class:14
+i_det_lenght 200.181 distance_vector size 1
+judge 0.25408 j_det_lenght  distace 490.86162.894
+judge 0.186269 j_det_lenght  distace 490.86162.894
+judge 0.0171633 j_det_lenght  distace 490.86162.894
+ 
+right_ratio 1.1104 distace 1283.53
+right_ratio 1.14141 distace 1151.68
+right_ratio 1.04366 distace 1330.39
+right_ratio 1.14042 distace 1198.07
+right_ratio 1.08447 distace 1355.67
+right_ratio 1.08813 distace 1075.61
+right_ratio 1.18101 distace 1025.58
+right_ratio 1.00368 distace 1110.13
+right_ratio 1.08795 distace 1006.66
+right_ratio 1.18855 distace 1010.09
+right_ratio 1.09587 distace 1259.56
+right_ratio 1.1104 distace 1283.53
+right_ratio 1.14141 distace 1151.68
+right_ratio 1.04366 distace 1330.39
+right_ratio 1.14042 distace 1198.07
+right_ratio 1.08447 distace 1355.67
+right_ratio 1.08813 distace 1075.61
+right_ratio 1.18101 distace 1025.58
+right_ratio 1.00368 distace 1110.13
+right_ratio 1.08795 distace 1006.66
+right_ratio 1.18855 distace 1010.09
+right_ratio 1.09587 distace 1259.56
+confuse_label orignal class:36
+i_det_lenght 202.301 distance_vector size 0
+right_ratio 1.1104 distace 1100.14
+right_ratio 1.14141 distace 1084.05
+right_ratio 1.04366 distace 1188
+right_ratio 1.14042 distace 1121.17
+right_ratio 1.08447 distace 1257.75
+right_ratio 1.08813 distace 963.281
+right_ratio 1.18101 distace 918.551
+right_ratio 1.00368 distace 1051.89
+right_ratio 1.08795 distace 785.464
+right_ratio 1.18855 distace 745.374
+right_ratio 1.09587 distace 1036.02
+right_ratio 1.1104 distace 1100.14
+right_ratio 1.14141 distace 1084.05
+right_ratio 1.04366 distace 1188
+right_ratio 1.14042 distace 1121.17
+right_ratio 1.08447 distace 1257.75
+right_ratio 1.08813 distace 963.281
+right_ratio 1.18101 distace 918.551
+right_ratio 1.00368 distace 1051.89
+right_ratio 1.08795 distace 785.464
+right_ratio 1.18855 distace 745.374
+right_ratio 1.09587 distace 1036.02
+confuse_label orignal class:43
+i_det_lenght 204.749 distance_vector size 0
+right_ratio 1.1104 distace 1055.9
+right_ratio 1.14141 distace 1051.9
+right_ratio 1.04366 distace 1147.25
+right_ratio 1.14042 distace 1087.73
+right_ratio 1.08447 distace 1221.33
+right_ratio 1.08813 distace 926.711
+right_ratio 1.18101 distace 882.883
+right_ratio 1.00368 distace 1021.07
+right_ratio 1.08795 distace 739.132
+right_ratio 1.18855 distace 696.478
+right_ratio 1.09587 distace 988.882
+right_ratio 1.1104 distace 1055.9
+right_ratio 1.14141 distace 1051.9
+right_ratio 1.04366 distace 1147.25
+right_ratio 1.14042 distace 1087.73
+right_ratio 1.08447 distace 1221.33
+right_ratio 1.08813 distace 926.711
+right_ratio 1.18101 distace 882.883
+right_ratio 1.00368 distace 1021.07
+right_ratio 1.08795 distace 739.132
+right_ratio 1.18855 distace 696.478
+right_ratio 1.09587 distace 988.882
+confuse_label orignal class:43
+i_det_lenght 202.163 distance_vector size 0
+right_ratio 1.1104 distace 822.717
+right_ratio 1.14141 distace 893.321
+right_ratio 1.04366 distace 934.419
+right_ratio 1.14042 distace 920.422
+right_ratio 1.08447 distace 1033.63
+right_ratio 1.08813 distace 744.27
+right_ratio 1.18101 distace 707.589
+right_ratio 1.00368 distace 871.386
+right_ratio 1.08795 distace 495.993
+right_ratio 1.18855 distace 436.956
+right_ratio 1.09587 distace 738.573
+right_ratio 1.1104 distace 822.717
+right_ratio 1.14141 distace 893.321
+right_ratio 1.04366 distace 934.419
+right_ratio 1.14042 distace 920.422
+right_ratio 1.08447 distace 1033.63
+right_ratio 1.08813 distace 744.27
+right_ratio 1.18101 distace 707.589
+right_ratio 1.00368 distace 871.386
+right_ratio 1.08795 distace 495.993
+right_ratio 1.18855 distace 436.956
+ dis 436.956
+right_ratio 1.09587 distace 738.573
+confuse_label orignal class:12
+i_det_lenght 210.953 distance_vector size 1
+judge 0.292169 j_det_lenght  distace 436.956162.894
+judge 0.227821 j_det_lenght  distace 436.956162.894
+judge 0.0347762 j_det_lenght  distace 436.956162.894
+compare info 11 j_det_lenght 162.894 distance 436.956
+ x dis 79.0086 y dis 429.754
+size change label 12 to 14 0.0347762compare from:49
+ 
+right_ratio 1.1104 distace 822.717
+right_ratio 1.14141 distace 893.321
+right_ratio 1.04366 distace 934.419
+right_ratio 1.14042 distace 920.422
+right_ratio 1.08447 distace 1033.63
+right_ratio 1.08813 distace 744.27
+right_ratio 1.18101 distace 707.589
+right_ratio 1.00368 distace 871.386
+right_ratio 1.08795 distace 495.993
+right_ratio 1.18855 distace 436.956
+right_ratio 1.09587 distace 738.573
+right_ratio 1.1104 distace 822.717
+right_ratio 1.14141 distace 893.321
+right_ratio 1.04366 distace 934.419
+right_ratio 1.14042 distace 920.422
+right_ratio 1.08447 distace 1033.63
+right_ratio 1.08813 distace 744.27
+right_ratio 1.18101 distace 707.589
+right_ratio 1.00368 distace 871.386
+right_ratio 1.08795 distace 495.993
+right_ratio 1.18855 distace 436.956
+ dis 436.956
+right_ratio 1.09587 distace 738.573
+confuse_label orignal class:14
+i_det_lenght 210.953 distance_vector size 1
+judge 0.292169 j_det_lenght  distace 436.956162.894
+judge 0.227821 j_det_lenght  distace 436.956162.894
+judge 0.0347762 j_det_lenght  distace 436.956162.894
+ 
+right_ratio 1.1104 distace 566.283
+right_ratio 1.14141 distace 641.496
+right_ratio 1.04366 distace 669.169
+right_ratio 1.14042 distace 663.895
+right_ratio 1.08447 distace 769.446
+right_ratio 1.08813 distace 483.71
+right_ratio 1.18101 distace 450.915
+right_ratio 1.00368 distace 625.066
+right_ratio 1.08795 distace 253.678
+ dis 253.678
+right_ratio 1.18855 distace 268.592
+ dis 268.592
+right_ratio 1.09587 distace 507.462
+confuse_label orignal class:4
+i_det_lenght 215.167 distance_vector size 2
+judge 0.306033 j_det_lenght  distace 268.592162.894
+judge 0.242945 j_det_lenght  distace 268.592162.894
+judge 0.0536809 j_det_lenght  distace 268.592162.894
+ 
+judge 0.337637 j_det_lenght  distace 253.678155.475
+judge 0.277422 j_det_lenght  distace 253.678155.475
+judge 0.0967772 j_det_lenght  distace 253.678155.475
+ 
+right_ratio 1.1104 distace 689.563
+right_ratio 1.14141 distace 842.236
+right_ratio 1.04366 distace 824.093
+right_ratio 1.14042 distace 859.635
+right_ratio 1.08447 distace 948.314
+right_ratio 1.08813 distace 676.181
+right_ratio 1.18101 distace 649.503
+right_ratio 1.00368 distace 829.827
+right_ratio 1.08795 distace 360.68
+right_ratio 1.18855 distace 263.972
+ dis 263.972
+right_ratio 1.09587 distace 580.944
+confuse_label orignal class:4
+i_det_lenght 212.267 distance_vector size 1
+judge 0.29655 j_det_lenght  distace 263.972162.894
+judge 0.2326 j_det_lenght  distace 263.972162.894
+judge 0.0407505 j_det_lenght  distace 263.972162.894
+ 
+right_ratio 1.1104 distace 1333.41
+right_ratio 1.14141 distace 1266.15
+right_ratio 1.04366 distace 1406.04
+right_ratio 1.14042 distace 1308.39
+right_ratio 1.08447 distace 1456.48
+right_ratio 1.08813 distace 1165.81
+right_ratio 1.18101 distace 1117.99
+right_ratio 1.00368 distace 1228.75
+right_ratio 1.08795 distace 1028.59
+right_ratio 1.18855 distace 998.388
+right_ratio 1.09587 distace 1281.5
+right_ratio 1.1104 distace 1333.41
+right_ratio 1.14141 distace 1266.15
+right_ratio 1.04366 distace 1406.04
+right_ratio 1.14042 distace 1308.39
+right_ratio 1.08447 distace 1456.48
+right_ratio 1.08813 distace 1165.81
+right_ratio 1.18101 distace 1117.99
+right_ratio 1.00368 distace 1228.75
+right_ratio 1.08795 distace 1028.59
+right_ratio 1.18855 distace 998.388
+right_ratio 1.09587 distace 1281.5
+confuse_label orignal class:8
+i_det_lenght 196.522 distance_vector size 0
+right_ratio 1.1104 distace 730.818
+right_ratio 1.14141 distace 856.409
+right_ratio 1.04366 distace 857.989
+right_ratio 1.14042 distace 877.089
+right_ratio 1.08447 distace 974.232
+right_ratio 1.08813 distace 695.068
+right_ratio 1.18101 distace 664.831
+right_ratio 1.00368 distace 840.809
+right_ratio 1.08795 distace 400.676
+right_ratio 1.18855 distace 318.043
+ dis 318.043
+right_ratio 1.09587 distace 630.444
+confuse_label orignal class:4
+i_det_lenght 212.488 distance_vector size 1
+judge 0.297283 j_det_lenght  distace 318.043162.894
+judge 0.2334 j_det_lenght  distace 318.043162.894
+judge 0.0417499 j_det_lenght  distace 318.043162.894
+ 
+right_ratio 1.1104 distace 1285.91
+right_ratio 1.14141 distace 1229.27
+right_ratio 1.04366 distace 1361.88
+right_ratio 1.14042 distace 1270.53
+right_ratio 1.08447 distace 1416.44
+right_ratio 1.08813 distace 1124.58
+right_ratio 1.18101 distace 1077.29
+right_ratio 1.00368 distace 1192.85
+right_ratio 1.08795 distace 978.706
+right_ratio 1.18855 distace 946.068
+right_ratio 1.09587 distace 1231.19
+right_ratio 1.1104 distace 1285.91
+right_ratio 1.14141 distace 1229.27
+right_ratio 1.04366 distace 1361.88
+right_ratio 1.14042 distace 1270.53
+right_ratio 1.08447 distace 1416.44
+right_ratio 1.08813 distace 1124.58
+right_ratio 1.18101 distace 1077.29
+right_ratio 1.00368 distace 1192.85
+right_ratio 1.08795 distace 978.706
+right_ratio 1.18855 distace 946.068
+right_ratio 1.09587 distace 1231.19
+confuse_label orignal class:36
+i_det_lenght 195.749 distance_vector size 0
+right_ratio 1.1104 distace 1375.02
+right_ratio 1.14141 distace 1300.25
+right_ratio 1.04366 distace 1445.33
+right_ratio 1.14042 distace 1343.17
+right_ratio 1.08447 distace 1492.78
+right_ratio 1.08813 distace 1203.12
+right_ratio 1.18101 distace 1154.94
+right_ratio 1.00368 distace 1262.13
+right_ratio 1.08795 distace 1071.79
+right_ratio 1.18855 distace 1042.99
+right_ratio 1.09587 distace 1324.94
+right_ratio 1.1104 distace 1375.02
+right_ratio 1.14141 distace 1300.25
+right_ratio 1.04366 distace 1445.33
+right_ratio 1.14042 distace 1343.17
+right_ratio 1.08447 distace 1492.78
+right_ratio 1.08813 distace 1203.12
+right_ratio 1.18101 distace 1154.94
+right_ratio 1.00368 distace 1262.13
+right_ratio 1.08795 distace 1071.79
+right_ratio 1.18855 distace 1042.99
+right_ratio 1.09587 distace 1324.94
+confuse_label orignal class:8
+i_det_lenght 200.824 distance_vector size 0
+2 16.5 4.5 sssssss2 16.5 4.5 over 
+3 18 4.5 sssssss3 18 4.5 over 
+4 22.5 4.5 sssssss4 22.5 4.5 over 
+5 18 4.5 sssssss5 18 4.5 over 
+6 22.5 4.5 sssssss6 22.5 4.5 over 
+8 18 4.5 sssssss8 18 4.5 over 
+9 22.5 4.5 sssssss9 22.5 4.5 over 
+12 16.5 4.5 sssssss12 16.5 4.5 over 
+13 18 4.5 sssssss13 18 4.5 over 
+14 22.5 4.5 sssssss14 22.5 4.5 over 
+36 18 4.5 sssssss36 18 4.5 over 
+37 22.5 4.5 sssssss37 22.5 4.5 over 
+39 16.5 4.5 sssssss39 16.5 4.5 over 
+40 18 4.5 sssssss40 18 4.5 over 
+41 22.5 4.5 sssssss41 22.5 4.5 over 
+43 18 4.5 sssssss43 18 4.5 over 
+44 22.5 4.5 sssssss44 22.5 4.5 over 
+15 18 4.5 sssssss15 18 4.5 over 
+16 18 4.5 sssssss16 18 4.5 over 
+17 18 4.5 sssssss17 18 4.5 over 
+18 18 4.5 sssssss18 18 4.5 over 
+7 18 4.5 sssssss7 18 4.5 over 
+11 18 4.5 sssssss11 18 4.5 over 
+ sssssssover 
+right_ratio 1.1104 distace 599.149
+right_ratio 1.14141 distace 234.97
+ dis 234.97
+right_ratio 1.04366 distace 522.658
+right_ratio 1.14042 distace 287.674
+ dis 287.674
+right_ratio 1.08447 distace 454.763
+right_ratio 1.08813 distace 291.92
+right_ratio 1.18101 distace 261.354
+right_ratio 1.00368 distace 186.664
+ dis 186.664
+right_ratio 1.08795 distace 594.744
+right_ratio 1.18855 distace 742.505
+right_ratio 1.09587 distace 709.996
+right_ratio 1.16796 distace 801.285
+confuse_label orignal class:3
+i_det_lenght 170.913 distance_vector size 3
+judge 0.0248269 j_det_lenght  distace 287.674181.821
+judge 0.0638251 j_det_lenght  distace 287.674181.821
+judge 0.329781 j_det_lenght  distace 287.674181.821
+ 
+judge 0.0299171 j_det_lenght  distace 234.97180.872
+judge 0.0582722 j_det_lenght  distace 234.97180.872
+judge 0.32284 j_det_lenght  distace 234.97180.872
+ 
+judge 0.00803447 j_det_lenght  distace 186.664187.948
+judge 0.099674 j_det_lenght  distace 186.664187.948
+judge 0.374592 j_det_lenght  distace 186.664187.948
+ 
+right_ratio 1.1104 distace 1039.4
+right_ratio 1.14141 distace 740.334
+right_ratio 1.04366 distace 1007.81
+right_ratio 1.14042 distace 792.95
+right_ratio 1.08447 distace 960.514
+right_ratio 1.08813 distace 748.258
+right_ratio 1.18101 distace 701.427
+right_ratio 1.00368 distace 692.184
+right_ratio 1.08795 distace 892.119
+right_ratio 1.18855 distace 985.55
+right_ratio 1.09587 distace 1096.93
+right_ratio 1.16796 distace 1120.41
+confuse_label orignal class:43
+i_det_lenght 170.489 distance_vector size 0
+right_ratio 1.1104 distace 947.428
+right_ratio 1.14141 distace 790.031
+right_ratio 1.04366 distace 977.527
+right_ratio 1.14042 distace 836.396
+right_ratio 1.08447 distace 994.673
+right_ratio 1.08813 distace 718.431
+right_ratio 1.18101 distace 667.972
+right_ratio 1.00368 distace 748.76
+right_ratio 1.08795 distace 706.069
+right_ratio 1.18855 distace 751.703
+right_ratio 1.09587 distace 949.087
+right_ratio 1.16796 distace 919.448
+confuse_label orignal class:43
+i_det_lenght 167.249 distance_vector size 0
+right_ratio 1.1104 distace 845.551
+right_ratio 1.14141 distace 512.695
+right_ratio 1.04366 distace 793.048
+right_ratio 1.14042 distace 565.392
+right_ratio 1.08447 distace 732.133
+right_ratio 1.08813 distace 542.588
+right_ratio 1.18101 distace 500.085
+right_ratio 1.00368 distace 464.382
+right_ratio 1.08795 distace 754.605
+right_ratio 1.18855 distace 874.863
+right_ratio 1.09587 distace 927.059
+right_ratio 1.16796 distace 980.371
+confuse_label orignal class:12
+i_det_lenght 168.682 distance_vector size 0
+right_ratio 1.1104 distace 1245.89
+right_ratio 1.14141 distace 947.047
+right_ratio 1.04366 distace 1216.98
+right_ratio 1.14042 distace 999.739
+right_ratio 1.08447 distace 1166.93
+right_ratio 1.08813 distace 957.109
+right_ratio 1.18101 distace 909.955
+right_ratio 1.00368 distace 898.777
+right_ratio 1.08795 distace 1081.69
+right_ratio 1.18855 distace 1161.87
+right_ratio 1.09587 distace 1296.5
+right_ratio 1.16796 distace 1308.34
+confuse_label orignal class:36
+i_det_lenght 169.955 distance_vector size 0
+right_ratio 1.1104 distace 991.815
+right_ratio 1.14141 distace 691.522
+right_ratio 1.04366 distace 958.83
+right_ratio 1.14042 distace 744.115
+right_ratio 1.08447 distace 911.728
+right_ratio 1.08813 distace 699.601
+right_ratio 1.18101 distace 652.975
+right_ratio 1.00368 distace 643.405
+right_ratio 1.08795 distace 850.691
+right_ratio 1.18855 distace 948.229
+right_ratio 1.09587 distace 1051.87
+right_ratio 1.16796 distace 1079.19
+confuse_label orignal class:43
+i_det_lenght 163.39 distance_vector size 0
+right_ratio 1.1104 distace 988.467
+right_ratio 1.14141 distace 909.474
+right_ratio 1.04366 distace 1050.71
+right_ratio 1.14042 distace 950.765
+right_ratio 1.08447 distace 1097.86
+right_ratio 1.08813 distace 807.421
+right_ratio 1.18101 distace 759.422
+right_ratio 1.00368 distace 873.333
+right_ratio 1.08795 distace 701.811
+right_ratio 1.18855 distace 705.344
+right_ratio 1.09587 distace 955.357
+right_ratio 1.16796 distace 889.618
+confuse_label orignal class:43
+i_det_lenght 201.294 distance_vector size 0
+right_ratio 1.1104 distace 1231.35
+right_ratio 1.14141 distace 1106.01
+right_ratio 1.04366 distace 1280.08
+right_ratio 1.14042 distace 1151.81
+right_ratio 1.08447 distace 1308.22
+right_ratio 1.08813 distace 1026.49
+right_ratio 1.18101 distace 976.633
+right_ratio 1.00368 distace 1065.08
+right_ratio 1.08795 distace 953.507
+right_ratio 1.18855 distace 957.359
+right_ratio 1.09587 distace 1206.46
+right_ratio 1.16796 distace 1142.51
+confuse_label orignal class:36
+i_det_lenght 201.453 distance_vector size 0
+right_ratio 1.1104 distace 1296.71
+right_ratio 1.14141 distace 998.817
+right_ratio 1.04366 distace 1268.78
+right_ratio 1.14042 distace 1051.51
+right_ratio 1.08447 distace 1218.65
+right_ratio 1.08813 distace 1008.71
+right_ratio 1.18101 distace 961.436
+right_ratio 1.00368 distace 950.539
+right_ratio 1.08795 distace 1128.52
+right_ratio 1.18855 distace 1205.62
+right_ratio 1.09587 distace 1345.52
+right_ratio 1.16796 distace 1354.58
+confuse_label orignal class:36
+i_det_lenght 166.143 distance_vector size 0
+right_ratio 1.1104 distace 1212.63
+right_ratio 1.14141 distace 1024.62
+right_ratio 1.04366 distace 1235.12
+right_ratio 1.14042 distace 1073.91
+right_ratio 1.08447 distace 1237.43
+right_ratio 1.08813 distace 972.595
+right_ratio 1.18101 distace 921.895
+right_ratio 1.00368 distace 980.115
+right_ratio 1.08795 distace 969.596
+right_ratio 1.18855 distace 1003.73
+right_ratio 1.09587 distace 1214.76
+right_ratio 1.16796 distace 1178.14
+confuse_label orignal class:36
+i_det_lenght 158.368 distance_vector size 0
+right_ratio 1.1104 distace 793.252
+right_ratio 1.14141 distace 459.46
+right_ratio 1.04366 distace 739.049
+right_ratio 1.14042 distace 512.164
+right_ratio 1.08447 distace 679.185
+right_ratio 1.08813 distace 489.38
+right_ratio 1.18101 distace 447.5
+right_ratio 1.00368 distace 411.159
+right_ratio 1.08795 distace 712.2
+right_ratio 1.18855 distace 837.189
+right_ratio 1.09587 distace 878.056
+right_ratio 1.16796 distace 936.423
+confuse_label orignal class:12
+i_det_lenght 164.928 distance_vector size 0
+right_ratio 1.1104 distace 956.949
+right_ratio 1.14141 distace 726.013
+right_ratio 1.04366 distace 955.869
+right_ratio 1.14042 distace 776.411
+right_ratio 1.08447 distace 942.038
+right_ratio 1.08813 distace 691.098
+right_ratio 1.18101 distace 640.933
+right_ratio 1.00368 distace 680.434
+right_ratio 1.08795 distace 763.966
+right_ratio 1.18855 distace 838.814
+right_ratio 1.09587 distace 988.722
+right_ratio 1.16796 distace 988.74
+confuse_label orignal class:43
+i_det_lenght 165.889 distance_vector size 0
+right_ratio 1.1104 distace 998.13
+right_ratio 1.14141 distace 835.705
+right_ratio 1.04366 distace 1027.41
+right_ratio 1.14042 distace 882.695
+right_ratio 1.08447 distace 1042.09
+right_ratio 1.08813 distace 767.662
+right_ratio 1.18101 distace 717.126
+right_ratio 1.00368 distace 793.73
+right_ratio 1.08795 distace 754.975
+right_ratio 1.18855 distace 796.842
+right_ratio 1.09587 distace 998.958
+right_ratio 1.16796 distace 966.752
+confuse_label orignal class:43
+i_det_lenght 166.833 distance_vector size 0
+right_ratio 1.1104 distace 1263.46
+right_ratio 1.14141 distace 1070.81
+right_ratio 1.04366 distace 1284.66
+right_ratio 1.14042 distace 1120.46
+right_ratio 1.08447 distace 1284.6
+right_ratio 1.08813 distace 1021.74
+right_ratio 1.18101 distace 971.049
+right_ratio 1.00368 distace 1025.9
+right_ratio 1.08795 distace 1020.47
+right_ratio 1.18855 distace 1053.23
+right_ratio 1.09587 distace 1265.84
+right_ratio 1.16796 distace 1228.41
+confuse_label orignal class:36
+i_det_lenght 165.069 distance_vector size 0
+right_ratio 1.1104 distace 1337.95
+right_ratio 1.14141 distace 1041.8
+right_ratio 1.04366 distace 1311.28
+right_ratio 1.14042 distace 1094.49
+right_ratio 1.08447 distace 1261.64
+right_ratio 1.08813 distace 1050.9
+right_ratio 1.18101 distace 1003.48
+right_ratio 1.00368 distace 993.52
+right_ratio 1.08795 distace 1165.89
+right_ratio 1.18855 distace 1240.18
+right_ratio 1.09587 distace 1384.89
+right_ratio 1.16796 distace 1391.33
+confuse_label orignal class:8
+i_det_lenght 170.965 distance_vector size 0
+right_ratio 1.1104 distace 1326.33
+right_ratio 1.14141 distace 1188.6
+right_ratio 1.04366 distace 1371.37
+right_ratio 1.14042 distace 1235.49
+right_ratio 1.08447 distace 1394.07
+right_ratio 1.08813 distace 1115.57
+right_ratio 1.18101 distace 1065.4
+right_ratio 1.00368 distace 1146.53
+right_ratio 1.08795 distace 1050.66
+right_ratio 1.18855 distace 1054.21
+right_ratio 1.09587 distace 1303.46
+right_ratio 1.16796 distace 1239.68
+confuse_label orignal class:36
+i_det_lenght 206.246 distance_vector size 0
+right_ratio 1.1104 distace 1310.21
+right_ratio 1.14141 distace 1114.56
+right_ratio 1.04366 distace 1330.71
+right_ratio 1.14042 distace 1164.46
+right_ratio 1.08447 distace 1329.03
+right_ratio 1.08813 distace 1067.56
+right_ratio 1.18101 distace 1016.88
+right_ratio 1.00368 distace 1069.37
+right_ratio 1.08795 distace 1066.71
+right_ratio 1.18855 distace 1097.91
+right_ratio 1.09587 distace 1312.41
+right_ratio 1.16796 distace 1273.89
+confuse_label orignal class:8
+i_det_lenght 170.5 distance_vector size 0
+right_ratio 1.1104 distace 1041.15
+right_ratio 1.14141 distace 876.194
+right_ratio 1.04366 distace 1070.34
+right_ratio 1.14042 distace 923.567
+right_ratio 1.08447 distace 1083.63
+right_ratio 1.08813 distace 810.287
+right_ratio 1.18101 distace 759.716
+right_ratio 1.00368 distace 833.783
+right_ratio 1.08795 distace 795.874
+right_ratio 1.18855 distace 834.291
+right_ratio 1.09587 distace 1040.8
+right_ratio 1.16796 distace 1006.07
+confuse_label orignal class:43
+i_det_lenght 167.821 distance_vector size 0
+right_ratio 1.1104 distace 1317.23
+right_ratio 1.14141 distace 1069.11
+right_ratio 1.04366 distace 1314.06
+right_ratio 1.14042 distace 1120.99
+right_ratio 1.08447 distace 1288.48
+right_ratio 1.08813 distace 1049.44
+right_ratio 1.18101 distace 999.679
+right_ratio 1.00368 distace 1021.81
+right_ratio 1.08795 distace 1108.21
+right_ratio 1.18855 distace 1162.45
+right_ratio 1.09587 distace 1342.36
+right_ratio 1.16796 distace 1326.85
+confuse_label orignal class:36
+i_det_lenght 168.458 distance_vector size 0
+right_ratio 1.1104 distace 1270.03
+right_ratio 1.14141 distace 1022.6
+right_ratio 1.04366 distace 1266.65
+right_ratio 1.14042 distace 1074.4
+right_ratio 1.08447 distace 1241.81
+right_ratio 1.08813 distace 1002.02
+right_ratio 1.18101 distace 952.248
+right_ratio 1.00368 distace 975.396
+right_ratio 1.08795 distace 1063.15
+right_ratio 1.18855 distace 1119.81
+right_ratio 1.09587 distace 1296.22
+right_ratio 1.16796 distace 1282.67
+confuse_label orignal class:8
+i_det_lenght 171.092 distance_vector size 0
+right_ratio 1.1104 distace 1216.42
+right_ratio 1.14141 distace 970.674
+right_ratio 1.04366 distace 1213.16
+right_ratio 1.14042 distace 1022.34
+right_ratio 1.08447 distace 1189.62
+right_ratio 1.08813 distace 948.5
+right_ratio 1.18101 distace 898.681
+right_ratio 1.00368 distace 923.622
+right_ratio 1.08795 distace 1011.61
+right_ratio 1.18855 distace 1070.89
+right_ratio 1.09587 distace 1243.55
+right_ratio 1.16796 distace 1232.03
+confuse_label orignal class:8
+i_det_lenght 170.004 distance_vector size 0
+right_ratio 1.1104 distace 1002.83
+right_ratio 1.14141 distace 768.427
+right_ratio 1.04366 distace 1001.22
+right_ratio 1.14042 distace 819.154
+right_ratio 1.08447 distace 985.245
+right_ratio 1.08813 distace 736.446
+right_ratio 1.18101 distace 686.357
+right_ratio 1.00368 distace 722.463
+right_ratio 1.08795 distace 807.325
+right_ratio 1.18855 distace 878.904
+right_ratio 1.09587 distace 1033.68
+right_ratio 1.16796 distace 1031.31
+confuse_label orignal class:43
+i_det_lenght 165.096 distance_vector size 0
+right_ratio 1.1104 distace 667.35
+right_ratio 1.14141 distace 1029.43
+right_ratio 1.04366 distace 847.276
+right_ratio 1.14042 distace 1019.73
+right_ratio 1.08447 distace 1025.27
+right_ratio 1.08813 distace 859.169
+right_ratio 1.18101 distace 863.266
+right_ratio 1.00368 distace 1041.49
+right_ratio 1.08795 distace 508.844
+right_ratio 1.18855 distace 374.484
+right_ratio 1.09587 distace 491.346
+right_ratio 1.16796 distace 324.438
+confuse_label orignal class:39
+i_det_lenght 144.209 distance_vector size 0
+right_ratio 1.1104 distace 615.74
+right_ratio 1.14141 distace 978.804
+right_ratio 1.04366 distace 795.635
+right_ratio 1.14042 distace 968.62
+right_ratio 1.08447 distace 973.529
+right_ratio 1.08813 distace 809.114
+right_ratio 1.18101 distace 814.094
+right_ratio 1.00368 distace 991.418
+right_ratio 1.08795 distace 462.355
+right_ratio 1.18855 distace 334.179
+right_ratio 1.09587 distace 439.785
+right_ratio 1.16796 distace 272.985
+ dis 272.985
+confuse_label orignal class:39
+i_det_lenght 144.887 distance_vector size 1
+judge 0.0408399 j_det_lenght  distace 272.985164.513
+judge 0.135462 j_det_lenght  distace 272.985164.513
+judge 0.419327 j_det_lenght  distace 272.985164.513
+ 
+right_ratio 1.1104 distace 612.483
+right_ratio 1.14141 distace 664.882
+right_ratio 1.04366 distace 709.681
+right_ratio 1.14042 distace 690.335
+right_ratio 1.08447 distace 802.855
+right_ratio 1.08813 distace 513.224
+right_ratio 1.18101 distace 477.225
+right_ratio 1.00368 distace 645.327
+right_ratio 1.08795 distace 303.282
+ dis 303.282
+right_ratio 1.18855 distace 313.355
+ dis 313.355
+right_ratio 1.09587 distace 557.185
+right_ratio 1.16796 distace 490.353
+confuse_label orignal class:4
+i_det_lenght 211.775 distance_vector size 2
+judge 0.294915 j_det_lenght  distace 313.355162.894
+judge 0.230816 j_det_lenght  distace 313.355162.894
+judge 0.03852 j_det_lenght  distace 313.355162.894
+ 
+judge 0.327025 j_det_lenght  distace 303.282155.475
+judge 0.265845 j_det_lenght  distace 303.282155.475
+judge 0.0823067 j_det_lenght  distace 303.282155.475
+ 
+right_ratio 1.1104 distace 944.921
+right_ratio 1.14141 distace 878.741
+right_ratio 1.04366 distace 1010.97
+right_ratio 1.14042 distace 918.724
+right_ratio 1.08447 distace 1063.03
+right_ratio 1.08813 distace 771.075
+right_ratio 1.18101 distace 723.776
+right_ratio 1.00368 distace 843.977
+right_ratio 1.08795 distace 655.375
+right_ratio 1.18855 distace 657.873
+right_ratio 1.09587 distace 909.099
+right_ratio 1.16796 distace 842.169
+confuse_label orignal class:43
+i_det_lenght 204.969 distance_vector size 0
+right_ratio 1.1104 distace 909.121
+right_ratio 1.14141 distace 943.746
+right_ratio 1.04366 distace 1010.8
+right_ratio 1.14042 distace 975.034
+right_ratio 1.08447 distace 1098.24
+right_ratio 1.08813 distace 805.048
+right_ratio 1.18101 distace 764.666
+right_ratio 1.00368 distace 917.587
+right_ratio 1.08795 distace 587.045
+right_ratio 1.18855 distace 538.34
+right_ratio 1.09587 distace 834.178
+right_ratio 1.16796 distace 729.371
+confuse_label orignal class:12
+i_det_lenght 197.046 distance_vector size 0
+right_ratio 1.1104 distace 1031.96
+right_ratio 1.14141 distace 944.941
+right_ratio 1.04366 distace 1092.11
+right_ratio 1.14042 distace 987.123
+right_ratio 1.08447 distace 1136.05
+right_ratio 1.08813 distace 846.815
+right_ratio 1.18101 distace 798.403
+right_ratio 1.00368 distace 907.847
+right_ratio 1.08795 distace 746.295
+right_ratio 1.18855 distace 748.925
+right_ratio 1.09587 distace 999.817
+right_ratio 1.16796 distace 933.664
+confuse_label orignal class:43
+i_det_lenght 206.694 distance_vector size 0
+right_ratio 1.1104 distace 1283.53
+right_ratio 1.14141 distace 1151.68
+right_ratio 1.04366 distace 1330.39
+right_ratio 1.14042 distace 1198.07
+right_ratio 1.08447 distace 1355.67
+right_ratio 1.08813 distace 1075.61
+right_ratio 1.18101 distace 1025.58
+right_ratio 1.00368 distace 1110.13
+right_ratio 1.08795 distace 1006.66
+right_ratio 1.18855 distace 1010.09
+right_ratio 1.09587 distace 1259.56
+right_ratio 1.16796 distace 1195.49
+confuse_label orignal class:36
+i_det_lenght 202.301 distance_vector size 0
+right_ratio 1.1104 distace 1100.14
+right_ratio 1.14141 distace 1084.05
+right_ratio 1.04366 distace 1188
+right_ratio 1.14042 distace 1121.17
+right_ratio 1.08447 distace 1257.75
+right_ratio 1.08813 distace 963.281
+right_ratio 1.18101 distace 918.551
+right_ratio 1.00368 distace 1051.89
+right_ratio 1.08795 distace 785.464
+right_ratio 1.18855 distace 745.374
+right_ratio 1.09587 distace 1036.02
+right_ratio 1.16796 distace 936.39
+confuse_label orignal class:43
+i_det_lenght 204.749 distance_vector size 0
+right_ratio 1.1104 distace 1055.9
+right_ratio 1.14141 distace 1051.9
+right_ratio 1.04366 distace 1147.25
+right_ratio 1.14042 distace 1087.73
+right_ratio 1.08447 distace 1221.33
+right_ratio 1.08813 distace 926.711
+right_ratio 1.18101 distace 882.883
+right_ratio 1.00368 distace 1021.07
+right_ratio 1.08795 distace 739.132
+right_ratio 1.18855 distace 696.478
+right_ratio 1.09587 distace 988.882
+right_ratio 1.16796 distace 887.509
+confuse_label orignal class:43
+i_det_lenght 202.163 distance_vector size 0
+right_ratio 1.1104 distace 566.283
+right_ratio 1.14141 distace 641.496
+right_ratio 1.04366 distace 669.169
+right_ratio 1.14042 distace 663.895
+right_ratio 1.08447 distace 769.446
+right_ratio 1.08813 distace 483.71
+right_ratio 1.18101 distace 450.915
+right_ratio 1.00368 distace 625.066
+right_ratio 1.08795 distace 253.678
+ dis 253.678
+right_ratio 1.18855 distace 268.592
+ dis 268.592
+right_ratio 1.09587 distace 507.462
+right_ratio 1.16796 distace 441.999
+confuse_label orignal class:4
+i_det_lenght 215.167 distance_vector size 2
+judge 0.306033 j_det_lenght  distace 268.592162.894
+judge 0.242945 j_det_lenght  distace 268.592162.894
+judge 0.0536809 j_det_lenght  distace 268.592162.894
+ 
+judge 0.337637 j_det_lenght  distace 253.678155.475
+judge 0.277422 j_det_lenght  distace 253.678155.475
+judge 0.0967772 j_det_lenght  distace 253.678155.475
+ 
+right_ratio 1.1104 distace 689.563
+right_ratio 1.14141 distace 842.236
+right_ratio 1.04366 distace 824.093
+right_ratio 1.14042 distace 859.635
+right_ratio 1.08447 distace 948.314
+right_ratio 1.08813 distace 676.181
+right_ratio 1.18101 distace 649.503
+right_ratio 1.00368 distace 829.827
+right_ratio 1.08795 distace 360.68
+right_ratio 1.18855 distace 263.972
+ dis 263.972
+right_ratio 1.09587 distace 580.944
+right_ratio 1.16796 distace 451.352
+confuse_label orignal class:4
+i_det_lenght 212.267 distance_vector size 1
+judge 0.29655 j_det_lenght  distace 263.972162.894
+judge 0.2326 j_det_lenght  distace 263.972162.894
+judge 0.0407505 j_det_lenght  distace 263.972162.894
+ 
+right_ratio 1.1104 distace 1333.41
+right_ratio 1.14141 distace 1266.15
+right_ratio 1.04366 distace 1406.04
+right_ratio 1.14042 distace 1308.39
+right_ratio 1.08447 distace 1456.48
+right_ratio 1.08813 distace 1165.81
+right_ratio 1.18101 distace 1117.99
+right_ratio 1.00368 distace 1228.75
+right_ratio 1.08795 distace 1028.59
+right_ratio 1.18855 distace 998.388
+right_ratio 1.09587 distace 1281.5
+right_ratio 1.16796 distace 1189.19
+confuse_label orignal class:8
+i_det_lenght 196.522 distance_vector size 0
+right_ratio 1.1104 distace 730.818
+right_ratio 1.14141 distace 856.409
+right_ratio 1.04366 distace 857.989
+right_ratio 1.14042 distace 877.089
+right_ratio 1.08447 distace 974.232
+right_ratio 1.08813 distace 695.068
+right_ratio 1.18101 distace 664.831
+right_ratio 1.00368 distace 840.809
+right_ratio 1.08795 distace 400.676
+right_ratio 1.18855 distace 318.043
+ dis 318.043
+right_ratio 1.09587 distace 630.444
+right_ratio 1.16796 distace 507.325
+confuse_label orignal class:4
+i_det_lenght 212.488 distance_vector size 1
+judge 0.297283 j_det_lenght  distace 318.043162.894
+judge 0.2334 j_det_lenght  distace 318.043162.894
+judge 0.0417499 j_det_lenght  distace 318.043162.894
+ 
+right_ratio 1.1104 distace 1285.91
+right_ratio 1.14141 distace 1229.27
+right_ratio 1.04366 distace 1361.88
+right_ratio 1.14042 distace 1270.53
+right_ratio 1.08447 distace 1416.44
+right_ratio 1.08813 distace 1124.58
+right_ratio 1.18101 distace 1077.29
+right_ratio 1.00368 distace 1192.85
+right_ratio 1.08795 distace 978.706
+right_ratio 1.18855 distace 946.068
+right_ratio 1.09587 distace 1231.19
+right_ratio 1.16796 distace 1136.96
+confuse_label orignal class:36
+i_det_lenght 195.749 distance_vector size 0
+right_ratio 1.1104 distace 1375.02
+right_ratio 1.14141 distace 1300.25
+right_ratio 1.04366 distace 1445.33
+right_ratio 1.14042 distace 1343.17
+right_ratio 1.08447 distace 1492.78
+right_ratio 1.08813 distace 1203.12
+right_ratio 1.18101 distace 1154.94
+right_ratio 1.00368 distace 1262.13
+right_ratio 1.08795 distace 1071.79
+right_ratio 1.18855 distace 1042.99
+right_ratio 1.09587 distace 1324.94
+right_ratio 1.16796 distace 1233.74
+confuse_label orignal class:8
+i_det_lenght 200.824 distance_vector size 0
+2 16.5 4.5 sssssss2 16.5 4.5 over 
+3 18 4.5 sssssss3 18 4.5 over 
+4 22.5 4.5 sssssss4 22.5 4.5 over 
+5 18 4.5 sssssss5 18 4.5 over 
+6 22.5 4.5 sssssss6 22.5 4.5 over 
+8 18 4.5 sssssss8 18 4.5 over 
+9 22.5 4.5 sssssss9 22.5 4.5 over 
+12 16.5 4.5 sssssss12 16.5 4.5 over 
+13 18 4.5 sssssss13 18 4.5 over 
+14 22.5 4.5 sssssss14 22.5 4.5 over 
+36 18 4.5 sssssss36 18 4.5 over 
+37 22.5 4.5 sssssss37 22.5 4.5 over 
+39 16.5 4.5 sssssss39 16.5 4.5 over 
+40 18 4.5 sssssss40 18 4.5 over 
+41 22.5 4.5 sssssss41 22.5 4.5 over 
+43 18 4.5 sssssss43 18 4.5 over 
+44 22.5 4.5 sssssss44 22.5 4.5 over 
+15 18 4.5 sssssss15 18 4.5 over 
+16 18 4.5 sssssss16 18 4.5 over 
+17 18 4.5 sssssss17 18 4.5 over 
+18 18 4.5 sssssss18 18 4.5 over 
+7 18 4.5 sssssss7 18 4.5 over 
+11 18 4.5 sssssss11 18 4.5 over 
+ sssssssover 
+right_ratio 1.1104 distace 599.149
+right_ratio 1.14141 distace 234.97
+ dis 234.97
+right_ratio 1.04366 distace 522.658
+right_ratio 1.14042 distace 287.674
+ dis 287.674
+right_ratio 1.08447 distace 454.763
+right_ratio 1.08813 distace 291.92
+right_ratio 1.18101 distace 261.354
+right_ratio 1.00368 distace 186.664
+ dis 186.664
+right_ratio 1.08795 distace 594.744
+right_ratio 1.18855 distace 742.505
+right_ratio 1.09587 distace 709.996
+right_ratio 1.16796 distace 801.285
+confuse_label orignal class:3
+i_det_lenght 170.913 distance_vector size 3
+judge 0.0248269 j_det_lenght  distace 287.674181.821
+judge 0.0638251 j_det_lenght  distace 287.674181.821
+judge 0.329781 j_det_lenght  distace 287.674181.821
+ 
+judge 0.0299171 j_det_lenght  distace 234.97180.872
+judge 0.0582722 j_det_lenght  distace 234.97180.872
+judge 0.32284 j_det_lenght  distace 234.97180.872
+ 
+judge 0.00803447 j_det_lenght  distace 186.664187.948
+judge 0.099674 j_det_lenght  distace 186.664187.948
+judge 0.374592 j_det_lenght  distace 186.664187.948
+ 
+right_ratio 1.1104 distace 1039.4
+right_ratio 1.14141 distace 740.334
+right_ratio 1.04366 distace 1007.81
+right_ratio 1.14042 distace 792.95
+right_ratio 1.08447 distace 960.514
+right_ratio 1.08813 distace 748.258
+right_ratio 1.18101 distace 701.427
+right_ratio 1.00368 distace 692.184
+right_ratio 1.08795 distace 892.119
+right_ratio 1.18855 distace 985.55
+right_ratio 1.09587 distace 1096.93
+right_ratio 1.16796 distace 1120.41
+right_ratio 1.1104 distace 1039.4
+right_ratio 1.14141 distace 740.334
+right_ratio 1.04366 distace 1007.81
+right_ratio 1.14042 distace 792.95
+right_ratio 1.08447 distace 960.514
+right_ratio 1.08813 distace 748.258
+right_ratio 1.18101 distace 701.427
+right_ratio 1.00368 distace 692.184
+right_ratio 1.08795 distace 892.119
+right_ratio 1.18855 distace 985.55
+right_ratio 1.09587 distace 1096.93
+right_ratio 1.16796 distace 1120.41
+right_ratio 1.1104 distace 1039.4
+right_ratio 1.14141 distace 740.334
+right_ratio 1.04366 distace 1007.81
+right_ratio 1.14042 distace 792.95
+right_ratio 1.08447 distace 960.514
+right_ratio 1.08813 distace 748.258
+right_ratio 1.18101 distace 701.427
+right_ratio 1.00368 distace 692.184
+right_ratio 1.08795 distace 892.119
+right_ratio 1.18855 distace 985.55
+right_ratio 1.09587 distace 1096.93
+right_ratio 1.16796 distace 1120.41
+right_ratio 1.1104 distace 1039.4
+right_ratio 1.14141 distace 740.334
+right_ratio 1.04366 distace 1007.81
+right_ratio 1.14042 distace 792.95
+right_ratio 1.08447 distace 960.514
+right_ratio 1.08813 distace 748.258
+right_ratio 1.18101 distace 701.427
+right_ratio 1.00368 distace 692.184
+right_ratio 1.08795 distace 892.119
+right_ratio 1.18855 distace 985.55
+right_ratio 1.09587 distace 1096.93
+right_ratio 1.16796 distace 1120.41
+right_ratio 1.1104 distace 1039.4
+right_ratio 1.14141 distace 740.334
+right_ratio 1.04366 distace 1007.81
+right_ratio 1.14042 distace 792.95
+right_ratio 1.08447 distace 960.514
+right_ratio 1.08813 distace 748.258
+right_ratio 1.18101 distace 701.427
+right_ratio 1.00368 distace 692.184
+right_ratio 1.08795 distace 892.119
+right_ratio 1.18855 distace 985.55
+right_ratio 1.09587 distace 1096.93
+right_ratio 1.16796 distace 1120.41
+right_ratio 1.1104 distace 1039.4
+right_ratio 1.14141 distace 740.334
+ dis 740.334
+right_ratio 1.04366 distace 1007.81
+right_ratio 1.14042 distace 792.95
+right_ratio 1.08447 distace 960.514
+right_ratio 1.08813 distace 748.258
+ dis 748.258
+right_ratio 1.18101 distace 701.427
+ dis 701.427
+right_ratio 1.00368 distace 692.184
+ dis 692.184
+right_ratio 1.08795 distace 892.119
+right_ratio 1.18855 distace 985.55
+right_ratio 1.09587 distace 1096.93
+right_ratio 1.16796 distace 1120.41
+confuse_label orignal class:43
+i_det_lenght 170.489 distance_vector size 4
+bfind_very_close distace 748.258
+compare info 7 j_det_lenght 171.857 distance 748.258
+ x dis 117.366 y dis 738.996
+size change label 43 to 43 0.01compare from:11
+find close  
+right_ratio 1.1104 distace 947.428
+right_ratio 1.14141 distace 790.031
+right_ratio 1.04366 distace 977.527
+right_ratio 1.14042 distace 836.396
+right_ratio 1.08447 distace 994.673
+right_ratio 1.08813 distace 718.431
+right_ratio 1.18101 distace 667.972
+right_ratio 1.05388 distace 345.629
+right_ratio 1.00368 distace 748.76
+right_ratio 1.08795 distace 706.069
+right_ratio 1.18855 distace 751.703
+right_ratio 1.09587 distace 949.087
+right_ratio 1.16796 distace 919.448
+right_ratio 1.1104 distace 947.428
+right_ratio 1.14141 distace 790.031
+right_ratio 1.04366 distace 977.527
+right_ratio 1.14042 distace 836.396
+right_ratio 1.08447 distace 994.673
+right_ratio 1.08813 distace 718.431
+right_ratio 1.18101 distace 667.972
+right_ratio 1.05388 distace 345.629
+ dis 345.629
+right_ratio 1.00368 distace 748.76
+right_ratio 1.08795 distace 706.069
+right_ratio 1.18855 distace 751.703
+right_ratio 1.09587 distace 949.087
+right_ratio 1.16796 distace 919.448
+confuse_label orignal class:43
+i_det_lenght 167.249 distance_vector size 1
+bfind_very_close distace 345.629
+compare info 43 j_det_lenght 170.489 distance 345.629
+ x dis 341.019 y dis 56.2646
+size change label 43 to 43 0.01compare from:15
+find close  
+right_ratio 1.1104 distace 845.551
+right_ratio 1.14141 distace 512.695
+right_ratio 1.04366 distace 793.048
+right_ratio 1.14042 distace 565.392
+right_ratio 1.08447 distace 732.133
+right_ratio 1.08813 distace 542.588
+right_ratio 1.18101 distace 500.085
+right_ratio 1.05388 distace 232.57
+ dis 232.57
+right_ratio 1.00368 distace 464.382
+right_ratio 1.08795 distace 754.605
+right_ratio 1.18855 distace 874.863
+right_ratio 1.09587 distace 927.059
+right_ratio 1.16796 distace 980.371
+confuse_label orignal class:12
+i_det_lenght 168.682 distance_vector size 1
+judge 0.0735121 j_det_lenght  distace 232.57170.489
+bfind_very_close distace 232.57
+compare info 43 j_det_lenght 170.489 distance 232.57
+ x dis 57.4862 y dis 225.354
+size change label 12 to 13 0.01compare from:15
+find close  
+right_ratio 1.1104 distace 845.551
+right_ratio 1.14141 distace 512.695
+right_ratio 1.04366 distace 793.048
+right_ratio 1.14042 distace 565.392
+right_ratio 1.08447 distace 732.133
+right_ratio 1.08813 distace 542.588
+right_ratio 1.18101 distace 500.085
+right_ratio 1.05388 distace 232.57
+ dis 232.57
+right_ratio 1.00368 distace 464.382
+right_ratio 1.08795 distace 754.605
+right_ratio 1.18855 distace 874.863
+right_ratio 1.09587 distace 927.059
+right_ratio 1.16796 distace 980.371
+confuse_label orignal class:13
+i_det_lenght 168.682 distance_vector size 1
+judge 0.0735121 j_det_lenght  distace 232.57170.489
+bfind_very_close distace 232.57
+compare info 43 j_det_lenght 170.489 distance 232.57
+ x dis 57.4862 y dis 225.354
+size change label 13 to 13 0.01compare from:15
+find close  
+right_ratio 1.1104 distace 1245.89
+right_ratio 1.14141 distace 947.047
+right_ratio 1.04366 distace 1216.98
+right_ratio 1.14042 distace 999.739
+right_ratio 1.08447 distace 1166.93
+right_ratio 1.08813 distace 957.109
+right_ratio 1.18101 distace 909.955
+right_ratio 1.05388 distace 209.17
+ dis 209.17
+right_ratio 1.00368 distace 898.777
+right_ratio 1.08795 distace 1081.69
+right_ratio 1.18855 distace 1161.87
+right_ratio 1.09587 distace 1296.5
+right_ratio 1.16796 distace 1308.34
+confuse_label orignal class:36
+i_det_lenght 169.955 distance_vector size 1
+bfind_very_close distace 209.17
+compare info 43 j_det_lenght 170.489 distance 209.17
+ x dis 19.8582 y dis 208.225
+size change label 36 to 36 0.01compare from:15
+find close  
+right_ratio 1.1104 distace 991.815
+right_ratio 1.14141 distace 691.522
+right_ratio 1.04366 distace 958.83
+right_ratio 1.14042 distace 744.115
+right_ratio 1.08447 distace 911.728
+right_ratio 1.08813 distace 699.601
+right_ratio 1.18101 distace 652.975
+right_ratio 1.05388 distace 49.1041
+ dis 49.1041
+right_ratio 1.00368 distace 643.405
+right_ratio 1.08795 distace 850.691
+right_ratio 1.18855 distace 948.229
+right_ratio 1.09587 distace 1051.87
+right_ratio 1.16796 distace 1079.19
+confuse_label orignal class:43
+i_det_lenght 163.39 distance_vector size 1
+bfind_very_close distace 49.1041
+compare info 43 j_det_lenght 170.489 distance 49.1041
+ x dis 1.319 y dis 49.0864
+size change label 43 to 43 0.01compare from:15
+find close  
+right_ratio 1.1104 distace 988.467
+right_ratio 1.14141 distace 909.474
+right_ratio 1.04366 distace 1050.71
+right_ratio 1.14042 distace 950.765
+right_ratio 1.08447 distace 1097.86
+right_ratio 1.08813 distace 807.421
+right_ratio 1.18101 distace 759.422
+right_ratio 1.05388 distace 534.582
+right_ratio 1.00368 distace 873.333
+right_ratio 1.08795 distace 701.811
+right_ratio 1.18855 distace 705.344
+right_ratio 1.09587 distace 955.357
+right_ratio 1.16796 distace 889.618
+right_ratio 1.1104 distace 988.467
+right_ratio 1.14141 distace 909.474
+right_ratio 1.04366 distace 1050.71
+right_ratio 1.14042 distace 950.765
+right_ratio 1.08447 distace 1097.86
+right_ratio 1.08813 distace 807.421
+right_ratio 1.18101 distace 759.422
+right_ratio 1.05388 distace 534.582
+right_ratio 1.00368 distace 873.333
+right_ratio 1.08795 distace 701.811
+right_ratio 1.18855 distace 705.344
+right_ratio 1.09587 distace 955.357
+right_ratio 1.16796 distace 889.618
+right_ratio 1.1104 distace 988.467
+right_ratio 1.14141 distace 909.474
+right_ratio 1.04366 distace 1050.71
+right_ratio 1.14042 distace 950.765
+right_ratio 1.08447 distace 1097.86
+right_ratio 1.08813 distace 807.421
+right_ratio 1.18101 distace 759.422
+right_ratio 1.05388 distace 534.582
+ dis 534.582
+right_ratio 1.00368 distace 873.333
+right_ratio 1.08795 distace 701.811
+right_ratio 1.18855 distace 705.344
+right_ratio 1.09587 distace 955.357
+right_ratio 1.16796 distace 889.618
+confuse_label orignal class:43
+i_det_lenght 201.294 distance_vector size 1
+judge 0.153034 j_det_lenght  distace 534.582170.489
+judge 0.0587076 j_det_lenght  distace 534.582170.489
+ 
+right_ratio 1.1104 distace 1231.35
+right_ratio 1.14141 distace 1106.01
+right_ratio 1.04366 distace 1280.08
+right_ratio 1.14042 distace 1151.81
+right_ratio 1.08447 distace 1308.22
+right_ratio 1.08813 distace 1026.49
+right_ratio 1.18101 distace 976.633
+right_ratio 1.05388 distace 557.372
+right_ratio 1.00368 distace 1065.08
+right_ratio 1.08795 distace 953.507
+right_ratio 1.18855 distace 957.359
+right_ratio 1.09587 distace 1206.46
+right_ratio 1.16796 distace 1142.51
+right_ratio 1.1104 distace 1231.35
+right_ratio 1.14141 distace 1106.01
+right_ratio 1.04366 distace 1280.08
+right_ratio 1.14042 distace 1151.81
+right_ratio 1.08447 distace 1308.22
+right_ratio 1.08813 distace 1026.49
+right_ratio 1.18101 distace 976.633
+right_ratio 1.05388 distace 557.372
+right_ratio 1.00368 distace 1065.08
+right_ratio 1.08795 distace 953.507
+right_ratio 1.18855 distace 957.359
+right_ratio 1.09587 distace 1206.46
+right_ratio 1.16796 distace 1142.51
+right_ratio 1.1104 distace 1231.35
+right_ratio 1.14141 distace 1106.01
+right_ratio 1.04366 distace 1280.08
+right_ratio 1.14042 distace 1151.81
+right_ratio 1.08447 distace 1308.22
+right_ratio 1.08813 distace 1026.49
+right_ratio 1.18101 distace 976.633
+right_ratio 1.05388 distace 557.372
+right_ratio 1.00368 distace 1065.08
+right_ratio 1.08795 distace 953.507
+right_ratio 1.18855 distace 957.359
+right_ratio 1.09587 distace 1206.46
+right_ratio 1.16796 distace 1142.51
+right_ratio 1.1104 distace 1231.35
+right_ratio 1.14141 distace 1106.01
+right_ratio 1.04366 distace 1280.08
+right_ratio 1.14042 distace 1151.81
+right_ratio 1.08447 distace 1308.22
+right_ratio 1.08813 distace 1026.49
+right_ratio 1.18101 distace 976.633
+right_ratio 1.05388 distace 557.372
+right_ratio 1.00368 distace 1065.08
+right_ratio 1.08795 distace 953.507
+right_ratio 1.18855 distace 957.359
+right_ratio 1.09587 distace 1206.46
+right_ratio 1.16796 distace 1142.51
+right_ratio 1.1104 distace 1231.35
+right_ratio 1.14141 distace 1106.01
+right_ratio 1.04366 distace 1280.08
+right_ratio 1.14042 distace 1151.81
+right_ratio 1.08447 distace 1308.22
+right_ratio 1.08813 distace 1026.49
+right_ratio 1.18101 distace 976.633
+right_ratio 1.05388 distace 557.372
+right_ratio 1.00368 distace 1065.08
+right_ratio 1.08795 distace 953.507
+right_ratio 1.18855 distace 957.359
+right_ratio 1.09587 distace 1206.46
+right_ratio 1.16796 distace 1142.51
+right_ratio 1.1104 distace 1231.35
+right_ratio 1.14141 distace 1106.01
+right_ratio 1.04366 distace 1280.08
+right_ratio 1.14042 distace 1151.81
+right_ratio 1.08447 distace 1308.22
+right_ratio 1.08813 distace 1026.49
+right_ratio 1.18101 distace 976.633
+right_ratio 1.05388 distace 557.372
+right_ratio 1.00368 distace 1065.08
+right_ratio 1.08795 distace 953.507
+right_ratio 1.18855 distace 957.359
+right_ratio 1.09587 distace 1206.46
+right_ratio 1.16796 distace 1142.51
+confuse_label orignal class:36
+i_det_lenght 201.453 distance_vector size 0
+right_ratio 1.1104 distace 1296.71
+right_ratio 1.14141 distace 998.817
+right_ratio 1.04366 distace 1268.78
+right_ratio 1.14042 distace 1051.51
+right_ratio 1.08447 distace 1218.65
+right_ratio 1.08813 distace 1008.71
+right_ratio 1.18101 distace 961.436
+right_ratio 1.05388 distace 260.991
+ dis 260.991
+right_ratio 1.00368 distace 950.539
+right_ratio 1.08795 distace 1128.52
+right_ratio 1.18855 distace 1205.62
+right_ratio 1.09587 distace 1345.52
+right_ratio 1.16796 distace 1354.58
+confuse_label orignal class:36
+i_det_lenght 166.143 distance_vector size 1
+bfind_very_close distace 260.991
+compare info 43 j_det_lenght 170.489 distance 260.991
+ x dis 21.5599 y dis 260.099
+size change label 36 to 36 0.01compare from:15
+find close  
+right_ratio 1.1104 distace 1212.63
+right_ratio 1.14141 distace 1024.62
+right_ratio 1.04366 distace 1235.12
+right_ratio 1.14042 distace 1073.91
+right_ratio 1.08447 distace 1237.43
+right_ratio 1.08813 distace 972.595
+right_ratio 1.18101 distace 921.895
+right_ratio 1.05388 distace 391.761
+right_ratio 1.00368 distace 980.115
+right_ratio 1.0925 distace 355.907
+right_ratio 1.08795 distace 969.596
+right_ratio 1.18855 distace 1003.73
+right_ratio 1.09587 distace 1214.76
+right_ratio 1.16796 distace 1178.14
+right_ratio 1.1104 distace 1212.63
+right_ratio 1.14141 distace 1024.62
+right_ratio 1.04366 distace 1235.12
+right_ratio 1.14042 distace 1073.91
+right_ratio 1.08447 distace 1237.43
+right_ratio 1.08813 distace 972.595
+right_ratio 1.18101 distace 921.895
+right_ratio 1.05388 distace 391.761
+right_ratio 1.00368 distace 980.115
+right_ratio 1.0925 distace 355.907
+ dis 355.907
+right_ratio 1.08795 distace 969.596
+right_ratio 1.18855 distace 1003.73
+right_ratio 1.09587 distace 1214.76
+right_ratio 1.16796 distace 1178.14
+confuse_label orignal class:36
+i_det_lenght 158.368 distance_vector size 1
+bfind_very_close distace 355.907
+compare info 36 j_det_lenght 166.143 distance 355.907
+ x dis 352.348 y dis 50.2047
+size change label 36 to 36 0.01compare from:25
+find close  
+right_ratio 1.1104 distace 793.252
+right_ratio 1.14141 distace 459.46
+right_ratio 1.04366 distace 739.049
+right_ratio 1.14042 distace 512.164
+right_ratio 1.08447 distace 679.185
+right_ratio 1.08813 distace 489.38
+right_ratio 1.18101 distace 447.5
+right_ratio 1.05388 distace 282.921
+ dis 282.921
+right_ratio 1.00368 distace 411.159
+right_ratio 1.0925 distace 539.469
+right_ratio 1.08795 distace 712.2
+right_ratio 1.18855 distace 837.189
+right_ratio 1.09587 distace 878.056
+right_ratio 1.16796 distace 936.423
+confuse_label orignal class:12
+i_det_lenght 164.928 distance_vector size 1
+judge 0.0524271 j_det_lenght  distace 282.921170.489
+bfind_very_close distace 282.921
+compare info 43 j_det_lenght 170.489 distance 282.921
+ x dis 48.7833 y dis 278.683
+size change label 12 to 13 0.01compare from:15
+find close  
+right_ratio 1.1104 distace 793.252
+right_ratio 1.14141 distace 459.46
+right_ratio 1.04366 distace 739.049
+right_ratio 1.14042 distace 512.164
+right_ratio 1.08447 distace 679.185
+right_ratio 1.08813 distace 489.38
+right_ratio 1.18101 distace 447.5
+right_ratio 1.05388 distace 282.921
+ dis 282.921
+right_ratio 1.00368 distace 411.159
+right_ratio 1.0925 distace 539.469
+right_ratio 1.08795 distace 712.2
+right_ratio 1.18855 distace 837.189
+right_ratio 1.09587 distace 878.056
+right_ratio 1.16796 distace 936.423
+confuse_label orignal class:13
+i_det_lenght 164.928 distance_vector size 1
+judge 0.0524271 j_det_lenght  distace 282.921170.489
+bfind_very_close distace 282.921
+compare info 43 j_det_lenght 170.489 distance 282.921
+ x dis 48.7833 y dis 278.683
+size change label 13 to 13 0.01compare from:15
+find close  
+right_ratio 1.1104 distace 956.949
+right_ratio 1.14141 distace 726.013
+right_ratio 1.04366 distace 955.869
+right_ratio 1.14042 distace 776.411
+right_ratio 1.08447 distace 942.038
+right_ratio 1.08813 distace 691.098
+right_ratio 1.18101 distace 640.933
+right_ratio 1.05388 distace 181.401
+ dis 181.401
+right_ratio 1.00368 distace 680.434
+right_ratio 1.0925 distace 366.984
+right_ratio 1.08795 distace 763.966
+right_ratio 1.18855 distace 838.814
+right_ratio 1.09587 distace 988.722
+right_ratio 1.16796 distace 988.74
+confuse_label orignal class:43
+i_det_lenght 165.889 distance_vector size 1
+bfind_very_close distace 181.401
+compare info 43 j_det_lenght 170.489 distance 181.401
+ x dis 174.303 y dis 50.2475
+size change label 43 to 43 0.01compare from:15
+find close  
+right_ratio 1.1104 distace 998.13
+right_ratio 1.14141 distace 835.705
+right_ratio 1.04366 distace 1027.41
+right_ratio 1.14042 distace 882.695
+right_ratio 1.08447 distace 1042.09
+right_ratio 1.08813 distace 767.662
+right_ratio 1.18101 distace 717.126
+right_ratio 1.05388 distace 344.45
+right_ratio 1.00368 distace 793.73
+right_ratio 1.0925 distace 452.289
+right_ratio 1.08795 distace 754.975
+right_ratio 1.18855 distace 796.842
+right_ratio 1.09587 distace 998.958
+right_ratio 1.16796 distace 966.752
+right_ratio 1.1104 distace 998.13
+right_ratio 1.14141 distace 835.705
+right_ratio 1.04366 distace 1027.41
+right_ratio 1.14042 distace 882.695
+right_ratio 1.08447 distace 1042.09
+right_ratio 1.08813 distace 767.662
+right_ratio 1.18101 distace 717.126
+right_ratio 1.05388 distace 344.45
+ dis 344.45
+right_ratio 1.00368 distace 793.73
+right_ratio 1.0925 distace 452.289
+right_ratio 1.08795 distace 754.975
+right_ratio 1.18855 distace 796.842
+right_ratio 1.09587 distace 998.958
+right_ratio 1.16796 distace 966.752
+confuse_label orignal class:43
+i_det_lenght 166.833 distance_vector size 1
+bfind_very_close distace 344.45
+compare info 43 j_det_lenght 170.489 distance 344.45
+ x dis 344.403 y dis 5.67578
+size change label 43 to 43 0.01compare from:15
+find close  
+right_ratio 1.1104 distace 1263.46
+right_ratio 1.14141 distace 1070.81
+right_ratio 1.04366 distace 1284.66
+right_ratio 1.14042 distace 1120.46
+right_ratio 1.08447 distace 1284.6
+right_ratio 1.08813 distace 1021.74
+right_ratio 1.18101 distace 971.049
+right_ratio 1.05388 distace 418.732
+right_ratio 1.00368 distace 1025.9
+right_ratio 1.0925 distace 349.077
+right_ratio 1.08395 distace 267.112
+ dis 267.112
+right_ratio 1.08795 distace 1020.47
+right_ratio 1.18855 distace 1053.23
+right_ratio 1.09587 distace 1265.84
+right_ratio 1.16796 distace 1228.41
+confuse_label orignal class:36
+i_det_lenght 165.069 distance_vector size 1
+bfind_very_close distace 267.112
+compare info 43 j_det_lenght 166.833 distance 267.112
+ x dis 16.8874 y dis 266.578
+size change label 36 to 36 0.01compare from:33
+find close  
+right_ratio 1.1104 distace 1337.95
+right_ratio 1.14141 distace 1041.8
+right_ratio 1.04366 distace 1311.28
+right_ratio 1.14042 distace 1094.49
+right_ratio 1.08447 distace 1261.64
+right_ratio 1.08813 distace 1050.9
+right_ratio 1.18101 distace 1003.48
+right_ratio 1.05388 distace 303.614
+ dis 303.614
+right_ratio 1.00368 distace 993.52
+right_ratio 1.0925 distace 42.9891
+ dis 42.9891
+right_ratio 1.08395 distace 476.862
+right_ratio 1.05449 distace 349.127
+right_ratio 1.08795 distace 1165.89
+right_ratio 1.18855 distace 1240.18
+right_ratio 1.09587 distace 1384.89
+right_ratio 1.16796 distace 1391.33
+confuse_label orignal class:8
+i_det_lenght 170.965 distance_vector size 2
+bfind_very_close distace 303.614
+compare info 43 j_det_lenght 170.489 distance 303.614
+ x dis 19.062 y dis 303.015
+size change label 8 to 8 0.01compare from:15
+find close  
+right_ratio 1.1104 distace 1326.33
+right_ratio 1.14141 distace 1188.6
+right_ratio 1.04366 distace 1371.37
+right_ratio 1.14042 distace 1235.49
+right_ratio 1.08447 distace 1394.07
+right_ratio 1.08813 distace 1115.57
+right_ratio 1.18101 distace 1065.4
+right_ratio 1.05388 distace 597.467
+right_ratio 1.00368 distace 1146.53
+right_ratio 1.0925 distace 537.993
+right_ratio 1.08395 distace 352.899
+ dis 352.899
+right_ratio 1.05449 distace 191.939
+ dis 191.939
+right_ratio 0.96793 distace 533.749
+right_ratio 1.08795 distace 1050.66
+right_ratio 1.18855 distace 1054.21
+right_ratio 1.09587 distace 1303.46
+right_ratio 1.16796 distace 1239.68
+confuse_label orignal class:36
+i_det_lenght 206.246 distance_vector size 2
+judge 0.191096 j_det_lenght  distace 352.899166.833
+judge 0.0111301 j_det_lenght  distace 352.899166.833
+compare info 43 j_det_lenght 166.833 distance 352.899
+ x dis 170.283 y dis 309.098
+size change label 36 to 37 0.0111301compare from:33
+ 
+judge 0.199648 j_det_lenght  distace 191.939165.069
+judge 0.000439644 j_det_lenght  distace 191.939165.069
+ 
+right_ratio 1.1104 distace 1326.33
+right_ratio 1.14141 distace 1188.6
+right_ratio 1.04366 distace 1371.37
+right_ratio 1.14042 distace 1235.49
+right_ratio 1.08447 distace 1394.07
+right_ratio 1.08813 distace 1115.57
+right_ratio 1.18101 distace 1065.4
+right_ratio 1.05388 distace 597.467
+right_ratio 1.00368 distace 1146.53
+right_ratio 1.0925 distace 537.993
+right_ratio 1.08395 distace 352.899
+ dis 352.899
+right_ratio 1.05449 distace 191.939
+ dis 191.939
+right_ratio 0.96793 distace 533.749
+right_ratio 1.08795 distace 1050.66
+right_ratio 1.18855 distace 1054.21
+right_ratio 1.09587 distace 1303.46
+right_ratio 1.16796 distace 1239.68
+confuse_label orignal class:37
+i_det_lenght 206.246 distance_vector size 2
+judge 0.191096 j_det_lenght  distace 352.899166.833
+judge 0.0111301 j_det_lenght  distace 352.899166.833
+ 
+judge 0.199648 j_det_lenght  distace 191.939165.069
+judge 0.000439644 j_det_lenght  distace 191.939165.069
+ 
+right_ratio 1.1104 distace 1310.21
+right_ratio 1.14141 distace 1114.56
+right_ratio 1.04366 distace 1330.71
+right_ratio 1.14042 distace 1164.46
+right_ratio 1.08447 distace 1329.03
+right_ratio 1.08813 distace 1067.56
+right_ratio 1.18101 distace 1016.88
+right_ratio 1.05388 distace 449.326
+right_ratio 1.00368 distace 1069.37
+right_ratio 1.0925 distace 352.236
+right_ratio 1.08395 distace 313.824
+ dis 313.824
+right_ratio 1.05449 distace 46.788
+ dis 46.788
+right_ratio 0.96793 distace 346.54
+right_ratio 1.08795 distace 1066.71
+right_ratio 1.18855 distace 1097.91
+right_ratio 1.09587 distace 1312.41
+right_ratio 1.16796 distace 1273.89
+confuse_label orignal class:8
+i_det_lenght 170.5 distance_vector size 2
+bfind_very_close distace 313.824
+compare info 43 j_det_lenght 166.833 distance 313.824
+ x dis 16.9567 y dis 313.365
+size change label 8 to 8 0.01compare from:33
+find close  
+right_ratio 1.1104 distace 1041.15
+right_ratio 1.14141 distace 876.194
+right_ratio 1.04366 distace 1070.34
+right_ratio 1.14042 distace 923.567
+right_ratio 1.08447 distace 1083.63
+right_ratio 1.08813 distace 810.287
+right_ratio 1.18101 distace 759.716
+right_ratio 1.05388 distace 352.434
+right_ratio 1.00368 distace 833.783
+right_ratio 1.0925 distace 433.791
+right_ratio 1.08395 distace 43.1392
+ dis 43.1392
+right_ratio 1.05449 distace 225.044
+ dis 225.044
+right_ratio 0.96793 distace 455.313
+right_ratio 1.06047 distace 271.636
+ dis 271.636
+right_ratio 1.08795 distace 795.874
+right_ratio 1.18855 distace 834.291
+right_ratio 1.09587 distace 1040.8
+right_ratio 1.16796 distace 1006.07
+confuse_label orignal class:43
+i_det_lenght 167.821 distance_vector size 3
+bfind_very_close distace 271.636
+compare info 8 j_det_lenght 170.5 distance 271.636
+ x dis 23.0368 y dis 270.657
+size change label 43 to 43 0.01compare from:37
+find close  
+right_ratio 1.1104 distace 1317.23
+right_ratio 1.14141 distace 1069.11
+right_ratio 1.04366 distace 1314.06
+right_ratio 1.14042 distace 1120.99
+right_ratio 1.08447 distace 1288.48
+right_ratio 1.08813 distace 1049.44
+right_ratio 1.18101 distace 999.679
+right_ratio 1.05388 distace 345.958
+right_ratio 1.00368 distace 1021.81
+right_ratio 1.0925 distace 182.427
+ dis 182.427
+right_ratio 1.08395 distace 368.508
+right_ratio 1.05449 distace 180.312
+ dis 180.312
+right_ratio 0.96793 distace 173.159
+ dis 173.159
+right_ratio 1.06047 distace 173.496
+ dis 173.496
+right_ratio 1.08795 distace 1108.21
+right_ratio 1.18855 distace 1162.45
+right_ratio 1.09587 distace 1342.36
+right_ratio 1.16796 distace 1326.85
+confuse_label orignal class:36
+i_det_lenght 168.458 distance_vector size 4
+bfind_very_close distace 182.427
+compare info 36 j_det_lenght 166.143 distance 182.427
+ x dis 175.524 y dis 49.7111
+size change label 36 to 36 0.01compare from:25
+find close  
+right_ratio 1.1104 distace 1270.03
+right_ratio 1.14141 distace 1022.6
+right_ratio 1.04366 distace 1266.65
+right_ratio 1.14042 distace 1074.4
+right_ratio 1.08447 distace 1241.81
+right_ratio 1.08813 distace 1002.02
+right_ratio 1.18101 distace 952.248
+right_ratio 1.05388 distace 304.077
+ dis 304.077
+right_ratio 1.00368 distace 975.396
+right_ratio 1.0925 distace 175.279
+ dis 175.279
+right_ratio 1.08395 distace 328.96
+right_ratio 1.05449 distace 173.818
+ dis 173.818
+right_ratio 0.96793 distace 177.483
+ dis 177.483
+right_ratio 1.06047 distace 179.556
+ dis 179.556
+right_ratio 1.1747 distace 47.4408
+ dis 47.4408
+right_ratio 1.08795 distace 1063.15
+right_ratio 1.18855 distace 1119.81
+right_ratio 1.09587 distace 1296.22
+right_ratio 1.16796 distace 1282.67
+confuse_label orignal class:8
+i_det_lenght 171.092 distance_vector size 6
+bfind_very_close distace 304.077
+compare info 43 j_det_lenght 170.489 distance 304.077
+ x dis 153.704 y dis 262.37
+size change label 8 to 8 0.01compare from:15
+find close  
+right_ratio 1.1104 distace 1216.42
+right_ratio 1.14141 distace 970.674
+right_ratio 1.04366 distace 1213.16
+right_ratio 1.14042 distace 1022.34
+right_ratio 1.08447 distace 1189.62
+right_ratio 1.08813 distace 948.5
+right_ratio 1.18101 distace 898.681
+right_ratio 1.05388 distace 260.561
+ dis 260.561
+right_ratio 1.00368 distace 923.622
+right_ratio 1.0925 distace 184.823
+ dis 184.823
+right_ratio 1.08395 distace 285.427
+right_ratio 1.05449 distace 179.3
+ dis 179.3
+right_ratio 0.96793 distace 198.824
+ dis 198.824
+right_ratio 1.06047 distace 197.982
+ dis 197.982
+right_ratio 1.1747 distace 101.113
+ dis 101.113
+right_ratio 1.1757 distace 53.7006
+ dis 53.7006
+right_ratio 1.08795 distace 1011.61
+right_ratio 1.18855 distace 1070.89
+right_ratio 1.09587 distace 1243.55
+right_ratio 1.16796 distace 1232.03
+confuse_label orignal class:8
+i_det_lenght 170.004 distance_vector size 7
+bfind_very_close distace 260.561
+compare info 43 j_det_lenght 170.489 distance 260.561
+ x dis 155.978 y dis 208.717
+size change label 8 to 8 0.01compare from:15
+find close  
+right_ratio 1.1104 distace 1002.83
+right_ratio 1.14141 distace 768.427
+right_ratio 1.04366 distace 1001.22
+right_ratio 1.14042 distace 819.154
+right_ratio 1.08447 distace 985.245
+right_ratio 1.08813 distace 736.446
+right_ratio 1.18101 distace 686.357
+right_ratio 1.05388 distace 170.758
+ dis 170.758
+right_ratio 1.00368 distace 722.463
+right_ratio 1.0925 distace 327.059
+right_ratio 1.08395 distace 173.708
+ dis 173.708
+right_ratio 1.05449 distace 308.255
+ dis 308.255
+right_ratio 0.96793 distace 361.338
+right_ratio 1.06047 distace 349.317
+right_ratio 1.1747 distace 314.739
+ dis 314.739
+right_ratio 1.1757 distace 267.395
+ dis 267.395
+right_ratio 1.08795 distace 807.325
+right_ratio 1.18855 distace 878.904
+right_ratio 1.09587 distace 1033.68
+right_ratio 1.16796 distace 1031.31
+confuse_label orignal class:43
+i_det_lenght 165.096 distance_vector size 5
+bfind_very_close distace 314.739
+compare info 36 j_det_lenght 168.458 distance 314.739
+ x dis 16.7358 y dis 314.294
+size change label 43 to 43 0.01compare from:40
+find close  
+right_ratio 1.1104 distace 667.35
+right_ratio 1.14141 distace 1029.43
+right_ratio 1.04366 distace 847.276
+right_ratio 1.14042 distace 1019.73
+right_ratio 1.08447 distace 1025.27
+right_ratio 1.08813 distace 859.169
+right_ratio 1.18101 distace 863.266
+right_ratio 1.05388 distace 1354.92
+right_ratio 1.00368 distace 1041.49
+right_ratio 1.0925 distace 1565.25
+right_ratio 1.08395 distace 1137.04
+right_ratio 1.05449 distace 1378.19
+right_ratio 0.96793 distace 1597.73
+right_ratio 1.06047 distace 1420.21
+right_ratio 1.1747 distace 1505.53
+right_ratio 1.1757 distace 1465.5
+right_ratio 1.1003 distace 1238.47
+right_ratio 1.08795 distace 508.844
+right_ratio 1.18855 distace 374.484
+right_ratio 1.09587 distace 491.346
+right_ratio 1.16796 distace 324.438
+right_ratio 1.1104 distace 667.35
+right_ratio 1.14141 distace 1029.43
+right_ratio 1.04366 distace 847.276
+right_ratio 1.14042 distace 1019.73
+right_ratio 1.08447 distace 1025.27
+right_ratio 1.08813 distace 859.169
+right_ratio 1.18101 distace 863.266
+right_ratio 1.05388 distace 1354.92
+right_ratio 1.00368 distace 1041.49
+right_ratio 1.0925 distace 1565.25
+right_ratio 1.08395 distace 1137.04
+right_ratio 1.05449 distace 1378.19
+right_ratio 0.96793 distace 1597.73
+right_ratio 1.06047 distace 1420.21
+right_ratio 1.1747 distace 1505.53
+right_ratio 1.1757 distace 1465.5
+right_ratio 1.1003 distace 1238.47
+right_ratio 1.08795 distace 508.844
+right_ratio 1.18855 distace 374.484
+right_ratio 1.09587 distace 491.346
+right_ratio 1.16796 distace 324.438
+ dis 324.438
+confuse_label orignal class:39
+i_det_lenght 144.209 distance_vector size 1
+judge 0.0457308 j_det_lenght  distace 324.438164.513
+judge 0.140797 j_det_lenght  distace 324.438164.513
+judge 0.425997 j_det_lenght  distace 324.438164.513
+ 
+right_ratio 1.1104 distace 615.74
+right_ratio 1.14141 distace 978.804
+right_ratio 1.04366 distace 795.635
+right_ratio 1.14042 distace 968.62
+right_ratio 1.08447 distace 973.529
+right_ratio 1.08813 distace 809.114
+right_ratio 1.18101 distace 814.094
+right_ratio 1.05388 distace 1318.42
+right_ratio 1.00368 distace 991.418
+right_ratio 1.0925 distace 1532.81
+right_ratio 1.08395 distace 1109.47
+right_ratio 1.05449 distace 1354.63
+right_ratio 0.96793 distace 1566.01
+right_ratio 1.06047 distace 1397.31
+right_ratio 1.1747 distace 1477.89
+right_ratio 1.1757 distace 1437.13
+right_ratio 1.1003 distace 1205.78
+right_ratio 1.08795 distace 462.355
+right_ratio 1.18855 distace 334.179
+right_ratio 1.09587 distace 439.785
+right_ratio 1.16796 distace 272.985
+ dis 272.985
+confuse_label orignal class:39
+i_det_lenght 144.887 distance_vector size 1
+judge 0.0408399 j_det_lenght  distace 272.985164.513
+judge 0.135462 j_det_lenght  distace 272.985164.513
+judge 0.419327 j_det_lenght  distace 272.985164.513
+ 
+right_ratio 1.1104 distace 612.483
+right_ratio 1.14141 distace 664.882
+right_ratio 1.04366 distace 709.681
+right_ratio 1.14042 distace 690.335
+right_ratio 1.08447 distace 802.855
+right_ratio 1.08813 distace 513.224
+right_ratio 1.18101 distace 477.225
+right_ratio 1.05388 distace 701.923
+right_ratio 1.00368 distace 645.327
+right_ratio 1.0925 distace 904.013
+right_ratio 1.08395 distace 483.882
+right_ratio 1.05449 distace 740.282
+right_ratio 0.96793 distace 936.522
+right_ratio 1.06047 distace 785.231
+right_ratio 1.1747 distace 850.718
+right_ratio 1.1757 distace 808.861
+right_ratio 1.1003 distace 577.409
+right_ratio 1.08795 distace 303.282
+ dis 303.282
+right_ratio 1.18855 distace 313.355
+ dis 313.355
+right_ratio 1.09587 distace 557.185
+right_ratio 1.16796 distace 490.353
+confuse_label orignal class:4
+i_det_lenght 211.775 distance_vector size 2
+judge 0.294915 j_det_lenght  distace 313.355162.894
+judge 0.230816 j_det_lenght  distace 313.355162.894
+judge 0.03852 j_det_lenght  distace 313.355162.894
+ 
+judge 0.327025 j_det_lenght  distace 303.282155.475
+judge 0.265845 j_det_lenght  distace 303.282155.475
+judge 0.0823067 j_det_lenght  distace 303.282155.475
+ 
+right_ratio 1.1104 distace 944.921
+right_ratio 1.14141 distace 878.741
+right_ratio 1.04366 distace 1010.97
+right_ratio 1.14042 distace 918.724
+right_ratio 1.08447 distace 1063.03
+right_ratio 1.08813 distace 771.075
+right_ratio 1.18101 distace 723.776
+right_ratio 1.05388 distace 547.23
+right_ratio 1.00368 distace 843.977
+right_ratio 1.0925 distace 662.931
+right_ratio 1.08395 distace 213.67
+ dis 213.67
+right_ratio 1.05449 distace 412.82
+right_ratio 0.96793 distace 684.746
+right_ratio 1.06047 distace 453.657
+right_ratio 1.1747 distace 557.737
+right_ratio 1.1757 distace 524.645
+right_ratio 1.1003 distace 379.084
+ dis 379.084
+right_ratio 1.08795 distace 655.375
+right_ratio 1.18855 distace 657.873
+right_ratio 1.09587 distace 909.099
+right_ratio 1.16796 distace 842.169
+confuse_label orignal class:43
+i_det_lenght 204.969 distance_vector size 2
+judge 0.194532 j_det_lenght  distace 379.084165.096
+judge 0.00683498 j_det_lenght  distace 379.084165.096
+compare info 43 j_det_lenght 165.096 distance 379.084
+ x dis 368.479 y dis 89.042
+size change label 43 to 44 0.00683498compare from:44
+ 
+judge 0.186058 j_det_lenght  distace 213.67166.833
+judge 0.0174277 j_det_lenght  distace 213.67166.833
+ 
+right_ratio 1.1104 distace 944.921
+right_ratio 1.14141 distace 878.741
+right_ratio 1.04366 distace 1010.97
+right_ratio 1.14042 distace 918.724
+right_ratio 1.08447 distace 1063.03
+right_ratio 1.08813 distace 771.075
+right_ratio 1.18101 distace 723.776
+right_ratio 1.05388 distace 547.23
+right_ratio 1.00368 distace 843.977
+right_ratio 1.0925 distace 662.931
+right_ratio 1.08395 distace 213.67
+ dis 213.67
+right_ratio 1.05449 distace 412.82
+right_ratio 0.96793 distace 684.746
+right_ratio 1.06047 distace 453.657
+right_ratio 1.1747 distace 557.737
+right_ratio 1.1757 distace 524.645
+right_ratio 1.1003 distace 379.084
+ dis 379.084
+right_ratio 1.08795 distace 655.375
+right_ratio 1.18855 distace 657.873
+right_ratio 1.09587 distace 909.099
+right_ratio 1.16796 distace 842.169
+confuse_label orignal class:44
+i_det_lenght 204.969 distance_vector size 2
+judge 0.194532 j_det_lenght  distace 379.084165.096
+judge 0.00683498 j_det_lenght  distace 379.084165.096
+ 
+judge 0.186058 j_det_lenght  distace 213.67166.833
+judge 0.0174277 j_det_lenght  distace 213.67166.833
+ 
+right_ratio 1.1104 distace 909.121
+right_ratio 1.14141 distace 943.746
+right_ratio 1.04366 distace 1010.8
+right_ratio 1.14042 distace 975.034
+right_ratio 1.08447 distace 1098.24
+right_ratio 1.08813 distace 805.048
+right_ratio 1.18101 distace 764.666
+right_ratio 1.05388 distace 753.177
+right_ratio 1.00368 distace 917.587
+right_ratio 1.0925 distace 880.583
+right_ratio 1.08395 distace 430.315
+right_ratio 1.05449 distace 614.692
+right_ratio 0.96793 distace 902.128
+right_ratio 1.06047 distace 651.216
+right_ratio 1.1747 distace 770.586
+right_ratio 1.1757 distace 739.665
+right_ratio 1.1003 distace 589.528
+right_ratio 1.08795 distace 587.045
+right_ratio 1.18855 distace 538.34
+right_ratio 1.09587 distace 834.178
+right_ratio 1.16796 distace 729.371
+right_ratio 1.1104 distace 909.121
+right_ratio 1.14141 distace 943.746
+right_ratio 1.04366 distace 1010.8
+right_ratio 1.14042 distace 975.034
+right_ratio 1.08447 distace 1098.24
+right_ratio 1.08813 distace 805.048
+right_ratio 1.18101 distace 764.666
+right_ratio 1.05388 distace 753.177
+right_ratio 1.00368 distace 917.587
+right_ratio 1.0925 distace 880.583
+right_ratio 1.08395 distace 430.315
+right_ratio 1.05449 distace 614.692
+right_ratio 0.96793 distace 902.128
+right_ratio 1.06047 distace 651.216
+right_ratio 1.1747 distace 770.586
+right_ratio 1.1757 distace 739.665
+right_ratio 1.1003 distace 589.528
+right_ratio 1.08795 distace 587.045
+right_ratio 1.18855 distace 538.34
+right_ratio 1.09587 distace 834.178
+right_ratio 1.16796 distace 729.371
+right_ratio 1.1104 distace 909.121
+right_ratio 1.14141 distace 943.746
+right_ratio 1.04366 distace 1010.8
+right_ratio 1.14042 distace 975.034
+right_ratio 1.08447 distace 1098.24
+right_ratio 1.08813 distace 805.048
+right_ratio 1.18101 distace 764.666
+right_ratio 1.05388 distace 753.177
+right_ratio 1.00368 distace 917.587
+right_ratio 1.0925 distace 880.583
+right_ratio 1.08395 distace 430.315
+right_ratio 1.05449 distace 614.692
+right_ratio 0.96793 distace 902.128
+right_ratio 1.06047 distace 651.216
+right_ratio 1.1747 distace 770.586
+right_ratio 1.1757 distace 739.665
+right_ratio 1.1003 distace 589.528
+right_ratio 1.08795 distace 587.045
+right_ratio 1.18855 distace 538.34
+ dis 538.34
+right_ratio 1.09587 distace 834.178
+right_ratio 1.16796 distace 729.371
+confuse_label orignal class:12
+i_det_lenght 197.046 distance_vector size 1
+judge 0.242213 j_det_lenght  distace 538.34162.894
+judge 0.173323 j_det_lenght  distace 538.34162.894
+judge 0.0333457 j_det_lenght  distace 538.34162.894
+compare info 11 j_det_lenght 162.894 distance 538.34
+ x dis 75.2076 y dis 533.061
+size change label 12 to 14 0.0333457compare from:49
+ 
+right_ratio 1.1104 distace 909.121
+right_ratio 1.14141 distace 943.746
+right_ratio 1.04366 distace 1010.8
+right_ratio 1.14042 distace 975.034
+right_ratio 1.08447 distace 1098.24
+right_ratio 1.08813 distace 805.048
+right_ratio 1.18101 distace 764.666
+right_ratio 1.05388 distace 753.177
+right_ratio 1.00368 distace 917.587
+right_ratio 1.0925 distace 880.583
+right_ratio 1.08395 distace 430.315
+right_ratio 1.05449 distace 614.692
+right_ratio 0.96793 distace 902.128
+right_ratio 1.06047 distace 651.216
+right_ratio 1.1747 distace 770.586
+right_ratio 1.1757 distace 739.665
+right_ratio 1.1003 distace 589.528
+right_ratio 1.08795 distace 587.045
+right_ratio 1.18855 distace 538.34
+right_ratio 1.09587 distace 834.178
+right_ratio 1.16796 distace 729.371
+right_ratio 1.1104 distace 909.121
+right_ratio 1.14141 distace 943.746
+right_ratio 1.04366 distace 1010.8
+right_ratio 1.14042 distace 975.034
+right_ratio 1.08447 distace 1098.24
+right_ratio 1.08813 distace 805.048
+right_ratio 1.18101 distace 764.666
+right_ratio 1.05388 distace 753.177
+right_ratio 1.00368 distace 917.587
+right_ratio 1.0925 distace 880.583
+right_ratio 1.08395 distace 430.315
+right_ratio 1.05449 distace 614.692
+right_ratio 0.96793 distace 902.128
+right_ratio 1.06047 distace 651.216
+right_ratio 1.1747 distace 770.586
+right_ratio 1.1757 distace 739.665
+right_ratio 1.1003 distace 589.528
+right_ratio 1.08795 distace 587.045
+right_ratio 1.18855 distace 538.34
+right_ratio 1.09587 distace 834.178
+right_ratio 1.16796 distace 729.371
+right_ratio 1.1104 distace 909.121
+right_ratio 1.14141 distace 943.746
+right_ratio 1.04366 distace 1010.8
+right_ratio 1.14042 distace 975.034
+right_ratio 1.08447 distace 1098.24
+right_ratio 1.08813 distace 805.048
+right_ratio 1.18101 distace 764.666
+right_ratio 1.05388 distace 753.177
+right_ratio 1.00368 distace 917.587
+right_ratio 1.0925 distace 880.583
+right_ratio 1.08395 distace 430.315
+right_ratio 1.05449 distace 614.692
+right_ratio 0.96793 distace 902.128
+right_ratio 1.06047 distace 651.216
+right_ratio 1.1747 distace 770.586
+right_ratio 1.1757 distace 739.665
+right_ratio 1.1003 distace 589.528
+right_ratio 1.08795 distace 587.045
+right_ratio 1.18855 distace 538.34
+ dis 538.34
+right_ratio 1.09587 distace 834.178
+right_ratio 1.16796 distace 729.371
+confuse_label orignal class:14
+i_det_lenght 197.046 distance_vector size 1
+judge 0.242213 j_det_lenght  distace 538.34162.894
+judge 0.173323 j_det_lenght  distace 538.34162.894
+judge 0.0333457 j_det_lenght  distace 538.34162.894
+ 
+right_ratio 1.1104 distace 1031.96
+right_ratio 1.14141 distace 944.941
+right_ratio 1.04366 distace 1092.11
+right_ratio 1.14042 distace 987.123
+right_ratio 1.08447 distace 1136.05
+right_ratio 1.08813 distace 846.815
+right_ratio 1.18101 distace 798.403
+right_ratio 1.05388 distace 534.517
+right_ratio 1.00368 distace 907.847
+right_ratio 1.0925 distace 614.77
+right_ratio 1.08395 distace 190.144
+ dis 190.144
+right_ratio 1.05449 distace 334.655
+right_ratio 0.96793 distace 632.07
+right_ratio 1.06047 distace 372.583
+right_ratio 1.1747 distace 492.013
+right_ratio 1.1757 distace 463.612
+right_ratio 1.1003 distace 363.822
+ dis 363.822
+right_ratio 1.08795 distace 746.295
+right_ratio 1.18855 distace 748.925
+right_ratio 1.09587 distace 999.817
+right_ratio 1.16796 distace 933.664
+right_ratio 1.08324 distace 280.44
+ dis 280.44
+confuse_label orignal class:43
+i_det_lenght 206.694 distance_vector size 3
+judge 0.201254 j_det_lenght  distace 363.822165.096
+judge 0.00156724 j_det_lenght  distace 363.822165.096
+compare info 43 j_det_lenght 165.096 distance 363.822
+ x dis 363.814 y dis 2.42975
+size change label 43 to 44 0.00156724compare from:44
+ 
+judge 0.237341 j_det_lenght  distace 280.44197.046
+bfind_very_close distace 280.44
+compare info 14 j_det_lenght 197.046 distance 280.44
+ x dis 189.021 y dis 207.166
+size change label 44 to 44 0.01compare from:64
+find close  
+right_ratio 1.1104 distace 1031.96
+right_ratio 1.14141 distace 944.941
+right_ratio 1.04366 distace 1092.11
+right_ratio 1.14042 distace 987.123
+right_ratio 1.08447 distace 1136.05
+right_ratio 1.08813 distace 846.815
+right_ratio 1.18101 distace 798.403
+right_ratio 1.05388 distace 534.517
+right_ratio 1.00368 distace 907.847
+right_ratio 1.0925 distace 614.77
+right_ratio 1.08395 distace 190.144
+ dis 190.144
+right_ratio 1.05449 distace 334.655
+right_ratio 0.96793 distace 632.07
+right_ratio 1.06047 distace 372.583
+right_ratio 1.1747 distace 492.013
+right_ratio 1.1757 distace 463.612
+right_ratio 1.1003 distace 363.822
+ dis 363.822
+right_ratio 1.08795 distace 746.295
+right_ratio 1.18855 distace 748.925
+right_ratio 1.09587 distace 999.817
+right_ratio 1.16796 distace 933.664
+right_ratio 1.08324 distace 280.44
+ dis 280.44
+confuse_label orignal class:44
+i_det_lenght 206.694 distance_vector size 3
+judge 0.201254 j_det_lenght  distace 363.822165.096
+judge 0.00156724 j_det_lenght  distace 363.822165.096
+ 
+judge 0.237341 j_det_lenght  distace 280.44197.046
+bfind_very_close distace 280.44
+compare info 14 j_det_lenght 197.046 distance 280.44
+ x dis 189.021 y dis 207.166
+size change label 44 to 44 0.01compare from:64
+find close  
+right_ratio 1.1104 distace 1283.53
+right_ratio 1.14141 distace 1151.68
+right_ratio 1.04366 distace 1330.39
+right_ratio 1.14042 distace 1198.07
+right_ratio 1.08447 distace 1355.67
+right_ratio 1.08813 distace 1075.61
+right_ratio 1.18101 distace 1025.58
+right_ratio 1.05388 distace 579.039
+right_ratio 1.00368 distace 1110.13
+right_ratio 1.0925 distace 539.28
+right_ratio 1.08395 distace 316.649
+ dis 316.649
+right_ratio 1.05449 distace 190.21
+ dis 190.21
+right_ratio 0.96793 distace 538.556
+right_ratio 1.06047 distace 196.322
+ dis 196.322
+right_ratio 1.1747 distace 367.241
+ dis 367.241
+right_ratio 1.1757 distace 364.028
+ dis 364.028
+right_ratio 1.1003 distace 435.914
+right_ratio 1.08795 distace 1006.66
+right_ratio 1.18855 distace 1010.09
+right_ratio 1.09587 distace 1259.56
+right_ratio 1.16796 distace 1195.49
+right_ratio 1.08324 distace 511.762
+right_ratio 1.03317 distace 261.924
+ dis 261.924
+confuse_label orignal class:36
+i_det_lenght 202.301 distance_vector size 6
+judge 0.167291 j_det_lenght  distace 367.241168.458
+judge 0.0408863 j_det_lenght  distace 367.241168.458
+compare info 36 j_det_lenght 168.458 distance 367.241
+ x dis 363.756 y dis 50.4794
+size change label 36 to 37 0.0408863compare from:40
+ 
+judge 0.15427 j_det_lenght  distace 364.028171.092
+judge 0.0571622 j_det_lenght  distace 364.028171.092
+ 
+judge 0.175322 j_det_lenght  distace 316.649166.833
+judge 0.0308478 j_det_lenght  distace 316.649166.833
+ 
+judge 0.182627 j_det_lenght  distace 261.924206.694
+bfind_very_close distace 261.924
+compare info 44 j_det_lenght 206.694 distance 261.924
+ x dis 16.7939 y dis 261.385
+size change label 37 to 37 0.01compare from:65
+find close  
+right_ratio 1.1104 distace 1283.53
+right_ratio 1.14141 distace 1151.68
+right_ratio 1.04366 distace 1330.39
+right_ratio 1.14042 distace 1198.07
+right_ratio 1.08447 distace 1355.67
+right_ratio 1.08813 distace 1075.61
+right_ratio 1.18101 distace 1025.58
+right_ratio 1.05388 distace 579.039
+right_ratio 1.00368 distace 1110.13
+right_ratio 1.0925 distace 539.28
+right_ratio 1.08395 distace 316.649
+ dis 316.649
+right_ratio 1.05449 distace 190.21
+ dis 190.21
+right_ratio 0.96793 distace 538.556
+right_ratio 1.06047 distace 196.322
+ dis 196.322
+right_ratio 1.1747 distace 367.241
+ dis 367.241
+right_ratio 1.1757 distace 364.028
+ dis 364.028
+right_ratio 1.1003 distace 435.914
+right_ratio 1.08795 distace 1006.66
+right_ratio 1.18855 distace 1010.09
+right_ratio 1.09587 distace 1259.56
+right_ratio 1.16796 distace 1195.49
+right_ratio 1.08324 distace 511.762
+right_ratio 1.03317 distace 261.924
+ dis 261.924
+confuse_label orignal class:37
+i_det_lenght 202.301 distance_vector size 6
+judge 0.167291 j_det_lenght  distace 367.241168.458
+judge 0.0408863 j_det_lenght  distace 367.241168.458
+ 
+judge 0.15427 j_det_lenght  distace 364.028171.092
+judge 0.0571622 j_det_lenght  distace 364.028171.092
+ 
+judge 0.175322 j_det_lenght  distace 316.649166.833
+judge 0.0308478 j_det_lenght  distace 316.649166.833
+ 
+judge 0.182627 j_det_lenght  distace 261.924206.694
+bfind_very_close distace 261.924
+compare info 44 j_det_lenght 206.694 distance 261.924
+ x dis 16.7939 y dis 261.385
+size change label 37 to 37 0.01compare from:65
+find close  
+right_ratio 1.1104 distace 1100.14
+right_ratio 1.14141 distace 1084.05
+right_ratio 1.04366 distace 1188
+right_ratio 1.14042 distace 1121.17
+right_ratio 1.08447 distace 1257.75
+right_ratio 1.08813 distace 963.281
+right_ratio 1.18101 distace 918.551
+right_ratio 1.05388 distace 738.035
+right_ratio 1.00368 distace 1051.89
+right_ratio 1.0925 distace 803.645
+right_ratio 1.08395 distace 393.643
+ dis 393.643
+right_ratio 1.05449 distace 487.659
+right_ratio 0.96793 distace 816.348
+right_ratio 1.06047 distace 514.48
+right_ratio 1.1747 distace 662.241
+right_ratio 1.1757 distace 641.484
+right_ratio 1.1003 distace 567.336
+right_ratio 1.08795 distace 785.464
+right_ratio 1.18855 distace 745.374
+right_ratio 1.09587 distace 1036.02
+right_ratio 1.16796 distace 936.39
+right_ratio 1.08324 distace 207.403
+ dis 207.403
+right_ratio 1.03317 distace 203.519
+ dis 203.519
+right_ratio 1.04255 distace 342.054
+confuse_label orignal class:43
+i_det_lenght 204.749 distance_vector size 3
+judge 0.185184 j_det_lenght  distace 393.643166.833
+judge 0.0185199 j_det_lenght  distace 393.643166.833
+compare info 43 j_det_lenght 166.833 distance 393.643
+ x dis 393.629 y dis 3.35083
+size change label 43 to 44 0.0185199compare from:33
+ 
+judge 0.230097 j_det_lenght  distace 207.403197.046
+bfind_very_close distace 207.403
+compare info 14 j_det_lenght 197.046 distance 207.403
+ x dis 14.4975 y dis 206.896
+size change label 44 to 44 0.01compare from:64
+find close  
+right_ratio 1.1104 distace 1100.14
+right_ratio 1.14141 distace 1084.05
+right_ratio 1.04366 distace 1188
+right_ratio 1.14042 distace 1121.17
+right_ratio 1.08447 distace 1257.75
+right_ratio 1.08813 distace 963.281
+right_ratio 1.18101 distace 918.551
+right_ratio 1.05388 distace 738.035
+right_ratio 1.00368 distace 1051.89
+right_ratio 1.0925 distace 803.645
+right_ratio 1.08395 distace 393.643
+ dis 393.643
+right_ratio 1.05449 distace 487.659
+right_ratio 0.96793 distace 816.348
+right_ratio 1.06047 distace 514.48
+right_ratio 1.1747 distace 662.241
+right_ratio 1.1757 distace 641.484
+right_ratio 1.1003 distace 567.336
+right_ratio 1.08795 distace 785.464
+right_ratio 1.18855 distace 745.374
+right_ratio 1.09587 distace 1036.02
+right_ratio 1.16796 distace 936.39
+right_ratio 1.08324 distace 207.403
+ dis 207.403
+right_ratio 1.03317 distace 203.519
+ dis 203.519
+right_ratio 1.04255 distace 342.054
+confuse_label orignal class:44
+i_det_lenght 204.749 distance_vector size 3
+judge 0.185184 j_det_lenght  distace 393.643166.833
+judge 0.0185199 j_det_lenght  distace 393.643166.833
+ 
+judge 0.230097 j_det_lenght  distace 207.403197.046
+bfind_very_close distace 207.403
+compare info 14 j_det_lenght 197.046 distance 207.403
+ x dis 14.4975 y dis 206.896
+size change label 44 to 44 0.01compare from:64
+find close  
+right_ratio 1.1104 distace 1055.9
+right_ratio 1.14141 distace 1051.9
+right_ratio 1.04366 distace 1147.25
+right_ratio 1.14042 distace 1087.73
+right_ratio 1.08447 distace 1221.33
+right_ratio 1.08813 distace 926.711
+right_ratio 1.18101 distace 882.883
+right_ratio 1.05388 distace 740.837
+right_ratio 1.00368 distace 1021.07
+right_ratio 1.0925 distace 822.031
+right_ratio 1.08395 distace 397.304
+ dis 397.304
+right_ratio 1.05449 distace 516.802
+right_ratio 0.96793 distace 836.988
+right_ratio 1.06047 distace 546.43
+right_ratio 1.1747 distace 687.761
+right_ratio 1.1757 distace 664.279
+right_ratio 1.1003 distace 570.29
+right_ratio 1.08795 distace 739.132
+right_ratio 1.18855 distace 696.478
+right_ratio 1.09587 distace 988.882
+right_ratio 1.16796 distace 887.509
+right_ratio 1.08324 distace 158.246
+ dis 158.246
+right_ratio 1.03317 distace 210.463
+ dis 210.463
+right_ratio 1.04255 distace 381.758
+right_ratio 1.17856 distace 49.4198
+ dis 49.4198
+confuse_label orignal class:43
+i_det_lenght 202.163 distance_vector size 4
+judge 0.174762 j_det_lenght  distace 397.304166.833
+judge 0.0315478 j_det_lenght  distace 397.304166.833
+compare info 43 j_det_lenght 166.833 distance 397.304
+ x dis 394.625 y dis 46.059
+size change label 43 to 44 0.0315478compare from:33
+ 
+judge 0.182072 j_det_lenght  distace 210.463206.694
+bfind_very_close distace 210.463
+compare info 44 j_det_lenght 206.694 distance 210.463
+ x dis 204.515 y dis 49.6803
+size change label 44 to 44 0.01compare from:65
+find close  
+right_ratio 1.1104 distace 1055.9
+right_ratio 1.14141 distace 1051.9
+right_ratio 1.04366 distace 1147.25
+right_ratio 1.14042 distace 1087.73
+right_ratio 1.08447 distace 1221.33
+right_ratio 1.08813 distace 926.711
+right_ratio 1.18101 distace 882.883
+right_ratio 1.05388 distace 740.837
+right_ratio 1.00368 distace 1021.07
+right_ratio 1.0925 distace 822.031
+right_ratio 1.08395 distace 397.304
+ dis 397.304
+right_ratio 1.05449 distace 516.802
+right_ratio 0.96793 distace 836.988
+right_ratio 1.06047 distace 546.43
+right_ratio 1.1747 distace 687.761
+right_ratio 1.1757 distace 664.279
+right_ratio 1.1003 distace 570.29
+right_ratio 1.08795 distace 739.132
+right_ratio 1.18855 distace 696.478
+right_ratio 1.09587 distace 988.882
+right_ratio 1.16796 distace 887.509
+right_ratio 1.08324 distace 158.246
+ dis 158.246
+right_ratio 1.03317 distace 210.463
+ dis 210.463
+right_ratio 1.04255 distace 381.758
+right_ratio 1.17856 distace 49.4198
+ dis 49.4198
+confuse_label orignal class:44
+i_det_lenght 202.163 distance_vector size 4
+judge 0.174762 j_det_lenght  distace 397.304166.833
+judge 0.0315478 j_det_lenght  distace 397.304166.833
+ 
+judge 0.182072 j_det_lenght  distace 210.463206.694
+bfind_very_close distace 210.463
+compare info 44 j_det_lenght 206.694 distance 210.463
+ x dis 204.515 y dis 49.6803
+size change label 44 to 44 0.01compare from:65
+find close  
+right_ratio 1.1104 distace 566.283
+right_ratio 1.14141 distace 641.496
+right_ratio 1.04366 distace 669.169
+right_ratio 1.14042 distace 663.895
+right_ratio 1.08447 distace 769.446
+right_ratio 1.08813 distace 483.71
+right_ratio 1.18101 distace 450.915
+right_ratio 1.05388 distace 732.163
+right_ratio 1.00368 distace 625.066
+right_ratio 1.0925 distace 941.468
+right_ratio 1.08395 distace 528.529
+right_ratio 1.05449 distace 787.181
+right_ratio 0.96793 distace 974.93
+right_ratio 1.06047 distace 832.396
+right_ratio 1.1747 distace 893.879
+right_ratio 1.1757 distace 851.368
+right_ratio 1.1003 distace 614.419
+right_ratio 1.08795 distace 253.678
+ dis 253.678
+right_ratio 1.18855 distace 268.592
+ dis 268.592
+right_ratio 1.09587 distace 507.462
+right_ratio 1.16796 distace 441.999
+right_ratio 1.08324 distace 343.894
+ dis 343.894
+right_ratio 1.03317 distace 495.914
+right_ratio 1.04255 distace 757.533
+right_ratio 1.17856 distace 534.952
+confuse_label orignal class:4
+i_det_lenght 215.167 distance_vector size 3
+judge 0.328427 j_det_lenght  distace 343.894197.046
+judge 0.267375 j_det_lenght  distace 343.894197.046
+judge 0.0842183 j_det_lenght  distace 343.894197.046
+ 
+judge 0.306033 j_det_lenght  distace 268.592162.894
+judge 0.242945 j_det_lenght  distace 268.592162.894
+judge 0.0536809 j_det_lenght  distace 268.592162.894
+ 
+judge 0.337637 j_det_lenght  distace 253.678155.475
+judge 0.277422 j_det_lenght  distace 253.678155.475
+judge 0.0967772 j_det_lenght  distace 253.678155.475
+ 
+right_ratio 1.1104 distace 689.563
+right_ratio 1.14141 distace 842.236
+right_ratio 1.04366 distace 824.093
+right_ratio 1.14042 distace 859.635
+right_ratio 1.08447 distace 948.314
+right_ratio 1.08813 distace 676.181
+right_ratio 1.18101 distace 649.503
+right_ratio 1.05388 distace 899.895
+right_ratio 1.00368 distace 829.827
+right_ratio 1.0925 distace 1081.43
+right_ratio 1.08395 distace 637.72
+right_ratio 1.05449 distace 868.561
+right_ratio 0.96793 distace 1110.22
+right_ratio 1.06047 distace 909.778
+right_ratio 1.1747 distace 1003.78
+right_ratio 1.1757 distace 966.156
+right_ratio 1.1003 distace 760.72
+right_ratio 1.08795 distace 360.68
+right_ratio 1.18855 distace 263.972
+ dis 263.972
+right_ratio 1.09587 distace 580.944
+right_ratio 1.16796 distace 451.352
+right_ratio 1.08324 distace 290.303
+ dis 290.303
+right_ratio 1.03317 distace 540.801
+right_ratio 1.04255 distace 792.305
+right_ratio 1.17856 distace 496.182
+confuse_label orignal class:4
+i_det_lenght 212.267 distance_vector size 2
+judge 0.31925 j_det_lenght  distace 290.303197.046
+judge 0.257364 j_det_lenght  distace 290.303197.046
+judge 0.0717052 j_det_lenght  distace 290.303197.046
+ 
+judge 0.29655 j_det_lenght  distace 263.972162.894
+judge 0.2326 j_det_lenght  distace 263.972162.894
+judge 0.0407505 j_det_lenght  distace 263.972162.894
+ 
+right_ratio 1.1104 distace 1333.41
+right_ratio 1.14141 distace 1266.15
+right_ratio 1.04366 distace 1406.04
+right_ratio 1.14042 distace 1308.39
+right_ratio 1.08447 distace 1456.48
+right_ratio 1.08813 distace 1165.81
+right_ratio 1.18101 distace 1117.99
+right_ratio 1.05388 distace 772.712
+right_ratio 1.00368 distace 1228.75
+right_ratio 1.0925 distace 751.804
+right_ratio 1.08395 distace 464.355
+right_ratio 1.05449 distace 402.775
+right_ratio 0.96793 distace 750.955
+right_ratio 1.06047 distace 406.492
+right_ratio 1.1747 distace 579.063
+right_ratio 1.1757 distace 576.584
+right_ratio 1.1003 distace 615.805
+right_ratio 1.08795 distace 1028.59
+right_ratio 1.18855 distace 998.388
+right_ratio 1.09587 distace 1281.5
+right_ratio 1.16796 distace 1189.19
+right_ratio 1.08324 distace 462.013
+right_ratio 1.03317 distace 321.276
+ dis 321.276
+right_ratio 1.04255 distace 212.591
+ dis 212.591
+right_ratio 1.17856 distace 255.189
+ dis 255.189
+confuse_label orignal class:8
+i_det_lenght 196.522 distance_vector size 3
+judge 0.158592 j_det_lenght  distace 321.276206.694
+judge 0.0517601 j_det_lenght  distace 321.276206.694
+compare info 44 j_det_lenght 206.694 distance 321.276
+ x dis 195.695 y dis 254.798
+size change label 8 to 9 0.0517601compare from:65
+ 
+judge 0.166508 j_det_lenght  distace 255.189204.749
+bfind_very_close distace 255.189
+compare info 44 j_det_lenght 204.749 distance 255.189
+ x dis 7.82388 y dis 255.069
+size change label 9 to 9 0.01compare from:68
+find close  
+right_ratio 1.1104 distace 1333.41
+right_ratio 1.14141 distace 1266.15
+right_ratio 1.04366 distace 1406.04
+right_ratio 1.14042 distace 1308.39
+right_ratio 1.08447 distace 1456.48
+right_ratio 1.08813 distace 1165.81
+right_ratio 1.18101 distace 1117.99
+right_ratio 1.05388 distace 772.712
+right_ratio 1.00368 distace 1228.75
+right_ratio 1.0925 distace 751.804
+right_ratio 1.08395 distace 464.355
+right_ratio 1.05449 distace 402.775
+right_ratio 0.96793 distace 750.955
+right_ratio 1.06047 distace 406.492
+right_ratio 1.1747 distace 579.063
+right_ratio 1.1757 distace 576.584
+right_ratio 1.1003 distace 615.805
+right_ratio 1.08795 distace 1028.59
+right_ratio 1.18855 distace 998.388
+right_ratio 1.09587 distace 1281.5
+right_ratio 1.16796 distace 1189.19
+right_ratio 1.08324 distace 462.013
+right_ratio 1.03317 distace 321.276
+ dis 321.276
+right_ratio 1.04255 distace 212.591
+ dis 212.591
+right_ratio 1.17856 distace 255.189
+ dis 255.189
+confuse_label orignal class:9
+i_det_lenght 196.522 distance_vector size 3
+judge 0.158592 j_det_lenght  distace 321.276206.694
+judge 0.0517601 j_det_lenght  distace 321.276206.694
+ 
+judge 0.166508 j_det_lenght  distace 255.189204.749
+bfind_very_close distace 255.189
+compare info 44 j_det_lenght 204.749 distance 255.189
+ x dis 7.82388 y dis 255.069
+size change label 9 to 9 0.01compare from:68
+find close  
+right_ratio 1.1104 distace 730.818
+right_ratio 1.14141 distace 856.409
+right_ratio 1.04366 distace 857.989
+right_ratio 1.14042 distace 877.089
+right_ratio 1.08447 distace 974.232
+right_ratio 1.08813 distace 695.068
+right_ratio 1.18101 distace 664.831
+right_ratio 1.05388 distace 864.262
+right_ratio 1.00368 distace 840.809
+right_ratio 1.0925 distace 1037.1
+right_ratio 1.08395 distace 589.795
+right_ratio 1.05449 distace 814.738
+right_ratio 0.96793 distace 1064.71
+right_ratio 1.06047 distace 855.306
+right_ratio 1.1747 distace 953.67
+right_ratio 1.1757 distace 917.054
+right_ratio 1.1003 distace 719.743
+right_ratio 1.08795 distace 400.676
+right_ratio 1.18855 distace 318.043
+ dis 318.043
+right_ratio 1.09587 distace 630.444
+right_ratio 1.16796 distace 507.325
+right_ratio 1.08324 distace 230.824
+ dis 230.824
+right_ratio 1.03317 distace 484.833
+right_ratio 1.04255 distace 734.296
+right_ratio 1.17856 distace 436.82
+confuse_label orignal class:4
+i_det_lenght 212.488 distance_vector size 2
+judge 0.297283 j_det_lenght  distace 318.043162.894
+judge 0.2334 j_det_lenght  distace 318.043162.894
+judge 0.0417499 j_det_lenght  distace 318.043162.894
+ 
+judge 0.31996 j_det_lenght  distace 230.824197.046
+judge 0.258138 j_det_lenght  distace 230.824197.046
+judge 0.0726722 j_det_lenght  distace 230.824197.046
+ 
+right_ratio 1.1104 distace 1285.91
+right_ratio 1.14141 distace 1229.27
+right_ratio 1.04366 distace 1361.88
+right_ratio 1.14042 distace 1270.53
+right_ratio 1.08447 distace 1416.44
+right_ratio 1.08813 distace 1124.58
+right_ratio 1.18101 distace 1077.29
+right_ratio 1.05388 distace 763.314
+right_ratio 1.00368 distace 1192.85
+right_ratio 1.0925 distace 760.708
+right_ratio 1.08395 distace 442.818
+right_ratio 1.05449 distace 413.786
+right_ratio 0.96793 distace 762.841
+right_ratio 1.06047 distace 423.316
+right_ratio 1.1747 distace 593.1
+right_ratio 1.1757 distace 586.403
+right_ratio 1.1003 distace 601.726
+right_ratio 1.08795 distace 978.706
+right_ratio 1.18855 distace 946.068
+right_ratio 1.09587 distace 1231.19
+right_ratio 1.16796 distace 1136.96
+right_ratio 1.08324 distace 409.08
+right_ratio 1.03317 distace 285.622
+right_ratio 1.04255 distace 227.01
+ dis 227.01
+right_ratio 1.17856 distace 201.975
+ dis 201.975
+confuse_label orignal class:36
+i_det_lenght 195.749 distance_vector size 2
+judge 0.173222 j_det_lenght  distace 227.01202.301
+bfind_very_close distace 227.01
+compare info 37 j_det_lenght 202.301 distance 227.01
+ x dis 219.023 y dis 59.684
+size change label 36 to 37 0.01compare from:67
+find close  
+right_ratio 1.1104 distace 1285.91
+right_ratio 1.14141 distace 1229.27
+right_ratio 1.04366 distace 1361.88
+right_ratio 1.14042 distace 1270.53
+right_ratio 1.08447 distace 1416.44
+right_ratio 1.08813 distace 1124.58
+right_ratio 1.18101 distace 1077.29
+right_ratio 1.05388 distace 763.314
+right_ratio 1.00368 distace 1192.85
+right_ratio 1.0925 distace 760.708
+right_ratio 1.08395 distace 442.818
+right_ratio 1.05449 distace 413.786
+right_ratio 0.96793 distace 762.841
+right_ratio 1.06047 distace 423.316
+right_ratio 1.1747 distace 593.1
+right_ratio 1.1757 distace 586.403
+right_ratio 1.1003 distace 601.726
+right_ratio 1.08795 distace 978.706
+right_ratio 1.18855 distace 946.068
+right_ratio 1.09587 distace 1231.19
+right_ratio 1.16796 distace 1136.96
+right_ratio 1.08324 distace 409.08
+right_ratio 1.03317 distace 285.622
+right_ratio 1.04255 distace 227.01
+ dis 227.01
+right_ratio 1.17856 distace 201.975
+ dis 201.975
+confuse_label orignal class:37
+i_det_lenght 195.749 distance_vector size 2
+judge 0.173222 j_det_lenght  distace 227.01202.301
+bfind_very_close distace 227.01
+compare info 37 j_det_lenght 202.301 distance 227.01
+ x dis 219.023 y dis 59.684
+size change label 37 to 37 0.01compare from:67
+find close  
+right_ratio 1.1104 distace 1375.02
+right_ratio 1.14141 distace 1300.25
+right_ratio 1.04366 distace 1445.33
+right_ratio 1.14042 distace 1343.17
+right_ratio 1.08447 distace 1492.78
+right_ratio 1.08813 distace 1203.12
+right_ratio 1.18101 distace 1154.94
+right_ratio 1.05388 distace 786.464
+right_ratio 1.00368 distace 1262.13
+right_ratio 1.0925 distace 750.456
+right_ratio 1.08395 distace 489.009
+right_ratio 1.05449 distace 402.124
+right_ratio 0.96793 distace 747.036
+right_ratio 1.06047 distace 400.634
+ dis 400.634
+right_ratio 1.1747 distace 574.12
+right_ratio 1.1757 distace 575.335
+right_ratio 1.1003 distace 633.901
+right_ratio 1.08795 distace 1071.79
+right_ratio 1.18855 distace 1042.99
+right_ratio 1.09587 distace 1324.94
+right_ratio 1.16796 distace 1233.74
+right_ratio 1.08324 distace 506.909
+right_ratio 1.03317 distace 356.726
+ dis 356.726
+right_ratio 1.04255 distace 213.703
+ dis 213.703
+right_ratio 1.17856 distace 300.163
+ dis 300.163
+confuse_label orignal class:8
+i_det_lenght 200.824 distance_vector size 4
+judge 0.150994 j_det_lenght  distace 400.634170.5
+judge 0.0612575 j_det_lenght  distace 400.634170.5
+ 
+judge 0.176615 j_det_lenght  distace 356.726206.694
+bfind_very_close distace 356.726
+compare info 44 j_det_lenght 206.694 distance 356.726
+ x dis 193.442 y dis 299.723
+size change label 8 to 9 0.01compare from:65
+find close  
+right_ratio 1.1104 distace 1375.02
+right_ratio 1.14141 distace 1300.25
+right_ratio 1.04366 distace 1445.33
+right_ratio 1.14042 distace 1343.17
+right_ratio 1.08447 distace 1492.78
+right_ratio 1.08813 distace 1203.12
+right_ratio 1.18101 distace 1154.94
+right_ratio 1.05388 distace 786.464
+right_ratio 1.00368 distace 1262.13
+right_ratio 1.0925 distace 750.456
+right_ratio 1.08395 distace 489.009
+right_ratio 1.05449 distace 402.124
+right_ratio 0.96793 distace 747.036
+right_ratio 1.06047 distace 400.634
+ dis 400.634
+right_ratio 1.1747 distace 574.12
+right_ratio 1.1757 distace 575.335
+right_ratio 1.1003 distace 633.901
+right_ratio 1.08795 distace 1071.79
+right_ratio 1.18855 distace 1042.99
+right_ratio 1.09587 distace 1324.94
+right_ratio 1.16796 distace 1233.74
+right_ratio 1.08324 distace 506.909
+right_ratio 1.03317 distace 356.726
+ dis 356.726
+right_ratio 1.04255 distace 213.703
+ dis 213.703
+right_ratio 1.17856 distace 300.163
+ dis 300.163
+confuse_label orignal class:9
+i_det_lenght 200.824 distance_vector size 4
+judge 0.150994 j_det_lenght  distace 400.634170.5
+judge 0.0612575 j_det_lenght  distace 400.634170.5
+ 
+judge 0.176615 j_det_lenght  distace 356.726206.694
+bfind_very_close distace 356.726
+compare info 44 j_det_lenght 206.694 distance 356.726
+ x dis 193.442 y dis 299.723
+size change label 9 to 9 0.01compare from:65
+find close  
+2 16.5 4.5 sssssss2 16.5 4.5 over 
+3 18 4.5 sssssss3 18 4.5 over 
+4 22.5 4.5 sssssss4 22.5 4.5 over 
+5 18 4.5 sssssss5 18 4.5 over 
+6 22.5 4.5 sssssss6 22.5 4.5 over 
+8 18 4.5 sssssss8 18 4.5 over 
+9 22.5 4.5 sssssss9 22.5 4.5 over 
+12 16.5 4.5 sssssss12 16.5 4.5 over 
+13 18 4.5 sssssss13 18 4.5 over 
+14 22.5 4.5 sssssss14 22.5 4.5 over 
+36 18 4.5 sssssss36 18 4.5 over 
+37 22.5 4.5 sssssss37 22.5 4.5 over 
+39 16.5 4.5 sssssss39 16.5 4.5 over 
+40 18 4.5 sssssss40 18 4.5 over 
+41 22.5 4.5 sssssss41 22.5 4.5 over 
+43 18 4.5 sssssss43 18 4.5 over 
+44 22.5 4.5 sssssss44 22.5 4.5 over 
+15 18 4.5 sssssss15 18 4.5 over 
+16 18 4.5 sssssss16 18 4.5 over 
+17 18 4.5 sssssss17 18 4.5 over 
+18 18 4.5 sssssss18 18 4.5 over 
+7 18 4.5 sssssss7 18 4.5 over 
+11 18 4.5 sssssss11 18 4.5 over 
+ sssssssover 
+confuse_vote_label orignal class:3
+ k 1 istart 0
+vetical i_det_lenght 170.913 distance_vector size 3
+confuse_vote_label orignal class:43
+ k 19 istart 18
+vetical i_det_lenght 170.489 distance_vector size 6
+confuse_vote_label orignal class:43
+ k 19 istart 18
+vetical i_det_lenght 167.249 distance_vector size 5
+confuse_vote_label orignal class:13
+ k 10 istart 9
+vetical i_det_lenght 168.682 distance_vector size 4
+confuse_vote_label orignal class:36
+ k 13 istart 12
+vetical i_det_lenght 169.955 distance_vector size 7
+confuse_vote_label orignal class:43
+ k 19 istart 18
+vetical i_det_lenght 163.39 distance_vector size 6
+confuse_vote_label orignal class:43
+ k 19 istart 18
+vetical i_det_lenght 201.294 distance_vector size 10
+confuse_vote_label orignal class:14
+ k 11 istart 9
+vetical i_det_lenght 197.501 distance_vector size 10
+confuse_vote_label orignal class:36
+ k 13 istart 12
+vetical i_det_lenght 201.453 distance_vector size 9
+confuse_vote_label orignal class:36
+ k 13 istart 12
+vetical i_det_lenght 166.143 distance_vector size 6
+confuse_vote_label orignal class:36
+ k 13 istart 12
+vetical i_det_lenght 158.368 distance_vector size 7
+confuse_vote_label orignal class:13
+ k 10 istart 9
+vetical i_det_lenght 164.928 distance_vector size 4
+confuse_vote_label orignal class:43
+ k 19 istart 18
+vetical i_det_lenght 165.889 distance_vector size 7
+confuse_vote_label orignal class:43
+ k 19 istart 18
+vetical i_det_lenght 166.833 distance_vector size 6
+confuse_vote_label orignal class:36
+ k 13 istart 12
+vetical i_det_lenght 165.069 distance_vector size 7
+confuse_vote_label orignal class:8
+ k 7 istart 6
+vetical i_det_lenght 170.965 distance_vector size 6
+confuse_vote_label orignal class:37
+ k 14 istart 12
+vetical i_det_lenght 206.246 distance_vector size 7
+confuse_vote_label orignal class:8
+ k 7 istart 6
+vetical i_det_lenght 170.5 distance_vector size 5
+confuse_vote_label orignal class:43
+ k 19 istart 18
+vetical i_det_lenght 167.821 distance_vector size 7
+confuse_vote_label orignal class:36
+ k 13 istart 12
+vetical i_det_lenght 168.458 distance_vector size 9
+confuse_vote_label orignal class:14
+ k 11 istart 9
+vetical i_det_lenght 206.152 distance_vector size 11
+confuse_vote_label orignal class:8
+ k 7 istart 6
+vetical i_det_lenght 171.092 distance_vector size 8
+confuse_vote_label orignal class:8
+ k 7 istart 6
+vetical i_det_lenght 170.004 distance_vector size 10
+confuse_vote_label orignal class:43
+ k 19 istart 18
+vetical i_det_lenght 165.096 distance_vector size 8
+confuse_vote_label orignal class:40
+ k 16 istart 15
+vetical i_det_lenght 162.753 distance_vector size 7
+confuse_vote_label orignal class:40
+ k 16 istart 15
+vetical i_det_lenght 162.815 distance_vector size 5
+confuse_vote_label orignal class:39
+ k 15 istart 15
+vetical i_det_lenght 144.209 distance_vector size 2
+confuse_vote_label orignal class:39
+ k 15 istart 15
+vetical i_det_lenght 144.887 distance_vector size 2
+confuse_vote_label orignal class:13
+ k 10 istart 9
+vetical i_det_lenght 163.864 distance_vector size 8
+confuse_vote_label orignal class:4
+ k 2 istart 0
+vetical i_det_lenght 211.775 distance_vector size 9
+confuse_vote_label orignal class:13
+ k 10 istart 9
+vetical i_det_lenght 164.513 distance_vector size 12
+confuse_vote_label orignal class:44
+ k 20 istart 18
+vetical i_det_lenght 204.969 distance_vector size 11
+confuse_vote_label orignal class:14
+ k 11 istart 9
+vetical i_det_lenght 197.046 distance_vector size 12
+confuse_vote_label orignal class:44
+ k 20 istart 18
+vetical i_det_lenght 206.694 distance_vector size 11
+confuse_vote_label orignal class:14
+ k 11 istart 9
+vetical i_det_lenght 200.181 distance_vector size 12
+confuse_vote_label orignal class:37
+ k 14 istart 12
+vetical i_det_lenght 202.301 distance_vector size 7
+confuse_vote_label orignal class:44
+ k 20 istart 18
+vetical i_det_lenght 204.749 distance_vector size 11
+confuse_vote_label orignal class:44
+ k 20 istart 18
+vetical i_det_lenght 202.163 distance_vector size 9
+confuse_vote_label orignal class:14
+ k 11 istart 9
+vetical i_det_lenght 210.953 distance_vector size 12
+confuse_vote_label orignal class:4
+ k 2 istart 0
+vetical i_det_lenght 215.167 distance_vector size 7
+confuse_vote_label orignal class:4
+ k 2 istart 0
+vetical i_det_lenght 212.267 distance_vector size 7
+confuse_vote_label orignal class:9
+ k 8 istart 6
+vetical i_det_lenght 196.522 distance_vector size 7
+confuse_vote_label orignal class:4
+ k 2 istart 0
+vetical i_det_lenght 212.488 distance_vector size 7
+confuse_vote_label orignal class:37
+ k 14 istart 12
+vetical i_det_lenght 195.749 distance_vector size 9
+confuse_vote_label orignal class:9
+ k 8 istart 6
+vetical i_det_lenght 200.824 distance_vector size 7
+Total Time: 7 s 25059 us  imageCount 1
