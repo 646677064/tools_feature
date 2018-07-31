@@ -32,24 +32,52 @@ class PascalVOC2coco(object):
 
         self.save_json()
 
+    def make_labelmap(self,sku_dir,sku_filename):
+        imagesetfile = sku_dir+"/"+sku_filename
+        i=1
+        with open(imagesetfile, 'r') as f:
+            lines_semi = f.readlines()
+
+        lines = []
+        sku_list = []
+        sku_list.append("__background__")
+        [lines.append(j) for j in lines_semi if not j in lines]
+        for line in lines:
+            x=line.strip()
+            x=line.strip('\n')
+            x=line.strip('\r')
+            x=line.strip('\n')
+            x=line.strip()
+            if x=="":
+                continue
+            i += 1
+            sku_list.append(x)
+            self.supercategory = x
+            if self.supercategory not in self.label:
+                self.categories.append(self.categorie())
+                self.label.append(self.supercategory)
+        print imagesetfile,"label = ",i
+        return tuple(sku_list)
+
     def data_transfer(self):
         for num, json_file in enumerate(self.xml):
 
+            basename=os.path.basename(json_file)
+            basename=os.path.splitext(basename)[0]
             # 进度输出
-            sys.stdout.write('\r>> Converting image %d/%d' % (
-                num + 1, len(self.xml)))
+            sys.stdout.write('\r>> Converting image %d/%d %s' % (
+                num + 1, len(self.xml),basename))
             sys.stdout.flush()
 
             self.json_file = json_file
             self.num = num
             path = os.path.dirname(self.json_file)
             path = os.path.dirname(path)
-            basename=os.path.basename(json_file)
-            basename=os.path.splitext(basename)[0]
             # path=os.path.split(self.json_file)[0]
             # path=os.path.split(path)[0]
             obj_path = glob.glob(os.path.join(path, 'SegmentationObject', '*.png'))
             with open(json_file, 'r') as fp:
+                bobject_in=False
                 for p in fp:
                     # if 'folder' in p:
                     #     folder =p.split('>')[1].split('<')[0]
@@ -70,14 +98,36 @@ class PascalVOC2coco(object):
 
                         self.images.append(self.image())
 
+                    if '</object>' in p:
+                        bobject_in=False
                     if '<object>' in p:
-                        # 类别
-                        d = [next(fp).split('>')[1].split('<')[0] for _ in range(9)]
-                        self.supercategory = d[0]
-                        if self.supercategory not in self.label:
-                            self.categories.append(self.categorie())
-                            self.label.append(self.supercategory)
+                        bobject_in=True
+                        # # 类别
+                        # d = [next(fp).split('>')[1].split('<')[0] for _ in range(9)]
+                        # self.supercategory = d[0]
+                        # if self.supercategory not in self.label:
+                        #     # self.categories.append(self.categorie())
+                        #     # self.label.append(self.supercategory)
+                        #     print "======================================error"
 
+                        # # 边界框
+                        # x1 = int(d[-4]);
+                        # y1 = int(d[-3]);
+                        # x2 = int(d[-2]);
+                        # y2 = int(d[-1])
+                        # self.rectangle = [x1, y1, x2, y2]
+                        # self.bbox = [x1, y1, x2 - x1, y2 - y1]  # COCO 对应格式[x,y,w,h]
+
+                        # self.annotations.append(self.annotation())
+                        # self.annID += 1
+                    if bobject_in==True and 'name' in p:
+                        self.supercategory = p.split('>')[1].split('<')[0]
+                        if self.supercategory not in self.label:
+                            # self.categories.append(self.categorie())
+                            # self.label.append(self.supercategory)
+                            print "======================================error"
+                    if bobject_in==True and '<bndbox>' in p:
+                        d = [next(fp).split('>')[1].split('<')[0] for _ in range(4)]
                         # 边界框
                         x1 = int(d[-4]);
                         y1 = int(d[-3]);
@@ -85,7 +135,6 @@ class PascalVOC2coco(object):
                         y2 = int(d[-1])
                         self.rectangle = [x1, y1, x2, y2]
                         self.bbox = [x1, y1, x2 - x1, y2 - y1]  # COCO 对应格式[x,y,w,h]
-
                         self.annotations.append(self.annotation())
                         self.annID += 1
 
@@ -222,6 +271,7 @@ class PascalVOC2coco(object):
         return data_coco
 
     def save_json(self):
+        self.make_labelmap("/data/tiannuodata/nestle4goods/nestle4goodsproj1/","skufile.txt")
         self.data_transfer()
         self.data_coco = self.data2coco()
         # 保存json文件
