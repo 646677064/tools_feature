@@ -277,8 +277,169 @@ class PascalVOC2coco(object):
         # 保存json文件
         json.dump(self.data_coco, open(self.save_json_path, 'w'), indent=4)  # indent=4 更加美观显示
 
+def txt_2_odformattrain_val(txt_dir,json_file,outdir):
+    out_trainfile=outdir+"coco_trainvalmini.odgt"
+    out_valfile=outdir+"coco_minival2014.odgt"
 
-xml_file = glob.glob('/data/tiannuodata/nestle4goods/nestle4goodsproj1/Annotations/*.xml')
-# xml_file=['./Annotations/000032.xml']
+    train_orgpath=txt_dir+"/trainval.txt"
+    with open(train_orgpath, 'r') as f:
+        lines_semi = f.readlines()
 
-PascalVOC2coco(xml_file, '/data/tiannuodata/nestle4goods/nestle4goodsproj1/new.json')
+    train_list = []
+    for line in lines_semi:
+        x=line.strip()
+        x=line.strip('\n')
+        x=line.strip('\r')
+        x=line.strip('\n')
+        x=line.strip()
+        train_list.append(x)
+
+    test_orgpath=txt_dir+"/test.txt"
+    with open(test_orgpath, 'r') as f:
+        lines_semi = f.readlines()
+
+    test_list = []
+    for line in lines_semi:
+        x=line.strip()
+        x=line.strip('\n')
+        x=line.strip('\r')
+        x=line.strip('\n')
+        x=line.strip()
+        test_list.append(x)
+
+    datas = json.load(open(json_file,'r'))
+    with open(out_trainfile, 'w') as fout_trainfile:
+        for trian in train_list:
+            for line in datas['images']:
+                if trian==line['file_name']:
+                    print trian
+                    writelin="{\"gtboxes\":["
+                    # print line['id']
+                    # print line['file_name']
+                    # print line['height']
+                    # print line['width']
+                    bfirst=True
+                    bfindanntaotion=False
+                    bboxwrite=""
+                    for annotations_ in datas['annotations']:
+                        if annotations_['image_id'] != line['id'] and bfindanntaotion==True:
+                            break;
+                        if annotations_['image_id'] == line['id']:
+                            bfindanntaotion=True
+                            if bfirst==False:
+                                bboxwrite=bboxwrite+","
+                            else:
+                                bfirst=False
+                            bboxwrite=bboxwrite+"{\"bbox\": "
+                            bboxwrite=bboxwrite+str(annotations_['bbox'])
+                            bboxwrite=bboxwrite+", \"occ\": 0,"
+                            # print annotations_['bbox']
+                            # print annotations_['category_id']
+                            for id_ in datas['categories']:
+                                if id_['id']==annotations_['category_id']:
+                                    bboxwrite=bboxwrite+"\"tag\": \""+id_['name']
+                                    bboxwrite=bboxwrite+"\",\"extra\": {\"ignore\": 0}"
+                                    #print id_['name'],"\n"
+                            bboxwrite=bboxwrite+"}"
+                    writelin=writelin+bboxwrite+"],"
+                    fpath="\"fpath\": \"/val2014/"+trian+".jpg\", \"dbName\": \"COCO\", \"dbInfo\": {\"vID\": \"COCO_trainval2014_womini\", \"frameID\": -1}, \"width\": "
+                    fpath=fpath+str(line['width'])+", \"height\": "+str(line['height'])+",\"ID\": \""+trian+".jpg\""
+                    writelin=writelin+fpath+"}\n"
+                    # print writelin
+                    fout_trainfile.write(writelin)
+
+    with open(out_valfile, 'w') as fout_valfile:
+        for test in test_list:
+            for line in datas['images']:
+                if test==line['file_name']:
+                    print test
+                    writelin="{\"gtboxes\":["
+                    # print line['id']
+                    # print line['file_name']
+                    # print line['height']
+                    # print line['width']
+                    bfirst=True
+                    bfindanntaotion=False
+                    bboxwrite=""
+                    for annotations_ in datas['annotations']:
+                        if annotations_['image_id'] != line['id'] and bfindanntaotion==True:
+                            break;
+                        if annotations_['image_id'] == line['id']:
+                            bfindanntaotion=True
+                            if bfirst==False:
+                                bboxwrite=bboxwrite+","
+                            else:
+                                bfirst=False
+                            bboxwrite=bboxwrite+"{\"bbox\": "
+                            bboxwrite=bboxwrite+str(annotations_['bbox'])
+                            bboxwrite=bboxwrite+", \"occ\": 0,"
+                            # print annotations_['bbox']
+                            # print annotations_['category_id']
+                            for id_ in datas['categories']:
+                                if id_['id']==annotations_['category_id']:
+                                    bboxwrite=bboxwrite+"\"tag\": \""+id_['name']
+                                    bboxwrite=bboxwrite+"\",\"extra\": {\"ignore\": 0}"
+                                    #print id_['name'],"\n"
+                            bboxwrite=bboxwrite+"}"
+                    writelin=writelin+bboxwrite+"],"
+                    fpath="\"fpath\": \"/val2014/"+trian+".jpg\", \"dbName\": \"COCO\", \"dbInfo\": {\"vID\": \"COCO_trainval2014_womini\", \"frameID\": -1}, \"width\": "
+                    fpath=fpath+str(line['width'])+", \"height\": "+str(line['height'])+",\"ID\": \""+trian+".jpg\""
+                    writelin=writelin+fpath+"}\n"
+                    # print writelin
+                    # print writelin
+                    fout_valfile.write(writelin)
+
+if __name__ == "__main__":
+    txt_list="/data/tiannuodata/nestle4goods/nestle4goodsproj1/ImageSets/Main/"
+    json_file='/data/tiannuodata/nestle4goods/nestle4goodsproj1/new.json'
+    json_file="/home/liushuai/work/light_head_rcnn/data/MSCOCO/instances_minival2014.json"
+    #json_file='/data/tiannuodata/nestle4goods/nestle4goodsproj1/2.json'
+    outdir="/home/liushuai//work/light_head_rcnn/data/MSCOCO/odformat/" #coco_minival2014.odgt coco_trainvalmini.odgt
+    txt_2_odformattrain_val(txt_list,json_file,outdir)
+    # xml_file = glob.glob('/data/tiannuodata/nestle4goods/nestle4goodsproj1/Annotations/*.xml')
+    # PascalVOC2coco(xml_file, '/data/tiannuodata/nestle4goods/nestle4goodsproj1/new.json')
+
+    # #=========================================================================test
+    # json_file='/data/tiannuodata/nestle4goods/nestle4goodsproj1/new.json'
+    # # person_keypoints_val2017.json  # Object Keypoint 类型的标注格式
+    # # captions_val2017.json  # Image Caption的标注格式
+
+    # data=json.load(open(json_file,'r'))
+
+    # data_2={}
+    # # data_2['info']=data['info']
+    # # data_2['licenses']=data['licenses']
+    # data_2['images']=[data['images'][0]] # 只提取第一张图片
+    # data_2['categories']=data['categories']
+    # annotation=[]
+
+    # # 通过imgID 找到其所有对象
+    # imgID=data_2['images'][0]['id']
+    # for ann in data['annotations']:
+    #     if ann['image_id']==imgID:
+    #         annotation.append(ann)
+
+    # data_2['annotations']=annotation
+
+    # # 保存到新的JSON文件，便于查看数据特点
+    # json.dump(data_2,open('/data/tiannuodata/nestle4goods/nestle4goodsproj1/2.json','w'),indent=4) # indent=4 更加美观显示
+
+
+    # data_3={}
+    # # data_3['info']=data['info']
+    # # data_3['licenses']=data['licenses']
+    # data_3['images']=[data['images'][1]] # 只提取第一张图片
+    # data_3['categories']=data['categories']
+    # annotation=[]
+
+    # # 通过imgID 找到其所有对象
+    # imgID=data_3['images'][0]['id']
+    # for ann in data['annotations']:
+    #     if ann['image_id']==imgID:
+    #         annotation.append(ann)
+
+    # data_3['annotations']=annotation
+
+    # # 保存到新的JSON文件，便于查看数据特点
+    # json.dump(data_3,open('/data/tiannuodata/nestle4goods/nestle4goodsproj1/3.json','w'),indent=4) # indent=4 更加美观显示
+    # #=========================================================================test
