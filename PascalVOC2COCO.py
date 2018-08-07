@@ -61,7 +61,7 @@ class PascalVOC2coco(object):
 
     def data_transfer_2(self):
         txt_dir="/data/tiannuodata/nestle4goods/nestle4goodsproj1/ImageSets/Main/"
-        outdir="/home///work/light_head_rcnn/data/MSCOCO/odformat/"
+        outdir="/home//liushuai/work/light_head_rcnn/data/MSCOCO/odformat/"
         out_trainfile=outdir+"coco_trainvalmini.odgt"
         out_valfile=outdir+"coco_minival2014.odgt"
         train_orgpath=txt_dir+"/trainval.txt"
