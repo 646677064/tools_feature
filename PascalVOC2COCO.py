@@ -59,6 +59,126 @@ class PascalVOC2coco(object):
         print imagesetfile,"label = ",i
         return tuple(sku_list)
 
+    def data_transfer_2(self):
+        txt_dir="/data/tiannuodata/nestle4goods/nestle4goodsproj1/ImageSets/Main/"
+        outdir="/home///work/light_head_rcnn/data/MSCOCO/odformat/"
+        out_trainfile=outdir+"coco_trainvalmini.odgt"
+        out_valfile=outdir+"coco_minival2014.odgt"
+        train_orgpath=txt_dir+"/trainval.txt"
+        with open(train_orgpath, 'r') as f:
+            lines_semi = f.readlines()
+
+        train_list = []
+        for line in lines_semi:
+            x=line.strip()
+            x=line.strip('\n')
+            x=line.strip('\r')
+            x=line.strip('\n')
+            x=line.strip()
+            train_list.append(x)
+
+        test_orgpath=txt_dir+"/test.txt"
+        with open(test_orgpath, 'r') as f:
+            lines_semi = f.readlines()
+
+        test_list = []
+        for line in lines_semi:
+            x=line.strip()
+            x=line.strip('\n')
+            x=line.strip('\r')
+            x=line.strip('\n')
+            x=line.strip()
+            test_list.append(x)
+
+        trainstring_list=[]
+        teststring_list=[]
+        for num, json_file in enumerate(self.xml):
+
+            basename=os.path.basename(json_file)
+            basename=os.path.splitext(basename)[0]
+            # 进度输出
+            sys.stdout.write('\r>> Converting image %d/%d %s' % (
+                num + 1, len(self.xml),basename))
+            sys.stdout.flush()
+
+            self.json_file = json_file
+            self.num = num
+            path = os.path.dirname(self.json_file)
+            path = os.path.dirname(path)
+            # path=os.path.split(self.json_file)[0]
+            # path=os.path.split(path)[0]
+            writelin="{\"gtboxes\":["
+            obj_path = glob.glob(os.path.join(path, 'SegmentationObject', '*.png'))
+            bboxwrite=""
+            bfirst=True
+            with open(json_file, 'r') as fp:
+                bobject_in=False
+                for p in fp:
+                    # if 'folder' in p:
+                    #     folder =p.split('>')[1].split('<')[0]
+                    if 'filename' in p:
+                        path=os.path.split(self.json_file)[0]
+                        self.filen_ame = basename#p.split('>')[1].split('<')[0]
+
+                        self.path = os.path.join(path, 'SegmentationObject', self.filen_ame.split('.')[0] + '.png')
+
+
+                    if 'width' in p:
+                        self.width = int(p.split('>')[1].split('<')[0])
+                    if 'height' in p:
+                        self.height = int(p.split('>')[1].split('<')[0])
+
+                        self.images.append(self.image())
+
+                    if '</object>' in p:
+                        bobject_in=False
+                    if '<object>' in p:
+                        bobject_in=True
+                    if bobject_in==True and 'name' in p:
+                        self.supercategory = p.split('>')[1].split('<')[0]
+                        if self.supercategory not in self.label:
+                            print "======================================error"
+                    if bobject_in==True and '<bndbox>' in p:
+                        d = [next(fp).split('>')[1].split('<')[0] for _ in range(4)]
+                        # 边界框
+                        x1 = int(d[-4]);
+                        y1 = int(d[-3]);
+                        x2 = int(d[-2]);
+                        y2 = int(d[-1])
+                        self.rectangle = [x1, y1, x2, y2]
+                        self.bbox = [x1, y1, x2 - x1, y2 - y1]  # COCO 对应格式[x,y,w,h]
+                        self.annotations.append(self.annotation())
+                        self.annID += 1
+                        if bfirst==False:
+                                bboxwrite=bboxwrite+","
+                        else:
+                            bfirst=False
+                        bboxwrite=bboxwrite+"{\"bbox\": "
+                        bboxwrite=bboxwrite+str(self.bbox)
+                        bboxwrite=bboxwrite+", \"occ\": 0,"
+                        bboxwrite=bboxwrite+"\"tag\": \""+self.supercategory
+                        bboxwrite=bboxwrite+"\",\"extra\": {\"ignore\": 0}"
+                        bboxwrite=bboxwrite+"}"
+
+            writelin=writelin+bboxwrite+"],"
+            fpath="\"fpath\": \"/val2014/"+basename+".jpg\", \"dbName\": \"COCO\", \"dbInfo\": {\"vID\": \"COCO_trainval2014_womini\", \"frameID\": -1}, \"width\": "
+            fpath=fpath+str(self.width)+", \"height\": "+str(self.height)+",\"ID\": \""+basename+".jpg\""
+            writelin=writelin+fpath+"}\n"
+            if basename in train_list:
+                for zzz in train_list:
+                    if basename == zzz:
+                        trainstring_list.append(writelin)
+            elif basename in test_list:
+                for zzz in test_list:
+                    if basename == zzz:
+                        teststring_list.append(writelin)
+        with open(out_trainfile, 'w') as fout_trainfile:
+            fout_trainfile.writelines(trainstring_list)
+        with open(out_valfile, 'w') as fout_valfile:
+            fout_valfile.writelines(teststring_list)
+        sys.stdout.write('\n')
+        sys.stdout.flush()
+
     def data_transfer(self):
         for num, json_file in enumerate(self.xml):
 
@@ -272,7 +392,7 @@ class PascalVOC2coco(object):
 
     def save_json(self):
         self.make_labelmap("/data/tiannuodata/nestle4goods/nestle4goodsproj1/","skufile.txt")
-        self.data_transfer()
+        self.data_transfer_2()
         self.data_coco = self.data2coco()
         # 保存json文件
         json.dump(self.data_coco, open(self.save_json_path, 'w'), indent=4)  # indent=4 更加美观显示
@@ -395,9 +515,9 @@ if __name__ == "__main__":
     json_file="/home/liushuai/work/light_head_rcnn/data/MSCOCO/instances_minival2014.json"
     #json_file='/data/tiannuodata/nestle4goods/nestle4goodsproj1/2.json'
     outdir="/home/liushuai//work/light_head_rcnn/data/MSCOCO/odformat/" #coco_minival2014.odgt coco_trainvalmini.odgt
-    txt_2_odformattrain_val(txt_list,json_file,outdir)
-    # xml_file = glob.glob('/data/tiannuodata/nestle4goods/nestle4goodsproj1/Annotations/*.xml')
-    # PascalVOC2coco(xml_file, '/data/tiannuodata/nestle4goods/nestle4goodsproj1/new.json')
+    #txt_2_odformattrain_val(txt_list,json_file,outdir)
+    xml_file = glob.glob('/data/tiannuodata/nestle4goods/nestle4goodsproj1/Annotations/*.xml')
+    PascalVOC2coco(xml_file, '/data/tiannuodata/nestle4goods/nestle4goodsproj1/new.json')
 
     # #=========================================================================test
     # json_file='/data/tiannuodata/nestle4goods/nestle4goodsproj1/new.json'
