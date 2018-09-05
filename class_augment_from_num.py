@@ -77,10 +77,7 @@ def stastic_all_class_flist(SKUfile,image_set_file,xmldir,outfile,threholdmin=50
             if _class_file_list_det[x+1]==1:
                 for ff in _class_file_list[x+1]:
                     if filename==ff:
-                        ss=0
-                        ss=name_copy_count[filename]
-                        print ss
-                        name_copy_count[filename]=ss+1
+                        name_copy_count[filename]=name_copy_count[filename]+1
         if name_copy_count[filename]>1:
             print filename," times : ",name_copy_count[filename]
     newfilelist=[]
