@@ -58,16 +58,18 @@ def stastic_all_class_flist(SKUfile,image_set_file,xmldir,outfile,threholdmin=50
                     xmllist[index].append(filename)                    
                     xmlmap[index][filename]=0
                     if filename not in _class_file_list[index+1]:
+                        if filename  in _class_file_list[index+1]:
+                            print "in here"
                         _class_file_list[index+1].append(filename)
     for x in range(classlen):
         if classnum[xmllist_top[x]]<threholdmin:
             print xmllist_top[x]," num is less than ",threholdmin
         elif classnum[xmllist_top[x]]<threholdmax:
-            print "before len: ",classnum[xmllist_top[x]]
+            print "before len: ",classnum[xmllist_top[x]]," ",len(_class_file_list[x+1])
             num_multi=int(threholdmax/classnum[xmllist_top[x]]+1)
-            _class_file_list[x+1]=_class_file_list[index+1]*num_multi
+            _class_file_list[x+1]=_class_file_list[x+1]*num_multi
             _class_file_list_det[x+1]=1
-            print "after len: ",classnum[xmllist_top[x]]*num_multi
+            print "after len: ",classnum[xmllist_top[x]]*num_multi," ",len(_class_file_list[x+1])
     name_copy_count={}
     for filename in image_index:
         name_copy_count[filename]=1
@@ -75,8 +77,12 @@ def stastic_all_class_flist(SKUfile,image_set_file,xmldir,outfile,threholdmin=50
             if _class_file_list_det[x+1]==1:
                 for ff in _class_file_list[x+1]:
                     if filename==ff:
-                        name_copy_count[filename]=name_copy_count[filename]+1
-        print filename," times : ",name_copy_count[filename]
+                        ss=0
+                        ss=name_copy_count[filename]
+                        print ss
+                        name_copy_count[filename]=ss+1
+        if name_copy_count[filename]>1:
+            print filename," times : ",name_copy_count[filename]
     newfilelist=[]
     for filename in image_index:
         newfilelist.append(filename)
@@ -171,12 +177,23 @@ def stastic_all_SKU_NUM(SKUfile,xmldir,outfile):
 
 if __name__ == "__main__":
     base="/storage2/tiannuodata/work/projdata/nestle4goods/nestle4goodsproj1/"
+    base="/storage2/tiannuodata/work/projdata/baiwei/baiweiproj329/"
+    base="/storage2/tiannuodata/work/projdata/aofei/aofeiproj1/"
     SKUfile=base+"/skufile.txt"
     xmldir=base+"/Annotations/"
     outfile=base+"nestleconfectionery_statistic.txt"
     image_set_file=base+"/ImageSets/Main/trainval.txt"
     threholdmin=50
     threholdmax=2000
+    sd=[]
+    sd.append("aaaaaa")
+    sd.append("bbbbb")
+    sd.append("cccc")
+    sd.append("dddd")
+    sd.append("eee")
+    d=2
+    sd=sd*d
+    print sd
     stastic_all_class_flist(SKUfile,image_set_file,xmldir,outfile,threholdmin,threholdmax)
     #stastic_all_SKU_NUM(SKUfile,xmldir,outfile)
     #static_SKU_pic_bbox(SKUfile,xmldir,outfile)
