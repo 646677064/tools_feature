@@ -347,9 +347,9 @@ if __name__ == "__main__":
     dir_1="/storage2/tiannuodata/work/projdata/baiwei0606-2450-1/baiwei0606-2450-1proj1//"
     outDir="/storage2/tiannuodata/work/projdata/baiwei/329/"
 
-    skufile="/storage2/tiannuodata/ftpUpload/0813baiwei21392/tmp/skufile.txt"
-    dir_1="/storage2/tiannuodata/ftpUpload/0813baiwei21392/"
-    outDir="/storage2/tiannuodata/ftpUpload/0813baiwei21392/tmp/"
+    skufile="/storage2/tiannuodata/work/projdata/baiwei/329_tmp/skufile.txt"
+    dir_1="/storage2/tiannuodata/work/projdata/baiwei/baiweiproj2//"
+    outDir="/storage2/tiannuodata/work/projdata/baiwei//329_tmp/"
     find_and_remove_cp_file(skufile,dir_1,outDir)
 
     # skufile="/storage2/tiannuodata/work/projdata/baiwei/66/66.txt"
