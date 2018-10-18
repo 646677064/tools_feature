@@ -180,7 +180,7 @@ def parse_xml(filename):
 
 
 class PascalVOC2coco(object):
-    def __init__(self, xml=[], save_json_path='./new.json'):
+    def __init__(self, xml=[], save_json_path='./new.json',base_dir="/data/liushuai/nestle4goods/nestle4goodsproj1/"):
         '''
         :param xml: 所有Pascal VOC的xml文件路径组成的列表
         :param save_json_path: json保存位置
@@ -195,6 +195,7 @@ class PascalVOC2coco(object):
         self.annID = 1
         self.height = 0
         self.width = 0
+        self.base_dir = base_dir
 
         self.save_json()
 
@@ -229,8 +230,8 @@ class PascalVOC2coco(object):
         # notconvert_list=[]
         # notconvert_list.append("budweiser47401")
         # notconvert_list.append("budweiser47379")
-        txt_dir="/data/liushuai/baiwei/baiweiproj329//ImageSets/Main/"
-        outdir="//data/liushuai/baiwei/baiweiproj329//odformat/"
+        txt_dir=self.base_dir+"/ImageSets/Main/"
+        outdir=self.base_dir+"//odformat/"
         out_trainfile=outdir+"coco_trainvalmini.odgt"
         out_valfile=outdir+"coco_minival2014.odgt"
         train_orgpath=txt_dir+"/trainval.txt"
@@ -380,8 +381,8 @@ class PascalVOC2coco(object):
         notconvert_list=[]
         notconvert_list.append("budweiser47401")
         notconvert_list.append("budweiser47379")
-        txt_dir="/data/liushuai/baiwei/baiweiproj329//ImageSets/Main/"
-        outdir="//data/liushuai/baiwei/baiweiproj329//odformat/"
+        txt_dir=self.base_dir+"//ImageSets/Main/"
+        outdir=self.base_dir+"//odformat/"
         out_trainfile=outdir+"coco_trainvalmini.odgt"
         out_valfile=outdir+"coco_minival2014.odgt"
         train_orgpath=txt_dir+"/trainval.txt"
@@ -717,7 +718,7 @@ class PascalVOC2coco(object):
         return data_coco
 
     def save_json(self):
-        self.make_labelmap("/data/liushuai/baiwei/baiweiproj329//","skufile.txt")
+        self.make_labelmap(self.base_dir,"skufile.txt")
         self.data_transfer_3()
         self.data_coco = self.data2coco()
         # 保存json文件
@@ -836,14 +837,16 @@ def txt_2_odformattrain_val(txt_dir,json_file,outdir):
                     fout_valfile.write(writelin)
 
 if __name__ == "__main__":
-    txt_list="/data/liushuai/baiwei/baiweiproj329//ImageSets/Main/"
-    json_file='/data/liushuai/baiwei/baiweiproj329//new.json'
+    base_dir="/data/liushuai/nestle4goods/nestle4goodsproj1/"
+    base_dir="/storage3/tiannuodata/work/projdata/nestle4goods/nestle4goodsproj1/"
+    txt_list=base_dir+"/ImageSets/Main/"
+    json_file=base_dir+"/new.json"
     #json_file="/home/liushuai/work/light_head_rcnn/data/MSCOCO/instances_minival2014.json"
     #json_file='/data/tiannuodata/nestle4goods/nestle4goodsproj1/2.json'
-    outdir="/data/liushuai/baiwei/baiweiproj329//odformat/" #coco_minival2014.odgt coco_trainvalmini.odgt
+    outdir=base_dir+"//odformat/" #coco_minival2014.odgt coco_trainvalmini.odgt
     #txt_2_odformattrain_val(txt_list,json_file,outdir)
-    xml_file = glob.glob('/data/liushuai/baiwei/baiweiproj329/Annotations/*.xml')
-    PascalVOC2coco(xml_file, '/data/liushuai/baiwei/baiweiproj329//new.json')
+    xml_file = glob.glob(base_dir+'/Annotations/*.xml')
+    PascalVOC2coco(xml_file, base_dir+'/new.json',base_dir)
 
     # #=========================================================================test
     # json_file='/data/tiannuodata/nestle4goods/nestle4goodsproj1/new.json'
