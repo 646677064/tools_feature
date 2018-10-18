@@ -291,12 +291,18 @@ class PascalVOC2coco(object):
                         bboxwrite=bboxwrite+","
                 else:
                     bfirst=False
+                boxhere=[objbbox['bbox'][0], objbbox['bbox'][1], objbbox['bbox'][2], objbbox['bbox'][3]]
                 bboxwrite=bboxwrite+"{\"bbox\": "
-                bboxwrite=bboxwrite+str([objbbox['bbox'][0], objbbox['bbox'][1], objbbox['bbox'][2] - objbbox['bbox'][0], objbbox['bbox'][3] - objbbox['bbox'][1]])
+                bboxwrite=bboxwrite+str(boxhere)
                 bboxwrite=bboxwrite+", \"occ\": 0,"
                 bboxwrite=bboxwrite+"\"tag\": \""+objbbox['name']
                 bboxwrite=bboxwrite+"\",\"extra\": {\"ignore\": 0}"
                 bboxwrite=bboxwrite+"}"
+                self.supercategory =objbbox['name']
+                self.rectangle = objbbox['bbox'] #[objbbox['bbox'][0], objbbox['bbox'][1], objbbox['bbox'][2], objbbox['bbox'][3]]
+                self.bbox = boxhere  # COCO 对应格式[x,y,w,h]
+                self.annotations.append(self.annotation())
+                self.annID += 1
             writelin=writelin+bboxwrite+"],"
             fpath="\"fpath\": \"/val2014/"+basename+".jpg\", \"dbName\": \"COCO\", \"dbInfo\": {\"vID\": \"COCO_trainval2014_womini\", \"frameID\": -1}, \"width\": "
             fpath=fpath+baseInfo['size/width']+", \"height\": "+baseInfo['size/height']+",\"ID\": \""+basename+".jpg\""
@@ -838,7 +844,7 @@ def txt_2_odformattrain_val(txt_dir,json_file,outdir):
 
 if __name__ == "__main__":
     base_dir="/data/liushuai/nestle4goods/nestle4goodsproj1/"
-    base_dir="/storage3/tiannuodata/work/projdata/nestle4goods/nestle4goodsproj1/"
+    #base_dir="/storage3/tiannuodata/work/projdata/nestle4goods/nestle4goodsproj1/"
     txt_list=base_dir+"/ImageSets/Main/"
     json_file=base_dir+"/new.json"
     #json_file="/home/liushuai/work/light_head_rcnn/data/MSCOCO/instances_minival2014.json"
