@@ -291,7 +291,7 @@ class PascalVOC2coco(object):
                         bboxwrite=bboxwrite+","
                 else:
                     bfirst=False
-                boxhere=[objbbox['bbox'][0], objbbox['bbox'][1], objbbox['bbox'][2], objbbox['bbox'][3]]
+                boxhere=[objbbox['bbox'][0], objbbox['bbox'][1], objbbox['bbox'][2]-objbbox['bbox'][0], objbbox['bbox'][3]-objbbox['bbox'][1]]
                 bboxwrite=bboxwrite+"{\"bbox\": "
                 bboxwrite=bboxwrite+str(boxhere)
                 bboxwrite=bboxwrite+", \"occ\": 0,"
@@ -843,7 +843,7 @@ def txt_2_odformattrain_val(txt_dir,json_file,outdir):
                     fout_valfile.write(writelin)
 
 if __name__ == "__main__":
-    base_dir="/data/liushuai/nestle4goods/nestle4goodsproj1/"
+    base_dir="/data/liushuai/baiwei/baiweiproj329/"
     #base_dir="/storage3/tiannuodata/work/projdata/nestle4goods/nestle4goodsproj1/"
     txt_list=base_dir+"/ImageSets/Main/"
     json_file=base_dir+"/new.json"
