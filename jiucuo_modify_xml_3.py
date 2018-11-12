@@ -520,13 +520,51 @@ def jiucuo_modify_xml_3_diff_file(Anotation_dir,JPG_dir,patchdir,out_xmlDir,out_
                         ppsring= "cp "+JPG_dir+name+".jpg "+out_jpgdir+name+".jpg"
                         if os.path.exists(JPG_dir+name+".jpg"):
                             assert Popen_do(ppsring),ppsring+" error!"
+def get_others_to_patch_result(patchdir):
+    #os.mkdir(out_xmlDir)
+    subpatchs = os.listdir(patchdir+"/patchlist/")
+    all_file=[]
+    for subpatch in subpatchs:
+        # subpatch=os.path.splitext(subpatch)[0]
+        # print subpatch
+        # # if subpatch!="Others":
+        # #     break
+        # if subpatch=="patchlist":
+        #     continue
+        # if subpatch=="result_patchlist":
+        #     continue
+        # # if subpatch=="patchlist":
+        # #     continue
+        # # if subpatch=="result_patchlist":
+        # #     continue
+        # list_results=[]
+        with open(patchdir+"/patchlist/"+subpatch,"r") as f_result:
+            lines_result = f_result.readlines()
+        list_results=[labelname_result.strip().strip('\n').strip('\r') for labelname_result in lines_result]
+        all_file = all_file + list_results
+    fff_list = os.listdir(patchdir)
+    all_changefile=[]
+    for subpatch in fff_list:
+        if subpatch=="patchlist":
+            continue
+        if subpatch=="result_patchlist":
+            continue
+        localfile=os.listdir(patchdir+subpatch)
+        all_changefile= all_changefile+localfile
+    diff_list=[]
+    for ff in all_file:
+        if ff not in all_changefile:
+            diff_list.append(ff+"\n")
+    with open(patchdir+"/result_patchlist/others.txt","w") as f_others:
+        f_others.writelines(diff_list)
 
 if __name__=="__main__":
-    JPG_dir="/data/liushuai/baiweiproj66/JPEGImages/"
-    Anotation_dir="/data/liushuai/baiweiproj66/Annotations_correct_before/"
-    patchdir="/data/liushuai/baiweiproj66//66_patches/"
-    out_jpgdir="/data/liushuai/baiweiproj66/output/jpg/"
-    out_xmlDir="/data/liushuai/baiweiproj66/output/xml/"
+    JPG_dir="/data/tiannuodata/nestle4goods/nestle4goodsproj1///JPEGImages/"
+    Anotation_dir="/data/tiannuodata/nestle4goods/nestle4goodsproj1///Annotations/"
+    patchdir="/data/tiannuodata/nestle4goods/nestle4goodsproj1/patch//"
+    out_jpgdir="/data/tiannuodata/nestle4goods/nestle4goodsproj1//output/jpg/"
+    out_xmlDir="/data/tiannuodata/nestle4goods/nestle4goodsproj1//output/xml/"
     #jiucuo_modify_xml_3(Anotation_dir,JPG_dir,patchdir,out_xmlDir,out_jpgdir)
     #only_getpatchlist(patchdir)
+    get_others_to_patch_result(patchdir)
     jiucuo_modify_xml_3_diff_file(Anotation_dir,JPG_dir,patchdir,out_xmlDir,out_jpgdir)
